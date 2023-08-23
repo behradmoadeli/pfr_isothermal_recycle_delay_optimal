@@ -88,7 +88,7 @@ def create_custom_pars_list(csv_path):
         list: A list of dictionaries containing custom parameter sets.
     """
     # Read the CSV file into a DataFrame
-    df = pd.read_csv(csv_path)
+    df = pd.read_csv(csv_path).fillna('')
     
     # Initialize a list to store dictionaries
     custom_pars_list = []
@@ -483,7 +483,7 @@ default_pars = {
 pars_list = create_custom_pars_list('pars_list.csv')
 
 for par in pars_list:
-    df, label, metadata = find_eig(par=par)
+    df, label, metadata = find_eig(par=par, guess_range_real=[-200, -100, 5], guess_range_imag=[0,50,5])
     save_dataframe_to_csv(df, label, 'CSV', metadata)
 
 
