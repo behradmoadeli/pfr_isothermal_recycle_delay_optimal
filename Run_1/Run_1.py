@@ -11,8 +11,6 @@ from sklearn.preprocessing import StandardScaler # Used in clustering function
 import warnings
 warnings.simplefilter('ignore')
 
-# Initializing system parameters:
-
 def save_dataframe_to_csv(df, filename, parent_dir=None, metadata=None):
     """
     Save a DataFrame to a CSV file, optionally with metadata in the first line.
@@ -470,6 +468,8 @@ os.chdir(script_directory)
 
 # Now the CWD is the same as the script's directory
 print("New Current Working Directory:", os.getcwd())
+
+# Initializing system parameters:
 
 default_pars = {
     'k':10,
