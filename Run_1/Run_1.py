@@ -406,8 +406,8 @@ def find_eig(**kwargs):
         guess_range_real = [guess_single_r, guess_single_r, 1]
         guess_range_imag = [guess_single_i, guess_single_i, 1]
     else:
-        guess_range_real = kwargs.get('guess_range_real', [-300,50,700])
-        guess_range_imag = kwargs.get('guess_range_imag', [0,250,500])
+        guess_range_real = kwargs.get('guess_range_real', [-300,50,350])
+        guess_range_imag = kwargs.get('guess_range_imag', [0,200,200])
     
     # Assign default values to the rest of missing keyword arguments
     tol_fsolve = kwargs.get('tol_fsolve', 1e-15)
@@ -483,7 +483,7 @@ default_pars = {
 pars_list = create_custom_pars_list('pars_list.csv')
 
 for par in pars_list:
-    df, label, metadata = find_eig(par=par, guess_range_real=[-200, -100, 5], guess_range_imag=[0,50,5])
+    df, label, metadata = find_eig(par=par)
     save_dataframe_to_csv(df, label, 'CSV', metadata)
 
 
