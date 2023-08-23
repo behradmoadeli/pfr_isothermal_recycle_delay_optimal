@@ -253,13 +253,15 @@ def plot_multiple_datasets(parent_directory, save_path=None, rows=None, cols=Non
     for csv_file in csv_files:
         csv_path = os.path.join(parent_directory, csv_file)
         df, base_filename, metadata = load_dataframe_from_csv(csv_path)
-        if base_filename == 'Default':
+        if base_filename == 'default':
             default = df
         else:
             results.append((df, base_filename, metadata))
+    results.sort(key=lambda x: x[1])
 
     # Extract datasets and calculate the number of datasets
     datasets = [result[0] for result in results]
+    labels = [result[1] for result in results]
     num_datasets = len(datasets)
 
     # Calculate rows and columns for the grid layout if not specified
@@ -299,7 +301,7 @@ def plot_multiple_datasets(parent_directory, save_path=None, rows=None, cols=Non
         
         # Plot each dataset
         axes[row, col].plot(dataset)
-        axes[row, col].set_title(f'Dataset {i+1}')
+        axes[row, col].set_title(label[i])
 
     # Remove empty subplots if there are more grids than datasets
     for i, ax in enumerate(axes.flat):
@@ -485,4 +487,4 @@ for par in pars_list:
     save_dataframe_to_csv(df, label, 'CSV', metadata)
 
 
-plot_multiple_datasets('CSV', save_path='multi_plot.png')
+plot_multiple_datasets('CSV', save_path='multi_plot.png', rows=2)
