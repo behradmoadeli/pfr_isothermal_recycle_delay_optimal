@@ -24,6 +24,10 @@ def save_dataframe_to_csv(df, filename, parent_dir=None, metadata=None):
     Returns:
         None
     """
+    # Ensure the filename ends with '.csv'
+    if not filename.endswith('.csv'):
+        filename += '.csv'
+    
     if parent_dir:
         if not os.path.exists(parent_dir):
             os.makedirs(parent_dir)
