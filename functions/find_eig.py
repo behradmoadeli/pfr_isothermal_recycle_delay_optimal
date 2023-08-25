@@ -5,6 +5,8 @@ def find_eig(**kwargs):
     Parameters:
         **kwargs (keyword arguments):            
             - par (dict): A dictionary containing parameters for the system's matrix. If not provided, keys may be passed separately. Absent keys will take default values.
+            - default_pars (dict): A parameters dictionary, used to create labels for comparison
+            - pars_list (str): Path of a .csv file to extract containing default_par.
             - guess_single (complex): A single initial guess for eigenvalue calculation (real + imaginary part).
             - guess_range_real (list): A list specifying the range of real parts of initial guess values.
             - guess_range_imag (list): A list specifying the range of imaginary parts of initial guess values.
@@ -26,18 +28,25 @@ def find_eig(**kwargs):
     import scipy.optimize as opt
     from .char_eq import char_eq
     from .process_dataframe import process_dataframe
+    from .create_custom_pars_list import create_custom_pars_list
 
     import warnings
     warnings.simplefilter('ignore')
     
-    default_pars = {
-        'k': 10,
-        'D': 0.1,
-        'v': 0.5,
-        'tau': 1,
-        'R': 0.9,
-        'label': 'default'
-    }
+    if 'default_pars' in kwargs:
+        default_pars = kwargs['default_pars']
+    else:
+        try:
+            default_pars = create_custom_pars_list(kwargs.get('pars_list', 'pars_list.csv'))[1]
+        except:
+            default_pars = {
+                'k': 10,
+                'D': 0.1,
+                'v': 0.5,
+                'tau': 1,
+                'R': 0.9,
+                'label': 'default'
+            }
 
     # Assign default values to missing keyword arguments for parameters
     label_needed = False

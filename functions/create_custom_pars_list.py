@@ -40,6 +40,7 @@ def create_custom_pars_list(csv_path):
                 custom_pars[key] = row[key]
 
         # Append the customized parameter dictionary to the list
-        custom_pars_list.append(custom_pars)
+        if custom_pars != default_pars:
+            custom_pars_list.append(custom_pars)
 
-    return custom_pars_list
+    return custom_pars_list, default_pars
