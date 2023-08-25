@@ -62,7 +62,7 @@ def plot_multiple_datasets(
     elif cols is None:
         cols = int(np.ceil(num_datasets / rows))
 
-    mid_row = int(np.floor(rows/2))
+    mid_row = int(np.ceil(rows/2))
 
     # Set default figure size if not specified
     if figsize is None:

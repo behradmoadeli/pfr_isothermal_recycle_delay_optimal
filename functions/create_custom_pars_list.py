@@ -10,9 +10,11 @@ def create_custom_pars_list(csv_path):
         csv_path (str): The path to the CSV file.
 
     Returns:
-        list: A list of dictionaries containing custom parameter sets.
+        custom_pars_list: A list of dictionaries containing custom parameter sets.
+        default_pars: A dictionary containing default parameters set
     """
     import pandas as pd
+    from .par_enhance import par_enhance
     # Read the CSV file into a DataFrame
     df = pd.read_csv(csv_path).fillna('')
 
@@ -41,6 +43,7 @@ def create_custom_pars_list(csv_path):
 
         # Append the customized parameter dictionary to the list
         if custom_pars != default_pars:
+            custom_pars = par_enhance(custom_pars, default_pars=default_pars)
             custom_pars_list.append(custom_pars)
 
     return custom_pars_list, default_pars

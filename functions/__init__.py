@@ -8,3 +8,4 @@ from .find_eig import find_eig
 from .process_dataframe import process_dataframe
 from .significant_digits import significant_digits
 from .create_custom_pars_list import create_custom_pars_list
+from .par_enhance import par_enhance

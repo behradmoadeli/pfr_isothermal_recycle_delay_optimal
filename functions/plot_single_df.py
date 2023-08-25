@@ -1,6 +1,6 @@
 def plot_single_df(
-        df, title, metadata, filter=True,
-        real_lower_bound=-200, real_upper_bound=50, imag_lower_bound=-5, imag_upper_bound=5
+        df, title, metadata, filter=False,
+        real_lower_bound=None, real_upper_bound=None, imag_lower_bound=None, imag_upper_bound=None
 ):
     """
     Plot a DataFrame based on several inputs.
@@ -14,10 +14,18 @@ def plot_single_df(
     """
     import matplotlib.pyplot as plt
     import pandas as pd
-    
-    fig, ax = plt.subplots(figsize=(12, 8))
+    import numpy as np
 
     if filter:
+        # Modify default args
+        if not real_lower_bound:
+            real_lower_bound = -np.inf
+        if not real_upper_bound:
+            real_upper_bound = np.inf
+        if not imag_lower_bound:
+            imag_lower_bound = -np.inf
+        if not imag_upper_bound:
+            imag_upper_bound = np.inf
         # Filter rows based on criteria
         filtered_df = df[
             (df['Sol_r'] > real_lower_bound) &
@@ -27,6 +35,8 @@ def plot_single_df(
         ]
     else:
         filtered_df = df
+
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     # Scatter plot
     ax.scatter(filtered_df['Sol_r'], filtered_df['Sol_i'])

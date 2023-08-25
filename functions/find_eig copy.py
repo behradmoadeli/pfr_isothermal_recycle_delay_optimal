@@ -1,24 +1,26 @@
-def find_eig(par=None, default_pars=None, **kwargs):
+def find_eig(**kwargs):
     """
     This function solves the char equation in complex plane for different initial guesses.
 
     Parameters:
-        - par (dict): A dictionary containing parameters for the system's matrix. If not provided, keys may be passed separately. Absent keys will take default values.
-
-        - default_pars (dict): Default parameters dictionary to make labels.
         **kwargs (keyword arguments):            
+            - par (dict): A dictionary containing parameters for the system's matrix. If not provided, keys may be passed separately. Absent keys will take default values.
+            - default_pars (dict): A parameters dictionary, used to create labels for comparison
+            - pars_list (str): Path of a .csv file to extract containing default_par.
+            - guess_single (complex): A single initial guess for eigenvalue calculation (real + imaginary part).
             - guess_range_real (list): A list specifying the range of real parts of initial guess values.
             - guess_range_imag (list): A list specifying the range of imaginary parts of initial guess values.
-            - guess_single (complex): A single initial guess for eigenvalue calculation (real + imaginary part).
             - tol_fsolve (float): Tolerance for fsolve array-like comaprison to converge.
             - tol_is_sol (float): Tolerance for a complex solution to be accepted.
             - round_sig_digits (float): Number of significant digits to either separate two different solutions or merge them as one.
-            - pars_list (str): Path of a .csv file to extract containing default_pars.
 
     Returns:
-        - solution_df (pandas.DataFrame): DataFrame containing found solutions' information.
-        - label (str): A label describing the customized parameters used for the computation.
-        - metadata (dict): A dictionary containing input parameter values used in the computation.
+        tuple:
+            A tuple containing:
+
+            - solution_df (pandas.DataFrame): DataFrame containing found solutions' information.
+            - label (str): A label describing the customized parameters used for the computation.
+            - metadata (dict): A dictionary containing input parameter values used in the computation.
     """
 
     import numpy as np
@@ -26,16 +28,49 @@ def find_eig(par=None, default_pars=None, **kwargs):
     import scipy.optimize as opt
     from .char_eq import char_eq
     from .process_dataframe import process_dataframe
-    from .par_enhance import par_enhance
+    from .create_custom_pars_list import create_custom_pars_list
 
     import warnings
     warnings.simplefilter('ignore')
+    
+    if 'default_pars' in kwargs:
+        default_pars = kwargs['default_pars']
+    else:
+        try:
+            default_pars = create_custom_pars_list(kwargs.get('pars_list', 'pars_list.csv'))[1]
+        except:
+            default_pars = {
+                'k': 10,
+                'D': 0.1,
+                'v': 0.5,
+                'tau': 1,
+                'R': 0.9,
+                'label': 'default'
+            }
 
-
-    # Enhance par (create label, update par, if necessary)
-    if par['label'] == 'default':
-        default_pars = par.copy()
-    par = par_enhance(par, default_pars=default_pars, **kwargs)
+    # Assign default values to missing keyword arguments for parameters
+    label_needed = False
+    if 'par' in kwargs:
+        par = kwargs['par']
+        if par['label'] == '':
+            label_needed = True
+    else:
+        par = default_pars.copy()
+        for key in par:
+            par[key] = kwargs.get(key, par[key])
+        if par != default_pars:
+            label_needed = True
+    # Creating a label for parameters if needed
+    if label_needed:
+        # default_pars[key], par['label'] = 0 , 0
+        # differing_pairs = {key: value for key, value in par.items() if not np.isclose(value, default_pars[key])}
+        differing_pairs = {}
+        for key, value in par.items():
+            if key != 'label':
+                if not np.isclose(value, default_pars[key]):
+                    differing_pairs[key] = value
+        par['label'] = '_'.join(
+            [f"({key}_{value:.3g})" for key, value in differing_pairs.items()])
 
     # Assign default values to missing keyword arguments for initial guess values
     if 'guess_single' in kwargs:
@@ -45,8 +80,8 @@ def find_eig(par=None, default_pars=None, **kwargs):
         guess_range_real = [guess_single_r, guess_single_r, 1]
         guess_range_imag = [guess_single_i, guess_single_i, 1]
     else:
-        guess_range_real = kwargs.get('guess_range_real', [-350, 50, 100])
-        guess_range_imag = kwargs.get('guess_range_imag', [0, 300, 75])
+        guess_range_real = kwargs.get('guess_range_real', [-300, 50, 350])
+        guess_range_imag = kwargs.get('guess_range_imag', [0, 200, 200])
 
     # Assign default values to the rest of missing keyword arguments
     tol_fsolve = kwargs.get('tol_fsolve', 1e-15)

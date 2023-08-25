@@ -1,1 +1,3 @@
-fix titles in diagrams (now it compares to previous default, which should be the new default row in csv)
+change par_enhance to label_maker
+reflect this change in find_eig and create_custom_pars_list
+(remember that I got rid of the idea of passing single parameters to the functions. I will do it in the script separately to the par directly)
