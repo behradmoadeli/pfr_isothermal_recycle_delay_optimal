@@ -1,0 +1,1 @@
+fix titles in diagrams (now it compares to previous default, which should be the new default row in csv)
