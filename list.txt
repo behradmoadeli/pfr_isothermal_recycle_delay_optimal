@@ -1,9 +1,0 @@
-- Backup the log before moving to the next day
-- Have a different web address for photos and the rest of the settings
-- Sort images ascending
-- Add show RGB function
-- Option to see the log on the server
-- Deal with photos being uploaded taking long
-    - Post request
-    - Get request
-- Show the last time the camera has successfully fetched anything from the server on the status update page

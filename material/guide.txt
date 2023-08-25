@@ -1,0 +1,11 @@
+python -i functions.py
+
+Either:
+
+>>> with open('run_1.py', 'r') as file:
+>>>     run_1 = file.read()
+>>> exec(run_1)
+
+Or:
+
+>>> %run run_1.py
