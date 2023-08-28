@@ -21,6 +21,6 @@ def load_dataframe_from_csv(input_filepath):
         else:
             metadata = None
             df = pd.read_csv(input_filepath)
-
+    
     base_filename = os.path.splitext(os.path.basename(input_filepath))[0]
     return df, base_filename, metadata

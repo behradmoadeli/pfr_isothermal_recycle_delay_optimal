@@ -1,37 +1,28 @@
-def create_custom_pars_list(csv_path):
+def create_custom_pars_list(csv_path, default_pars=None):
     """
     Create a list of custom parameter dictionaries from a CSV file.
 
-    This function reads a CSV file located at the given path and constructs a list
-    of dictionaries, where each dictionary represents custom parameters based on
-    the CSV content and a global default_pars dictionary.
+    *Does not return default parameters set!*
 
     Parameters:
         csv_path (str): The path to the CSV file.
 
     Returns:
-        custom_pars_list: A list of dictionaries containing custom parameter sets.
-        default_pars: A dictionary containing default parameters set
+        custom_pars_list: A list of dictionaries containing non-default parameter sets.
     """
     import pandas as pd
-    from .par_enhance import par_enhance
+    from .obtain_default_pars import obtain_default_pars
+    from .create_label import create_label
+
     # Read the CSV file into a DataFrame
     df = pd.read_csv(csv_path).fillna('')
 
     # Initialize a list to store dictionaries
     custom_pars_list = []
 
-    default_pars = {
-        'k': 10,
-        'D': 0.1,
-        'v': 0.5,
-        'tau': 1,
-        'R': 0.9,
-        'label': 'default'
-    }
-
-    default_pars = df[df['label'] == 'default'].to_dict(orient='records')[0] if any(df['label'] == 'default') else default_pars
-
+    if not default_pars:
+        default_pars = obtain_default_pars(csv_path)
+    
     # Iterate through the rows of the DataFrame
     for index, row in df.iterrows():
         custom_pars = default_pars.copy()
@@ -43,7 +34,7 @@ def create_custom_pars_list(csv_path):
 
         # Append the customized parameter dictionary to the list
         if custom_pars != default_pars:
-            custom_pars = par_enhance(custom_pars, default_pars=default_pars)
+            custom_pars['label'] = create_label(custom_pars, default_pars=default_pars)
             custom_pars_list.append(custom_pars)
 
-    return custom_pars_list, default_pars
+    return custom_pars_list

@@ -1,5 +1,5 @@
 def plot_single_df(
-        df, title, metadata, filter=False,
+        csv_path, filter=False,
         real_lower_bound=None, real_upper_bound=None, imag_lower_bound=None, imag_upper_bound=None
 ):
     """
@@ -15,6 +15,9 @@ def plot_single_df(
     import matplotlib.pyplot as plt
     import pandas as pd
     import numpy as np
+    from .load_dataframe_from_csv import load_dataframe_from_csv
+
+    df, label, metadata = load_dataframe_from_csv(csv_path)
 
     if filter:
         # Modify default args
@@ -40,7 +43,7 @@ def plot_single_df(
 
     # Scatter plot
     ax.scatter(filtered_df['Sol_r'], filtered_df['Sol_i'])
-    ax.set_title(title)
+    ax.set_title(label)
     ax.set_xlabel('Sol_r')
     ax.set_ylabel('Sol_i')
 
@@ -49,7 +52,6 @@ def plot_single_df(
     ax.axvline(0, color='black', linewidth=0.5)  # Vertical line at x=0
     ax.grid(True)
     plt.show()
+    print(metadata)
 
-    # Print metadata
-    for key, value in metadata.items():
-        print(f'{key} : {value}')
+    return df, label, metadata

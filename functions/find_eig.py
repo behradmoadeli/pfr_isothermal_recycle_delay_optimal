@@ -6,6 +6,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
         - par (dict): A dictionary containing parameters for the system's matrix. If not provided, keys may be passed separately. Absent keys will take default values.
 
         - default_pars (dict): Default parameters dictionary to make labels.
+        
         **kwargs (keyword arguments):            
             - guess_range_real (list): A list specifying the range of real parts of initial guess values.
             - guess_range_imag (list): A list specifying the range of imaginary parts of initial guess values.
@@ -13,7 +14,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
             - tol_fsolve (float): Tolerance for fsolve array-like comaprison to converge.
             - tol_is_sol (float): Tolerance for a complex solution to be accepted.
             - round_sig_digits (float): Number of significant digits to either separate two different solutions or merge them as one.
-            - pars_list (str): Path of a .csv file to extract containing default_pars.
+            - pars_list_path (str): Path of a .csv file to extract containing default_pars.
 
     Returns:
         - solution_df (pandas.DataFrame): DataFrame containing found solutions' information.
@@ -25,17 +26,22 @@ def find_eig(par=None, default_pars=None, **kwargs):
     import pandas as pd
     import scipy.optimize as opt
     from .char_eq import char_eq
-    from .process_dataframe import process_dataframe
-    from .par_enhance import par_enhance
+    from .create_label import create_label
+    from .obtain_default_pars import obtain_default_pars
 
     import warnings
     warnings.simplefilter('ignore')
 
 
-    # Enhance par (create label, update par, if necessary)
+    # Create appropriate label for par
     if par['label'] == 'default':
         default_pars = par.copy()
-    par = par_enhance(par, default_pars=default_pars, **kwargs)
+
+    if not default_pars:
+        default_pars = obtain_default_pars(kwargs.get('pars_list_path', 'pars_list.csv'))
+    
+    if par['label'] == '':
+        par['label'] = create_label(par, default_pars=default_pars, **kwargs)
 
     # Assign default values to missing keyword arguments for initial guess values
     if 'guess_single' in kwargs:
@@ -49,8 +55,8 @@ def find_eig(par=None, default_pars=None, **kwargs):
         guess_range_imag = kwargs.get('guess_range_imag', [0, 300, 75])
 
     # Assign default values to the rest of missing keyword arguments
-    tol_fsolve = kwargs.get('tol_fsolve', 1e-15)
-    tol_is_sol = kwargs.get('tol_is_sol', 1e-6)
+    tol_fsolve = kwargs.get('tol_fsolve', 1e-8)
+    tol_is_sol = kwargs.get('tol_is_sol', 1e-5)
     round_sig_digits = kwargs.get('round_sig_digits', 4)
 
     metadata = {
@@ -61,7 +67,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
 
     # Constructiong a dictionary to capture legit solutions
     solution_dict = {
-        'Sol_r': [], 'Sol_i': [], 'Guess_r': [], 'Guess_i': [], 'g(x)': []
+        'Sol_r':[], 'Sol_i':[], 'Guess':[], 'g(x)':[], 'ier':[], 'msg':[], 'infodict':[]
     }
 
     # Constructiong a 2D (Re-Im plane) mesh for different initial guess values
@@ -77,31 +83,34 @@ def find_eig(par=None, default_pars=None, **kwargs):
         for m in i:
             # obtaining an initial guess from the mesh as a complex number
             m = np.array([m.real, m.imag])
-            solution_array = opt.fsolve(char_eq, m, par, xtol=tol_fsolve)
+            solution_array, infodict, ier, msg = opt.fsolve(char_eq, m, par, xtol=tol_fsolve, full_output=True)
             # evaluationg the value of char_eq at the obtained relaxed solution
             is_sol = char_eq(solution_array, par)
             is_sol = abs(complex(is_sol[0], is_sol[1]))
             if np.isclose(is_sol, 0, atol=tol_is_sol):
-                solution_dict['Guess_r'].append(m[0])
-                solution_dict['Guess_i'].append(m[1])
-                solution_dict['g(x)'].append(is_sol)
-                solution_dict['Sol_r'].append(solution_array[0])
-                solution_dict['Sol_i'].append(solution_array[1])
+            # if ier == 1:
                 solution_array_conj_guess = solution_array.copy()
                 solution_array_conj_guess[1] *= -1
-                solution_array_conj = opt.fsolve(
-                    char_eq, solution_array_conj_guess, par, xtol=tol_fsolve)
+                solution_array_conj, infodict_conj, ier_conj, msg_conj = opt.fsolve(
+                    char_eq, solution_array_conj_guess, par, xtol=tol_fsolve, full_output=True)
                 # evaluationg the value of char_eq at the obtained relaxed solution
                 is_sol_conj = char_eq(solution_array_conj, par)
                 is_sol_conj = (abs(complex(is_sol_conj[0], is_sol_conj[1])))
                 if np.isclose(is_sol_conj, 0, atol=tol_is_sol):
-                    solution_dict['Guess_r'].append(m[0])
-                    solution_dict['Guess_i'].append(-m[1])
-                    solution_dict['g(x)'].append(is_sol_conj)
+                    solution_dict['Sol_r'].append(solution_array[0])
+                    solution_dict['Sol_i'].append(solution_array[1])
+                    solution_dict['Guess'].append(m)
+                    solution_dict['g(x)'].append(is_sol)
+                    solution_dict['ier'].append(ier)
+                    solution_dict['msg'].append(msg)
+                    solution_dict['infodict'].append(infodict)
                     solution_dict['Sol_r'].append(solution_array_conj[0])
                     solution_dict['Sol_i'].append(solution_array_conj[1])
+                    solution_dict['Guess'].append(solution_array_conj_guess)
+                    solution_dict['g(x)'].append(is_sol_conj)
+                    solution_dict['ier'].append(ier_conj)
+                    solution_dict['msg'].append(msg_conj)
+                    solution_dict['infodict'].append(infodict_conj)
 
-    solution_df = process_dataframe(
-        pd.DataFrame(solution_dict), round_sig_digits)
-    solution_df = solution_df.sort_values(by=['Sol_r'], ascending=False)
+    solution_df = pd.DataFrame(solution_dict)
     return (solution_df, par['label'], metadata)
