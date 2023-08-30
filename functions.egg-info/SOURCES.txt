@@ -2,14 +2,16 @@ setup.py
 functions/__init__.py
 functions/char_eq.py
 functions/create_custom_pars_list.py
+functions/create_label.py
 functions/find_eig.py
 functions/generate_unique_file_path.py
 functions/load_dataframe_from_csv.py
-functions/load_dependencies.py
+functions/obtain_default_pars.py
 functions/plot_multiple_datasets.py
 functions/plot_single_df.py
 functions/process_dataframe.py
 functions/save_dataframe_to_csv.py
+functions/set_directory.py
 functions/significant_digits.py
 functions.egg-info/PKG-INFO
 functions.egg-info/SOURCES.txt

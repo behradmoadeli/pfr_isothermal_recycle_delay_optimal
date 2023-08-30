@@ -28,6 +28,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
     from .char_eq import char_eq
     from .create_label import create_label
     from .obtain_default_pars import obtain_default_pars
+    from .my_fsolve import my_fsolve
 
     import warnings
     warnings.simplefilter('ignore')
@@ -55,9 +56,9 @@ def find_eig(par=None, default_pars=None, **kwargs):
         guess_range_imag = kwargs.get('guess_range_imag', [0, 300, 75])
 
     # Assign default values to the rest of missing keyword arguments
-    tol_fsolve = kwargs.get('tol_fsolve', 1e-8)
-    tol_is_sol = kwargs.get('tol_is_sol', 1e-5)
-    round_sig_digits = kwargs.get('round_sig_digits', 4)
+    tol_fsolve = kwargs.get('tol_fsolve', 1e-4)
+    tol_is_sol = kwargs.get('tol_is_sol', 1e-7)
+    round_sig_digits = kwargs.get('round_sig_digits', 3)
 
     metadata = {
         'par': par,
@@ -81,36 +82,38 @@ def find_eig(par=None, default_pars=None, **kwargs):
 
     for i in mesh:
         for m in i:
-            # obtaining an initial guess from the mesh as a complex number
+            print(f"Getting results for guess = {m:.2f}...")
             m = np.array([m.real, m.imag])
-            solution_array, infodict, ier, msg = opt.fsolve(char_eq, m, par, xtol=tol_fsolve, full_output=True)
-            # evaluationg the value of char_eq at the obtained relaxed solution
-            is_sol = char_eq(solution_array, par)
-            is_sol = abs(complex(is_sol[0], is_sol[1]))
-            if np.isclose(is_sol, 0, atol=tol_is_sol):
-            # if ier == 1:
-                solution_array_conj_guess = solution_array.copy()
-                solution_array_conj_guess[1] *= -1
-                solution_array_conj, infodict_conj, ier_conj, msg_conj = opt.fsolve(
-                    char_eq, solution_array_conj_guess, par, xtol=tol_fsolve, full_output=True)
-                # evaluationg the value of char_eq at the obtained relaxed solution
-                is_sol_conj = char_eq(solution_array_conj, par)
-                is_sol_conj = (abs(complex(is_sol_conj[0], is_sol_conj[1])))
-                if np.isclose(is_sol_conj, 0, atol=tol_is_sol):
-                    solution_dict['Sol_r'].append(solution_array[0])
-                    solution_dict['Sol_i'].append(solution_array[1])
-                    solution_dict['Guess'].append(m)
-                    solution_dict['g(x)'].append(is_sol)
-                    solution_dict['ier'].append(ier)
-                    solution_dict['msg'].append(msg)
-                    solution_dict['infodict'].append(infodict)
-                    solution_dict['Sol_r'].append(solution_array_conj[0])
-                    solution_dict['Sol_i'].append(solution_array_conj[1])
-                    solution_dict['Guess'].append(solution_array_conj_guess)
-                    solution_dict['g(x)'].append(is_sol_conj)
-                    solution_dict['ier'].append(ier_conj)
-                    solution_dict['msg'].append(msg_conj)
-                    solution_dict['infodict'].append(infodict_conj)
+            solution_dict = my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, 200, solution_dict, full_output=True)
+            # # obtaining an initial guess from the mesh as a complex number
+            # solution_array, infodict, ier, msg = opt.fsolve(char_eq, m, par, xtol=tol_fsolve, full_output=True)
+            # # evaluationg the value of char_eq at the obtained relaxed solution
+            # is_sol = char_eq(solution_array, par)
+            # is_sol = abs(complex(is_sol[0], is_sol[1]))
+            # if np.isclose(is_sol, 0, atol=tol_is_sol):
+            # # if ier == 1:
+            #     solution_array_conj_guess = solution_array.copy()
+            #     solution_array_conj_guess[1] *= -1
+            #     solution_array_conj, infodict_conj, ier_conj, msg_conj = opt.fsolve(
+            #         char_eq, solution_array_conj_guess, par, xtol=tol_fsolve, full_output=True)
+            #     # evaluationg the value of char_eq at the obtained relaxed solution
+            #     is_sol_conj = char_eq(solution_array_conj, par)
+            #     is_sol_conj = (abs(complex(is_sol_conj[0], is_sol_conj[1])))
+            #     if np.isclose(is_sol_conj, 0, atol=tol_is_sol):
+            #         solution_dict['Sol_r'].append(solution_array[0])
+            #         solution_dict['Sol_i'].append(solution_array[1])
+            #         solution_dict['Guess'].append(m)
+            #         solution_dict['g(x)'].append(is_sol)
+            #         solution_dict['ier'].append(ier)
+            #         solution_dict['msg'].append(msg)
+            #         solution_dict['infodict'].append(infodict)
+            #         solution_dict['Sol_r'].append(solution_array_conj[0])
+            #         solution_dict['Sol_i'].append(solution_array_conj[1])
+            #         solution_dict['Guess'].append(solution_array_conj_guess)
+            #         solution_dict['g(x)'].append(is_sol_conj)
+            #         solution_dict['ier'].append(ier_conj)
+            #         solution_dict['msg'].append(msg_conj)
+            #         solution_dict['infodict'].append(infodict_conj)
 
     solution_df = pd.DataFrame(solution_dict)
     return (solution_df, par['label'], metadata)

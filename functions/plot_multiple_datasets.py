@@ -99,38 +99,44 @@ def plot_multiple_datasets(
         row = i % rows  # Calculate current row index
         col = i // rows  # Calculate current column index
 
+        if rows > 1 and cols > 1:
+            index = (row, col)
+        else:
+            index = (max(row, col),)
+        
         # Plot default dataset
         if row == mid_row:
             # Plot each dataset
-            axes[row, col].scatter(default['Sol_r'], default['Sol_i'])
-            axes[row, col].set_title('Default')
+            axes[*index].scatter(default['Sol_r'], default['Sol_i'])
+            axes[*index].set_title('Default')
 
             # Add gridlines
-            axes[row, col].grid(True)
+            axes[*index].grid(True)
 
             # Show both x-axis and y-axis lines
             # Horizontal line at y=0
-            axes[row, col].axhline(0, color='black', linewidth=0.8)
+            axes[*index].axhline(0, color='black', linewidth=0.8)
             # Vertical line at x=0
-            axes[row, col].axvline(0, color='black', linewidth=0.8)
+            axes[*index].axvline(0, color='black', linewidth=0.8)
 
-            row += 1
-
-        elif row >= mid_row:
-            row += 1
+        if row >= mid_row:
+            if rows > 1 and cols > 1:
+                index = (row+1, col)
+            else:
+                index = (max(row+1, col),)
 
         # Plot each dataset
-        axes[row, col].scatter(dataset['Sol_r'], dataset['Sol_i'])
-        axes[row, col].set_title(labels[i])
+        axes[*index].scatter(dataset['Sol_r'], dataset['Sol_i'])
+        axes[*index].set_title(labels[i])
 
         # Add gridlines
-        axes[row, col].grid(True)
+        axes[*index].grid(True)
 
         # Show both x-axis and y-axis lines
         # Horizontal line at y=0
-        axes[row, col].axhline(0, color='black', linewidth=0.8)
+        axes[*index].axhline(0, color='black', linewidth=0.8)
         # Vertical line at x=0
-        axes[row, col].axvline(0, color='black', linewidth=0.8)
+        axes[*index].axvline(0, color='black', linewidth=0.8)
 
     # Remove empty subplots if there are more grids than datasets
     for i, ax in enumerate(axes.flat):
