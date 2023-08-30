@@ -56,8 +56,8 @@ def find_eig(par=None, default_pars=None, **kwargs):
         guess_range_imag = kwargs.get('guess_range_imag', [0, 300, 75])
 
     # Assign default values to the rest of missing keyword arguments
-    tol_fsolve = kwargs.get('tol_fsolve', 1e-4)
-    tol_is_sol = kwargs.get('tol_is_sol', 1e-7)
+    tol_fsolve = kwargs.get('tol_fsolve', 1e-9)
+    tol_is_sol = kwargs.get('tol_is_sol', 5e-2)
     round_sig_digits = kwargs.get('round_sig_digits', 3)
 
     metadata = {
