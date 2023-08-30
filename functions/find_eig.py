@@ -84,7 +84,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
         for m in i:
             print(f"Getting results for guess = {m.real:.2f} + {m.imag:.2f}j...")
             m = np.array([m.real, m.imag])
-            solution_dict = my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, 200, solution_dict, full_output=True)
+            solution_dict = my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, 25, solution_dict, full_output=True)
             # # obtaining an initial guess from the mesh as a complex number
             # solution_array, infodict, ier, msg = opt.fsolve(char_eq, m, par, xtol=tol_fsolve, full_output=True)
             # # evaluationg the value of char_eq at the obtained relaxed solution
