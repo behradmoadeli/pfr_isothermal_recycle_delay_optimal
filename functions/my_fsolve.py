@@ -7,12 +7,14 @@ def my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, max_iterations, solution_
     from .obtain_default_pars import obtain_default_pars
 
     temp_guess = m
+    sol = False
     sol_conj = False
     for _ in range(max_iterations):
         solution_array, infodict, ier, msg  = opt.fsolve(
             char_eq, temp_guess, par, xtol=tol_fsolve, full_output=full_output)
         is_sol = abs(complex(*char_eq(solution_array, par)))
         if np.isclose(is_sol, 0, atol=tol_is_sol):
+            sol = True
             solution_array, infodict, ier, msg = opt.fsolve(
                 char_eq, solution_array, par, xtol=10*tol_is_sol, full_output=full_output)
             is_sol = abs(complex(*char_eq(solution_array, par)))
@@ -30,13 +32,14 @@ def my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, max_iterations, solution_
                     solution_array_conj_guess = solution_array_conj
         temp_guess = solution_array
     
-    solution_dict['Sol_r'].append(solution_array[0])
-    solution_dict['Sol_i'].append(solution_array[1])
-    solution_dict['Guess'].append(m)
-    solution_dict['g(x)'].append(is_sol)
-    solution_dict['ier'].append(ier)
-    solution_dict['msg'].append(msg)
-    solution_dict['infodict'].append(infodict)
+    if sol:
+        solution_dict['Sol_r'].append(solution_array[0])
+        solution_dict['Sol_i'].append(solution_array[1])
+        solution_dict['Guess'].append(m)
+        solution_dict['g(x)'].append(is_sol)
+        solution_dict['ier'].append(ier)
+        solution_dict['msg'].append(msg)
+        solution_dict['infodict'].append(infodict)
     if sol_conj:
         solution_dict['Sol_r'].append(solution_array_conj[0])
         solution_dict['Sol_i'].append(solution_array_conj[1])
