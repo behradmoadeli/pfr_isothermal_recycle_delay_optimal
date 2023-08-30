@@ -1,8 +1,4 @@
-import os
+from functions import *
+folder_path = "runs/run_5/CSV/(k_2.5).csv"
 
-folder_path = '/Users/behradmoadeli/Documents/PhD/Behrads_Papers/functions'  # Replace with the actual folder path
-
-for filename in os.listdir(folder_path):
-    if filename.endswith('.py'):  # Adjust the file extension as needed
-        x = os.path.splitext(filename)[0]
-        print(f"from .{x} import {x}")
+plot_single_df(folder_path)
