@@ -6,6 +6,7 @@ functions/create_label.py
 functions/find_eig.py
 functions/generate_unique_file_path.py
 functions/load_dataframe_from_csv.py
+functions/my_fsolve.py
 functions/obtain_default_pars.py
 functions/plot_multiple_datasets.py
 functions/plot_single_df.py
