@@ -6,8 +6,8 @@ working_directory = set_directory(__file__)
 
 # Prepare kwargs for find_eig() funcition
 guess = {
-    'guess_range_real':[-50,10,30],
-    'guess_range_imag':[200,300,20]
+    'guess_range_real':[-300,25,325],
+    'guess_range_imag':[0,500,200]
 }
 f = [(-50, 10), 50]
 
