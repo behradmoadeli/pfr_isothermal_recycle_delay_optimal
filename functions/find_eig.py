@@ -82,38 +82,8 @@ def find_eig(par=None, default_pars=None, **kwargs):
 
     for i in mesh:
         for m in i:
-            print(f"Getting results for guess = {m.real:.2f} + {m.imag:.2f}j...")
+            # print(f"Getting results for guess = {m.real:.2f} + {m.imag:.2f}j...")
             m = np.array([m.real, m.imag])
             solution_dict = my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, 25, solution_dict, full_output=True)
-            # # obtaining an initial guess from the mesh as a complex number
-            # solution_array, infodict, ier, msg = opt.fsolve(char_eq, m, par, xtol=tol_fsolve, full_output=True)
-            # # evaluationg the value of char_eq at the obtained relaxed solution
-            # is_sol = char_eq(solution_array, par)
-            # is_sol = abs(complex(is_sol[0], is_sol[1]))
-            # if np.isclose(is_sol, 0, atol=tol_is_sol):
-            # # if ier == 1:
-            #     solution_array_conj_guess = solution_array.copy()
-            #     solution_array_conj_guess[1] *= -1
-            #     solution_array_conj, infodict_conj, ier_conj, msg_conj = opt.fsolve(
-            #         char_eq, solution_array_conj_guess, par, xtol=tol_fsolve, full_output=True)
-            #     # evaluationg the value of char_eq at the obtained relaxed solution
-            #     is_sol_conj = char_eq(solution_array_conj, par)
-            #     is_sol_conj = (abs(complex(is_sol_conj[0], is_sol_conj[1])))
-            #     if np.isclose(is_sol_conj, 0, atol=tol_is_sol):
-            #         solution_dict['Sol_r'].append(solution_array[0])
-            #         solution_dict['Sol_i'].append(solution_array[1])
-            #         solution_dict['Guess'].append(m)
-            #         solution_dict['g(x)'].append(is_sol)
-            #         solution_dict['ier'].append(ier)
-            #         solution_dict['msg'].append(msg)
-            #         solution_dict['infodict'].append(infodict)
-            #         solution_dict['Sol_r'].append(solution_array_conj[0])
-            #         solution_dict['Sol_i'].append(solution_array_conj[1])
-            #         solution_dict['Guess'].append(solution_array_conj_guess)
-            #         solution_dict['g(x)'].append(is_sol_conj)
-            #         solution_dict['ier'].append(ier_conj)
-            #         solution_dict['msg'].append(msg_conj)
-            #         solution_dict['infodict'].append(infodict_conj)
-
     solution_df = pd.DataFrame(solution_dict)
     return (solution_df, par['label'], metadata)

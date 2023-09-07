@@ -11,16 +11,16 @@ guess = {
 }
 
 # Get default_pars and their coresponding solution
-default_pars = obtain_default_pars('pars_list.csv')
-save_dataframe_to_csv(*find_eig(default_pars, **guess, round_sig_digits=3), 'CSV')
+# default_pars = obtain_default_pars('pars_list.csv')
+# save_dataframe_to_csv(*find_eig(default_pars, **guess, round_sig_digits=3), 'CSV')
 
-# Get the solutions for parameter variation
-pars_list = create_custom_pars_list('pars_list.csv')
-for par in pars_list:
-    save_dataframe_to_csv(*find_eig(par, default_pars=default_pars, **guess), 'CSV')
+# # Get the solutions for parameter variation
+# pars_list = create_custom_pars_list('pars_list.csv')
+# for par in pars_list:
+#     save_dataframe_to_csv(*find_eig(par, default_pars=default_pars, **guess), 'CSV')
 
 # df = plot_single_df('CSV/default_4.csv')[0]
 # print(df)
 
-# f = [(-50, 10), 50]
-# plot_multiple_datasets('CSV', save_path='multi_plot', rows=3, filter=False)
+f = [(-200, 10), 300]
+plot_multiple_datasets('CSV', save_path='multi_plot', rows=2, filter=True, filter_range=f)

@@ -1,24 +1,18 @@
-import pandas as pd
-from functions import process_dataframe
+from scipy.optimize import fsolve
+import numpy as np
 
-x = [
-    1.00002,
-    1.00003,
-    1.00258,
-    1.02589,
-    100059,
-    100056,
-    100560
-]
-y = [
-    0,
-    1e-9,
-    0,
-    0,
-    1e-9,
-    0,
-    0
-]
-data = {'Sol_r':x,'Sol_i':y}
+x0 = np.array([
+    [1,2],
+    [3,4],
+    [5,6]
+])
 
-process_dataframe(pd.DataFrame(data),4)
+def myfun(m):
+    x = m[0]
+    y = m[1]
+    r = []
+    r.append(x**2 + 2*y)
+    r.append(2*y - 3 + np.sin(x-y))
+    return r
+
+x = fsolve(myfun, x0)

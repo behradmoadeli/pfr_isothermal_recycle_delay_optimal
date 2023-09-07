@@ -42,7 +42,9 @@ def save_dataframe_to_csv(df, filename, metadata=None, parent_dir=None, process=
         print(f"DataFrame saved to {output_filepath}")
     else:
         with open(output_filepath, 'w') as f:
-            f.write(f"# {metadata}\n")
+            metadata_str = str(metadata)
+            formatted_metadata_str = metadata_str.replace(',', ';')
+            f.write(f"# {formatted_metadata_str}\n")
             df.to_csv(f, index=False)
         print(
             f"DataFrame with metadata '{metadata}' saved to {output_filepath}")
