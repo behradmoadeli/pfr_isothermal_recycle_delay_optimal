@@ -32,7 +32,7 @@ def char_eq(x, *args):
 
     # Calculate y element-wise based on the condition
     y[is_zero] = (
-        np.exp(l[is_zero] * t + v / 2 / D) * (v**2 + 2 * D**2)
+        np.exp(l[is_zero] * t + v / 2 / D) * (D + 2 * (k-l[is_zero]))
         + v * (1 - R * np.exp(v / D))
     )
 

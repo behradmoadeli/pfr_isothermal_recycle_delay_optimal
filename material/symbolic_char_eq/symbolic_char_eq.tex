@@ -1,31 +1,67 @@
-(
-    + Dv^2.exp(lt+g)
-    + 2kv^2.exp(lt+g)
-    - 2lv^2.exp(lt+g)
-    - Dv^2.exp(lt+f)
-    - Dp.exp(lt+g)
-    - 2kv^2.exp(lt+f)
-    + 2lv^2.exp(lt+f)
-    + Dp.exp(lt+f)
-    +2v.sqrt(p)[
-        + k.exp(lt+g)
-        - l.exp(lt+g)
-        + k.exp(lt+f)
-        - l.exp(lt+f)
-        - 2Rk.exp(f).exp(g)
-        + 2Rl.exp(f).exp(g)
-    ]
-)
-    /
-    (4(k - l).sqrt(p))
+% (
+%     + Dv^2.exp(lt+g)
+%     + 2kv^2.exp(lt+g)
+%     - 2lv^2.exp(lt+g)
+%     - Dv^2.exp(lt+f)
+%     - Dp.exp(lt+g)
+%     - 2kv^2.exp(lt+f)
+%     + 2lv^2.exp(lt+f)
+%     + Dp.exp(lt+f)
+%     +2v.sqrt(p)[
+%         + k.exp(lt+g)
+%         - l.exp(lt+g)
+%         + k.exp(lt+f)
+%         - l.exp(lt+f)
+%         - 2Rk.exp(f).exp(g)
+%         + 2Rl.exp(f).exp(g)
+%     ]
+% )
+%     /
+%     (4(k - l).sqrt(p))
 
+% if p = 0:
+%     (
+%         4*D^2*exp(l*t)*exp((v - v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 4*D^2*exp(l*t)*exp((v + v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 4*D^6*exp(l*t)*exp((v + v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 4*D^6*exp(l*t)*exp((v - v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 2*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) + 2*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) + D^4*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) - D^4*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) - D^4*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) + D^4*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) - D^8*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) + D^8*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) + D^8*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) - D^8*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) + 2*D^4*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) - 2*D^4*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) - R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(3/2) + R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(3/2) - 2*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 2*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*D^4*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*D^4*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(3/2))
+%         /(
+%             4*v*(D^2 + 1)*(1 - D^4)^(1/2)*(D - 1)*(D + 1)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))
 
+\documentclass{article}
 
-if k = l:
-    -(D^2.exp(kt) + Rv^2.exp(v/D) - D^2.exp(kt).exp(v/D) - v^2.exp(kt).exp(v/D))/v
+\usepackage{amsmath}
+% Preamble
+\title{Characteristic Equation}
+\author{Brad Moadeli}
+\date{\today} % or specify a specific date
 
-if p = 0:
-    (
-        4*D^2*exp(l*t)*exp((v - v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 4*D^2*exp(l*t)*exp((v + v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 4*D^6*exp(l*t)*exp((v + v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 4*D^6*exp(l*t)*exp((v - v*(1 - D^4)^(1/2))/(2*D))*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 2*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) + 2*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) + D^4*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) - D^4*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) - D^4*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) + D^4*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) - D^8*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) + D^8*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) + D^8*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v + v*(1 - D^4)^(1/2))/(2*D)) - D^8*R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(1 - D^4)^(1/2))/(2*D)) + 2*D^4*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) - 2*D^4*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2) - R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(3/2) + R*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/D)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(3/2) - 2*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) - 2*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*D^4*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*D^4*v^2*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp(l*t)*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2) + 2*R*v^2*exp((v + v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*exp((v - v*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))/(2*D))*(1 - D^4)^(1/2)*(-(D^2 + 1)*(D - 1)*(D + 1))^(3/2))
-        /(
-            4*v*(D^2 + 1)*(1 - D^4)^(1/2)*(D - 1)*(D + 1)*(-(D^2 + 1)*(D - 1)*(D + 1))^(1/2))
+\begin{document}
+
+\maketitle % Creates the title page based on the information in the preamble
+
+The characteristic equation will look like the following:
+
+\begin{multline}
+    \frac{e^{(\lambda t+\frac{v}{2D})}\sinh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}(v^2+2D^2)}{\sqrt{v^2-4D\left(k-\lambda\right)}}\\
+    - \frac{v\sqrt{v^2-4D\left(k-\lambda\right)}\left(Re^{(\frac{v}{D})}-\cosh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}\right)}{\sqrt{v^2-4D\left(k-\lambda\right)}} = 0
+\end{multline}
+
+The denominator is the same on both sides. Therefore, we solve for the numerators first to obtain a potential solutoin:
+
+\begin{multline}
+    e^{(\lambda t+\frac{v}{2D})}\sinh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}(v^2+2D^2)\\
+    - v\sqrt{v^2-4D\left(k-\lambda\right)}\left(Re^{(\frac{v}{D})}-\cosh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}\right) = 0
+\end{multline}
+
+and then check the following:
+
+\begin{enumerate}
+    \item The denominator does not go to zero close to the obtained solution. In this case, the potential solution is a solution for the original equation.
+    \item The denominator goes to zero close to the obtained solution. In this case, the following must be checked:
+\end{enumerate}
+
+\begin{equation}
+    e^{(\lambda t+\frac{v}{2D})}\left(D+2\left(k-\lambda\right)\right) - v\left(Re^{(\frac{v}{D})}-1\right) = 0
+\end{equation}
+
+which is the $\lim_{\lambda \rightarrow \lambda_0}\frac{N(\lambda)}{D(\lambda)}$, where $\lambda_0$ is the potential solution. $\lambda_0$ is the solution to the original equation only if the above expression holds true.
+
+\end{document}
