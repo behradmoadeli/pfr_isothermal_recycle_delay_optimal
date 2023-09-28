@@ -29,3 +29,26 @@ f = (v - (sqrt(p)))/(2*D)
         - 2*R*l*exp(f)*exp(g)
         )
     )
+
+
+-(
+    exp(-l*t)*(
+        D*exp(f)*(p) 
+        + D*v^2*exp(g) 
+        + 2*k*v^2*exp(g) 
+        - 2*l*v^2*exp(g) 
+        - D*v^2*exp(f) 
+        - D*exp(g)*(p) 
+        - 2*k*v^2*exp(f) 
+        + 2*l*v^2*exp(f) 
+        + 2*k*v*exp(f)*sqrt(p) 
+        - 2*l*v*exp(f)*sqrt(p) 
+        + 2*k*v*exp(g)*sqrt(p) 
+        - 2*l*v*exp(g)*sqrt(p) 
+        + 4*R*k*v*exp(f)*exp(l*t)*exp(g)*sqrt(p)
+        - 4*R*l*v*exp(f)*exp(l*t)*exp(g)*sqrt(p)
+    )
+)/(
+    4*(k - l)*sqrt(p)
+)
+ 
