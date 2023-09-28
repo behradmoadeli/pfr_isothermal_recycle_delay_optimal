@@ -49,8 +49,8 @@ def find_eig(par=None, default_pars=None, **kwargs):
         guess_single_r = np.real(kwargs['guess_single'])
         guess_single_i = np.imag(kwargs['guess_single'])
 
-        guess_range_real = [guess_single_r, guess_single_r, 1]
-        guess_range_imag = [guess_single_i, guess_single_i, 1]
+        guess_range_real = [guess_single_r, guess_single_r, 0]
+        guess_range_imag = [guess_single_i, guess_single_i, 0]
     else:
         guess_range_real = kwargs.get('guess_range_real', [-350, 50, 100])
         guess_range_imag = kwargs.get('guess_range_imag', [0, 300, 75])
@@ -74,9 +74,9 @@ def find_eig(par=None, default_pars=None, **kwargs):
     # Constructiong a 2D (Re-Im plane) mesh for different initial guess values
     mesh_builder = np.meshgrid(
         np.linspace(guess_range_real[0],
-                    guess_range_real[1], guess_range_real[2]),
+                    guess_range_real[1], guess_range_real[2]+1),
         np.linspace(guess_range_imag[0],
-                    guess_range_imag[1], guess_range_imag[2])
+                    guess_range_imag[1], guess_range_imag[2]+1)
     )
     mesh = mesh_builder[0] + mesh_builder[1] * 1j
 
