@@ -1,6 +1,7 @@
 setup.py
 functions/__init__.py
 functions/char_eq.py
+functions/char_eq_vec.py
 functions/create_custom_pars_list.py
 functions/create_label.py
 functions/find_eig.py
