@@ -57,7 +57,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
 
     # Assign default values to the rest of missing keyword arguments
     tol_fsolve = kwargs.get('tol_fsolve', 1e-9)
-    tol_is_sol = kwargs.get('tol_is_sol', 5e-2)
+    tol_is_sol = kwargs.get('tol_is_sol', 5e-3)
     round_sig_digits = kwargs.get('round_sig_digits', 3)
 
     metadata = {
