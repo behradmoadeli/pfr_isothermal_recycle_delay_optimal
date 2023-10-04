@@ -38,13 +38,35 @@ def plot_multiple_datasets(
 
     sort_sequence = ['v', 'D', 'k', 't', 'R']
 
+    def is_digit(input_str):
+        # Check if the input is an empty string or a decimal point
+        if input_str == '' or input_str == '.' or input_str == '-':
+            return True
+        
+        try:
+            # Try to convert the input to a float
+            float_value = float(input_str)
+            return True
+        except ValueError:
+            # If the conversion to float fails, return False
+            return False
+
     # Define a sorting function that extracts the first alphabetic letter from the second element of each tuple
     def custom_sort_key(item):
         second_element = str(item[1])  # Convert the second element to a string
         first_alpha_letter = next(
             (char for char in second_element if char.isalpha()), '')
-        return sort_sequence.index(first_alpha_letter) if first_alpha_letter in sort_sequence else len(sort_sequence)
-
+        l = sort_sequence.index(first_alpha_letter) if first_alpha_letter in sort_sequence else len(sort_sequence)
+        
+        first_alpha_letter_value = ''
+        for char in second_element:
+            if is_digit(char):
+                first_alpha_letter_value += char
+        
+        v = float(first_alpha_letter_value)
+                
+        return l * 1e6 + v
+      
     # Sort the results list based on the custom sorting key
     results = sorted(results, key=custom_sort_key)
 

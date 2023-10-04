@@ -24,5 +24,5 @@ guess = {
 df = plot_single_df('CSV/default.csv')[0]
 print(df)
 
-f = [(-200, 10), 300]
-plot_multiple_datasets('CSV', save_path='multi_plot', rows=2, filter=True, filter_range=f)
+# f = [(-300, 100), 400]
+# plot_multiple_datasets('CSV', save_path='multi_plot', rows=4, filter=True, filter_range=f)
