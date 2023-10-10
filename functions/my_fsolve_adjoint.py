@@ -1,4 +1,4 @@
-def my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, max_iterations, solution_dict, full_output=True):
+def my_fsolve_adjoint(char_eq, m, par, tol_fsolve, tol_is_sol, max_iterations, solution_dict, full_output=True):
     import numpy as np
     import pandas as pd
     import scipy.optimize as opt
