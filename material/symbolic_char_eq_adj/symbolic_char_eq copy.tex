@@ -3,48 +3,29 @@ g = (v + (sqrt(p)))/(2*D)
 f = (v - (sqrt(p)))/(2*D)
 
 (
-    - Dv^2.exp(-lt+g) 
-    - 2kv^2.exp(-lt+g) 
-    + 2lv^2.exp(-lt+g) 
-    + Dv^2.exp(-lt+f) 
-    + 2kv^2.exp(-lt+f) 
-    - 2lv^2.exp(-lt+f) 
-    - Dp.exp(-lt+f) 
-    + Dp.exp(-lt+g) 
-    - 2kv.sqrt(p).exp(-lt+f) 
-    + 2lv.sqrt(p).exp(-lt+f) 
-    - 2kv.sqrt(p).exp(-lt+g) 
-    + 2lv.sqrt(p).exp(-lt+g) 
-    - 4Rkv.sqrt(p).exp(f).exp(g)
-    + 4Rlv.sqrt(p).exp(f).exp(g)
-) / (
-    4*(k - l)*sqrt(p)
-)
-
-(
-exp(-lt) . (
-    - Dv^2.exp(g) 
-    - 2kv^2.exp(g) 
-    + 2lv^2.exp(g) 
-    + Dv^2.exp(f) 
-    + 2kv^2.exp(f) 
-    - 2lv^2.exp(f) 
-    - Dp.exp(f) 
-    + Dp.exp(g) 
-
-    - 2kv.sqrt(p).exp(f) 
-    + 2lv.sqrt(p).exp(f) 
-    - 2kv.sqrt(p).exp(g) 
-    + 2lv.sqrt(p).exp(g) 
-) + (
-    - 4Rkv.sqrt(p).exp(f).exp(g)
-    + 4Rlv.sqrt(p).exp(f).exp(g)
-)) / (
-    4*(k - l)*sqrt(p)
+    exp(lt).(
+        - Dv^2.exp(g)
+        - 2kv^2.exp(g)
+        + 2lv^2.exp(g)
+        + Dv^2.exp(f)
+        + 2kv^2.exp(f)
+        - 2lv^2.exp(f)
+        - Dp.exp(f)
+        + Dp.exp(g)
+        - 2kv.exp(g).sqrt(p)
+        + 2lv.exp(g).sqrt(p)
+        - 2kv.exp(f).sqrt(p)
+        + 2lv.exp(f).sqrt(p)
+    )
+    + 4Rkv.exp(g+f).sqrt(p)
+    - 4Rlv.exp(g+f).sqrt(p)
+)/(
+    4(k - l).sqrt(p)
 )
 
 
-(exp(-lt) . (
+
+(exp(lt) . (
     - exp(g) . (
         + Dv^2 
         + 2kv^2 
@@ -61,74 +42,58 @@ exp(-lt) . (
         - k.exp(g) 
         + l.exp(g)
     ) 
-) - 4Rv.sqrt(p).exp(f+g)(
+) + 4Rv.sqrt(p).exp(f+g)(
     k-l
 )) / (
     4*(k - l)*sqrt(p)
 )
 
-(exp(-lt) . (
+
+
+(exp(lt) . (
     (exp(f) - exp(g)) . (Dv^2 + 2kv^2 - 2lv^2 - Dp)
     - 2v . sqrt(p) . (k-l) . (exp(f) + exp(g))
     ) 
-- 4Rv.sqrt(p).exp(f+g)(k-l)
++ 4Rv.sqrt(p).exp(f+g)(k-l)
 ) / (
     4*(k - l)*sqrt(p)
 )
 
-...
-Dv^2 + 2kv^2 - 2lv^2 - Dp = 
-Dv^2 + 2kv^2 - 2lv^2 - D(v^2 - 4D (k-l)) = 
-Dv^2 + 2kv^2 - 2lv^2 - Dv^2 + 4D^2 (k-l) =
-0    + 2kv^2 - 2lv^2 - 0    + 4D^2 (k-l) =
-2v^2 (k-l) + 4D^2 (k-l) =
-(k-l) (2v^2 + 4D^2)
 
-f = (v - (sqrt(p)))/(2*D)
-g = (v + (sqrt(p)))/(2*D)
-f + g = v/D
-
-exp(f) - exp(g) = 
-exp((v - (sqrt(p)))/(2*D)) - exp((v + (sqrt(p)))/(2*D)) =
-exp(v/2D) . exp(-sqrt(p)/2D) - exp(v/2D) . exp(sqrt(p)/2D) =
-exp(v/2D) . (exp(-sqrt(p)/2D) - exp(sqrt(p)/2D)) = 
--exp(v/2D) . 2 sinh(sqrt(p)/2D)
-
-exp(f) + exp(g) = 
-exp((v - (sqrt(p)))/(2*D)) + exp((v + (sqrt(p)))/(2*D)) =
-exp(v/2D) . exp(-sqrt(p)/2D) + exp(v/2D) . exp(sqrt(p)/2D) =
-exp(v/2D) . (exp(-sqrt(p)/2D) + exp(sqrt(p)/2D)) = 
-exp(v/2D) . 2 cosh(sqrt(p)/2D)
-...
-
-(exp(-lt) . (
+(exp(lt) . (
     (-exp(v/2D) . 2 sinh(sqrt(p)/2D)) . ((k-l) (2v^2 + 4D^2))
     - 2v . sqrt(p) . (k-l) . (exp(v/2D) . 2 cosh(sqrt(p)/2D))
     ) 
-- 4Rv.sqrt(p).exp(v/D)(k-l)
++ 4Rv.sqrt(p).exp(v/D)(k-l)
 ) / (
     4*(k - l)*sqrt(p)
 )
 
-exp(-lt) . (
+exp(lt) . (
     (-exp(v/2D) . 2 sinh(sqrt(p)/2D)) . ((k-l) (2v^2 + 4D^2)) / (4*(k - l)*sqrt(p))
     - 2v . sqrt(p) . (k-l) . (exp(v/2D) . 2 cosh(sqrt(p)/2D)) / (4*(k - l)*sqrt(p))
     ) 
-- (4Rv.sqrt(p).exp(v/D)(k-l)) / (4*(k - l)*sqrt(p))
++ (4Rv.sqrt(p).exp(v/D)(k-l)) / (4*(k - l)*sqrt(p))
 
-exp(-lt) . (
+exp(lt) . (
     - 4 (k-l) exp(v/2D) sinh(sqrt(p)/2D) (v^2 + 2D^2) / (4*(k - l)*sqrt(p))
     - 4 (k-l) sqrt(p) v exp(v/2D) cosh(sqrt(p)/2D) / (4*(k - l)*sqrt(p))
     ) 
-- 4 (k-l) sqrt(p) Rv exp(v/D)  / (4*(k - l)*sqrt(p))
++ 4 (k-l) sqrt(p) Rv exp(v/D)  / (4*(k - l)*sqrt(p))
 
-exp(-lt) . (
+exp(lt) . (
     - exp(v/2D) sinh(sqrt(p)/2D) (v^2 + 2D^2) / (sqrt(p))
     - v exp(v/2D) cosh(sqrt(p)/2D)
     ) 
-- Rv exp(v/D)
++ Rv exp(v/D)
 
--exp(-lt + v/2D) (
+-exp(lt + v/2D) (
+    ((v^2 + 2D^2) / (sqrt(p))) . sinh(sqrt(p)/2D) 
+    + v  cosh(sqrt(p)/2D)
+    ) 
++ Rv exp(v/D)
+
+exp(lt + v/2D) (
     ((v^2 + 2D^2) / (sqrt(p))) . sinh(sqrt(p)/2D) 
     + v  cosh(sqrt(p)/2D)
     ) 

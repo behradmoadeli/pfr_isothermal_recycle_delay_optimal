@@ -1,59 +1,136 @@
-% p = v^2 - 4D (k-l)
-% g = (v + (sqrt(p)))/(2D)
-% f = (v - (sqrt(p)))/(2D)
+p = v^2 - 4kD + 4lD = v^2 - 4D (k-l)
+g = (v + (sqrt(p)))/(2*D)
+f = (v - (sqrt(p)))/(2*D)
+
+(
+    - Dv^2.exp(-lt+g) 
+    - 2kv^2.exp(-lt+g) 
+    + 2lv^2.exp(-lt+g) 
+    + Dv^2.exp(-lt+f) 
+    + 2kv^2.exp(-lt+f) 
+    - 2lv^2.exp(-lt+f) 
+    - Dp.exp(-lt+f) 
+    + Dp.exp(-lt+g) 
+    - 2kv.sqrt(p).exp(-lt+f) 
+    + 2lv.sqrt(p).exp(-lt+f) 
+    - 2kv.sqrt(p).exp(-lt+g) 
+    + 2lv.sqrt(p).exp(-lt+g) 
+    - 4Rkv.sqrt(p).exp(f).exp(g)
+    + 4Rlv.sqrt(p).exp(f).exp(g)
+) / (
+    4*(k - l)*sqrt(p)
+)
 
 
-% -(
-%     exp(-lt+v/(2D)).(
-%         (sinh((sqrt(p))/(2D)))(v^2 + 2D^2)
-%     )
-%     + v.sqrt(p).(
-%         exp(-lt).(
-%             (cosh((sqrt(p))/(2D)))
-%         )
-%         + R
-%     )
-% )/(
-%     sqrt(p)
-% )
+(
+exp(-lt) . (
+    - Dv^2.exp(g) 
+    - 2kv^2.exp(g) 
+    + 2lv^2.exp(g) 
+    + Dv^2.exp(f) 
+    + 2kv^2.exp(f) 
+    - 2lv^2.exp(f) 
+    - Dp.exp(f) 
+    + Dp.exp(g) 
 
-\documentclass{article}
+    - 2kv.sqrt(p).exp(f) 
+    + 2lv.sqrt(p).exp(f) 
+    - 2kv.sqrt(p).exp(g) 
+    + 2lv.sqrt(p).exp(g) 
+) + (
+    - 4Rkv.sqrt(p).exp(f).exp(g)
+    + 4Rlv.sqrt(p).exp(f).exp(g)
+)) / (
+    4*(k - l)*sqrt(p)
+)
 
-\usepackage{amsmath}
-% Preamble
-\title{Characteristic Equation}
-\author{Brad Moadeli}
-\date{\today} % or specify a specific date
 
-\begin{document}
+(exp(-lt) . (
+    - exp(g) . (
+        + Dv^2 
+        + 2kv^2 
+        - 2lv^2 
+        - Dp 
+    ) + exp(f) (
+        + Dv^2 
+        + 2kv^2 
+        - 2lv^2 
+        - Dp 
+    ) + 2v . sqrt(p) . (
+        - k.exp(f) 
+        + l.exp(f) 
+        - k.exp(g) 
+        + l.exp(g)
+    ) 
+) - 4Rv.sqrt(p).exp(f+g)(
+    k-l
+)) / (
+    4*(k - l)*sqrt(p)
+)
 
-\maketitle % Creates the title page based on the information in the preamble
+(exp(-lt) . (
+    (exp(f) - exp(g)) . (Dv^2 + 2kv^2 - 2lv^2 - Dp)
+    - 2v . sqrt(p) . (k-l) . (exp(f) + exp(g))
+    ) 
+- 4Rv.sqrt(p).exp(f+g)(k-l)
+) / (
+    4*(k - l)*sqrt(p)
+)
 
-The characteristic equation will look like the following:
+...
+Dv^2 + 2kv^2 - 2lv^2 - Dp = 
+Dv^2 + 2kv^2 - 2lv^2 - D(v^2 - 4D (k-l)) = 
+Dv^2 + 2kv^2 - 2lv^2 - Dv^2 + 4D^2 (k-l) =
+0    + 2kv^2 - 2lv^2 - 0    + 4D^2 (k-l) =
+2v^2 (k-l) + 4D^2 (k-l) =
+(k-l) (2v^2 + 4D^2)
 
-\begin{multline}
-    \frac{e^{(\lambda t+\frac{v}{2D})}\sinh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}(v^2+2D^2)}{\sqrt{v^2-4D\left(k-\lambda\right)}}\\
-    - \frac{v\sqrt{v^2-4D\left(k-\lambda\right)}\left(Re^{(\frac{v}{D})}-\cosh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}\right)}{\sqrt{v^2-4D\left(k-\lambda\right)}} = 0
-\end{multline}
+f = (v - (sqrt(p)))/(2*D)
+g = (v + (sqrt(p)))/(2*D)
+f + g = v/D
 
-The denominator is the same on both sides. Therefore, we solve for the numerators first to obtain a potential solutoin:
+exp(f) - exp(g) = 
+exp((v - (sqrt(p)))/(2*D)) - exp((v + (sqrt(p)))/(2*D)) =
+exp(v/2D) . exp(-sqrt(p)/2D) - exp(v/2D) . exp(sqrt(p)/2D) =
+exp(v/2D) . (exp(-sqrt(p)/2D) - exp(sqrt(p)/2D)) = 
+-exp(v/2D) . 2 sinh(sqrt(p)/2D)
 
-\begin{multline}
-    e^{(\lambda t+\frac{v}{2D})}\sinh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}(v^2+2D^2)\\
-    - v\sqrt{v^2-4D\left(k-\lambda\right)}\left(Re^{(\frac{v}{D})}-\cosh{(\frac{\sqrt{v^2-4D\left(k-\lambda\right)}}{2D})}\right) = 0
-\end{multline}
+exp(f) + exp(g) = 
+exp((v - (sqrt(p)))/(2*D)) + exp((v + (sqrt(p)))/(2*D)) =
+exp(v/2D) . exp(-sqrt(p)/2D) + exp(v/2D) . exp(sqrt(p)/2D) =
+exp(v/2D) . (exp(-sqrt(p)/2D) + exp(sqrt(p)/2D)) = 
+exp(v/2D) . 2 cosh(sqrt(p)/2D)
+...
 
-and then check the following:
+(exp(-lt) . (
+    (-exp(v/2D) . 2 sinh(sqrt(p)/2D)) . ((k-l) (2v^2 + 4D^2))
+    - 2v . sqrt(p) . (k-l) . (exp(v/2D) . 2 cosh(sqrt(p)/2D))
+    ) 
+- 4Rv.sqrt(p).exp(v/D)(k-l)
+) / (
+    4*(k - l)*sqrt(p)
+)
 
-\begin{enumerate}
-    \item The denominator does not go to zero close to the obtained solution. In this case, the potential solution is a solution for the original equation.
-    \item The denominator goes to zero close to the obtained solution. In this case, the following must be checked:
-\end{enumerate}
+exp(-lt) . (
+    (-exp(v/2D) . 2 sinh(sqrt(p)/2D)) . ((k-l) (2v^2 + 4D^2)) / (4*(k - l)*sqrt(p))
+    - 2v . sqrt(p) . (k-l) . (exp(v/2D) . 2 cosh(sqrt(p)/2D)) / (4*(k - l)*sqrt(p))
+    ) 
+- (4Rv.sqrt(p).exp(v/D)(k-l)) / (4*(k - l)*sqrt(p))
 
-\begin{equation}
-    e^{(\lambda t+\frac{v}{2D})}\left(D+2\left(k-\lambda\right)\right) - v\left(Re^{(\frac{v}{D})}-1\right) = 0
-\end{equation}
+exp(-lt) . (
+    - 4 (k-l) exp(v/2D) sinh(sqrt(p)/2D) (v^2 + 2D^2) / (4*(k - l)*sqrt(p))
+    - 4 (k-l) sqrt(p) v exp(v/2D) cosh(sqrt(p)/2D) / (4*(k - l)*sqrt(p))
+    ) 
+- 4 (k-l) sqrt(p) Rv exp(v/D)  / (4*(k - l)*sqrt(p))
 
-which is the $\lim_{\lambda \rightarrow \lambda_0}\frac{N(\lambda)}{D(\lambda)}$, where $\lambda_0$ is the potential solution. $\lambda_0$ is the solution to the original equation only if the above expression holds true.
+exp(-lt) . (
+    - exp(v/2D) sinh(sqrt(p)/2D) (v^2 + 2D^2) / (sqrt(p))
+    - v exp(v/2D) cosh(sqrt(p)/2D)
+    ) 
+- Rv exp(v/D)
 
-\end{document}
+-exp(-lt + v/2D) (
+    ((v^2 + 2D^2) / (sqrt(p))) . sinh(sqrt(p)/2D) 
+    + v  cosh(sqrt(p)/2D)
+    ) 
+- Rv exp(v/D)
