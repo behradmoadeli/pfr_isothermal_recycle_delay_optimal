@@ -1,3 +1,4 @@
 functions.egg-info/
 functions/__pycache__
 *.ipynb_checkpoints
+functions/__pycache__/__init__.cpython-311.pyc
