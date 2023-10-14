@@ -6,7 +6,6 @@ def obtain_default_pars(csv_path):
         csv_path (str): The path to the CSV file.
 
     Returns:
-        custom_pars_list: A list of dictionaries containing custom parameter sets.
         default_pars: A dictionary containing default parameters set
     """
     import pandas as pd
