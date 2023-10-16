@@ -16,9 +16,18 @@ def eig_fun_mul_1(x, *args):
 
     phi = eig_fun_1(x, par, l[0])
     psi = eig_fun_2(x, par, l[0])
+    
     phi_star = eig_fun_adj_1(x, par, l[1])
     psi_star = eig_fun_adj_2(x, par, l[1])
 
     return phi * phi_star + psi * psi_star
 
 print(complex(*quad(eig_fun_mul_1,0,1,args=(par, l),complex_func=True)))
+
+x=0
+print(eig_fun_adj_2(x, par, l[1]))
+print(eig_fun_adj_1(x, par, l[1]))
+
+x=1
+print(eig_fun_2(x, par, l[0]))
+print(eig_fun_1(x, par, l[0]))

@@ -6,15 +6,15 @@ def find_eig(par=None, default_pars=None, **kwargs):
         - par (dict): A dictionary containing parameters for the system's matrix. If not provided, keys may be passed separately. Absent keys will take default values.
 
         - default_pars (dict): Default parameters dictionary to make labels.
-        
-        **kwargs (keyword arguments):            
-            - guess_range_real (list): A list specifying the range of real parts of initial guess values.
-            - guess_range_imag (list): A list specifying the range of imaginary parts of initial guess values.
-            - guess_single (complex): A single initial guess for eigenvalue calculation (real + imaginary part).
-            - tol_fsolve (float): Tolerance for fsolve array-like comaprison to converge.
-            - tol_is_sol (float): Tolerance for a complex solution to be accepted.
-            - round_sig_digits (float): Number of significant digits to either separate two different solutions or merge them as one.
-            - pars_list_path (str): Path of a .csv file to extract containing default_pars.
+    
+    **kwargs (keyword arguments):            
+        - guess_range_real (list): A list specifying the range of real parts of initial guess values. (default [-350, 50, 100])
+        - guess_range_imag (list): A list specifying the range of imaginary parts of initial guess values. (default [0, 300, 75])
+        - guess_single (complex): A single initial guess for eigenvalue calculation (real + imaginary part).
+        - tol_fsolve (float): Tolerance for fsolve array-like comaprison to converge. (default 1e-9)
+        - tol_is_sol (float): Tolerance for a complex solution to be accepted. (default 5e-3)
+        - round_sig_digits (float): Number of significant digits to either separate two different solutions or merge them as one. (default 3)
+        - pars_list_path (str): Path of a .csv file to extract containing default_pars. (default 'pars_list.csv')
 
     Returns:
         - solution_df (pandas.DataFrame): DataFrame containing found solutions' information.
