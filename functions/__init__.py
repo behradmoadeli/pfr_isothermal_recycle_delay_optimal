@@ -6,12 +6,14 @@ from .generate_unique_file_path import generate_unique_file_path
 from .significant_digits import significant_digits
 from .process_dataframe import process_dataframe
 from .char_eq import char_eq
+from .char_eq_copy import char_eq_copy
 from .my_fsolve import my_fsolve
 from .find_eig import find_eig
+from .find_eig_copy import find_eig_copy
 from .save_dataframe_to_csv import save_dataframe_to_csv
 from .create_label import create_label
 from .plot_single_df import plot_single_df
-from .eig_fun import eig_fun_1, eig_fun_2, eig_fun_adj_1, eig_fun_adj_2
+from .eig_fun import *
 
 from sys import version_info
 # Check if Python version is 3.11 or higher
