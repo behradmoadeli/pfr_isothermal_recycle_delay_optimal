@@ -133,12 +133,16 @@ def eig_fun_mul_1(x, *args):
         l = args[1]
     else:
         l = [args[1]]*2
+    
+    try:
+        b = args[2]
+    except:
+        b = 1
 
     phi = eig_fun_1(x, par, l[0])
     psi = eig_fun_2(x, par, l[0])
     
-    phi_star = eig_fun_adj_1(x, par, l[1])
-    psi_star = eig_fun_adj_2(x, par, l[1])
+    phi_star = b * eig_fun_adj_1(x, par, l[1])
+    psi_star = b * eig_fun_adj_2(x, par, l[1])
 
-    # print(x)
     return phi * phi_star + psi * psi_star

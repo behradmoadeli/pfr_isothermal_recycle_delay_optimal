@@ -1,12 +1,35 @@
-from scipy.integrate import quad, trapz
-from functions import *
 import numpy as np
 import matplotlib.pyplot as plt
+from functions import *
+from scipy.integrate import quad, trapz
 from scipy.optimize import fsolve
 
-par = {'k': 1.5, 'D': 0.05, 'v': 1, 'tau': 0.8, 'R': 0.6, 'label': 'default'}
-l = [0.57438205, 0.22125264-3.35991407*1j]
-(k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
+default_pars = {'k': 1.5, 'D': 0.05, 'v': 1, 'tau': 0.8, 'R': 0.6, 'label': 'default'}
+# l = [0.57438205, 0.22125264-3.35991407*1j] # BC
+# l = [0.54592629, 0.19074795-3.46261546*1j] # det(A)
+(k, v, D, t, R) = (default_pars['k'], default_pars['v'], default_pars['D'], default_pars['tau'], default_pars['R'])
+
+lambdas = [
+    (0.5744+0j),
+    (0.2213+3.36j),
+    (0.2213-3.36j),
+    (-0.7285+7.004j),
+    (-0.7285-7.004j)
+    ]
+
+b_star = [
+    (0.4001927535210869+0j),
+    (0.3686793328159092-0.08859051721502866j),
+    (0.3686793328159092+0.08859051721502866j),
+    (0.31110224959830535-0.13373720160985592j),
+    (0.31110224959830535+0.13373720160985592j)
+    ]
+
+for n in range(len(lambdas)):
+    for m in range(n+1):
+        l = [lambdas[n], lambdas[m]]
+        y = quad(eig_fun_mul_1,0,1,args=(default_pars, l, b_star[n]),complex_func=True)[0]
+        print(f'<Phi_{n+1},Phi*_{m+1}> = {y}')
 
 # print(complex(*quad(eig_fun_mul_1,0,1,args=(par, l),complex_func=True)))
 
@@ -30,6 +53,7 @@ l = [0.57438205, 0.22125264-3.35991407*1j]
 
 
 # print(fsolve(my_fun,[0.5,0]))
+# print(fsolve(char_eq,[0.22125264,3.35991407],par))
 
 # x = np.linspace(0.2,0.25,1000)
 # y = []
@@ -59,4 +83,4 @@ l = [0.57438205, 0.22125264-3.35991407*1j]
 # I = trapz(y,x)
 # print(I)
 
-print(complex(*quad(eig_fun_mul_1,0,1,args=(par, l),complex_func=True)))
+# print(complex(*quad(eig_fun_mul_1,0,1,args=(par, l),complex_func=True)))
