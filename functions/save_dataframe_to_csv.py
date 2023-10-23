@@ -31,7 +31,7 @@ def save_dataframe_to_csv(df, filename, metadata=None, parent_dir=None, process=
     
     if process:
         try:
-            round_sig_digits = metadata['tol'][2]
+            round_sig_digits = metadata['tols'][2]
         except:
             round_sig_digits = 4
         df = process_dataframe(df, round_sig_digits)
