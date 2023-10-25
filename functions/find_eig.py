@@ -7,12 +7,14 @@ def find_eig(par=None, default_pars=None, **kwargs):
 
         - default_pars (dict): Default parameters dictionary to make labels.
     
-    **kwargs (keyword arguments):            
+    **kwargs (keyword arguments):
+        - adj (bool): 'True' to slve for A, 'False' to solve for A* (default 'True')
         - guess_range_real (list): A list specifying the range of real parts of initial guess values. (default [-350, 50, 100])
         - guess_range_imag (list): A list specifying the range of imaginary parts of initial guess values. (default [0, 300, 75])
         - guess_single (complex): A single initial guess for eigenvalue calculation (real + imaginary part).
         - tol_fsolve (float): Tolerance for fsolve array-like comaprison to converge. (default 1e-9)
         - tol_is_sol (float): Tolerance for a complex solution to be accepted. (default 5e-3)
+        - max_iter (int) : Maximum iteration passed to 'my_fsolve'. (default 25)
         - round_sig_digits (float): Number of significant digits to either separate two different solutions or merge them as one. (default 3)
         - pars_list_path (str): Path of a .csv file to extract containing default_pars. (default 'pars_list.csv')
 
@@ -38,6 +40,9 @@ def find_eig(par=None, default_pars=None, **kwargs):
     if par['label'] == 'default':
         default_pars = par.copy()
 
+    adj = kwargs.get('adj', False)
+    max_iter = kwargs.get('max_iter', 25)
+    
     if not default_pars:
         default_pars = obtain_default_pars(kwargs.get('pars_list_path', 'pars_list.csv'))
     
@@ -68,7 +73,7 @@ def find_eig(par=None, default_pars=None, **kwargs):
 
     # Constructiong a dictionary to capture legit solutions
     solution_dict = {
-        'Sol_r':[], 'Sol_i':[], 'Guess':[], 'g(x)':[], 'ier':[], 'msg':[], 'infodict':[]
+        'Sol_r':[], 'Sol_i':[], 'Guess':[], 'g(x)':[], 'g*(x)':[], 'ier':[], 'msg':[], 'infodict':[]
     }
 
     # Constructiong a 2D (Re-Im plane) mesh for different initial guess values
@@ -84,6 +89,6 @@ def find_eig(par=None, default_pars=None, **kwargs):
         for m in i:
             # print(f"Getting results for guess = {m.real:.2f} + {m.imag:.2f}j...")
             m = np.array([m.real, m.imag])
-            solution_dict = my_fsolve(char_eq, m, par, tol_fsolve, tol_is_sol, 25, solution_dict, full_output=True)
+            solution_dict = my_fsolve(m, par, tol_fsolve, tol_is_sol, max_iter, solution_dict, adj=adj, full_output=True)
     solution_df = pd.DataFrame(solution_dict)
     return (solution_df, par['label'], metadata)

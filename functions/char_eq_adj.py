@@ -1,4 +1,4 @@
-def char_eq(x, *args):
+def char_eq_adj(x, *args):
     """
     This function evaluates the charachteristic equation at a given point.
 
@@ -13,8 +13,8 @@ def char_eq(x, *args):
             An array of 2 elements, making up the Re and Im parts of the complex value of char_eq at the given x.
     """
     import numpy as np
-    from .eig_fun import eig_fun_1_prime, eig_fun_1, eig_fun_2
-    # from .eig_fun import eig_fun_adj_1_prime, eig_fun_adj_1, eig_fun_adj_2
+    # from .eig_fun import eig_fun_1_prime, eig_fun_1, eig_fun_2
+    from .eig_fun import eig_fun_adj_1_prime, eig_fun_adj_1, eig_fun_adj_2
 
     par = args[0]
 
@@ -37,7 +37,7 @@ def char_eq(x, *args):
         (v-p_sqrt)/(2*D),
     ]
 
-    y = D * eig_fun_1_prime(0, par, l) - v * eig_fun_1(0, par, l) + R * v * eig_fun_2(0, par, l)
-    # y = D * eig_fun_adj_1_prime(1, par, l) + v * eig_fun_adj_1(1, par, l) + R * v * eig_fun_adj_2(1, par, l)
+    # y = D * eig_fun_1_prime(0, par, l) - v * eig_fun_1(0, par, l) + R * v * eig_fun_2(0, par, l)
+    y = D * eig_fun_adj_1_prime(1, par, l) + v * eig_fun_adj_1(1, par, l) + R * v * eig_fun_adj_2(1, par, l)
 
     return y.real, y.imag

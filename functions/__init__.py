@@ -6,6 +6,7 @@ from .generate_unique_file_path import generate_unique_file_path
 from .significant_digits import significant_digits
 from .process_dataframe import process_dataframe
 from .char_eq import char_eq
+from .char_eq_adj import char_eq_adj
 from .char_eq_copy import char_eq_copy
 from .my_fsolve import my_fsolve
 from .find_eig import find_eig

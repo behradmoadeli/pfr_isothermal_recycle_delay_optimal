@@ -57,8 +57,8 @@ def eig_fun_adj_1(x, *args):
     except:
         b = 1
     
-    r = [-(v+p_sqrt)/(2*D),
-         -(v-p_sqrt)/(2*D)
+    r = [-(v-p_sqrt)/(2*D),
+         -(v+p_sqrt)/(2*D)
     ]
 
     a = -r[1]/r[0]
@@ -83,11 +83,11 @@ def eig_fun_adj_2(x, *args):
     except:
         b = 1
     
-    r = [-(v+p_sqrt)/(2*D),
-         -(v-p_sqrt)/(2*D)
+    r = [-(v-p_sqrt)/(2*D),
+         -(v+p_sqrt)/(2*D)
     ]
 
-    c = 1 - r[1]/r[0]
+    c = r[1]/r[0] - 1
     
     psi_star = c * np.exp(-t*l*x)
 
@@ -130,8 +130,8 @@ def eig_fun_adj_1_prime(x, *args):
     p = v**2 - 4*D * (k-l)
     p_sqrt = np.sqrt(p)
     
-    r = [-(v+p_sqrt)/(2*D),
-         -(v-p_sqrt)/(2*D)
+    r = [-(v-p_sqrt)/(2*D),
+         -(v+p_sqrt)/(2*D)
     ]
 
     a = -r[1]/r[0]

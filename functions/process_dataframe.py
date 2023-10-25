@@ -20,7 +20,7 @@ def process_dataframe(df_raw, n):
     df['instances'] = 1
     
     # Replace values in 'Sol_i' column with 0 if absolute value is less than 1e-8
-    df['Sol_i'] = np.where(np.abs(df['Sol_i']) < 1e-8, 0, df['Sol_i'])
+    df['Sol_i'] = np.where(np.abs(df['Sol_i']) < 1e-3, 0, df['Sol_i'])
     
     # Iterate through rows and perform rounding and duplicate handling
     for index, row in df.iterrows():
