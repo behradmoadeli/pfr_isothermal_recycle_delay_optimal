@@ -9,6 +9,11 @@ def eig_fun_1(x, *args):
     p = v**2 - 4*D * (k-l)
     p_sqrt = np.sqrt(p)
     
+    try:
+        b = args[2]
+    except:
+        b = 1
+    
     r = [(v+p_sqrt)/(2*D),
          (v-p_sqrt)/(2*D)
     ]
@@ -17,7 +22,7 @@ def eig_fun_1(x, *args):
 
     phi = a * np.exp(r[0]*x) + np.exp(r[1]*x)
 
-    return phi
+    return b * phi
 
 def eig_fun_2(x, *args):
     
@@ -30,6 +35,11 @@ def eig_fun_2(x, *args):
     p = v**2 - 4*D * (k-l)
     p_sqrt = np.sqrt(p)
     
+    try:
+        b = args[2]
+    except:
+        b = 1
+    
     r = [(v+p_sqrt)/(2*D),
          (v-p_sqrt)/(2*D)
     ]
@@ -38,7 +48,7 @@ def eig_fun_2(x, *args):
 
     psi = c * np.exp(t*l*x)
 
-    return psi
+    return b * psi
 
 
 def eig_fun_adj_1(x, *args):
@@ -87,7 +97,7 @@ def eig_fun_adj_2(x, *args):
          -(v+p_sqrt)/(2*D)
     ]
 
-    c = r[1]/r[0] - 1
+    c = R * v * t * (1 - r[1]/r[0])
     
     psi_star = c * np.exp(-t*l*x)
 
@@ -130,6 +140,11 @@ def eig_fun_adj_1_prime(x, *args):
     p = v**2 - 4*D * (k-l)
     p_sqrt = np.sqrt(p)
     
+    try:
+        b = args[2]
+    except:
+        b = 1
+    
     r = [-(v-p_sqrt)/(2*D),
          -(v+p_sqrt)/(2*D)
     ]
@@ -138,7 +153,7 @@ def eig_fun_adj_1_prime(x, *args):
     
     phi_star = a * r[0] * np.exp(r[0]*x) + r[1] * np.exp(r[1]*x)
 
-    return phi_star
+    return b * phi_star
 
 def eig_fun_mul_1(x, *args):
     
@@ -154,8 +169,8 @@ def eig_fun_mul_1(x, *args):
     except:
         b = 1
 
-    phi = eig_fun_1(x, par, l[0])
-    psi = eig_fun_2(x, par, l[0])
+    phi = eig_fun_1(x, par, l[0], b)
+    psi = eig_fun_2(x, par, l[0], b)
     
     phi_star = eig_fun_adj_1(x, par, l[1], b)
     psi_star = eig_fun_adj_2(x, par, l[1], b)
