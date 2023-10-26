@@ -155,6 +155,12 @@ def eig_fun_adj_1_prime(x, *args):
 
     return b * phi_star
 
+def arbit_fun_1(x):
+    return 6
+
+def arbit_fun_2(x):
+    return 10 - 4 * x
+
 def eig_fun_mul_1(x, *args):
     
     par = args[0]
@@ -176,3 +182,21 @@ def eig_fun_mul_1(x, *args):
     psi_star = eig_fun_adj_2(x, par, l[1], b)
 
     return phi * phi_star + psi * psi_star
+
+def eig_fun_mul_2(x, *args):
+    
+    par = args[0]
+    l = args[1]
+    
+    try:
+        b = args[2]
+    except:
+        b = 1
+
+    z_1 = arbit_fun_1(x)
+    z_2 = arbit_fun_2(x)
+    
+    phi_star = eig_fun_adj_1(x, par, l, b)
+    psi_star = eig_fun_adj_2(x, par, l, b)
+
+    return z_1 * phi_star + z_2 * psi_star
