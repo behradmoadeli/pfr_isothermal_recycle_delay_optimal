@@ -155,11 +155,25 @@ def eig_fun_adj_1_prime(x, *args):
 
     return b * phi_star
 
-def arbit_fun_1(x):
-    return 6
+def arbit_fun_1(x, *args):
+    
+    import numpy as np
 
-def arbit_fun_2(x):
-    return 10 - 4 * x
+    # y = np.ones_like(x) * 6
+    y = np.cos(2*np.pi*x)
+    
+    return y
+
+def arbit_fun_2(x, *args):
+    
+    import numpy as np
+    
+    par = args[0]
+    (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
+    
+    y = 1/R + (np.cos(2*np.pi - 1/R)) * x
+
+    return y
 
 def eig_fun_mul_1(x, *args):
     
@@ -193,8 +207,8 @@ def eig_fun_mul_2(x, *args):
     except:
         b = 1
 
-    z_1 = arbit_fun_1(x)
-    z_2 = arbit_fun_2(x)
+    z_1 = arbit_fun_1(x, par)
+    z_2 = arbit_fun_2(x, par)
     
     phi_star = eig_fun_adj_1(x, par, l, b)
     psi_star = eig_fun_adj_2(x, par, l, b)
