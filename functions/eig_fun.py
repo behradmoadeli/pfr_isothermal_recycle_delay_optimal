@@ -214,3 +214,20 @@ def eig_fun_mul_2(x, *args):
     psi_star = eig_fun_adj_2(x, par, l, b)
 
     return z_1 * phi_star + z_2 * psi_star
+
+def q_ricatti_fun_mul(x, *args):
+    
+    par = args[0]
+    l_m, l_n = args[1]
+    b_m, b_n = args[2]
+
+    z_1 = arbit_fun_1(x, par)
+    z_2 = arbit_fun_2(x, par)
+    
+    phi_m = eig_fun_1(x, par, l_m, b_m)
+    phi_n = eig_fun_1(x, par, l_n, b_n)
+
+    psi_m = eig_fun_2(x, par, l_m, b_m)
+    psi_n = eig_fun_2(x, par, l_n, b_n)
+
+    return z_1 * phi_m * phi_n + z_2 * psi_m * psi_n
