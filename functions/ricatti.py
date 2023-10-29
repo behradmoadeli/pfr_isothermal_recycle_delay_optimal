@@ -16,7 +16,7 @@ def ricatti(p_flat, *args):
 
     """
     import numpy as np
-    from .eig_fun import eig_fun_2
+    from .eig_fun import eig_fun_adj_1
     from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm
     
     par = args[0]
@@ -35,14 +35,14 @@ def ricatti(p_flat, *args):
     b = np.zeros_like(lambdas)
 
     for i in range(len(lambdas)):
-        b[i] = eig_fun_2(0, par, lambdas[i], normal_coefs[i]) * v * (1-R)
+        b[i] = eig_fun_adj_1(0, par, lambdas[i], normal_coefs[i]) * v * (1-R)
 
     for n in range(N):
         for m in range(n,N):
             y[m,n] = (
                 p[m,n] * (lambdas[m] + lambdas[n]) + (
                     np.dot(b, p[:,n]) * np.dot(b, p[:,m])
-                ) - q_ricatti(n,m, par, lambdas, normal_coefs)
+                ) + q_ricatti(n,m, par, lambdas, normal_coefs)
             )
     
     y_complex_flat = triu_to_flat(y)
@@ -63,3 +63,35 @@ def q_ricatti(n,m,*args):
     q_mn = quad(q_ricatti_fun_mul, 0, 1, args=(par, (lambdas[m], lambdas[n]), (normal_coefs[m], normal_coefs[n])), complex_func=True)[0]
     
     return q_mn
+
+def k_ricatti(x, p_flat, *args):
+    
+    import numpy as np
+    from .eig_fun import eig_fun_adj_1, eig_fun_adj_2
+    from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm
+    
+    par = args[0]
+    (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
+    lambdas = args[1]
+    normal_coefs = args[2]
+
+    slicer = int(len(p_flat)/2)
+    p_flat_real = p_flat[:slicer]
+    p_flat_imag = p_flat[slicer:]
+    p_flat_complex = p_flat_real + p_flat_imag * 1j
+
+    p = triu_to_symm(flat_to_triu(p_flat_complex))
+    N = p.shape[0]
+    k = np.array([np.zeros_like(x)]*3, dtype=complex)
+    k[0] = x
+    b = np.zeros_like(lambdas)
+
+    for i in range(len(lambdas)):
+        b[i] = eig_fun_adj_1(0, par, lambdas[i], normal_coefs[i]) * v * (1-R)
+
+    for i in range(N):
+        for j in range(N):
+            k[1] += p[i,j] * b[i] * eig_fun_adj_1(x, par, lambdas[j], normal_coefs[j])
+            k[2] += p[i,j] * b[i] * eig_fun_adj_2(x, par, lambdas[j], normal_coefs[j])
+    
+    return k
