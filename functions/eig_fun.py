@@ -7,7 +7,7 @@ def eig_fun_1(x, *args):
     l = args[1]
 
     p = v**2 - 4*D * (k-l)
-    p_sqrt = np.sqrt(p)
+    p_sqrt = np.sqrt(complex(p))
     
     try:
         b = args[2]
@@ -33,7 +33,7 @@ def eig_fun_2(x, *args):
     l = args[1]
 
     p = v**2 - 4*D * (k-l)
-    p_sqrt = np.sqrt(p)
+    p_sqrt = np.sqrt(complex(p))
     
     try:
         b = args[2]
@@ -60,7 +60,7 @@ def eig_fun_adj_1(x, *args):
     l = args[1]
 
     p = v**2 - 4*D * (k-l)
-    p_sqrt = np.sqrt(p)
+    p_sqrt = np.sqrt(complex(p))
     
     try:
         b = args[2]
@@ -86,7 +86,7 @@ def eig_fun_adj_2(x, *args):
     l = args[1]
 
     p = v**2 - 4*D * (k-l)
-    p_sqrt = np.sqrt(p)
+    p_sqrt = np.sqrt(complex(p))
     
     try:
         b = args[2]
@@ -112,7 +112,7 @@ def eig_fun_1_prime(x, *args):
     l = args[1]
 
     p = v**2 - 4*D * (k-l)
-    p_sqrt = np.sqrt(p)
+    p_sqrt = np.sqrt(complex(p))
     
     try:
         b = args[2]
@@ -138,7 +138,7 @@ def eig_fun_adj_1_prime(x, *args):
     l = args[1]
 
     p = v**2 - 4*D * (k-l)
-    p_sqrt = np.sqrt(p)
+    p_sqrt = np.sqrt(complex(p))
     
     try:
         b = args[2]
@@ -159,8 +159,8 @@ def arbit_fun_1(x, *args):
     
     import numpy as np
 
-    y = np.ones_like(x)
-    # y = np.cos(2*np.pi*x)
+    # y = np.ones_like(x)
+    y = np.cos(2*np.pi*x)
     
     return y
 
@@ -171,8 +171,8 @@ def arbit_fun_2(x, *args):
     par = args[0]
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
     
-    y = (1 + (R-1) * x) / R
-    # y = 1/R + (np.cos(2*np.pi - 1/R)) * x
+    # y = (1 + (R-1) * x) / R
+    y = 1/R + (np.cos(2*np.pi - 1/R)) * x
 
     return y
 
