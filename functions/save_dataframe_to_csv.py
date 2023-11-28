@@ -14,7 +14,7 @@ def save_dataframe_to_csv(df, filename, metadata=None, parent_dir=None, process=
     import os
     import pandas as pd
     from .generate_unique_file_path import generate_unique_file_path
-    from .process_dataframe import process_dataframe
+    from .cluster_dataframe import cluster_dataframe
 
     # Ensure the filename ends with '.csv'
     if not filename.endswith('.csv'):
@@ -30,13 +30,8 @@ def save_dataframe_to_csv(df, filename, metadata=None, parent_dir=None, process=
     output_filepath = generate_unique_file_path(output_filepath) # Prevents overwriting an existing file
     
     if process:
-        try:
-            round_sig_digits = metadata['tols'][2]
-        except:
-            round_sig_digits = 4
-        df = process_dataframe(df, round_sig_digits)
-        df = df.sort_values(by=['Sol_r'], ascending=False)        
-
+        df = cluster_dataframe(df)
+        
     if metadata is None:
         df.to_csv(output_filepath, index=False)
         print(f"DataFrame saved to {output_filepath}")

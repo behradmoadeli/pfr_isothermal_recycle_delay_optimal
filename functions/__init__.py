@@ -5,6 +5,7 @@ from .load_dataframe_from_csv import load_dataframe_from_csv
 from .generate_unique_file_path import generate_unique_file_path
 from .significant_digits import significant_digits
 from .process_dataframe import process_dataframe
+from .cluster_dataframe import cluster_dataframe
 from .char_eq import char_eq
 from .char_eq_adj import char_eq_adj
 from .char_eq_copy import char_eq_copy
