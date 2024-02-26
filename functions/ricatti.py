@@ -17,7 +17,7 @@ def ricatti(p_flat, *args):
     """
     import numpy as np
     from .eig_fun import eig_fun_adj_1
-    from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm
+    from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm, triu_to_hermitian
     
     par = args[0]
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
@@ -29,7 +29,7 @@ def ricatti(p_flat, *args):
     p_flat_imag = p_flat[slicer:]
     p_flat_complex = p_flat_real + p_flat_imag * 1j
 
-    p = triu_to_symm(flat_to_triu(p_flat_complex))
+    p = triu_to_hermitian(flat_to_triu(p_flat_complex))
     N = p.shape[0]
     y = np.zeros_like(p)
     b = np.zeros_like(lambdas)
@@ -40,8 +40,8 @@ def ricatti(p_flat, *args):
     for n in range(N):
         for m in range(n,N):
             y[m,n] = (
-                p[m,n] * (lambdas[m] + lambdas[n]) + (
-                    np.dot(b, p[:,n]) * np.dot(b, p[:,m])
+                p[m,n] * (lambdas[m] + lambdas[n]) - (
+                    np.dot(np.dot(b, p[:,n]), np.dot(b, p[:,m]).conjugate())
                 ) + q_ricatti(n,m, par, lambdas, normal_coefs)
             )
     
@@ -60,15 +60,15 @@ def q_ricatti(n,m,*args):
     lambdas = args[1]
     normal_coefs = args[2]
 
-    q_mn = quad(q_ricatti_fun_mul, 0, 1, args=(par, (lambdas[m], lambdas[n]), (normal_coefs[m], normal_coefs[n])), complex_func=True)[0]
+    q_nm = quad(q_ricatti_fun_mul, 0, 1, args=(par, (lambdas[m], lambdas[n]), (normal_coefs[m], normal_coefs[n])), complex_func=True)[0]
     
-    return q_mn
+    return q_nm
 
 def k_ricatti(x, p_flat, *args):
     
     import numpy as np
     from .eig_fun import eig_fun_adj_1, eig_fun_adj_2
-    from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm
+    from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm, triu_to_hermitian
     
     par = args[0]
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
@@ -80,7 +80,7 @@ def k_ricatti(x, p_flat, *args):
     p_flat_imag = p_flat[slicer:]
     p_flat_complex = p_flat_real + p_flat_imag * 1j
 
-    p = triu_to_symm(flat_to_triu(p_flat_complex))
+    p = triu_to_hermitian(flat_to_triu(p_flat_complex))
     N = p.shape[0]
     k = np.array([np.zeros_like(x)]*3, dtype=complex)
     k[0] = x

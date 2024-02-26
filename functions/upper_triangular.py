@@ -33,3 +33,11 @@ def triu_to_symm(triu):
     triu += triu.T - np.diag(triu.diagonal())
 
     return triu
+
+def triu_to_hermitian(triu):
+    import numpy as np
+    
+    # Add the conjugate transpose of the upper triangular matrix
+    triu += triu.conj().T - np.diag(triu.diagonal().conj())
+    
+    return triu
