@@ -63,7 +63,7 @@ def eig_fun_adj_1(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2]
     except:
         b = 1
     
@@ -89,7 +89,7 @@ def eig_fun_adj_2(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2]
     except:
         b = 1
     
@@ -115,7 +115,7 @@ def eig_fun_1_prime(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2]
     except:
         b = 1
     
@@ -141,7 +141,7 @@ def eig_fun_adj_1_prime(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2]
     except:
         b = 1
     
@@ -237,4 +237,4 @@ def q_ricatti_fun_mul(x, *args):
     psi_m = eig_fun_2(x, par, l_m, b_m)
     psi_n = eig_fun_2(x, par, l_n, b_n)
 
-    return np.vdot(z_1 * phi_m, phi_n).conjugate() + np.vdot(z_2 * psi_m, psi_n).conjugate()
+    return np.dot(z_1 * phi_m, phi_n.conjugate()) + np.dot(z_2 * psi_m, psi_n.conjugate())
