@@ -63,7 +63,7 @@ def eig_fun_adj_1(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2]
+        b = args[2].conjugate()
     except:
         b = 1
     
@@ -89,7 +89,7 @@ def eig_fun_adj_2(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2]
+        b = args[2].conjugate()
     except:
         b = 1
     
@@ -141,7 +141,7 @@ def eig_fun_adj_1_prime(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2]
+        b = args[2].conjugate()
     except:
         b = 1
     

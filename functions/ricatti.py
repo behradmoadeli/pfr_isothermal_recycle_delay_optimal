@@ -40,7 +40,7 @@ def ricatti(p_flat, *args):
     for n in range(N):
         for m in range(n,N):
             y[m,n] = (
-                p[m,n] * (lambdas[m] + lambdas[n]) - (
+                p[m,n] * (lambdas[m].conjugate() + lambdas[n]) - (
                     np.dot(np.dot(b, p[:,n]), np.dot(b, p[:,m]).conjugate())
                 ) + q_ricatti(n,m, par, lambdas, normal_coefs)
             )
