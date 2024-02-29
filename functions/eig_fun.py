@@ -109,7 +109,7 @@ def eig_fun_1_prime(x, *args):
     
     par = args[0]
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
-    l = args[1].conjugate()
+    l = args[1]
 
     p = v**2 - 4*D * (k-l)
     p_sqrt = np.sqrt(complex(p))

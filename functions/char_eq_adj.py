@@ -38,6 +38,6 @@ def char_eq_adj(x, *args):
     # ]
 
     # y = D * eig_fun_1_prime(0, par, l) - v * eig_fun_1(0, par, l) + R * v * eig_fun_2(0, par, l)
-    y = D * eig_fun_adj_1_prime(1, par, l) + v * eig_fun_adj_1(1, par, l) - R * v * eig_fun_adj_2(1, par, l)
+    y = D * eig_fun_adj_1_prime(1, par, l) + v * eig_fun_adj_1(1, par, l) - 1/t * eig_fun_adj_2(1, par, l)
 
     return y.real, y.imag
