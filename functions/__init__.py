@@ -18,6 +18,7 @@ from .plot_single_df import plot_single_df
 from .eig_fun import *
 from .upper_triangular import *
 from .ricatti import *
+from .ricatti_finite import *
 from .finite_dif_funs import *
 
 from sys import version_info
