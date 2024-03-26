@@ -225,16 +225,16 @@ def q_ricatti_fun_mul(x, *args):
     import numpy as np
 
     par = args[0]
-    l_m, l_n = args[1]
-    b_m, b_n = args[2]
+    l_n, l_m = args[1]
+    b_n, b_m = args[2]
 
     z_1 = arbit_fun_1(x, par)
     z_2 = arbit_fun_2(x, par)
     
-    phi_m = eig_fun_1(x, par, l_m, b_m)
     phi_n = eig_fun_1(x, par, l_n, b_n)
+    phi_m = eig_fun_1(x, par, l_m, b_m)
 
-    psi_m = eig_fun_2(x, par, l_m, b_m)
     psi_n = eig_fun_2(x, par, l_n, b_n)
+    psi_m = eig_fun_2(x, par, l_m, b_m)
 
-    return np.dot(z_1 * phi_m, phi_n.conjugate()) + np.dot(z_2 * psi_m, psi_n.conjugate())
+    return np.dot(z_1 * phi_n, phi_m.conjugate()) + np.dot(z_2 * psi_n, psi_m.conjugate())

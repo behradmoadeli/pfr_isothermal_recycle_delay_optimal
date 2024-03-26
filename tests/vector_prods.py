@@ -1,20 +1,24 @@
 import numpy as np
 
-a = np.array([1, 2])
-b = np.array([4, 5])
+a_r = np.random.randint(0, 5, size=(3, 3)) - 2
+a_i = np.random.randint(0, 5, size=(3, 3)) - 2
+a = a_r + a_i * 1j
 
-inner_product = np.dot(a, b)
+b_r = np.random.randint(0, 5, size=(3, 1)) - 2
+b_i = np.random.randint(0, 5, size=(3, 1)) - 2
+b = b_r + b_i * 1j
 
-p = np.arange(1, 5).reshape(2,2)
+print('a = ', a)
+print('b = ', b)
+
+print('a[:,1] = ', a)
 
 
-print(np.dot(b,p[:,0]) * np.dot(b,p[:,1]))
+inner_product_1 = np.dot(a[:,1], b,)
+inner_product_2 = np.dot(a[:,2], b)
 
-s_1 = 0
-s_2 = 0
+inner_product = np.dot(inner_product_1, inner_product_2.conjugate())
 
-for i in range(2):
-    s_1 += b[i] * p[i,0]
-    s_2 += b[i] * p[i,1]
+print(inner_product_1, inner_product_2, inner_product)
 
-print(s_1 * s_2)
+print(np.vdot(inner_product_1, inner_product_2).conjugate())

@@ -12,3 +12,5 @@ rank(ctrb(A,B))
 
 [P,K,L,info] = icare(A,B,1,1,0,eye(3),0)
 
+
+

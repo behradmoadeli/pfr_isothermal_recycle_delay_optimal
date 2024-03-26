@@ -23,7 +23,7 @@ def ricatti(p_flat, *args):
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
     lambdas = args[1]
     normal_coefs = args[2]
-
+    
     slicer = int(len(p_flat)/2)
     p_flat_real = p_flat[:slicer]
     p_flat_imag = p_flat[slicer:]
@@ -38,7 +38,7 @@ def ricatti(p_flat, *args):
         b[i] = eig_fun_adj_1(0, par, lambdas[i], normal_coefs[i]) * v * (1-R)
 
     for n in range(N):
-        for m in range(n,N):
+        for m in range(n+1):
             y[m,n] = (
                 p[m,n] * (lambdas[m].conjugate() + lambdas[n]) - (
                     np.dot(np.dot(b, p[:,n]), np.dot(b, p[:,m]).conjugate())
@@ -60,7 +60,7 @@ def q_ricatti(n,m,*args):
     lambdas = args[1]
     normal_coefs = args[2]
 
-    q_nm = quad(q_ricatti_fun_mul, 0, 1, args=(par, (lambdas[m], lambdas[n]), (normal_coefs[m], normal_coefs[n])), complex_func=True)[0]
+    q_nm = quad(q_ricatti_fun_mul, 0, 1, args=(par, (lambdas[n], lambdas[m]), (normal_coefs[n], normal_coefs[m])), complex_func=True)[0]
     
     return q_nm
 

@@ -6,10 +6,15 @@ default_pars = {'k': 1.5, 'D': 0.05, 'v': 1, 'tau': 0.8, 'R': 0.6, 'label': 'def
 lambdas = [0.57438+0j, 0.22125 - 3.3599j, 0.22125 + 3.3599j]
 normal_coefs = [-0.0298-0j, 0.0182-0.1027j, 0.0182+0.1027j]
 
-p = np.ones((3,3), dtype=float) * 1000
-p_0 = [*triu_to_flat(p)] * 2
+n_modes = 3
 
-p_sol_flat = fsolve(ricatti, p_0, (default_pars, lambdas, normal_coefs))
+p_0_shape = np.array([*triu_to_flat(np.zeros((n_modes,n_modes)))] * 2).shape
+p_0 = np.random.rand(*p_0_shape) # Initial guess
+
+
+p_sol_flat = ricatti(p_0, default_pars, lambdas, normal_coefs)
+
+# p_sol_flat = fsolve(ricatti, p_0, (default_pars, lambdas, normal_coefs))
 
 
 slicer = int(len(p_sol_flat)/2)

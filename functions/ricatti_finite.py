@@ -16,14 +16,27 @@ def ricatti_finite(p_flat, *args):
 
     """
     import numpy as np
+    import numpy.linalg as lina
     from .eig_fun import eig_fun_adj_1
     from .upper_triangular import n_triu, flat_to_triu, triu_to_flat, triu_to_symm, triu_to_hermitian
     
-    par = args[0]
-    (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
-    lambdas = args[1]
-    normal_coefs = args[2]
-
+    A = args[0]
+    B = args[1]
+    n = np.shape(A)[0]
+    
+    l, p = lina.eig(A)
+    p = p.transpose()
+    s = lina.eig(A.transpose())[1]
+    s = s.transpose()
+    
+    eigs = {}
+    for i in range(n):
+        for j in range(n):
+            if np.isclose(lina.norm(np.matmul(A, s[j])/l[i] - s[j]), 0):
+                eigs[l] = (p, s)
+    
+    B_star = B.transpose()
+    
     slicer = int(len(p_flat)/2)
     p_flat_real = p_flat[:slicer]
     p_flat_imag = p_flat[slicer:]
@@ -31,6 +44,7 @@ def ricatti_finite(p_flat, *args):
 
     p = triu_to_hermitian(flat_to_triu(p_flat_complex))
     N = p.shape[0]
+    
     y = np.zeros_like(p)
     b = np.zeros_like(lambdas)
 
