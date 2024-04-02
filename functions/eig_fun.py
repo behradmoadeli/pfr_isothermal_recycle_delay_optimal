@@ -172,7 +172,7 @@ def arbit_fun_2(x, *args):
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
     
     # y = (1 + (R-1) * x) / R
-    y = 1/R + (np.cos(2*np.pi - 1/R)) * x
+    y = 1/R + x * (np.cos(2*np.pi * x) - 1/R)
 
     return y
 
