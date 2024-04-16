@@ -160,7 +160,7 @@ def arbit_fun_1(x, *args):
     import numpy as np
 
     # y = np.ones_like(x)
-    y = np.cos(2*np.pi*x)
+    y = np.cos(20*np.pi*x)
     
     return y
 
@@ -172,7 +172,7 @@ def arbit_fun_2(x, *args):
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
     
     # y = (1 + (R-1) * x) / R
-    y = 1/R + x * (np.cos(2*np.pi * x) - 1/R)
+    y = 1/R + x * (np.cos(20*np.pi * x) - 1/R)
 
     return y
 
