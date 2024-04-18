@@ -161,6 +161,9 @@ def arbit_fun_1(x, *args):
 
     # y = np.ones_like(x)
     y = np.cos(20*np.pi*x)
+    # par = args[0]
+    
+    # y = 2 * eig_fun_1(x, par, 0.6409081359945565+0j, -0.47362647607303926j) + 7* eig_fun_1(x, par, -2.470670435901706+8.418531957532583j, 0.47930716047278943-0.0018801497185718524j)
     
     return y
 
@@ -173,6 +176,7 @@ def arbit_fun_2(x, *args):
     
     # y = (1 + (R-1) * x) / R
     y = 1/R + x * (np.cos(20*np.pi * x) - 1/R)
+    # y = 2 * eig_fun_2(x, par, 0.6409081359945565+0j, -0.47362647607303926j) + 7* eig_fun_2(x, par, -2.470670435901706+8.418531957532583j, 0.47930716047278943-0.0018801497185718524j)
 
     return y
 
@@ -190,13 +194,13 @@ def eig_fun_mul_1(x, *args):
     try:
         b = args[2]
     except:
-        b = 1
+        b = [1, 1]
 
-    phi = eig_fun_1(x, par, l[0], b)
-    psi = eig_fun_2(x, par, l[0], b)
+    phi = eig_fun_1(x, par, l[0], b[0])
+    psi = eig_fun_2(x, par, l[0], b[0])
     
-    phi_star = eig_fun_adj_1(x, par, l[1], b)
-    psi_star = eig_fun_adj_2(x, par, l[1], b)
+    phi_star = eig_fun_adj_1(x, par, l[1], b[1])
+    psi_star = eig_fun_adj_2(x, par, l[1], b[1])
 
     return np.dot(phi, phi_star.conjugate()) + np.dot(psi, psi_star.conjugate())
 

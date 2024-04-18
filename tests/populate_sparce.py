@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.sparse import csr_matrix, vstack
+from scipy.sparse import csr_matrix
 
 # Define the size of the matrix
 n = 10  # Size of the matrix (1000x1000)
@@ -20,10 +20,6 @@ for i in range(1, n-1):
 rows_data.extend([6, 6])
 rows_row_indices.extend([n-1, n-1])
 rows_col_indices.extend([n-2, n-1])
-
-print(rows_data)
-print(rows_row_indices)
-print(rows_col_indices)
 
 # Construct the middle rows as a sparse matrix
 A = csr_matrix((rows_data, (rows_row_indices, rows_col_indices)), shape=(n, n))
