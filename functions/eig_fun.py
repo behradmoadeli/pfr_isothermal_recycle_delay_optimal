@@ -155,6 +155,57 @@ def eig_fun_adj_1_prime(x, *args):
 
     return b * phi_star
 
+def init_cond_func_1(x, *args):
+    
+    import numpy as np
+
+    y = np.ones_like(x)
+    # y = np.cos(2*np.pi*x)
+    # par = args[0]
+    
+    # y = 2 * eig_fun_1(x, par, 0.6409081359945565+0j, -0.47362647607303926j) + 7* eig_fun_1(x, par, -2.470670435901706+8.418531957532583j, 0.47930716047278943-0.0018801497185718524j)
+    
+    return y
+
+def init_cond_func_2(x, *args):
+    
+    import numpy as np
+    
+    par = args[0]
+    (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
+    
+    y = (1 + (R-1) * x) / R
+    # y = 1/R + x * (np.cos(2*np.pi * x) - 1/R)
+    # y = 2 * eig_fun_2(x, par, 0.6409081359945565+0j, -0.47362647607303926j) + 7* eig_fun_2(x, par, -2.470670435901706+8.418531957532583j, 0.47930716047278943-0.0018801497185718524j)
+
+    return y
+
+def q_fun_1(x, *args):
+    
+    import numpy as np
+
+    y = np.ones_like(x)
+    # y = np.cos(2*np.pi*x)
+    # par = args[0]
+    
+    # y = 2 * eig_fun_1(x, par, 0.6409081359945565+0j, -0.47362647607303926j) + 7* eig_fun_1(x, par, -2.470670435901706+8.418531957532583j, 0.47930716047278943-0.0018801497185718524j)
+    
+    return y
+
+def q_fun_2(x, *args):
+    
+    import numpy as np
+    
+    par = args[0]
+    (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
+    
+    y = np.ones_like(x)
+    # y = (1 + (R-1) * x) / R
+    # y = 1/R + x * (np.cos(2*np.pi * x) - 1/R)
+    # y = 2 * eig_fun_2(x, par, 0.6409081359945565+0j, -0.47362647607303926j) + 7* eig_fun_2(x, par, -2.470670435901706+8.418531957532583j, 0.47930716047278943-0.0018801497185718524j)
+
+    return y
+
 def arbit_fun_1(x, *args):
     
     import numpy as np
@@ -232,8 +283,8 @@ def q_ricatti_fun_mul(x, *args):
     l_n, l_m = args[1]
     b_n, b_m = args[2]
 
-    z_1 = arbit_fun_1(x, par)
-    z_2 = arbit_fun_2(x, par)
+    z_1 = q_fun_1(x, par)
+    z_2 = q_fun_2(x, par)
     
     phi_n = eig_fun_1(x, par, l_n, b_n)
     phi_m = eig_fun_1(x, par, l_m, b_m)
