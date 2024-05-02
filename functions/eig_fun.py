@@ -10,7 +10,7 @@ def eig_fun_1(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2]
+        b = args[2][0]
     except:
         b = 1
     
@@ -36,7 +36,7 @@ def eig_fun_2(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2]
+        b = args[2][0]
     except:
         b = 1
     
@@ -63,7 +63,7 @@ def eig_fun_adj_1(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2][1]
     except:
         b = 1
     
@@ -89,7 +89,7 @@ def eig_fun_adj_2(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2][1]
     except:
         b = 1
     
@@ -115,7 +115,7 @@ def eig_fun_1_prime(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2]
+        b = args[2][0]
     except:
         b = 1
     
@@ -141,7 +141,7 @@ def eig_fun_adj_1_prime(x, *args):
     p_sqrt = np.sqrt(complex(p))
     
     try:
-        b = args[2].conjugate()
+        b = args[2][1]
     except:
         b = 1
     
@@ -232,6 +232,23 @@ def arbit_fun_2(x, *args):
 
     return y
 
+def eig_fun_mul_0(x, *args):
+    
+    import numpy as np
+    
+    par = args[0]
+    l = args[1]
+    
+    try:
+        b = args[2]
+    except:
+        b = [1, 1]
+
+    phi = eig_fun_1(x, par, l, b)
+    psi = eig_fun_2(x, par, l, b)
+
+    return np.dot(phi, phi.conjugate()) + np.dot(psi, psi.conjugate())
+
 def eig_fun_mul_1(x, *args):
     
     import numpy as np
@@ -248,11 +265,11 @@ def eig_fun_mul_1(x, *args):
     except:
         b = [1, 1]
 
-    phi = eig_fun_1(x, par, l[0], b[0])
-    psi = eig_fun_2(x, par, l[0], b[0])
+    phi = eig_fun_1(x, par, l[0], b)
+    psi = eig_fun_2(x, par, l[0], b)
     
-    phi_star = eig_fun_adj_1(x, par, l[1], b[1])
-    psi_star = eig_fun_adj_2(x, par, l[1], b[1])
+    phi_star = eig_fun_adj_1(x, par, l[1], b)
+    psi_star = eig_fun_adj_2(x, par, l[1], b)
 
     return np.dot(phi, phi_star.conjugate()) + np.dot(psi, psi_star.conjugate())
 
@@ -275,6 +292,26 @@ def eig_fun_mul_2(x, *args):
     psi_star = eig_fun_adj_2(x, par, l, b)
 
     return np.dot(z_1, phi_star.conjugate()) + np.dot(z_2, psi_star.conjugate())
+
+def eig_fun_mul_3(x, *args):
+
+    import numpy as np
+    
+    par = args[0]
+    l = args[1]
+    
+    try:
+        b = args[2]
+    except:
+        b = 1
+
+    z_1 = arbit_fun_1(x, par)
+    z_2 = arbit_fun_2(x, par)
+    
+    phi = eig_fun_1(x, par, l, b)
+    psi = eig_fun_2(x, par, l, b)
+
+    return np.dot(z_1, phi.conjugate()) + np.dot(z_2, psi.conjugate())
 
 def q_ricatti_fun_mul(x, *args):
     
