@@ -27,7 +27,6 @@ def find_eig(par=None, default_pars=None, **kwargs):
     import numpy as np
     import pandas as pd
     import scipy.optimize as opt
-    from .char_eq import char_eq
     from .create_label import create_label
     from .obtain_default_pars import obtain_default_pars
     from .my_fsolve import my_fsolve
@@ -40,7 +39,6 @@ def find_eig(par=None, default_pars=None, **kwargs):
     if par['label'] == 'default':
         default_pars = par.copy()
 
-    adj = kwargs.get('adj', False)
     max_iter = kwargs.get('max_iter', 25)
     
     if not default_pars:
@@ -89,6 +87,6 @@ def find_eig(par=None, default_pars=None, **kwargs):
         for m in i:
             # print(f"Getting results for guess = {m.real:.2f} + {m.imag:.2f}j...")
             m = np.array([m.real, m.imag])
-            solution_dict = my_fsolve(m, par, tol_fsolve, tol_is_sol, max_iter, solution_dict, adj=adj, full_output=True)
+            solution_dict = my_fsolve(m, par, tol_fsolve, tol_is_sol, max_iter, solution_dict, full_output=True)
     solution_df = pd.DataFrame(solution_dict)
     return (solution_df, par['label'], metadata)
