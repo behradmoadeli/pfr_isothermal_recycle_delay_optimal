@@ -1,6 +1,11 @@
 import numpy as np
 
-a = [1,2]
-b = [4,2]
+y = np.array([3+1j,-2])
+y_star = np.array([-3,2])
 
-print(a+b)
+# y_sum = np.dot(y, y.conjugate()) + np.dot(y_star, y_star.conjugate())
+y_sum = y*y.conjugate() + y_star*y_star.conjugate()
+# y_sum = y**2 + y_star**2
+
+
+print(y_sum)

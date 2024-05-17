@@ -8,7 +8,7 @@ from .process_dataframe import process_dataframe
 from .cluster_dataframe import cluster_dataframe
 from .char_eq import char_eq
 from .char_eq_adj import char_eq_adj
-from .char_eq_copy import char_eq_copy
+from .char_eq_dual import char_eq_dual
 from .my_fsolve import my_fsolve
 from .find_eig import find_eig
 from .find_eig_copy import find_eig_copy
