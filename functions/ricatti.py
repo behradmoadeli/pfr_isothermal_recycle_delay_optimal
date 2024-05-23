@@ -91,7 +91,7 @@ def k_ricatti(x, p_flat, *args):
 
     for i in range(N):
         for j in range(N):
-            k[1] += p[i,j] * b[i] * eig_fun_adj_1(x, par, lambdas[j], normal_coefs[j]).conjugate()
-            k[2] += p[i,j] * b[i] * eig_fun_adj_2(x, par, lambdas[j], normal_coefs[j]).conjugate()
+            k[1] -= p[i,j] * b[i] * eig_fun_adj_1(x, par, lambdas[j], normal_coefs[j]).conjugate()
+            k[2] -= p[i,j] * b[i] * eig_fun_adj_2(x, par, lambdas[j], normal_coefs[j]).conjugate()
     
     return k
