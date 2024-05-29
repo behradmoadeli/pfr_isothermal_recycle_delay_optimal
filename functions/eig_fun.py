@@ -244,10 +244,10 @@ def eig_fun_mul_0(x, *args):
     except:
         b = [1, 1]
 
-    phi = eig_fun_1(x, par, l, b)
-    psi = eig_fun_2(x, par, l, b)
+    phi_1 = eig_fun_1(x, par, l, b)
+    phi_2 = eig_fun_2(x, par, l, b)
 
-    return np.dot(phi, phi.conjugate()) + np.dot(psi, psi.conjugate())
+    return np.dot(phi_1, phi_1.conjugate()) + np.dot(phi_2, phi_2.conjugate())
 
 def eig_fun_mul_1(x, *args):
     
@@ -265,13 +265,13 @@ def eig_fun_mul_1(x, *args):
     except:
         b = [1, 1]
 
-    phi = eig_fun_1(x, par, l[0], b)
-    psi = eig_fun_2(x, par, l[0], b)
+    phi_1 = eig_fun_1(x, par, l[0], b)
+    phi_2 = eig_fun_2(x, par, l[0], b)
     
-    phi_star = eig_fun_adj_1(x, par, l[1], b)
-    psi_star = eig_fun_adj_2(x, par, l[1], b)
+    psi_1 = eig_fun_adj_1(x, par, l[1], b)
+    psi_2 = eig_fun_adj_2(x, par, l[1], b)
 
-    return np.dot(phi, phi_star.conjugate()) + np.dot(psi, psi_star.conjugate())
+    return np.dot(phi_1, psi_1.conjugate()) + np.dot(phi_2, psi_2.conjugate())
 
 def eig_fun_mul_2(x, *args):
 
@@ -288,10 +288,10 @@ def eig_fun_mul_2(x, *args):
     z_1 = arbit_fun_1(x, par)
     z_2 = arbit_fun_2(x, par)
     
-    phi_star = eig_fun_adj_1(x, par, l, b)
-    psi_star = eig_fun_adj_2(x, par, l, b)
+    psi_1 = eig_fun_adj_1(x, par, l, b)
+    psi_2 = eig_fun_adj_2(x, par, l, b)
 
-    return np.dot(z_1, phi_star.conjugate()) + np.dot(z_2, psi_star.conjugate())
+    return np.dot(z_1, psi_1.conjugate()) + np.dot(z_2, psi_2.conjugate())
 
 def eig_fun_mul_3(x, *args):
 
@@ -308,10 +308,10 @@ def eig_fun_mul_3(x, *args):
     z_1 = arbit_fun_1(x, par)
     z_2 = arbit_fun_2(x, par)
     
-    phi = eig_fun_1(x, par, l, b)
-    psi = eig_fun_2(x, par, l, b)
+    phi_1 = eig_fun_1(x, par, l, b)
+    phi_2 = eig_fun_2(x, par, l, b)
 
-    return np.dot(z_1, phi.conjugate()) + np.dot(z_2, psi.conjugate())
+    return np.dot(z_1, phi_1.conjugate()) + np.dot(z_2, phi_2.conjugate())
 
 def q_ricatti_fun_mul(x, *args):
     
