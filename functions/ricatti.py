@@ -42,7 +42,7 @@ def ricatti(p_flat, *args):
             y[m,n] = (
                 p[n,m] * (lambdas[n].conjugate() + lambdas[n]) - (
                     np.dot(np.dot(b, p[:,m]), np.dot(b, p[:,n]).conjugate())
-                ) + 0.25 * q_ricatti(m,n, par, lambdas, normal_coefs)
+                ) + 0.175 * q_ricatti(m,n, par, lambdas, normal_coefs)
             )
     
     y_complex_flat = triu_to_flat(y)
