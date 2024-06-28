@@ -10,6 +10,7 @@ def ricatti(p_flat, *args):
     - args[0]: Dictionary of parameters including 'k', 'v', 'D', 'tau', and 'R'.
     - args[1]: 1d array of dominant eigenvalues.
     - args[2]: 1d array of eigenfunction normalization coefficients.
+    - args[3]: (q, r)
 
     Returns:
     - 2d array that has to be zero for correct p coefs.
@@ -23,6 +24,7 @@ def ricatti(p_flat, *args):
     (k, v, D, t, R) = (par['k'], par['v'], par['D'], par['tau'], par['R'])
     lambdas = args[1]
     normal_coefs = args[2]
+    (q_coef, r_coef) = args[3]
     
     slicer = int(len(p_flat)/2)
     p_flat_real = p_flat[:slicer]
@@ -40,9 +42,9 @@ def ricatti(p_flat, *args):
     for n in range(N):
         for m in range(n+1):
             y[m,n] = (
-                p[n,m] * (lambdas[n].conjugate() + lambdas[n]) - (
+                p[n,m] * (lambdas[n].conjugate() + lambdas[n]) - (1/r_coef) * (
                     np.dot(np.dot(b, p[:,m]), np.dot(b, p[:,n]).conjugate())
-                ) + 0.175 * q_ricatti(m,n, par, lambdas, normal_coefs)
+                ) + q_coef * q_ricatti(m,n, par, lambdas, normal_coefs)
             )
     
     y_complex_flat = triu_to_flat(y)
