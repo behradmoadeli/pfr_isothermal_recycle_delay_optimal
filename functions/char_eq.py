@@ -29,8 +29,8 @@ def char_eq(x, *args):
     p = v**2 - 4*D * (k-l)
     p_sqrt = np.sqrt(p)
     
-    if np.isclose(abs(p_sqrt),0,atol=5e-4):
-        return np.array([1, 1])
+    # if np.isclose(abs(p_sqrt),0,atol=5e-4):
+    #     return np.array([1, 1])
     
     # r = [
     #     (v+p_sqrt)/(2*D),
