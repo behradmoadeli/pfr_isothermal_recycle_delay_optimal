@@ -1,0 +1,48 @@
+\documentclass[letterpaper,11pt]{article}
+
+% Preamble
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\usepackage{lipsum}
+
+\geometry{letterpaper, margin=1in}
+
+% Title and author information
+\title{Delayed recycle Axial Reactor xxx}
+\author{
+  Behrad Moadeli\thanks{Ualberta, Address. Email: moadeli@ualberta.ca} \and
+  Author Two\thanks{Affiliation, Address. Email: author2@example.com}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    % Your abstract here
+    This is a brief summary of the paper, usually around 150-250 words. \lipsum[1-1]
+\end{abstract}
+
+\section{Introduction}
+\input{Sections/01_intro.tex}
+
+\section{Methodology}
+\input{Sections/02_method.tex}
+
+\section{Results}
+\input{Sections/03_results.tex}
+
+\section{Conclusion}
+\input{Sections/04_conc.tex}
+
+\bibliographystyle{plain}
+\bibliography{references.bib}
+
+\end{document}
