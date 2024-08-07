@@ -96,8 +96,7 @@ def k_ricatti(x, p_flat, *args):
 
     p = triu_to_hermitian(flat_to_triu(p_flat_complex))
     N = p.shape[0]
-    k = np.array([np.zeros_like(x)]*3, dtype=complex)
-    k[0] = x
+    k = np.array([np.zeros_like(x)]*2, dtype=complex)
     b = np.zeros_like(lambdas)
 
     for i in range(len(lambdas)):
@@ -105,7 +104,7 @@ def k_ricatti(x, p_flat, *args):
 
     for i in range(N):
         for j in range(N):
-            k[1] += p[i,j] * b[i] * eig_fun_adj_1(x, par, lambdas[j], normal_coefs[j]).conjugate()
-            k[2] += p[i,j] * b[i] * eig_fun_adj_2(x, par, lambdas[j], normal_coefs[j]).conjugate()
+            k[0] += p[i,j] * b[i] * eig_fun_adj_1(x, par, lambdas[j], normal_coefs[j]).conjugate()
+            k[1] += p[i,j] * b[i] * eig_fun_adj_2(x, par, lambdas[j], normal_coefs[j]).conjugate()
     
     return k

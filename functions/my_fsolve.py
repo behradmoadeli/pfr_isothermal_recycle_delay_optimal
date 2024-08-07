@@ -2,6 +2,7 @@ def my_fsolve(m, par, tol_fsolve, tol_is_sol, max_iterations, solution_dict, ful
     import numpy as np
     import pandas as pd
     import scipy.optimize as opt
+    import random
     from .char_eq import char_eq
     from .char_eq_dual import char_eq_dual
     from .char_eq_adj import char_eq_adj
@@ -33,7 +34,10 @@ def my_fsolve(m, par, tol_fsolve, tol_is_sol, max_iterations, solution_dict, ful
             sol = True
             continue
         
-        temp_guess = solution_array
+        solution_array_norm = np.sqrt(solution_array[0]**2 + solution_array[1]**2)
+        max_perturbation = 0.05 * solution_array_norm
+        temp_guess[0] = temp_guess[0] + random.uniform(-max_perturbation, max_perturbation)
+        temp_guess[1] = temp_guess[1] + random.uniform(-max_perturbation, max_perturbation)
         
 
     if sol:
