@@ -4,9 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
-\usepackage{cite}
 \usepackage{hyperref}
 \usepackage{geometry}
+\usepackage[style=chem-acs]{biblatex}
+\addbibresource{references.bib}
+
 
 \usepackage{lipsum}
 
@@ -42,7 +44,7 @@
 \section{Conclusion}
 \input{Sections/04_conc.tex}
 
-\bibliographystyle{plain}
-\bibliography{references.bib}
+\printbibliography
+
 
 \end{document}
