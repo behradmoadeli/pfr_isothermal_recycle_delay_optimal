@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.3 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,8 +18,8 @@
 
 
 \refsection{0}
-  \datalist[entry]{none/global//global/global/global}
-    \entry{ray1981advanced}{book}{}{}
+  \datalist[entry]{none/global//global/global}
+    \entry{ray1981advanced}{book}{}
       \name{author}{1}{}{%
         {{hash=40525a380055f763b264ae119e4af1ba}{%
            family={Ray},
@@ -32,12 +32,10 @@
       }
       \strng{namehash}{40525a380055f763b264ae119e4af1ba}
       \strng{fullhash}{40525a380055f763b264ae119e4af1ba}
-      \strng{fullhashraw}{40525a380055f763b264ae119e4af1ba}
       \strng{bibnamehash}{40525a380055f763b264ae119e4af1ba}
       \strng{authorbibnamehash}{40525a380055f763b264ae119e4af1ba}
       \strng{authornamehash}{40525a380055f763b264ae119e4af1ba}
       \strng{authorfullhash}{40525a380055f763b264ae119e4af1ba}
-      \strng{authorfullhashraw}{40525a380055f763b264ae119e4af1ba}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -45,39 +43,7 @@
       \field{title}{Advanced process control}
       \field{year}{1981}
     \endentry
-    \entry{christofides1998robust}{article}{}{}
-      \name{author}{1}{}{%
-        {{hash=fc471541293715551aa11c3f9fa32046}{%
-           family={Christofides},
-           familyi={C\bibinitperiod},
-           given={Panagiotis\bibnamedelima D},
-           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{fc471541293715551aa11c3f9fa32046}
-      \strng{fullhash}{fc471541293715551aa11c3f9fa32046}
-      \strng{fullhashraw}{fc471541293715551aa11c3f9fa32046}
-      \strng{bibnamehash}{fc471541293715551aa11c3f9fa32046}
-      \strng{authorbibnamehash}{fc471541293715551aa11c3f9fa32046}
-      \strng{authornamehash}{fc471541293715551aa11c3f9fa32046}
-      \strng{authorfullhash}{fc471541293715551aa11c3f9fa32046}
-      \strng{authorfullhashraw}{fc471541293715551aa11c3f9fa32046}
-      \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Chemical Engineering Science}
-      \field{number}{16}
-      \field{title}{Robust control of parabolic PDE systems}
-      \field{volume}{53}
-      \field{year}{1998}
-      \field{pages}{2949\bibrangedash 2965}
-      \range{pages}{17}
-    \endentry
-    \entry{davison1976robust}{article}{}{}
+    \entry{davison1976robust}{article}{}
       \name{author}{1}{}{%
         {{hash=5d108239e318d1641b29809008ad18b1}{%
            family={Davison},
@@ -90,12 +56,10 @@
       }
       \strng{namehash}{5d108239e318d1641b29809008ad18b1}
       \strng{fullhash}{5d108239e318d1641b29809008ad18b1}
-      \strng{fullhashraw}{5d108239e318d1641b29809008ad18b1}
       \strng{bibnamehash}{5d108239e318d1641b29809008ad18b1}
       \strng{authorbibnamehash}{5d108239e318d1641b29809008ad18b1}
       \strng{authornamehash}{5d108239e318d1641b29809008ad18b1}
       \strng{authorfullhash}{5d108239e318d1641b29809008ad18b1}
-      \strng{authorfullhashraw}{5d108239e318d1641b29809008ad18b1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -108,7 +72,7 @@
       \field{pages}{25\bibrangedash 34}
       \range{pages}{10}
     \endentry
-    \entry{francis1977linear}{article}{}{}
+    \entry{francis1977linear}{article}{}
       \name{author}{1}{}{%
         {{hash=7d0d4321998b9cc0008e3fc6dd633149}{%
            family={Francis},
@@ -121,12 +85,10 @@
       }
       \strng{namehash}{7d0d4321998b9cc0008e3fc6dd633149}
       \strng{fullhash}{7d0d4321998b9cc0008e3fc6dd633149}
-      \strng{fullhashraw}{7d0d4321998b9cc0008e3fc6dd633149}
       \strng{bibnamehash}{7d0d4321998b9cc0008e3fc6dd633149}
       \strng{authorbibnamehash}{7d0d4321998b9cc0008e3fc6dd633149}
       \strng{authornamehash}{7d0d4321998b9cc0008e3fc6dd633149}
       \strng{authorfullhash}{7d0d4321998b9cc0008e3fc6dd633149}
-      \strng{authorfullhashraw}{7d0d4321998b9cc0008e3fc6dd633149}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -139,7 +101,7 @@
       \field{pages}{486\bibrangedash 505}
       \range{pages}{20}
     \endentry
-    \entry{moghadam2012infinite}{article}{}{}
+    \entry{moghadam2012infinite}{article}{}
       \name{author}{4}{}{%
         {{hash=8e72ab0b1303c8a836d6fd0b697a6e6a}{%
            family={Moghadam},
@@ -167,12 +129,10 @@
       }
       \strng{namehash}{9fecc256d6c464fb7b8e92c55835bab1}
       \strng{fullhash}{29feff80e5fa465bba6ae2946a67bc9e}
-      \strng{fullhashraw}{29feff80e5fa465bba6ae2946a67bc9e}
       \strng{bibnamehash}{29feff80e5fa465bba6ae2946a67bc9e}
       \strng{authorbibnamehash}{29feff80e5fa465bba6ae2946a67bc9e}
       \strng{authornamehash}{9fecc256d6c464fb7b8e92c55835bab1}
       \strng{authorfullhash}{29feff80e5fa465bba6ae2946a67bc9e}
-      \strng{authorfullhashraw}{29feff80e5fa465bba6ae2946a67bc9e}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
@@ -185,7 +145,7 @@
       \field{pages}{1655\bibrangedash 1669}
       \range{pages}{15}
     \endentry
-    \entry{Christofides2012book}{book}{}{}
+    \entry{christofides1998robust}{article}{}
       \name{author}{1}{}{%
         {{hash=fc471541293715551aa11c3f9fa32046}{%
            family={Christofides},
@@ -193,132 +153,69 @@
            given={Panagiotis\bibnamedelima D},
            giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
       }
-      \list{language}{1}{%
-        {en}%
-      }
-      \list{location}{1}{%
-        {New York, NY}%
-      }
       \list{publisher}{1}{%
-        {Springer}%
+        {Elsevier}%
       }
       \strng{namehash}{fc471541293715551aa11c3f9fa32046}
       \strng{fullhash}{fc471541293715551aa11c3f9fa32046}
-      \strng{fullhashraw}{fc471541293715551aa11c3f9fa32046}
       \strng{bibnamehash}{fc471541293715551aa11c3f9fa32046}
       \strng{authorbibnamehash}{fc471541293715551aa11c3f9fa32046}
       \strng{authornamehash}{fc471541293715551aa11c3f9fa32046}
       \strng{authorfullhash}{fc471541293715551aa11c3f9fa32046}
-      \strng{authorfullhashraw}{fc471541293715551aa11c3f9fa32046}
-      \field{extraname}{2}
+      \field{extraname}{1}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{month}{10}
-      \field{series}{Systems \& Control: Foundations \& Applications}
-      \field{title}{Nonlinear and robust control of {PDE} systems}
-      \field{year}{2012}
+      \field{journaltitle}{Chemical Engineering Science}
+      \field{number}{16}
+      \field{title}{Robust control of parabolic PDE systems}
+      \field{volume}{53}
+      \field{year}{1998}
+      \field{pages}{2949\bibrangedash 2965}
+      \range{pages}{17}
     \endentry
-    \entry{dubljevic2006predictive2}{article}{}{}
-      \name{author}{4}{}{%
-        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
-           family={Dubljevic},
-           familyi={D\bibinitperiod},
-           given={Stevan},
-           giveni={S\bibinitperiod}}}%
-        {{hash=4f9453f432f3f0412bb8fd67606810ec}{%
-           family={El-Farra},
-           familyi={E\bibinithyphendelim F\bibinitperiod},
-           given={Nael\bibnamedelima H},
-           giveni={N\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=c7f5f1dcacb3ae57d999d7a04ee29ae0}{%
-           family={Mhaskar},
-           familyi={M\bibinitperiod},
-           given={Prashant},
-           giveni={P\bibinitperiod}}}%
-        {{hash=fc471541293715551aa11c3f9fa32046}{%
-           family={Christofides},
-           familyi={C\bibinitperiod},
-           given={Panagiotis\bibnamedelima D},
-           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+    \entry{krstic2008backstepping}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1ae721b1b1b03e2708eb6ebcfc2fecc3}{%
+           family={Krstic},
+           familyi={K\bibinitperiod},
+           given={Miroslav},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1313589df10805b672a930bf0ba2a328}{%
+           family={Smyshlyaev},
+           familyi={S\bibinitperiod},
+           given={Andrey},
+           giveni={A\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Wiley Online Library}%
+        {Elsevier}%
       }
-      \strng{namehash}{e89dcdf5847b51c85ec9c7c8c3bf21ab}
-      \strng{fullhash}{dc640c557d57f17035930db0670f335f}
-      \strng{fullhashraw}{dc640c557d57f17035930db0670f335f}
-      \strng{bibnamehash}{dc640c557d57f17035930db0670f335f}
-      \strng{authorbibnamehash}{dc640c557d57f17035930db0670f335f}
-      \strng{authornamehash}{e89dcdf5847b51c85ec9c7c8c3bf21ab}
-      \strng{authorfullhash}{dc640c557d57f17035930db0670f335f}
-      \strng{authorfullhashraw}{dc640c557d57f17035930db0670f335f}
+      \strng{namehash}{a92e17fe881cd437e858985d8be21043}
+      \strng{fullhash}{a92e17fe881cd437e858985d8be21043}
+      \strng{bibnamehash}{a92e17fe881cd437e858985d8be21043}
+      \strng{authorbibnamehash}{a92e17fe881cd437e858985d8be21043}
+      \strng{authornamehash}{a92e17fe881cd437e858985d8be21043}
+      \strng{authorfullhash}{a92e17fe881cd437e858985d8be21043}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{International Journal of Robust and Nonlinear Control: IFAC-Affiliated Journal}
-      \field{number}{16}
-      \field{title}{Predictive control of parabolic PDEs with state and control constraints}
-      \field{volume}{16}
-      \field{year}{2006}
-      \field{pages}{749\bibrangedash 772}
-      \range{pages}{24}
+      \field{journaltitle}{Systems \& Control Letters}
+      \field{number}{9}
+      \field{title}{Backstepping boundary control for first-order hyperbolic PDEs and application to systems with actuator and sensor delays}
+      \field{volume}{57}
+      \field{year}{2008}
+      \field{pages}{750\bibrangedash 758}
+      \range{pages}{9}
     \endentry
-    \entry{ozorio2019heat}{article}{}{}
-      \name{author}{3}{}{%
-        {{hash=b659918a49c9b464a84f271f392fab83}{%
-           family={Ozorio\bibnamedelima Cassol},
-           familyi={O\bibinitperiod\bibinitdelim C\bibinitperiod},
-           given={Guilherme},
-           giveni={G\bibinitperiod}}}%
-        {{hash=2c96205fc08248d3bf9ce910ea7d5f7e}{%
-           family={Ni},
-           familyi={N\bibinitperiod},
-           given={Dong},
-           giveni={D\bibinitperiod}}}%
-        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
-           family={Dubljevic},
-           familyi={D\bibinitperiod},
-           given={Stevan},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Wiley Online Library}%
-      }
-      \strng{namehash}{0487e8b3f7d5da7e0768782b21465a64}
-      \strng{fullhash}{f34363b5dd8f9c55580123717995fd17}
-      \strng{fullhashraw}{f34363b5dd8f9c55580123717995fd17}
-      \strng{bibnamehash}{f34363b5dd8f9c55580123717995fd17}
-      \strng{authorbibnamehash}{f34363b5dd8f9c55580123717995fd17}
-      \strng{authornamehash}{0487e8b3f7d5da7e0768782b21465a64}
-      \strng{authorfullhash}{f34363b5dd8f9c55580123717995fd17}
-      \strng{authorfullhashraw}{f34363b5dd8f9c55580123717995fd17}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{AIChE Journal}
-      \field{number}{8}
-      \field{title}{Heat exchanger system boundary regulation}
-      \field{volume}{65}
-      \field{year}{2019}
-      \field{pages}{e16623}
-      \range{pages}{-1}
-    \endentry
-    \entry{khatibi2021model}{article}{}{}
-      \name{author}{3}{}{%
-        {{hash=1f84ba180c506eb38e18eb63b7d5b6a4}{%
-           family={Khatibi},
-           familyi={K\bibinitperiod},
-           given={Seyedhamidreza},
-           giveni={S\bibinitperiod}}}%
-        {{hash=59f22120a648fdaf0ef40ea14b024f5f}{%
-           family={Cassol},
-           familyi={C\bibinitperiod},
-           given={Guilherme\bibnamedelima Ozorio},
-           giveni={G\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+    \entry{xu2016state}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1a17bd9734faf817109cdada6c2aa66f}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Xiaodong},
+           giveni={X\bibinitperiod}}}%
         {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
            family={Dubljevic},
            familyi={D\bibinitperiod},
@@ -328,26 +225,136 @@
       \list{publisher}{1}{%
         {Elsevier}%
       }
-      \strng{namehash}{63cfae009898f7592883f19e203e8775}
-      \strng{fullhash}{277b564c47c3e1de43e0842cb1216ca5}
-      \strng{fullhashraw}{277b564c47c3e1de43e0842cb1216ca5}
-      \strng{bibnamehash}{277b564c47c3e1de43e0842cb1216ca5}
-      \strng{authorbibnamehash}{277b564c47c3e1de43e0842cb1216ca5}
-      \strng{authornamehash}{63cfae009898f7592883f19e203e8775}
-      \strng{authorfullhash}{277b564c47c3e1de43e0842cb1216ca5}
-      \strng{authorfullhashraw}{277b564c47c3e1de43e0842cb1216ca5}
+      \strng{namehash}{65d465c26661f08eafb4c467bf42910b}
+      \strng{fullhash}{65d465c26661f08eafb4c467bf42910b}
+      \strng{bibnamehash}{65d465c26661f08eafb4c467bf42910b}
+      \strng{authorbibnamehash}{65d465c26661f08eafb4c467bf42910b}
+      \strng{authornamehash}{65d465c26661f08eafb4c467bf42910b}
+      \strng{authorfullhash}{65d465c26661f08eafb4c467bf42910b}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Journal of Control}
+      \field{title}{The state feedback servo-regulator for countercurrent heat-exchanger system modelled by system of hyperbolic PDEs}
+      \field{volume}{29}
+      \field{year}{2016}
+      \field{pages}{51\bibrangedash 61}
+      \range{pages}{11}
+    \endentry
+    \entry{xie2021discrete}{article}{}
+      \name{author}{2}{}{%
+        {{hash=89a8bac5e478f83ce56ef50a3afb27ce}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Junyao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7122fed76f79132f403762a4bc654151}
+      \strng{fullhash}{7122fed76f79132f403762a4bc654151}
+      \strng{bibnamehash}{7122fed76f79132f403762a4bc654151}
+      \strng{authorbibnamehash}{7122fed76f79132f403762a4bc654151}
+      \strng{authornamehash}{7122fed76f79132f403762a4bc654151}
+      \strng{authorfullhash}{7122fed76f79132f403762a4bc654151}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Process Control}
+      \field{title}{Discrete-time modeling and output regulation of gas pipeline networks}
+      \field{volume}{98}
+      \field{year}{2021}
+      \field{pages}{30\bibrangedash 40}
+      \range{pages}{11}
+    \endentry
+    \entry{zhang2023tracking}{article}{}
+      \name{author}{3}{}{%
+        {{hash=da9f7c9885c62f90094bae30cd44886c}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lu},
+           giveni={L\bibinitperiod}}}%
+        {{hash=89a8bac5e478f83ce56ef50a3afb27ce}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Junyao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{57d7280e904822157732838866d7ad1b}
+      \strng{fullhash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \strng{bibnamehash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \strng{authorbibnamehash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \strng{authornamehash}{57d7280e904822157732838866d7ad1b}
+      \strng{authorfullhash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computers \& Chemical Engineering}
-      \field{title}{Model predictive control of a non-isothermal axial dispersion tubular reactor with recycle}
-      \field{volume}{145}
-      \field{year}{2021}
-      \field{pages}{107159}
+      \field{title}{Tracking model predictive control and moving horizon estimation design of distributed parameter pipeline systems}
+      \field{volume}{178}
+      \field{year}{2023}
+      \field{pages}{108381}
       \range{pages}{1}
     \endentry
-    \entry{aksikas2009lq}{article}{}{}
+    \entry{zhang2022dynamic}{article}{}
+      \name{author}{3}{}{%
+        {{hash=da9f7c9885c62f90094bae30cd44886c}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lu},
+           giveni={L\bibinitperiod}}}%
+        {{hash=89a8bac5e478f83ce56ef50a3afb27ce}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Junyao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{57d7280e904822157732838866d7ad1b}
+      \strng{fullhash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \strng{bibnamehash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \strng{authorbibnamehash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \strng{authornamehash}{57d7280e904822157732838866d7ad1b}
+      \strng{authorfullhash}{84b86fc4b00c4c063cc3ffd4f6bb94bc}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{AIChE Journal}
+      \field{number}{3}
+      \field{title}{Dynamic modeling and model predictive control of a continuous pulp digester}
+      \field{volume}{68}
+      \field{year}{2022}
+      \field{pages}{e17534}
+      \range{pages}{-1}
+    \endentry
+    \entry{aksikas2009lq}{article}{}
       \name{author}{4}{}{%
         {{hash=afedc95720d0916ba518e5854992c1cb}{%
            family={Aksikas},
@@ -375,12 +382,10 @@
       }
       \strng{namehash}{ff8f3de7adfc8b369f569d31f2165569}
       \strng{fullhash}{a8dfa80b128c01b0d62c0f046bb52375}
-      \strng{fullhashraw}{a8dfa80b128c01b0d62c0f046bb52375}
       \strng{bibnamehash}{a8dfa80b128c01b0d62c0f046bb52375}
       \strng{authorbibnamehash}{a8dfa80b128c01b0d62c0f046bb52375}
       \strng{authornamehash}{ff8f3de7adfc8b369f569d31f2165569}
       \strng{authorfullhash}{a8dfa80b128c01b0d62c0f046bb52375}
-      \strng{authorfullhashraw}{a8dfa80b128c01b0d62c0f046bb52375}
       \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
@@ -394,7 +399,7 @@
       \field{pages}{1542\bibrangedash 1548}
       \range{pages}{7}
     \endentry
-    \entry{aksikas2013optimal}{article}{}{}
+    \entry{aksikas2013optimal}{article}{}
       \name{author}{5}{}{%
         {{hash=c07211b9fbb4ad6520eb6b2b1548b1af}{%
            family={Aksikas},
@@ -427,12 +432,10 @@
       }
       \strng{namehash}{bb1fe89ce76261a174769bfb1868b87b}
       \strng{fullhash}{3d77eca003ef338d20479fb5baba823a}
-      \strng{fullhashraw}{3d77eca003ef338d20479fb5baba823a}
       \strng{bibnamehash}{3d77eca003ef338d20479fb5baba823a}
       \strng{authorbibnamehash}{3d77eca003ef338d20479fb5baba823a}
       \strng{authornamehash}{bb1fe89ce76261a174769bfb1868b87b}
       \strng{authorfullhash}{3d77eca003ef338d20479fb5baba823a}
-      \strng{authorfullhashraw}{3d77eca003ef338d20479fb5baba823a}
       \field{extraname}{2}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
@@ -446,7 +449,7 @@
       \field{pages}{1508\bibrangedash 1514}
       \range{pages}{7}
     \endentry
-    \entry{mohammadi2012lq}{article}{}{}
+    \entry{mohammadi2012lq}{article}{}
       \name{author}{4}{}{%
         {{hash=2845e242f7072e69646dc0813ea9fbe1}{%
            family={Mohammadi},
@@ -474,12 +477,10 @@
       }
       \strng{namehash}{4d4c41184322eea1255e954c28bb19b4}
       \strng{fullhash}{de98500cc691993df00739d9c2abf5e4}
-      \strng{fullhashraw}{de98500cc691993df00739d9c2abf5e4}
       \strng{bibnamehash}{de98500cc691993df00739d9c2abf5e4}
       \strng{authorbibnamehash}{de98500cc691993df00739d9c2abf5e4}
       \strng{authornamehash}{4d4c41184322eea1255e954c28bb19b4}
       \strng{authorfullhash}{de98500cc691993df00739d9c2abf5e4}
-      \strng{authorfullhashraw}{de98500cc691993df00739d9c2abf5e4}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -492,7 +493,7 @@
       \field{pages}{171\bibrangedash 181}
       \range{pages}{11}
     \endentry
-    \entry{aksikas2024spectral}{article}{}{}
+    \entry{aksikas2024spectral}{article}{}
       \name{author}{1}{}{%
         {{hash=afedc95720d0916ba518e5854992c1cb}{%
            family={Aksikas},
@@ -505,12 +506,10 @@
       }
       \strng{namehash}{afedc95720d0916ba518e5854992c1cb}
       \strng{fullhash}{afedc95720d0916ba518e5854992c1cb}
-      \strng{fullhashraw}{afedc95720d0916ba518e5854992c1cb}
       \strng{bibnamehash}{afedc95720d0916ba518e5854992c1cb}
       \strng{authorbibnamehash}{afedc95720d0916ba518e5854992c1cb}
       \strng{authornamehash}{afedc95720d0916ba518e5854992c1cb}
       \strng{authorfullhash}{afedc95720d0916ba518e5854992c1cb}
-      \strng{authorfullhashraw}{afedc95720d0916ba518e5854992c1cb}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -520,6 +519,187 @@
       \field{year}{2024}
       \field{pages}{1\bibrangedash 10}
       \range{pages}{10}
+    \endentry
+    \entry{Christofides2012book}{book}{}
+      \name{author}{1}{}{%
+        {{hash=fc471541293715551aa11c3f9fa32046}{%
+           family={Christofides},
+           familyi={C\bibinitperiod},
+           given={Panagiotis\bibnamedelima D},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{fc471541293715551aa11c3f9fa32046}
+      \strng{fullhash}{fc471541293715551aa11c3f9fa32046}
+      \strng{bibnamehash}{fc471541293715551aa11c3f9fa32046}
+      \strng{authorbibnamehash}{fc471541293715551aa11c3f9fa32046}
+      \strng{authornamehash}{fc471541293715551aa11c3f9fa32046}
+      \strng{authorfullhash}{fc471541293715551aa11c3f9fa32046}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{series}{Systems \& Control: Foundations \& Applications}
+      \field{title}{Nonlinear and robust control of {PDE} systems}
+      \field{year}{2012}
+    \endentry
+    \entry{dubljevic2006predictive2}{article}{}
+      \name{author}{4}{}{%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=4f9453f432f3f0412bb8fd67606810ec}{%
+           family={El-Farra},
+           familyi={E\bibinithyphendelim F\bibinitperiod},
+           given={Nael\bibnamedelima H},
+           giveni={N\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c7f5f1dcacb3ae57d999d7a04ee29ae0}{%
+           family={Mhaskar},
+           familyi={M\bibinitperiod},
+           given={Prashant},
+           giveni={P\bibinitperiod}}}%
+        {{hash=fc471541293715551aa11c3f9fa32046}{%
+           family={Christofides},
+           familyi={C\bibinitperiod},
+           given={Panagiotis\bibnamedelima D},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{e89dcdf5847b51c85ec9c7c8c3bf21ab}
+      \strng{fullhash}{dc640c557d57f17035930db0670f335f}
+      \strng{bibnamehash}{dc640c557d57f17035930db0670f335f}
+      \strng{authorbibnamehash}{dc640c557d57f17035930db0670f335f}
+      \strng{authornamehash}{e89dcdf5847b51c85ec9c7c8c3bf21ab}
+      \strng{authorfullhash}{dc640c557d57f17035930db0670f335f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Robust and Nonlinear Control: IFAC-Affiliated Journal}
+      \field{number}{16}
+      \field{title}{Predictive control of parabolic PDEs with state and control constraints}
+      \field{volume}{16}
+      \field{year}{2006}
+      \field{pages}{749\bibrangedash 772}
+      \range{pages}{24}
+    \endentry
+    \entry{ozorio2019heat}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b659918a49c9b464a84f271f392fab83}{%
+           family={Ozorio\bibnamedelima Cassol},
+           familyi={O\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Guilherme},
+           giveni={G\bibinitperiod}}}%
+        {{hash=2c96205fc08248d3bf9ce910ea7d5f7e}{%
+           family={Ni},
+           familyi={N\bibinitperiod},
+           given={Dong},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{0487e8b3f7d5da7e0768782b21465a64}
+      \strng{fullhash}{f34363b5dd8f9c55580123717995fd17}
+      \strng{bibnamehash}{f34363b5dd8f9c55580123717995fd17}
+      \strng{authorbibnamehash}{f34363b5dd8f9c55580123717995fd17}
+      \strng{authornamehash}{0487e8b3f7d5da7e0768782b21465a64}
+      \strng{authorfullhash}{f34363b5dd8f9c55580123717995fd17}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{AIChE Journal}
+      \field{number}{8}
+      \field{title}{Heat exchanger system boundary regulation}
+      \field{volume}{65}
+      \field{year}{2019}
+      \field{pages}{e16623}
+      \range{pages}{-1}
+    \endentry
+    \entry{khatibi2021model}{article}{}
+      \name{author}{3}{}{%
+        {{hash=1f84ba180c506eb38e18eb63b7d5b6a4}{%
+           family={Khatibi},
+           familyi={K\bibinitperiod},
+           given={Seyedhamidreza},
+           giveni={S\bibinitperiod}}}%
+        {{hash=59f22120a648fdaf0ef40ea14b024f5f}{%
+           family={Cassol},
+           familyi={C\bibinitperiod},
+           given={Guilherme\bibnamedelima Ozorio},
+           giveni={G\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{63cfae009898f7592883f19e203e8775}
+      \strng{fullhash}{277b564c47c3e1de43e0842cb1216ca5}
+      \strng{bibnamehash}{277b564c47c3e1de43e0842cb1216ca5}
+      \strng{authorbibnamehash}{277b564c47c3e1de43e0842cb1216ca5}
+      \strng{authornamehash}{63cfae009898f7592883f19e203e8775}
+      \strng{authorfullhash}{277b564c47c3e1de43e0842cb1216ca5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers \& Chemical Engineering}
+      \field{title}{Model predictive control of a non-isothermal axial dispersion tubular reactor with recycle}
+      \field{volume}{145}
+      \field{year}{2021}
+      \field{pages}{107159}
+      \range{pages}{1}
+    \endentry
+    \entry{krstic2009book}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=372e435181145b3eaf13244bfd55f2b3}{%
+           family={Krstić},
+           familyi={K\bibinitperiod},
+           given={Miroslav},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Birkhäuser}%
+      }
+      \strng{namehash}{372e435181145b3eaf13244bfd55f2b3}
+      \strng{fullhash}{372e435181145b3eaf13244bfd55f2b3}
+      \strng{bibnamehash}{372e435181145b3eaf13244bfd55f2b3}
+      \strng{authorbibnamehash}{372e435181145b3eaf13244bfd55f2b3}
+      \strng{authornamehash}{372e435181145b3eaf13244bfd55f2b3}
+      \strng{authorfullhash}{372e435181145b3eaf13244bfd55f2b3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{booktitle}{Delay compensation for nonlinear, adaptive, and {PDE} systems}
+      \field{chapter}{1.8: `DDE or Transport PDE Representation'}
+      \field{series}{Systems \& control}
+      \field{year}{2009}
+      \field{pages}{9}
+      \range{pages}{1}
     \endentry
   \enddatalist
 \endrefsection
