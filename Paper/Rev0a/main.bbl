@@ -508,6 +508,30 @@
       \field{pages}{107159}
       \range{pages}{1}
     \endentry
+    \entry{morrisbook}{book}{}
+      \name{author}{1}{}{%
+        {{hash=2a330d8820f5928036647723c9058492}{%
+           family={Morris},
+           familyi={M\bibinitperiod},
+           given={Kirsten\bibnamedelima A},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{2a330d8820f5928036647723c9058492}
+      \strng{fullhash}{2a330d8820f5928036647723c9058492}
+      \strng{bibnamehash}{2a330d8820f5928036647723c9058492}
+      \strng{authorbibnamehash}{2a330d8820f5928036647723c9058492}
+      \strng{authornamehash}{2a330d8820f5928036647723c9058492}
+      \strng{authorfullhash}{2a330d8820f5928036647723c9058492}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Controller design for distributed parameter systems}
+      \field{year}{2020}
+    \endentry
     \entry{curtainbook}{inbook}{}
       \name{author}{2}{}{%
         {{hash=f136a03f66f69761de3cb3ec10e2a2e9}{%
@@ -697,8 +721,8 @@
       \strng{authorbibnamehash}{afedc95720d0916ba518e5854992c1cb}
       \strng{authornamehash}{afedc95720d0916ba518e5854992c1cb}
       \strng{authorfullhash}{afedc95720d0916ba518e5854992c1cb}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Control}
