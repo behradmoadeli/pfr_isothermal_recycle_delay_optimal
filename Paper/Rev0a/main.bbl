@@ -758,6 +758,39 @@
       \field{pages}{9}
       \range{pages}{1}
     \endentry
+    \entry{Guilherme2019ACC}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=59f22120a648fdaf0ef40ea14b024f5f}{%
+           family={Cassol},
+           familyi={C\bibinitperiod},
+           given={Guilherme\bibnamedelima Ozorio},
+           giveni={G\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e1c84b033059af81cc3b46411127585b}
+      \strng{fullhash}{e1c84b033059af81cc3b46411127585b}
+      \strng{bibnamehash}{e1c84b033059af81cc3b46411127585b}
+      \strng{authorbibnamehash}{e1c84b033059af81cc3b46411127585b}
+      \strng{authornamehash}{e1c84b033059af81cc3b46411127585b}
+      \strng{authorfullhash}{e1c84b033059af81cc3b46411127585b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2019 American Control Conference (ACC)}
+      \field{title}{Discrete Output Regulator Design for a Mono-tubular Reactor with Recycle}
+      \field{year}{2019}
+      \field{pages}{1262\bibrangedash 1267}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.23919/ACC.2019.8815250
+      \endverb
+      \keyw{Regulators;Stability analysis;Mathematical model;Eigenvalues and eigenfunctions;Recycling;Inductors;Output feedback}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
