@@ -3,14 +3,15 @@
 
 \subsection{System Model}
 
-The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a first-order irreversible chemical reaction \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted reactants. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the reactor's dynamics can be described by a second-order parabolic PDE, which is a common class of PDEs used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation}. The resulting PDE that describe the reactor model are as follows:
+The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a first-order irreversible chemical reaction \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted substrate. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the reactor's dynamics can be described by a second-order parabolic PDE, a common class of equations used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation}. The resulting PDE that describes the reactor model is given by:
 
-\begin{equation}
+\begin{equation} \label{eq:PDE_original_model}
     \dot{x}(\zeta, t) = D \partial_{\zeta \zeta} x(\zeta, t) - v \partial_\zeta x(\zeta, t) + k_r x(\zeta, t)
 \end{equation}
 
-with the following boundary conditions:
-\begin{align}
+subject to Dankwerts boundary conditions:
+
+\begin{align} \label{eq:BC}
     \begin{cases}
         &D \partial_\zeta x(0, t) - v x(0, t) = -v \left[ R x(1, t-\tau) + (1-R) u(t) \right] \\
         &\partial_\zeta x(1, t) = 0 \\
@@ -18,9 +19,15 @@ with the following boundary conditions:
     \end{cases}
 \end{align}
 
+Here, \(x(\zeta, t)\) denotes the concentration along the reactor, representing the state of the system. The physical parameters \(D\), \(v\), \(k_r\), \(R\), and \(\tau\) correspond to the diffusion coefficient, flow velocity along the reactor, reaction constant, recycle ratio, and residence time of the recycle stream, respectively. The spatial and temporal coordinates of the system are represented by \(\zeta\) and \(t\), where \(\zeta \in [0, 1]\) and \(t \in [0, \infty)\).
+
+Dankwerts boundary conditions are particularly suitable for modeling axial tubular reactors, as they account for deviations from perfect mixing and piston flow, assuming negligible transport lags in connecting lines \autocite{danckwerts1993continuous}. These conditions make the model more realistic for chemical reactors of this type. The input and the output of the system are also present in the boundary conditions. The system output is measured at the reactor outlet, while the input is applied at the inlet. Additionally, the delayed state resulting from the recycled portion of the flow, occurring $\tau$ time units ago, is incorporated into the inlet; all as shown in Equation~\ref{eq:BC}.
+
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/sample.jpeg}
     \caption{Sample figure.}
     \label{fig:reactor_scheme}
 \end{figure}
+

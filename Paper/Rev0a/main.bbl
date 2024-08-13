@@ -897,6 +897,40 @@
       \field{pages}{199\bibrangedash 222}
       \range{pages}{24}
     \endentry
+    \entry{danckwerts1993continuous}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=0cf48ef772180e05f63fa1d40b9578a0}{%
+           family={Danckwerts},
+           familyi={D\bibinitperiod},
+           given={Peter\bibnamedelima V},
+           giveni={P\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{fullhash}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{fullhashraw}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{bibnamehash}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{authorbibnamehash}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{authornamehash}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{authorfullhash}{0cf48ef772180e05f63fa1d40b9578a0}
+      \strng{authorfullhashraw}{0cf48ef772180e05f63fa1d40b9578a0}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Chemical engineering science}
+      \field{number}{24}
+      \field{title}{Continuous flow systems. Distribution of residence times}
+      \field{volume}{50}
+      \field{year}{1993}
+      \field{pages}{3857\bibrangedash 3866}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/0009-2509(53)80001-1
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
