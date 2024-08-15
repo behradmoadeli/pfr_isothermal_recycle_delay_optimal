@@ -931,6 +931,33 @@
       \verb 10.1016/0009-2509(53)80001-1
       \endverb
     \endentry
+    \entry{pdebook}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=5e33c44bb77dab3e96fb21d629c03047}{%
+           family={Bleecker},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall/CRC}%
+      }
+      \strng{namehash}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{fullhash}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{fullhashraw}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{bibnamehash}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{authorbibnamehash}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{authornamehash}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{authorfullhash}{5e33c44bb77dab3e96fb21d629c03047}
+      \strng{authorfullhashraw}{5e33c44bb77dab3e96fb21d629c03047}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Basic partial differential equations}
+      \field{year}{2018}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
