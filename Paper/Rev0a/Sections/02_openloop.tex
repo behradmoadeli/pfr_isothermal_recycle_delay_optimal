@@ -75,11 +75,11 @@ With all state variables now expressed explicitly at a specific time instance $t
 
 \subsection{Adjoint Operator}
 
-Obtaining the adjoint operator $\mathfrak{A}^*$ is a crucial step in analyzing the system's properties, particularly its spectral characteristics. If the operator $\mathfrak{A}$ is shown to be self-adjoint (i.e., $\mathfrak{A} = \mathfrak{A}^*$), the system's eigenmodes can be suitably scaled to form an orthonormal basis for the entire function space, which greatly facilitates the analysis and solution of the system. However, even when the operator $\mathfrak{A}$ is not self-adjoint, the combined set of eigenmodes of $\mathfrak{A}$ and its adjoint $\mathfrak{A}^*$ may still form a bi-orthonormal basis for the given function space. This scenario is typical when $\mathfrak{A}$ is a Riesz-spectral operator \autocite{curtainbook}. Consequently, determining the adjoint operator $\mathfrak{A}^*$, as represented in Equation~\ref{eq:adjoint_A} is a pivotal step in the spectral analysis of the system.
+The adjoint operator $\mathfrak{A}^*$ plays a critical role in analyzing the spectral properties of the system. It is obtained in Equation~\ref{eq:adjoint_A}:
 
 \begin{equation} \label{eq:adjoint_A}
     \begin{aligned}
-        \langle \mathfrak{A} \Phi, \Psi\rangle  = \langle \Phi, {\mathfrak{A}}^{*} \Psi\rangle  &\Rightarrow \\
+        \langle \mathfrak{A} \phi, \psi\rangle  = \langle \phi, {\mathfrak{A}}^{*} \psi\rangle  &\Rightarrow \\
         {\mathfrak{A}}^{*} =&
         \begin{bmatrix}
             D \partial_{\zeta \zeta} + v \partial_\zeta +k_r & 0\\
@@ -93,39 +93,33 @@ Obtaining the adjoint operator $\mathfrak{A}^*$ is a crucial step in analyzing t
     \end{aligned}
 \end{equation}
 
-This suggests that the operator $\mathfrak{A}$ is not self-adjoint. To investigate whether $\mathfrak{A}$ is a Riesz-spectral operator, the spectra of both $\mathfrak{A}$ and $\mathfrak{A}^*$ must be determined by solving their characteristic equations, which is done in the upcoming section.
+Given that $\mathfrak{A}$ is not self-adjoint (i.e., $\mathfrak{A} = \mathfrak{A}^*$), the combined eigenmodes of $\mathfrak{A}$ and $\mathfrak{A}^*$ may still form a bi-orthonormal basis, typical of a Riesz-spectral operator \autocite{curtainbook}. Therefore their spectral properties must be determined by solving their characteristic equations.
 
 \subsection{Eigenvalue Problem}
-The spectrum of both $\mathfrak{A}$ and $\mathfrak{A}^*$ shall be determined to show whether $\mathfrak{A}$ is a Riesz-spectral operator. In order to obtain the eigenvalues of the system, the eigenvalue problem shall be stated and the characteristic equation needs to be solved once obtained from the equations. Looking back at the state-space representation of the system $\dot{x}(\zeta, t) = \mathfrak{A} x(\zeta, t)$, with $\mathfrak{A}$ defined in Equation~\ref{eq:operator_A}, spatial part of $x(\zeta, t)$ may be isolated and used to demonstrate the eigenvalue problem \autocite{pdebook} as shown in Equation~\ref{eq:eig_prob}:
+
+The eigenvalue problem\autocite{pdebook} for $\mathfrak{A}$ is formulated as:
 
 \begin{equation} \label{eq:eig_prob}
-        \mathfrak{A} \Phi_i(\zeta) = \lambda_i \Phi_i(\zeta)
+        \mathfrak{A} \phi_i(\zeta) = \lambda_i \phi_i(\zeta)
 \end{equation}
 
-where $\lambda_i \in \mathcal{C}$ is the $i^{\text{th}}$ eigenvalue of the operator $\mathfrak{A}$, with $\Phi_i(\zeta) = [\phi_{i,1}(\zeta), \phi_{i,2}(\zeta)]^T$ being its corresponding eigenfunction. Re-writing the spatial part for the system of PDEs considering the eigenvalues will give Equation~\ref{eq:eigval_calc_1} for a given $i$:
+% \begin{equation} \label{eq:eigval_calc_1}
+%     \begin{aligned}
+%         &\begin{cases}
+%             &\lambda \phi_1 = D \frac{d^2 \phi_1}{d \zeta ^2}  - v \frac{d \phi_1}{d \zeta} + k \phi_1 \\
+%             &\lambda \phi_2 = \frac{1}{\tau} \frac{d \phi_2}{d \zeta}
+%         \end{cases} \\ B.C. &\begin{cases}
+%             &D \left. \frac{d \phi_1}{d \zeta} \right|_{\zeta=0} - v \left. \phi_1 \right|_{\zeta=0} = - R v \left. \phi_2 \right|_{\zeta=0} \\
+%             &\left. \phi_1 \right|_{\zeta=1} = 0 \\
+%             &\left. \phi_1 \right|_{\zeta=1} = \left. \phi_2 \right|_{\zeta=1}
+%         \end{cases}
+%     \end{aligned}
+% \end{equation}
 
-\begin{equation} \label{eq:eigval_calc_1}
-    \begin{aligned}
-        &\begin{cases}
-            &\lambda \phi_1 = D \frac{d^2 \phi_1}{d \zeta ^2}  - v \frac{d \phi_1}{d \zeta} + k \phi_1 \\
-            &\lambda \phi_2 = \frac{1}{\tau} \frac{d \phi_2}{d \zeta}
-        \end{cases} \\ B.C. &\begin{cases}
-            &D \left. \frac{d \phi_1}{d \zeta} \right|_{\zeta=0} - v \left. \phi_1 \right|_{\zeta=0} = - R v \left. \phi_2 \right|_{\zeta=0} \\
-            &\left. \phi_1 \right|_{\zeta=1} = 0 \\
-            &\left. \phi_1 \right|_{\zeta=1} = \left. \phi_2 \right|_{\zeta=1}
-        \end{cases}
-    \end{aligned}
-\end{equation}
-
-The goal is to obtain the set of eigenvalues. To do so, the second order derivative in the operator $\mathfrak{A}$ shall be converted in two first order derivatives to give Equation~\ref{eq:eigval_calc_2}:
+where $\lambda_i \in \mathbb{C}$ is the $i^{\text{th}}$ eigenvalue, and $\phi_i(\zeta) = [\phi_{i,1}(\zeta), \phi_{i,2}(\zeta)]^T$ is the corresponding eigenfunction. To obtain the characteristic equation, the system of PDEs shall be reduced to the ODE system in Equation~\ref{eq:eigval_calc_2}:
 
 \begin{equation} \label{eq:eigval_calc_2}
     \begin{aligned}
-        % \begin{bmatrix}
-        %     \tilde{\phi_1}, \tilde{\phi_2}, \tilde{\phi_3}
-        % \end{bmatrix}^T \equiv \begin{bmatrix}
-        %     \partial_\zeta \phi_1, \phi_1, \phi_2
-        % \end{bmatrix}^T \Rightarrow \\
         \partial_\zeta \begin{bmatrix}
             \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
         \end{bmatrix} = \begin{bmatrix}
@@ -138,7 +132,7 @@ The goal is to obtain the set of eigenvalues. To do so, the second order derivat
     \end{aligned}
 \end{equation}
 
-which is a well-known system of ODEs in the form of $ \tilde{\Phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\Phi}$, with $\tilde{\Phi} \equiv [\phi_1, \partial_\zeta \phi_1, \phi_2]^T$ and $\tilde{\mathfrak{A}}$ as the $3 \times 3$ matrix shown in Equation~\ref{eq:eigval_calc_2}. The obtained system of ODEs has the solution of the form $\tilde{\Phi}(1) = e^{\tilde{\mathfrak{A}}(1-0)}\Phi(0)$. By introducing $\Lambda \equiv e^{\tilde{\mathfrak{A}}}$, Equation~\ref{eq:eigval_calc_3} may be deduced:
+which is in the form of $ \tilde{\phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\phi}$, with the solution stated in Equation~\ref{eq:eigval_calc_3}:
 
 \begin{equation} \label{eq:eigval_calc_3}
     \begin{bmatrix}
@@ -152,7 +146,7 @@ which is a well-known system of ODEs in the form of $ \tilde{\Phi}_\zeta  = \til
     \end{bmatrix}_{\zeta=0}
 \end{equation}
 
-Next, the boundary conditions may be plugged in Equation~\ref{eq:eigval_calc_3} accordingly to result a $3 \times 3$ algebraic system of equations shown in Equation~\ref{eq:eigval_calc_4}:
+where the matrix $\Lambda_{(i,j)}$ is defined as $e^{\tilde{\mathfrak{A}}}$. By applying the boundary conditions to Equation~\ref{eq:eigval_calc_3}, the algebraic system of equations in Equation~\ref{eq:eigval_calc_4} is obtained:
 
 \begin{equation} \label{eq:eigval_calc_4}
     \begin{bmatrix}
@@ -161,10 +155,10 @@ Next, the boundary conditions may be plugged in Equation~\ref{eq:eigval_calc_3} 
         (\Lambda_{1,1} - \Lambda_{3,1}) & (\Lambda_{1,2} - \Lambda_{3,2}) & (\Lambda_{1,3} - \Lambda_{3,3})
     \end{bmatrix} \begin{bmatrix}
         \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
-    \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \tilde{\Phi}_{\zeta = 0} = 0
+    \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \tilde{\phi}_{\zeta = 0} = 0
 \end{equation}
 
-where $\tilde{\Lambda}$ is defined as the $3 \times 3$ matrix shown in Equation~\ref{eq:eigval_calc_4}. The system of algebraic equations shown in Equation~\ref{eq:eigval_calc_4} suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Therefore, to solve the characteristic equation means to set $det(\tilde{\Lambda}) = 0$. This will result in the set of eigenvalues of the operator $\mathfrak{A}$. Since an analytical solution may not be feasible, system parameters will be selected to enable numerical calculations. Physical parameters have been selected to reflect realistic values relevant to the application, with their corresponding values provided in Table~\ref{tab:pars}.
+where $\tilde{\Lambda}$ is defined as the matrix shown in Equation~\ref{eq:eigval_calc_4}. Equation~\ref{eq:eigval_calc_4} suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. 
 
 \begin{table}[h!]
     \centering
@@ -178,16 +172,35 @@ where $\tilde{\Lambda}$ is defined as the $3 \times 3$ matrix shown in Equation~
     Damping Coefficient & $c$            & 0.1 Ns/m       \\ \hline
     Spring Constant    & $k$             & 100 N/m        \\ \hline
     \end{tabular}
-    \end{table}
+\end{table}
 
-The eigenvalue distribution in the complex plane is depicted in Figure [XXX], given parameters provided in Table~\ref{tab:pars}.
+The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane.
 
-% Insert figure
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figures/eigval_dist_R_0.3.jpg}
+    \caption{Eigenvalues of operator $\mathfrak{A}$ plotted on complex plane}
+    \label{fig:eigval_dist}
+\end{figure}
 
-Following the same procedure for the adjoint operator $\mathfrak{A}^*$ results in the set of adjoint eigenvalues $\lambda^*_i$. It can be analytically proven that $\forall i > 0$: $\lambda^*_i = \overline{\lambda_i}$. Therefore, the eigenvalue distribution for $\mathfrak{A}^*$ will be the same as for $\mathfrak{A}$, which is previously shown in Figure [XXX].
+Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of $\mathfrak{A}$ and its adjoint $\mathfrak{A}^*$ are equivalent, confirming that $\mathfrak{A}$ forms a bi-orthogonal basis with its adjoint according to Equation~\ref{eq:biorth}:
 
-%explain Riesz and move towards eigfuns
+\begin{equation} \label{eq:biorth}
+    \begin{aligned}
+        &\langle \mathfrak{A} \phi_i, \psi_j \rangle = \langle \lambda_i \phi_i, \psi_j \rangle = \lambda_i \langle \phi_i, \psi_j \rangle \\
+        \text{L.H.S.} = &\langle \phi_i, \mathfrak{A}^* \psi_j \rangle = \langle \phi_i, \lambda_j^* \psi_j \rangle = \overline{\lambda_j^*} \langle \phi_i, \psi_j \rangle \\
+        &\lambda_i = \overline{\lambda_i^*} \Rightarrow \langle \phi_i, \psi_j \rangle = \delta_{ij}
+    \end{aligned}
+\end{equation}
 
-\subsection{Eigenfunctions Representation}
+The eigenfunctions $\phi(\zeta), \psi(\zeta)$ (for $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively) may be obtained following the calculation of eigenvalues. The first 4 eigenfunctions are plotted in Figure~\ref{fig:eigfun}. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figures/eigfuns.png}
+    \caption{First few eigenmodes of $\mathfrak{A}$ and $\mathfrak{A}^*$}
+    \label{fig:eigfun}
+\end{figure}
 
 \subsection{Open-loop (Zero-input) Response}
+
