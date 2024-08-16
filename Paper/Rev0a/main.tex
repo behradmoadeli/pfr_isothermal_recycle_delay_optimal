@@ -8,13 +8,14 @@
 \usepackage{geometry}
 \usepackage[style=chem-acs]{biblatex}
 \addbibresource{references.bib}
+\geometry{letterpaper, margin=1in}
 
 \usepackage{setspace}
 \doublespacing
 
 \usepackage{lipsum}
+\usepackage{multicol}
 
-\geometry{letterpaper, margin=1in}
 
 % Title and author information
 \title{Delayed recycle Axial Reactor xxx}
@@ -31,21 +32,23 @@
 
 \begin{abstract}
     % Your abstract here
-    This is a brief summary of the paper, usually around 150-250 words.
+    This is a brief summary of the paper, usually around 150-250 words. \lipsum[1-1]
 \end{abstract}
+% \begin{multicols}{2}
 
-\input{Sections/01_intro.tex}
+  \input{Sections/01_intro.tex}
+  
+  \input{Sections/02_openloop.tex}
+  
+  \input{Sections/03_regul.tex}
+  
+  \input{Sections/04_comp.tex}
+  
+  \input{Sections/05_conc.tex}
+  
+  \printbibliography
 
-\input{Sections/02_openloop.tex}
-
-\input{Sections/03_regul.tex}
-
-\input{Sections/04_comp.tex}
-
-\input{Sections/05_conc.tex}
-
-\newpage
-\printbibliography
+% \end{multicols}
 
 
 \end{document}

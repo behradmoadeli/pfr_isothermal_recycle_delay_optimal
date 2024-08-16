@@ -835,6 +835,46 @@
       \endverb
       \keyw{Regulators;Stability analysis;Mathematical model;Eigenvalues and eigenfunctions;Recycling;Inductors;Output feedback}
     \endentry
+    \entry{qi2021output}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=dc3ada71cae6bd528fc0042cb89f90ff}{%
+           family={Qi},
+           familyi={Q\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0b502f8ce16f8f5fd629cd7f6623168c}{%
+           family={Dubljevic},
+           familyi={D\bibinitperiod},
+           given={Stevan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fc820ff96274b0350522d2fa5325df43}{%
+           family={Kong},
+           familyi={K\bibinitperiod},
+           given={Weijian},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9b4e56156871b21fd0ac6b4da25f193a}
+      \strng{fullhash}{1bd369b274d4b226a05740f3b16739cb}
+      \strng{fullhashraw}{1bd369b274d4b226a05740f3b16739cb}
+      \strng{bibnamehash}{1bd369b274d4b226a05740f3b16739cb}
+      \strng{authorbibnamehash}{1bd369b274d4b226a05740f3b16739cb}
+      \strng{authornamehash}{9b4e56156871b21fd0ac6b4da25f193a}
+      \strng{authorfullhash}{1bd369b274d4b226a05740f3b16739cb}
+      \strng{authorfullhashraw}{1bd369b274d4b226a05740f3b16739cb}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automatica}
+      \field{title}{Output feedback compensation to state and measurement delays for a first-order hyperbolic PIDE with recycle}
+      \field{volume}{128}
+      \field{year}{2021}
+      \field{pages}{109565}
+      \range{pages}{1}
+    \endentry
     \entry{levenspiel1998chemical}{book}{}{}
       \name{author}{1}{}{%
         {{hash=9402a619f1c66852603593d9d2c81634}{%
@@ -885,8 +925,8 @@
       \strng{authornamehash}{dd0b8738e36f2f6e5a0dde964cd34561}
       \strng{authorfullhash}{dd0b8738e36f2f6e5a0dde964cd34561}
       \strng{authorfullhashraw}{dd0b8738e36f2f6e5a0dde964cd34561}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Chemical Engineering Science}
@@ -916,8 +956,8 @@
       \strng{authornamehash}{0cf48ef772180e05f63fa1d40b9578a0}
       \strng{authorfullhash}{0cf48ef772180e05f63fa1d40b9578a0}
       \strng{authorfullhashraw}{0cf48ef772180e05f63fa1d40b9578a0}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Chemical engineering science}
