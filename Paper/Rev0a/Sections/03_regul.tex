@@ -1,2 +1,70 @@
 \section{Full-state Feedback Regulator}
 
+Having the Riesz-spectral operator $\mathfrak{A}$ generate a bi-orthogonal basis provides the foundation for solving the Operator Riccati Equation (ORE) in this chapter, a crucial step in Linear Quadratic Regulator (LQR) design. The aim of solving the ORE is to find a feedback control law that minimizes an infinite-time cost function given in Equation~\ref{eq:cost_fun}:
+
+\begin{equation} \label{eq:cost_fun}
+    J(x_0, u) \int_0^{\infty} \langle x(s), \mathfrak{Q} x(s)\rangle + \langle u(s), \mathfrak{R} u(s)\rangle ds
+\end{equation}
+
+where $\mathfrak{Q}$ and $\mathfrak{Q}$ are positive semi-definite matrices of operators of the appropriate size that contribute to the penalty terms due to the costs of state deviation and control action, respectively.
+
+\subsection{Operator Riccati Equation}
+
+The corresponding ORE provides the solution of LQR problem, minimizing the stated cost function. This is done by calculating the positive semi-definite operator $\mathbf{\Pi}$ as the unique solution to the Equation~\ref{eq:ORE_1}, which is later used to obtain the feedback gain, resulting in optimal control of the system.
+
+\begin{equation} \label{eq:ORE_1}
+    \langle \mathfrak{A}^* \mathbf{\Pi} x, y\rangle + \langle \mathbf{\Pi} \mathfrak{A} x, y \rangle - \langle \mathbf{\Pi} \mathfrak{B} \mathfrak{R}^{-1} \mathfrak{B}^* \mathbf{\Pi} x, y\rangle + \langle \mathfrak{Q} x, y\rangle = 0
+\end{equation}
+
+where $x,y \in D(\mathfrak{A})$. Since the solution to the ORE is unique given any set of functions in the domain of the given operators, one can arbitrarily choose $x = \phi_m$ and $y = \phi_n$, the eigenfunctions of the operator $\mathfrak{A}$ obtained previously. Applying this, in addition to the fact that the operator $\mathbf{\Pi}$ is self-adjoint leads to the following Equation~\ref{eq:ORE_2}:
+
+\begin{equation} \label{eq:ORE_2}
+    \langle \mathbf{\Pi} \phi_m, \mathfrak{A} \phi_n \rangle
+    + \langle \mathfrak{A} \phi_m, \mathbf{\Pi} \phi_n \rangle
+    - \mathfrak{R}^{-1} \langle \mathfrak{B}^* \mathbf{\Pi} \phi_m, \mathfrak{B}^* \mathbf{\Pi} \phi_n\rangle 
+    + \langle \mathfrak{Q} \phi_m, \phi_n\rangle = 0
+\end{equation}
+
+Knowing that the domain and the range of $\mathbf{\Pi}$ should match the domain of $\mathfrak{A}$ and the domain of $\mathfrak{A}^*$, respectively, operator $\mathbf{\Pi}$ may be represented as the infinite sum given in Equation~\ref{eq:P}:
+
+\begin{equation} \label{eq:P}
+    \mathbf{\Pi} x = \sum_{i=1}^{\infty}\sum_{j=1}^{\infty} p_{i,j} \langle x, \psi_j \rangle \psi_i \qquad
+    \forall {i,j}: \quad p_{i,j} \in \mathbb{C}
+\end{equation}
+
+where $p_{i,j}$ may be seen as scalar elements of an infinite-dimensional square matrix $P$ which can be equivalently used to represent the operator $\mathbf{\Pi}$. This is the first step of converting ORE to its alternative MRE.
+
+\subsection{Obtaining $\mathfrak{B}$ and $\mathfrak{B}^*$}
+
+It is critical to define the operators $\mathfrak{B}$ and $\mathfrak{B}^*$ before proceeding with further simplifying the ORE. Since the system described in the previous section is a boundary-control problem, the operator $\mathfrak{B}$ may be defined according to Equation~\ref{eq:B}:
+
+\begin{equation} \label{eq:B}
+    \mathfrak{B} u \equiv
+    \begin{bmatrix}
+       \delta(\zeta) \\ 0
+    \end{bmatrix} \cdot u
+\end{equation}
+
+where $\delta(\zeta)$ is the dirac delta function, projecting $u \in \mathbb{R}^1$ to the states function space $X: L^2[0,1] \times L^2[0,1]$. furthermore, operator $\mathfrak{B}^*$ is obtained utilizing adjoint operator properties as shown in Equation~\ref{eq:B*_1}
+
+\begin{equation} \label{eq:B*_1}
+    \begin{aligned}
+        \langle \mathfrak{A} x + \mathfrak{B} u, y \rangle
+        &= \langle \mathfrak{A} x, y \rangle
+        + \langle \mathfrak{B} u, y \rangle
+        = \langle x, \mathfrak{A}^* y\rangle
+        + \langle u, \mathfrak{B}^* y \rangle \\
+        \Rightarrow \langle u, \mathfrak{B}^* y \rangle
+        &= \langle \mathfrak{A} x + \mathfrak{B} u, y \rangle
+        - \langle x, \mathfrak{A}^* y\rangle
+    \end{aligned}
+\end{equation}
+
+Performing integration by parts resulting from inner products given in Equation~\ref{eq:B*_1} while considering the proper domains for $\mathfrak{A}$ and $\mathfrak{A}^*$ according to Equations~\ref{eq:operator_A}~and~\ref{eq:adjoint_A} results in the expression given in Equation~\ref{eq:B*_2} for $\mathfrak{B}^*$.
+
+\begin{equation} \label{eq:B*_2}
+    \mathfrak{B}^* (.) = \Bigl[ v(1-R) \int_0^1 \delta(\zeta) (.) d\zeta \quad , \quad 0 \Bigr]
+\end{equation}
+
+\subsection{Matrix Riccati Equation}
+
