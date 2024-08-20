@@ -998,6 +998,51 @@
       \field{title}{Basic partial differential equations}
       \field{year}{2018}
     \endentry
+    \entry{ali2015reviewobserver}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=28bf454d4db293630af5c1118d43b92e}{%
+           family={Ali},
+           familyi={A\bibinitperiod},
+           given={Jarinah\bibnamedelima Mohd},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=82d2a2d6cd89301fddfe793c65ef927e}{%
+           family={Hoang},
+           familyi={H\bibinitperiod},
+           given={N\bibnamedelima Ha},
+           giveni={N\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=90441bc6c4b457dd3f1a8927ae80656a}{%
+           family={Hussain},
+           familyi={H\bibinitperiod},
+           given={Mohamed\bibnamedelima Azlan},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=64980a14c86178c725b5a3c11d7c5e78}{%
+           family={Dochain},
+           familyi={D\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{eee85c99b6728bfc9cd032b79a4268c2}
+      \strng{fullhash}{198f533cbb6a88f09565859a64fe0d07}
+      \strng{fullhashraw}{198f533cbb6a88f09565859a64fe0d07}
+      \strng{bibnamehash}{198f533cbb6a88f09565859a64fe0d07}
+      \strng{authorbibnamehash}{198f533cbb6a88f09565859a64fe0d07}
+      \strng{authornamehash}{eee85c99b6728bfc9cd032b79a4268c2}
+      \strng{authorfullhash}{198f533cbb6a88f09565859a64fe0d07}
+      \strng{authorfullhashraw}{198f533cbb6a88f09565859a64fe0d07}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computers \& Chemical Engineering}
+      \field{title}{Review and classification of recent observers applied in chemical process systems}
+      \field{volume}{76}
+      \field{year}{2015}
+      \field{pages}{27\bibrangedash 41}
+      \range{pages}{15}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

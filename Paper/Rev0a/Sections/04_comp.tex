@@ -1,12 +1,22 @@
 \section{Output Feedback Compensator}
 
-\begin{itemize}
-    \item Briefly discuss the performance of full-state feedback in control systems.
-    \item Highlight the limitations and challenges associated with full-state feedback.
-    \item Introduce the concepts of state reconstruction and compensator design.
-    \item Present a block diagram illustrating the full-state regulation and compensator approach.
-    \item Define the system output and the output matrix \( C \).
-    \item Explore the criteria for choosing an appropriate observer.
-    \item Describe the method used for calculating the observer gain \( L \) and justify the choice.
-    \item Explain how the observer gain \( L \) is implemented in the control system.
-\end{itemize}
+It was assumed that the optimal regulator designed previously has complete access to the states of the system as it utilized the inner product of the obtained feedback gain with the states. However, there is no realistic application or setup for such assumption to be feasible. As a result, an observer is designed at this point to estimate and reconstruct the states by measuring the output of the system at any given time. The measured output in this case is assumed to be the concentration at the reactor outlet, as stated in Equation~\ref{eq:BC}. This will lead to the definition of the output operator $\mathfrak{C}$ in the LTI system $\mathbf{\Sigma(\mathfrak{A},\mathfrak{B},\mathfrak{C},-)}$, which is later used in obtaining the observer gains. This is done as shown in Equation~\ref{eq:C}:
+
+\begin{equation} \label{eq:C}
+    \mathfrak{C} \equiv \begin{bmatrix}
+        \int_0^1 \delta(\zeta-1) (.) d\zeta \quad , \quad 0
+    \end{bmatrix}
+\end{equation}
+
+where $\delta(\zeta)$ represents the dirac delta function. When it comes to the choice of observer type, Luenberger-based observers have shown to be a good fit for infinite dimensional systems with perfect knowledge of systems parameters \autocite{ali2015reviewobserver}. Among numerous methods to obtain the gain for this class of observers, pole-placement proves to be a solid and simple, yet reliable method to reconstruct the states. To make sure the state reconstruction dynamic converges faster than the regulation dynamics, the poles of the observer-based controller is placed to the left of the full-state feedback controller poles, which is a common practice dealing with observer-based controllers in infinite dimensional systems \autocite{morrisbook}.
+
+% \begin{itemize}
+%     \item Briefly discuss the performance of full-state feedback in control systems.
+%     \item Highlight the limitations and challenges associated with full-state feedback.
+%     \item Introduce the concepts of state reconstruction and compensator design.
+%     \item Present a block diagram illustrating the full-state regulation and compensator approach.
+%     \item Define the system output and the output matrix \( C \).
+%     \item Explore the criteria for choosing an appropriate observer.
+%     \item Describe the method used for calculating the observer gain \( L \) and justify the choice.
+%     \item Explain how the observer gain \( L \) is implemented in the control system.
+% \end{itemize}
