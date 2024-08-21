@@ -1,4 +1,4 @@
-\section{Output Feedback Compensator}
+\subsection{Output Feedback Compensator}
 
 In the previous work, the optimal regulator was designed under the assumption that it had full access to the system's states, utilizing the inner product of the feedback gain and the states. However, this assumption is not feasible in realistic applications. To address this, an observer is introduced to estimate and reconstruct the states by measuring the system's output in real time. The output, in this context, is taken as the concentration at the reactor outlet, as defined in Equation~\ref{eq:BC}. This leads to the definition of the output operator $\mathfrak{C}$ in the linear time-invariant (LTI) system $\mathbf{\Sigma(\mathfrak{A},\mathfrak{B},\mathfrak{C},-)}$, which is subsequently used to determine the observer gains. The formulation is shown in Equation~\ref{eq:C}:
 
