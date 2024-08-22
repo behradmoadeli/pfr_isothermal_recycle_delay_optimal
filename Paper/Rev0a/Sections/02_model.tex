@@ -1,6 +1,6 @@
-\section{Open-loop System}
+\section{OPEN-LOOP SYSTEM}
 
-\subsection{System Model}
+\subsection{System model}
 
 The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a first-order irreversible chemical reaction \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted substrate. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the reactor's dynamics can be described by a second-order parabolic PDE, a common class of equations used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation}. The resulting PDE that describes the reactor model is given by:
 
@@ -20,17 +20,17 @@ subject to Dankwerts boundary conditions:
 
 Here, $c(\zeta, t)$ denotes the properly scaled notion of concentration along the reactor, representing the state of the system. The physical parameters $D$, $v$, $k_r$, $R$, and $\tau$ correspond to the diffusion coefficient, flow velocity along the reactor, reaction constant, recycle ratio, and residence time of the recycle stream, respectively. The spatial and temporal coordinates of the system are represented by $\zeta$ and $t$, where $\zeta \in [0, 1]$ and $t \in [0, \infty)$.
 
-Dankwerts boundary conditions are particularly suitable for modeling axial tubular reactors, as they account for deviations from perfect mixing and piston flow, assuming negligible transport lags in connecting lines \autocite{danckwerts1993continuous}. These conditions make the model more realistic for chemical reactors of this type. The input and the output of the system are also present in the boundary conditions. The system output is measured at the reactor outlet, while the input is applied at the inlet. Additionally, the delayed state resulting from the recycled portion of the flow, occurring $\tau$ time units ago, is incorporated into the inlet; all as shown in Equation~\ref{eq:BC}.
+Dankwerts boundary conditions are particularly suitable for modeling axial tubular reactors, as they account for deviations from perfect mixing and piston flow, assuming negligible transport lags in connecting lines \autocite{danckwerts1993continuous}. These conditions make the model more realistic for chemical reactors of this type. The input and the output of the system are also present in the boundary conditions. The system output is measured at the reactor outlet, while the input is applied at the inlet. Additionally, the delayed state resulting from the recycled portion of the flow, occurring $\tau$ time units ago, is incorporated into the inlet; all as shown in Equation~(\ref{eq:BC}).
 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/sample.jpeg}
     \caption{Sample figure.}
     \label{fig:reactor_scheme}
 \end{figure}
 
-\subsection{PDE Representation of Delay Term}
+\subsection{PDE representation of delay term}
 
 One effective method for addressing delay in systems is to represent the delay using an alternative transport partial differential equation (PDE). This approach is particularly advantageous when the problem already involves similar forms of PDEs, as is the case in the current study. To specifically address the delay in the system under consideration, the state variable $c(\zeta, t)$ is expanded into a vector of functions $x(\zeta, t) \equiv [x_1(\zeta, t), x_2(\zeta, t)]^T$, where $x_1(\zeta, t)$ represents the concentration within the reactor, and $x_2(\zeta, t)$ is introduced as a new state variable to account for the concentration along the recycle stream. The delay is thus modeled as a pure transport process, wherein the first state $x_1(\zeta, t)$ is transported from the reactor outlet to the inlet, experiencing a delay of $\tau$ time units while in the recycle stream. As a result, Equations~\ref{eq:PDE_original_model}~and~\ref{eq:BC} may be re-formulated as follows:
 
@@ -55,7 +55,7 @@ One effective method for addressing delay in systems is to represent the delay u
 \end{cases}
 \end{align}
 
-With all state variables now expressed explicitly at a specific time instance $t$—in contrast to the previous representation where states at $t$ were directly involved with states at $(t-\tau)$—the system can be described in the standard state-space form of an infinite-dimensional linear time-invariant (LTI) system as $\dot{x} = \mathfrak{A} x$. Here, the state $x(\zeta, t) = [x_1(\zeta, t), x_2(\zeta, t)]^T$ is a vector of functions, and $\mathfrak{A}$ is a linear operator $\mathcal{L}(X)$ acting on a Hilbert space $X: L^2[0,1] \times L^2[0,1]$. The operator $\mathfrak{A}$ and its domain are defined in detail as shown in Equation~\ref{eq:operator_A}:
+With all state variables now expressed explicitly at a specific time instance $t$—in contrast to the previous representation where states at $t$ were directly involved with states at $(t-\tau)$—the system can be described in the standard state-space form of an infinite-dimensional linear time-invariant (LTI) system as $\dot{x} = \mathfrak{A} x$. Here, the state $x(\zeta, t) = [x_1(\zeta, t), x_2(\zeta, t)]^T$ is a vector of functions, and $\mathfrak{A}$ is a linear operator $\mathcal{L}(X)$ acting on a Hilbert space $X: L^2[0,1] \times L^2[0,1]$. The operator $\mathfrak{A}$ and its domain are defined in detail as shown in Equation~(\ref{eq:operator_A}):
 
 \begin{equation} \label{eq:operator_A}
     \begin{aligned}
@@ -72,9 +72,9 @@ With all state variables now expressed explicitly at a specific time instance $t
     \end{aligned}
 \end{equation}
 
-\subsection{Adjoint Operator}
+\subsection{Adjoint operator}
 
-The adjoint operator $\mathfrak{A}^*$ plays a critical role in analyzing the spectral properties of the system. It is obtained in Equation~\ref{eq:adjoint_A}:
+The adjoint operator $\mathfrak{A}^*$ plays a critical role in analyzing the spectral properties of the system. It is obtained in Equation~(\ref{eq:adjoint_A}):
 
 \begin{equation} \label{eq:adjoint_A}
     \begin{aligned}
@@ -94,7 +94,7 @@ The adjoint operator $\mathfrak{A}^*$ plays a critical role in analyzing the spe
 
 where $\phi_i(\zeta) = [\phi_{i,1}(\zeta), \phi_{i,2}(\zeta)]^T$ and $\psi_i(\zeta) = [\psi_{i,1}(\zeta), \psi_{i,2}(\zeta)]^T$ are the eigenfunction of $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively. Given that $\mathfrak{A}$ is not self-adjoint (i.e., $\mathfrak{A} \neq \mathfrak{A}^*$), their combined eigenmodes may still form a bi-orthonormal basis, typical of a Riesz-spectral operator \autocite{curtainbook}. Therefore their spectral properties must be determined by solving their characteristic equations.
 
-\subsection{Eigenvalue Problem}
+\subsection{Eigenvalue problem}
 
 The eigenvalue problem\autocite{pdebook} for $\mathfrak{A}$ is formulated as:
 
@@ -115,7 +115,7 @@ The eigenvalue problem\autocite{pdebook} for $\mathfrak{A}$ is formulated as:
 %     \end{aligned}
 % \end{equation}
 
-where $\lambda_i \in \mathbb{C}$ is the $i^{\text{th}}$ eigenvalue. To obtain the characteristic equation, the system of PDEs shall be reduced to the ODE system in Equation~\ref{eq:eigval_calc_2} $\forall i \geq 0$:
+where $\lambda_i \in \mathbb{C}$ is the $i^{\text{th}}$ eigenvalue. To obtain the characteristic equation, the system of PDEs shall be reduced to the ODE system in Equation~(\ref{eq:eigval_calc_2}) $\forall i \geq 0$:
 
 \begin{equation} \label{eq:eigval_calc_2}
     \begin{aligned}
@@ -131,7 +131,7 @@ where $\lambda_i \in \mathbb{C}$ is the $i^{\text{th}}$ eigenvalue. To obtain th
     \end{aligned}
 \end{equation}
 
-which is in the form of $ \tilde{\phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\phi}$, with the solution stated in Equation~\ref{eq:eigval_calc_3}:
+which is in the form of $ \tilde{\phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\phi}$, with the solution stated in Equation~(\ref{eq:eigval_calc_3}):
 
 \begin{equation} \label{eq:eigval_calc_3}
     \begin{bmatrix}
@@ -145,7 +145,7 @@ which is in the form of $ \tilde{\phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\phi
     \end{bmatrix}_{\zeta=0}
 \end{equation}
 
-where the matrix $\Lambda_{(i,j)}$ is defined as $e^{\tilde{\mathfrak{A}}}$. By applying the boundary conditions to Equation~\ref{eq:eigval_calc_3}, the algebraic system of equations in Equation~\ref{eq:eigval_calc_4} is obtained:
+where the matrix $\Lambda_{(i,j)}$ is defined as $e^{\tilde{\mathfrak{A}}}$. By applying the boundary conditions to Equation~(\ref{eq:eigval_calc_3}), the algebraic system of equations in Equation~(\ref{eq:eigval_calc_4}) is obtained:
 
 \begin{equation} \label{eq:eigval_calc_4}
     \begin{bmatrix}
@@ -157,7 +157,7 @@ where the matrix $\Lambda_{(i,j)}$ is defined as $e^{\tilde{\mathfrak{A}}}$. By 
     \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \tilde{\phi}_{\zeta = 0} = 0
 \end{equation}
 
-where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~\ref{eq:eigval_calc_4}. Equation~\ref{eq:eigval_calc_4} suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane.
+where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{eq:eigval_calc_4}). Equation~(\ref{eq:eigval_calc_4}) suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane.
 
 \begin{table}[ht]
     \centering
@@ -174,14 +174,14 @@ where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~\ref{e
     \end{tabular}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/eigval_dist_R_0.3.jpg}
     \caption{Eigenvalues of operator $\mathfrak{A}$ plotted on complex plane}
     \label{fig:eigval_dist}
 \end{figure}
 
-Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of $\mathfrak{A}$ match the ones of its adjoint, confirming that $\mathfrak{A}$ and $\mathfrak{A}^*$ form a bi-orthogonal basis according to Equation~\ref{eq:biorth}:
+Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of $\mathfrak{A}$ match the ones of its adjoint, confirming that $\mathfrak{A}$ and $\mathfrak{A}^*$ form a bi-orthogonal basis according to Equation~(\ref{eq:biorth}):
 
 \begin{equation} \label{eq:biorth}
     \begin{aligned}
@@ -193,7 +193,7 @@ Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of 
 
 The eigenfunctions $\{ \phi_i(\zeta), \psi_i(\zeta) \}$ (for $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively) may be obtained following the calculation of eigenvalues. The first 3 eigenfunctions are plotted in Figure~\ref{fig:eigfun}. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/eigfuns.png}
     \caption{First few eigenmodes of $\mathfrak{A}$ and $\mathfrak{A}^*$}
