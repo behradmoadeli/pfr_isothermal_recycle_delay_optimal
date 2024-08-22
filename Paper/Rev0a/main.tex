@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
+\usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, positioning}  % Load arrows.meta for 'latex' arrow tip
 \usepackage[style=chem-acs]{biblatex}
@@ -22,8 +23,9 @@
 % Title and author information
 \title{Delayed recycle Axial Reactor xxx}
 \author{
-  Behrad Moadeli\thanks{Ualberta, Address. Email: moadeli@ualberta.ca} \and
-  Author Two\thanks{Affiliation, Address. Email: author2@example.com}
+  Behrad Moadeli \thanks{Department of Chemical \& Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. \\Email: moadeli@ualberta.ca} \and
+  Guilherme Ozorio Cassol \thanks{Department of Chemical \& Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. \\Email: ozorioca@ualberta.ca} \and
+  Stevan Dubljevic \thanks{Department of Chemical \& Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. \\Email: stevan.dubljevic@ualberta.ca}
 }
 
 \date{\today}
@@ -40,15 +42,15 @@
 
   \input{Sections/01_intro.tex}
   
-  \input{Sections/02_openloop.tex}
+  \input{Sections/02_model.tex}
   
-  \input{Sections/03_regul.tex}
+  \input{Sections/03_control.tex}
   
   % \input{Sections/04_comp.tex}
   
-  \input{Sections/05_results.tex}
+  \input{Sections/04_results.tex}
 
-  \input{Sections/06_conc.tex}
+  \input{Sections/05_conc.tex}
   
   \printbibliography
 
