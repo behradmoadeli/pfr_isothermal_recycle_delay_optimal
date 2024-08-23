@@ -21,6 +21,7 @@ from .ricatti import *
 from .ricatti_finite import *
 from .finite_dif_funs import *
 from .calc_eig_finite import *
+from .lqr_cost import *
 
 from sys import version_info
 # Check if Python version is 3.11 or higher

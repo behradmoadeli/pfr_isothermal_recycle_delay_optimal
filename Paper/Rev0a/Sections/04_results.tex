@@ -4,7 +4,7 @@ The obtained controller strategies in the previous section are applied to a fini
 
 \subsection{FDM representation of the open-loop system}
 
-The open-loop system dynamics are first explored using a finite-difference method (FDM) representation. The system model is discretized in space and time, and the resulting system of ordinary differential equations is solved using the \texttt{solve\_ivp} function in Python. The 3D plot in Figure \ref{fig:3D_x1_openloop} illustrates the unstable dynamics of the open-loop system over time.
+Zero-input response of the system is first explored using a finite-difference method (FDM) representation to show the unstable dynamics of the model. The state profile versus time and space is illustrated in Figure~\ref{ig:3D_x1_openloop}. The goal is to stabilize the system using an optimal control strategy.
 
 \begin{figure}[H]
     \centering
@@ -14,6 +14,13 @@ The open-loop system dynamics are first explored using a finite-difference metho
 \end{figure}
 
 \subsection{Full-state feedback regulator FDM representation}
+
+\textbf{add improvement in cost function. Done}
+
+\begin{equation*}
+    10 percent from 1 to 3. less than 1 percent from 3 to 7. changes with Q, R, N_{zeta}, but insignificant
+\end{equation*}
+
 
 Next, the full-state feedback regulator is evaluated using an FDM representation. Two configurations are compared: one with $N=3$ eigenmodes and another with $N=7$ eigenmodes. Figures \ref{fig:3D_x1_k3} and \ref{fig:3D_x1_k7} show the 3D plots of the system dynamics for these configurations. The 2D plot in Figure \ref{fig:2D_xt_k7} provides a detailed view of the state trajectories for the $N=7$ configuration.
 
