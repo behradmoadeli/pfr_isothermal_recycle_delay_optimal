@@ -1241,6 +1241,70 @@
       \verb 10.1038/s41592-019-0686-2
       \endverb
     \endentry
+    \entry{RK45_1}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=a521239ea7b2034c64b059d3f7bea9eb}{%
+           family={Dormand},
+           familyi={D\bibinitperiod},
+           given={John\bibnamedelima R},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=3bf636983a5e5e499a4d6a0e671d5783}{%
+           family={Prince},
+           familyi={P\bibinitperiod},
+           given={Peter\bibnamedelima J},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0e9373571170891e788987a0320bec8a}
+      \strng{fullhash}{0e9373571170891e788987a0320bec8a}
+      \strng{fullhashraw}{0e9373571170891e788987a0320bec8a}
+      \strng{bibnamehash}{0e9373571170891e788987a0320bec8a}
+      \strng{authorbibnamehash}{0e9373571170891e788987a0320bec8a}
+      \strng{authornamehash}{0e9373571170891e788987a0320bec8a}
+      \strng{authorfullhash}{0e9373571170891e788987a0320bec8a}
+      \strng{authorfullhashraw}{0e9373571170891e788987a0320bec8a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of computational and applied mathematics}
+      \field{number}{1}
+      \field{title}{A family of embedded Runge-Kutta formulae}
+      \field{volume}{6}
+      \field{year}{1980}
+      \field{pages}{19\bibrangedash 26}
+      \range{pages}{8}
+    \endentry
+    \entry{RK45_2}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=c8b5a14f103e1bd1a2704330fdf5ec11}{%
+           family={Shampine},
+           familyi={S\bibinitperiod},
+           given={Lawrence\bibnamedelima F},
+           giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{fullhash}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{fullhashraw}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{bibnamehash}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{authorbibnamehash}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{authornamehash}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{authorfullhash}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \strng{authorfullhashraw}{c8b5a14f103e1bd1a2704330fdf5ec11}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics of computation}
+      \field{number}{173}
+      \field{title}{Some practical runge-kutta formulas}
+      \field{volume}{46}
+      \field{year}{1986}
+      \field{pages}{135\bibrangedash 150}
+      \range{pages}{16}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

@@ -93,32 +93,6 @@ The computed gain is a function of space and is calculated offline. The control 
 
 By selecting $\mathfrak{Q} = 0.05$ as a constant function over $\zeta = [0,1]$, and $\mathfrak{R} = 50$, the full-state feedback gain is obtained and represented in Figure~\ref{fig:k_modes}. The obtained gains are used to design the optimal full-state feedback regulator to stabilize the control system. A block diagram representation of the full-state feedback control system is shown in Figure~\ref{fig:block_diagram}.
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Figures/k_3.png}
-        \caption{$N = 3$}
-        \label{fig:k_3}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Figures/k_7.png}
-        \caption{$N = 7$}
-        \label{fig:k_7}
-    \end{subfigure}
-    \caption{Full-state feedback gain $K(\zeta)$ utilizing the first 7 modes of the system.}
-    \label{fig:k_modes}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics*[width=0.7\textwidth]{Figures/sample.jpeg}
-    \caption{Block diagram representation of the full-state feedback control system.}
-    \label{fig:block_diagram}
-\end{figure}
-
 \subsection{Output feedback compensator}
 
 Thus far, the optimal regulator is designed under the assumption that it has full access to the system's states. However, this assumption is not feasible in realistic applications. To address this, an observer is introduced to estimate and reconstruct the states by measuring the system's output in real time, and providing the regulator with the reconstructed states to further stabilize the system. The output, in this context, is taken as the concentration at the reactor outlet, as defined in Equation~\ref{eq:BC}. This leads to the definition of the output operator $\mathfrak{C}$ in the linear time-invariant (LTI) system $\mathbf{\Sigma(\mathfrak{A},\mathfrak{B},\mathfrak{C},-)}$, which is subsequently used to determine the observer gain, $L(\zeta)$. The formulation is shown in Equation~\ref{eq:C}:
@@ -130,20 +104,6 @@ Thus far, the optimal regulator is designed under the assumption that it has ful
 \end{equation}
 
 where $\delta(\zeta)$ denotes the Dirac delta function. Regarding the choice of observer, Luenberger-based observers are well-suited for infinite-dimensional systems when the system parameters are perfectly known \autocite{ali2015reviewobserver}. Among the various methods to compute the gain for this class of observers, pole-placement is a solid, straightforward, and reliable approach for state reconstruction. To ensure that the state reconstruction dynamics converge more quickly than the regulation dynamics, the poles of the observer-based controller are placed to the left of the poles of the full-state feedback controller. This practice is common in the design of observer-based controllers for infinite-dimensional systems \autocite{morrisbook}. The observer gain in Figure~\ref{fig:L_modes} is obtained by limiting the eigenmodes of the observer-based controller to have real parts that are at least 3 times more negative than the real part of the dominant eigenmodes of the full-state feedback system. This is done for the case where the first 7 modes of the system are considered for designing the controller. The first few eigenvalues of the observer-based controller and the full-state feedback controller, along with the eigenvalues of the open-loop system are shown in Figure~\ref{fig:eigs} to demonstrate the pole placement strategy explained above. It can be confirmed that both control systems have eigenvalues with negative real parts, ensuring stability. Note that the eigenvalues of both control systems are identical after the 7th mode, as the real parts of these eigenvalues are already sufficiently negative.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Figures/L.png}
-    \caption{Observer gain $L(\zeta)$.}
-    \label{fig:L_modes}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics*[width=0.7\textwidth]{Figures/pole_placement.png}
-    \caption{Eigenvalues of the observer-based controller, full-state feedback controller, and open-loop system.}
-    \label{fig:eigs}
-\end{figure}
 
 The dynamics of the augmented observer-controller system are described by the state-space representation shown in Equation~\ref{eq:observer_ss}, where $\hat{x}(\zeta, t)$ and $\mathbf{e}(\zeta, t)$ refer to the estimated state and the state estimation error, respectively. A block diagram representation of the output feedback control system is also shown in Figure~\ref{fig:block_diagram_observer}.
 
@@ -166,10 +126,3 @@ The dynamics of the augmented observer-controller system are described by the st
         &= \mathfrak{A}_{est} \, \mathbf{e}(\zeta,t)
     \end{aligned}
 \end{equation}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics*[width=0.7\textwidth]{Figures/sample.jpeg}
-    \caption{Block diagram representation of the full-state feedback control system.}
-    \label{fig:block_diagram_observer}
-\end{figure}
