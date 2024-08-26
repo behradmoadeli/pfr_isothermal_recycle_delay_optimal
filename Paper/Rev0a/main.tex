@@ -7,6 +7,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage{xcolor, soul}
 
 \usepackage[style=chem-acs]{biblatex}
 \addbibresource{references.bib}
@@ -14,7 +15,7 @@
 \geometry{letterpaper, margin=1in}
 
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta, positioning}  % Load arrows.meta for 'latex' arrow tip
+% \usetikzlibrary{arrows.meta, positioning}  % Load arrows.meta for 'latex' arrow tip
 
 \usepackage{setspace}
 \doublespacing
@@ -48,7 +49,6 @@
 \renewcommand\thesubfigure{\Alph{subfigure}}
 
 
-\usepackage{lipsum}
 \usepackage{multicol}
 
 
@@ -66,6 +66,12 @@
 
 \maketitle
 
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics*[width=0.9\textwidth]{Figures/abstract_large.PNG}
+\end{figure}
+
+\newpage
 \begin{abstract}
     % Your abstract here
     The optimal control of an axial tubular reactor with a recycle stream is addressed as a key class of distributed parameter systems in chemical engineering. The intrinsic time delay from the recycle process, thus far overlooked in relevant literature, is modeled as a transport partial differential equation (PDE), resulting in a system of coupled parabolic and hyperbolic PDEs. Utilizing Danckwerts boundary conditions, the reactor is boundary-controlled with the control input at the inlet. A continuous-time optimal linear quadratic regulator is developed to stabilize this infinite-dimensional system, employing a late lumping approach in order to preserve the properties of the original infinite dimensional system in controller design. The full-state feedback regulator is designed by solving the Operator Riccati Equation (ORE), leveraging the system's Riesz-spectral properties. To address practical limitations of full-state feedback, a Luenberger observer is also proposed, enabling state reconstruction from boundary measurements. 
@@ -94,5 +100,17 @@
   % \end{multicols}
 
 \input{Figures/Figures.tex}
+
+% \newpage
+
+% \begin{equation}
+%   \begin{align}
+%     u(t) &\qquad \qquad x(0, t) \\
+%     y(t) &\qquad \qquad x(1, t) \\
+%     \zeta = 0 &\qquad \qquad \zeta = 1 \\
+%     R x(1, t - \tau) &\qquad \qquad \hat{x}(\zeta,t) \\
+%     \mathcal{A} \rightarrow \mathcal{B} \\
+%   \end{align}
+% \end{equation}
 
 \end{document}

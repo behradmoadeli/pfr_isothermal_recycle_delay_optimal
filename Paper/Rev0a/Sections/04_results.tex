@@ -10,21 +10,21 @@ Zero-input response of the system is explored using the mentioned FDM setup to s
 
 \textbf{add improvement in cost function. Done}
 
-\begin{equation*}
-    10 percent from 1 to 3. less than 1 percent from 3 to 7. changes with Q, R, N_{zeta}, but insignificant
-\end{equation*}
+% \begin{equation*}
+%     10 percent from 1 to 3. less than 1 percent from 3 to 7. changes with Q, R, N_{zeta}, but insignificant
+% \end{equation*}
 
 Next, the full-state feedback regulator is evaluated using the same FDM representation. Two configurations are compared where the optimal feedback gain is obtained using different number of eigenmodes: one with $N=3$ and another with $N=7$, according to Figure~\ref{fig:k_modes}. The state profile versus time and space is illustrated for both cases in Figure~\ref{fig:full_state_feedback}. 
 
 Additionally, in order to offer a clearer representation of the state trajectory in time, spatial cross-sectional plots are provided in Figure~\ref{fig:2D_xt_k7} for the $N=7$ case at different lengths of the domain. The delay-imposing state, i.e. the concentration along the recycle stream $x_2(\zeta,t)$, is provided only in Figure~\ref{fig:2D_xt_k7} for the sake of conciseness.
 
-Both optimal feedback gains are able to successfully stabilize the system within finite time horizon. However, the case where more eigenmodes are considered in the controller design shows better performance in general. Sharing the same $\mathfrak{Q}$ and $\mathfrak{R}$ operators, the higher dimensional controller is able to stabilize the system quicker.
+Both optimal feedback gains are able to successfully stabilize the system within finite time horizon. However, the case where more eigenmodes are considered in the controller design shows better performance in general. Sharing the same $\mathfrak{Q}$ and $\mathfrak{R}$ operators, the higher dimensional controller is able to stabilize the system quicker with lower cost function values in general.
 
-\textbf{Can be replaced with the following 2 paragraphs:}
+% \textbf{Can be replaced with the following 2 paragraphs:}
 
-\textit{Both optimal feedback gains successfully stabilize the system within a finite time horizon, with the controller designed using more eigenmodes achieving quicker stabilization. However, when considering the cost function $J(x_0,u)$, the improvement is 0.81\% when increasing the number of eigenmodes from $N = 3$ to $N = 7$, indicating minimal enhancement in this case. Conversely, increasing the eigenmodes from $N = 1$ to $N = 3$ results in a more substantial 9.32\% improvement. In this particular case, the improvement in the cost function diminishes beyond choosing 3 modes, although overall controller performance tends towards selecting more aggressive control actions.}
+% \textit{Both optimal feedback gains successfully stabilize the system within a finite time horizon, with the controller designed using more eigenmodes achieving quicker stabilization. However, when considering the cost function $J(x_0,u)$, the improvement is 0.81\% when increasing the number of eigenmodes from $N = 3$ to $N = 7$, indicating minimal enhancement in this case. Conversely, increasing the eigenmodes from $N = 1$ to $N = 3$ results in a more substantial 9.32\% improvement. In this particular case, the improvement in the cost function diminishes beyond choosing 3 modes, although overall controller performance tends towards selecting more aggressive control actions.}
 
-\textit{In general, analyzing the impact of different numbers of eigenmodes introduces significant challenges. The computational cost for solving the MRE increases quadratically due to its time complexity of $\mathcal{O}(n^2)$. Additionally, accurately computing higher-order eigenvalues becomes more difficult, further complicating the process. Given these considerations, a detailed analysis of the exact effects of increasing the number of eigenmodes in controller design is not within the scope of this work. Since these results are specific to this particular setup and the trend of improvement appears complex and highly influenced by the choice of $\mathfrak{Q}$ and $\mathfrak{R}$ operators, further investigation is suggested to explore these effects more broadly in future work.}
+% \textit{In general, analyzing the impact of different numbers of eigenmodes introduces significant challenges. The computational cost for solving the MRE increases quadratically due to its time complexity of $\mathcal{O}(n^2)$. Additionally, accurately computing higher-order eigenvalues becomes more difficult, further complicating the process. Given these considerations, a detailed analysis of the exact effects of increasing the number of eigenmodes in controller design is not within the scope of this work. Since these results are specific to this particular setup and the trend of improvement appears complex and highly influenced by the choice of $\mathfrak{Q}$ and $\mathfrak{R}$ operators, further investigation is suggested to explore these effects more broadly in future work.}
 
 \subsection{Observer-based regulator FDM representation}
 
