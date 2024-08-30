@@ -11,17 +11,18 @@
 \tikzstyle{pfr} = [cylinder, draw, minimum height=4cm, minimum width=1cm, shape aspect=1, shape border rotate=180]
 \usetikzlibrary{shapes.geometric}
 \usepackage{xcolor}
-\definecolor{mycustomcolor}{cmyk}{0.45, 0.95, 0.2, 0.15}
+\definecolor{mycustomcolor}{HTML}{804d5a}
 
 \begin{document}
 
 
 \begin{center}
 \begin{tikzpicture}
-    \draw (-3.5,-2.1) rectangle (3.5,1.25);
+    \draw [very thick] (-3.7,-2.1) rectangle (3.7,1.25);
+    \draw (-3.7,-6.7) rectangle (3.7,-2.6);
     \node (pfr) [pfr] {$\mathcal{A} \rightarrow \mathcal{B}$};
-    \node (regulator) [block, below of=pfr, xshift=-1cm, yshift=-4cm] {Regulator};
-    \node (observer) [block, below of=pfr, xshift=1cm, yshift=-2.5cm] {Observer};
+    \node (regulator) [block, below of=pfr, xshift=-0.5cm, yshift=-4cm] {Gain};
+    \node (observer) [block, below of=pfr, xshift=1.5cm, yshift=-2.5cm] {Observer};
     \node (pfr_output) [circle, right of=pfr, xshift=4cm, draw, minimum size=0.25cm] {};
     \node (pfr_input) [circle, left of=pfr, xshift=-4cm, draw, minimum size=0.25cm] {};
     \node (obsv_input) [circle, left of=regulator, xshift=-1.5cm, draw, minimum size=0.25cm] {};
@@ -29,7 +30,7 @@
     \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
     \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
     \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
-    % \node [right of=pfr_output] {};
+    \node (title) at (0,-6.1) {\textbf{Optimal Regulator}};
 
     \draw[dotted, thick] ([yshift=0.5cm]pfr_inlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 0$} ([yshift=-0.65cm]pfr_inlet.center);
     \draw[dotted, thick] ([yshift=0.5cm]pfr_outlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 1$} ([yshift=-0.65cm]pfr_outlet.center);
