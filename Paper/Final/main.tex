@@ -17,7 +17,6 @@
 \geometry{letterpaper, margin=1in}
 
 \usepackage{tikz}
-% \usetikzlibrary{arrows.meta, positioning}  % Load arrows.meta for 'latex' arrow tip
 
 \usepackage{setspace}
 
@@ -44,7 +43,6 @@
     labelsep=space,           % Add a space between the label and the caption
     textfont=normalfont,      % Use normal font for the caption text
     position=bottom,          % Position the label at the bottom of the subfigure
-    % labelformat=simple,       % Use a simple format without automatic parentheses
     format=plain              % Plain format for subfigure captions
     }
 \renewcommand\thesubfigure{\Alph{subfigure}}
@@ -76,7 +74,6 @@
 
 \newpage
 \begin{abstract}
-  % Your abstract here
   The optimal control of an axial tubular reactor with a recycle stream is addressed as a key type of setting for of distributed parameter systems in chemical engineering. The intrinsic time delay from the recycle process, thus far overlooked in relevant literature, is modeled as a transport partial differential equation (PDE), resulting in a system of coupled parabolic and hyperbolic PDEs. Utilizing Danckwerts boundary conditions, the reactor is boundary-controlled with the control input at the inlet. A continuous-time optimal linear quadratic regulator is developed to stabilize infinite-dimensional system, employing a late lumping approach in order to preserve the properties of the original infinite dimensional system in controller design. The full-state feedback regulator is designed by solving the Operator Riccati Equation (ORE), leveraging the system's Riesz-spectral properties. To address practical limitations of full-state feedback, a Luenberger observer is also proposed, enabling state reconstruction from boundary measurements.
   Numerical simulations are conducted to evaluate the proposed control strategies. The results demonstrate that the full-state feedback regulator effectively stabilizes the system. A comparison is made between two configurations where different numbers of eigenmodes were selected to design the controller. The observer-based regulator successfully stabilizes the system using merely output measurements, effectively overcoming the challenge of limited state access. \\ \, \\
   \textit{Keywords: Distributed parameter systems, tubular reactors, recycle, optimal control, state delay}
@@ -105,18 +102,6 @@
 
   % \end{multicols}
 
-\input{Figures/Figures.tex}
-
-% \newpage
-
-% \begin{equation}
-%   \begin{align}
-%     u(t) &\qquad \qquad x(0, t) \\
-%     y(t) &\qquad \qquad x(1, t) \\
-%     \zeta = 0 &\qquad \qquad \zeta = 1 \\
-%     R x(1, t - \tau) &\qquad \qquad \hat{x}(\zeta,t) \\
-%     \mathcal{A} \rightarrow \mathcal{B} \\
-%   \end{align}
-% \end{equation}
+\input{Figures.tex}
 
 \end{document}
