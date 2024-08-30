@@ -1,4 +1,4 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,12pt]{article}
 
 % Preamble
 \usepackage[utf8]{inputenc}
@@ -8,6 +8,8 @@
 \usepackage{hyperref}
 \usepackage{subcaption}
 \usepackage{xcolor, soul}
+\usepackage{bm}
+\usepackage{svg}
 
 \usepackage[style=chem-acs]{biblatex}
 \addbibresource{references.bib}
@@ -18,7 +20,6 @@
 % \usetikzlibrary{arrows.meta, positioning}  % Load arrows.meta for 'latex' arrow tip
 
 \usepackage{setspace}
-\doublespacing
 
 \usepackage{titlesec}
 \titleformat{\subsubsection}{\normalfont\normalsize}{\thesubsubsection}{1em}{}
@@ -27,25 +28,25 @@
 \renewcommand{\figurename}{\textbf{\uppercase{Figure}}}
 \renewcommand{\thefigure}{\arabic{figure}}
 \captionsetup[figure]{
-    labelsep=colon,
-    labelfont={bf,small}, % Make label bold in caption
-    textfont={small}, % Text in caption remains unbolded and small
-    labelformat=default
-}
-\makeatletter
-\let\oldthefigure\thefigure
-\renewcommand{\thefigure}{\arabic{figure}}
-\makeatother
-
-
-\captionsetup[subfigure]{
+  labelsep=colon,
+  labelfont={bf,small}, % Make label bold in caption
+  textfont={small}, % Text in caption remains unbolded and small
+  labelformat=default
+  }
+  \makeatletter
+  \let\oldthefigure\thefigure
+  \renewcommand{\thefigure}{\arabic{figure}}
+  \makeatother
+  
+  
+  \captionsetup[subfigure]{
     labelformat=parens,       % Add parentheses around the label
     labelsep=space,           % Add a space between the label and the caption
     textfont=normalfont,      % Use normal font for the caption text
     position=bottom,          % Position the label at the bottom of the subfigure
     % labelformat=simple,       % Use a simple format without automatic parentheses
     format=plain              % Plain format for subfigure captions
-}
+    }
 \renewcommand\thesubfigure{\Alph{subfigure}}
 
 
@@ -53,13 +54,13 @@
 
 
 % Title and author information
-\title{Optimal Control of Axial Tubular Reactors with Recycle Streams:\\Addressing State-Delay through Transport PDEs}
+\title{Optimal control of axial dispersion tubular reactors with recycle: Addressing state-delay through transport PDEs}
 \author{
-  Behrad Moadeli \thanks{Department of Chemical \& Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. \\Email: moadeli@ualberta.ca} \and
-  Guilherme Ozorio Cassol \thanks{Department of Chemical \& Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. \\Email: ozorioca@ualberta.ca} \and
-  Stevan Dubljevic \thanks{Department of Chemical \& Materials Engineering, University of Alberta, Edmonton, Alberta, Canada. \\Email: stevan.dubljevic@ualberta.ca}
-}
-
+  Behrad Moadeli \thanks{Department of Chemical and Materials Engineering, University of Alberta, Edmonton, Alberta, Canada, T6G 1H9} \thanks{Corresponding author. Email: moadeil@ualberta.ca} \and
+  Guilherme Ozorio Cassol\footnotemark[1] \and
+  Stevan Dubljevic \footnotemark[1] 
+  }
+  
 \date{\today}
 
 \begin{document}
@@ -69,19 +70,22 @@
 \begin{figure}[htbp!]
   \centering
   \includegraphics*[width=0.9\textwidth]{Figures/abstract_large.PNG}
+  \caption*{\textbf{Graphical abstract:}
+  The boundary-regulated distributed parameter system of an axial dispersion tubular reactor with delayed recycle is showcased, along with the optimal observer-based control strategy developed using a late-lumping method for its stabilization.}
 \end{figure}
 
 \newpage
 \begin{abstract}
-    % Your abstract here
-    The optimal control of an axial tubular reactor with a recycle stream is addressed as a key class of distributed parameter systems in chemical engineering. The intrinsic time delay from the recycle process, thus far overlooked in relevant literature, is modeled as a transport partial differential equation (PDE), resulting in a system of coupled parabolic and hyperbolic PDEs. Utilizing Danckwerts boundary conditions, the reactor is boundary-controlled with the control input at the inlet. A continuous-time optimal linear quadratic regulator is developed to stabilize this infinite-dimensional system, employing a late lumping approach in order to preserve the properties of the original infinite dimensional system in controller design. The full-state feedback regulator is designed by solving the Operator Riccati Equation (ORE), leveraging the system's Riesz-spectral properties. To address practical limitations of full-state feedback, a Luenberger observer is also proposed, enabling state reconstruction from boundary measurements. 
-    Numerical simulations are conducted to evaluate the proposed control strategies. The results demonstrate that the full-state feedback regulator effectively stabilizes the system. A comparison is made between two configurations where different numbers of eigenmodes were selected to design the controller. The observer-based regulator, though slightly slower, also successfully stabilizes the system using only output measurements, effectively overcoming the challenge of limited state access.
+  % Your abstract here
+  The optimal control of an axial tubular reactor with a recycle stream is addressed as a key type of setting for of distributed parameter systems in chemical engineering. The intrinsic time delay from the recycle process, thus far overlooked in relevant literature, is modeled as a transport partial differential equation (PDE), resulting in a system of coupled parabolic and hyperbolic PDEs. Utilizing Danckwerts boundary conditions, the reactor is boundary-controlled with the control input at the inlet. A continuous-time optimal linear quadratic regulator is developed to stabilize infinite-dimensional system, employing a late lumping approach in order to preserve the properties of the original infinite dimensional system in controller design. The full-state feedback regulator is designed by solving the Operator Riccati Equation (ORE), leveraging the system's Riesz-spectral properties. To address practical limitations of full-state feedback, a Luenberger observer is also proposed, enabling state reconstruction from boundary measurements. 
+  Numerical simulations are conducted to evaluate the proposed control strategies. The results demonstrate that the full-state feedback regulator effectively stabilizes the system. A comparison is made between two configurations where different numbers of eigenmodes were selected to design the controller. The observer-based regulator successfully stabilizes the system using merely output measurements, effectively overcoming the challenge of limited state access.
 \end{abstract}
 
 \newpage
-\tableofcontents
-\newpage
-
+% \tableofcontents
+% \newpage
+      
+\onehalfspacing
 % \begin{multicols}{2}
 
   \input{Sections/01_intro.tex}

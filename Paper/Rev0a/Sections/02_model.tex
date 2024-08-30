@@ -1,11 +1,11 @@
-\section{OPEN-LOOP SYSTEM}
+\section{OPEN-LOOP SYSTEM} \label{sec:model}
 
 \subsection{System model}
 
 The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a first-order irreversible chemical reaction \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted substrate. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the reactor's dynamics can be described by a second-order parabolic PDE, a common class of equations used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation}. The resulting PDE that describes the reactor model is given by:
 
 \begin{equation} \label{eq:PDE_original_model}
-    \dot{x}(\zeta, t) = D \partial_{\zeta \zeta} c(\zeta, t) - v \partial_\zeta c(\zeta, t) + k_r c(\zeta, t)
+    \dot{c}(\zeta, t) = D \partial_{\zeta \zeta} c(\zeta, t) - v \partial_\zeta c(\zeta, t) + k_r c(\zeta, t)
 \end{equation}
 
 subject to Dankwerts boundary conditions:
@@ -25,7 +25,7 @@ Dankwerts boundary conditions are particularly suitable for modeling axial tubul
 
 \subsection{PDE representation of delay term}
 
-One effective method for addressing delay in systems is to represent the delay using an alternative transport partial differential equation (PDE). This approach is particularly advantageous when the problem already involves similar forms of PDEs, as is the case in the current study. To specifically address the delay in the system under consideration, the state variable $c(\zeta, t)$ is expanded into a vector of functions $x(\zeta, t) \equiv [x_1(\zeta, t), x_2(\zeta, t)]^T$, where $x_1(\zeta, t)$ represents the concentration within the reactor, and $x_2(\zeta, t)$ is introduced as a new state variable to account for the concentration along the recycle stream. The delay is thus modeled as a pure transport process, wherein the first state $x_1(\zeta, t)$ is transported from the reactor outlet to the inlet, experiencing a delay of $\tau$ time units while in the recycle stream. As a result, Equations~\ref{eq:PDE_original_model}~and~\ref{eq:BC} may be re-formulated as follows:
+One effective method for addressing delay in systems is to represent the delay using an alternative transport partial differential equation (PDE). This approach is particularly advantageous when the problem already involves similar forms of PDEs, as is the case in the current study. To specifically address the delay in the system under consideration, the state variable $c(\zeta, t)$ is expanded into a vector of functions $\bm{x}(\zeta, t) \equiv [x_1(\zeta, t), x_2(\zeta, t)]^T$, where $x_1(\zeta, t)$ represents the concentration within the reactor, and $x_2(\zeta, t)$ is introduced as a new state variable to account for the concentration along the recycle stream. The delay is thus modeled as a pure transport process, wherein the first state $x_1(\zeta, t)$ is transported from the reactor outlet to the inlet, experiencing a delay of $\tau$ time units while in the recycle stream. As a result, Equations~\ref{eq:PDE_original_model}~and~\ref{eq:BC} may be re-formulated as follows:
 
 \begin{align}
     \partial_t 
@@ -35,7 +35,7 @@ One effective method for addressing delay in systems is to represent the delay u
     =
     \begin{bmatrix}
         D \partial_{\zeta \zeta} - v \partial_\zeta + k_r && 0 \\
-        0 && -\frac{1}{\tau} \partial_\zeta
+        0 && \frac{1}{\tau} \partial_\zeta
     \end{bmatrix}
     \begin{bmatrix}
         x_1(\zeta, t) \\ x_2(\zeta,t)
@@ -48,7 +48,7 @@ One effective method for addressing delay in systems is to represent the delay u
 \end{cases}
 \end{align}
 
-With all state variables now expressed explicitly at a specific time instance $t$—in contrast to the previous representation where states at $t$ were directly involved with states at $(t-\tau)$—the system can be described in the standard state-space form of an infinite-dimensional linear time-invariant (LTI) system as $\dot{x} = \mathfrak{A} x$. Here, the state $x(\zeta, t) = [x_1(\zeta, t), x_2(\zeta, t)]^T$ is a vector of functions, and $\mathfrak{A}$ is a linear operator $\mathcal{L}(X)$ acting on a Hilbert space $X: L^2[0,1] \times L^2[0,1]$. The operator $\mathfrak{A}$ and its domain are defined in detail as shown in Equation~(\ref{eq:operator_A}):
+With all state variables now expressed explicitly at a specific time instance $t$—in contrast to the previous representation where states at $t$ were directly involved with states at $(t-\tau)$—the open-loop system can be described in the standard state-space form of an infinite-dimensional linear time-invariant (LTI) system as $\dot{\bm{x}} = \mathfrak{A} \bm{x}$. Here, $\mathfrak{A}$ is a linear operator $\mathcal{L}(X)$ acting on a Hilbert space $X: L^2[0,1] \times L^2[0,1]$ and $\bm{x}(\zeta,t)$, as defined previously, is the vector of functions describing the states of the system. The operator $\mathfrak{A}$ and its domain are defined in detail as shown in Equation~(\ref{eq:operator_A}):
 
 \begin{equation} \label{eq:operator_A}
     \begin{aligned}
@@ -57,8 +57,8 @@ With all state variables now expressed explicitly at a specific time instance $t
             D \partial_{\zeta \zeta} - v \partial_\zeta + k_r & 0 \\
             0 & \frac{1}{\tau} \partial_\zeta
         \end{bmatrix}\\
-        D(\mathfrak{A}) =& \Bigl\{ x = [x_1, x_2]^T \in X:
-        x(\zeta), \partial_\zeta x(\zeta), \partial_{\zeta \zeta} x(\zeta) \quad \mathrm{a.c.},\\
+        D(\mathfrak{A}) =& \Bigl\{ \bm{x} = [x_1, x_2]^T \in X:
+        \bm{x}(\zeta), \partial_\zeta \bm{x}(\zeta), \partial_{\zeta \zeta} \bm{x}(\zeta) \quad \mathrm{a.c.},\\
         &D \partial_\zeta x_1(0) - v x_1(0) = -v \left[ R x_2(0) + (1-R) u \right],\\
         &\partial_\zeta x_1(1) = 0,
         x_1(1) = x_2(1) \Bigr\}
@@ -71,28 +71,28 @@ The adjoint operator $\mathfrak{A}^*$ plays a critical role in analyzing the spe
 
 \begin{equation} \label{eq:adjoint_A}
     \begin{aligned}
-        \langle \mathfrak{A} \phi, \psi\rangle  = \langle \phi, {\mathfrak{A}}^{*} \psi\rangle  &\Rightarrow \\
+        \langle \mathfrak{A} \bm{\phi}, \bm{\psi}\rangle  = \langle \bm{\phi}, {\mathfrak{A}}^{*} \bm{\psi}\rangle  &\Rightarrow \\
         {\mathfrak{A}}^{*} =&
         \begin{bmatrix}
             D \partial_{\zeta \zeta} + v \partial_\zeta +k_r & 0\\
             0 & -\frac{1}{\tau} \partial_\zeta
         \end{bmatrix}\\
-        D(\mathfrak{A}^*) =& \Bigl\{ y = [y_1, y_2]^T \in Y:
-        y(\zeta), \partial_\zeta y(\zeta), \partial_{\zeta \zeta} y(\zeta) \quad \mathrm{a.c.},\\
+        D(\mathfrak{A}^*) =& \Bigl\{ \bm{y} = [y_1, y_2]^T \in Y:
+        \bm{y}(\zeta), \partial_\zeta \bm{y}(\zeta), \partial_{\zeta \zeta} \bm{y}(\zeta) \quad \mathrm{a.c.},\\
         &D \partial_\zeta y_1(1) + v y_1(1) = \frac{1}{\tau} y_2(1) \\
         &R v y_1(0) = \frac{1}{\tau} y_2(0) \\
         &\partial_\zeta y_1(0) = 0 \Bigr\}
     \end{aligned}
 \end{equation}
 
-where $\phi_i(\zeta) = [\phi_{i,1}(\zeta), \phi_{i,2}(\zeta)]^T$ and $\psi_i(\zeta) = [\psi_{i,1}(\zeta), \psi_{i,2}(\zeta)]^T$ are the eigenfunction of $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively. Given that $\mathfrak{A}$ is not self-adjoint (i.e., $\mathfrak{A} \neq \mathfrak{A}^*$), their combined eigenmodes may still form a bi-orthonormal basis, typical of a Riesz-spectral operator \autocite{curtainbook}. Therefore their spectral properties must be determined by solving their characteristic equations.
+where $\bm{\phi_i}(\zeta) = [\phi_{i,1}(\zeta), \phi_{i,2}(\zeta)]^T$ and $\bm{\psi_i}(\zeta) = [\psi_{i,1}(\zeta), \psi_{i,2}(\zeta)]^T$ are the eigenfunction of $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively. Given that $\mathfrak{A}$ is not self-adjoint (i.e., $\mathfrak{A} \neq \mathfrak{A}^*$), their combined eigenmodes may still form a bi-orthonormal basis, typical of a Riesz-spectral operator \autocite{curtainbook}. Therefore their spectral properties must be determined by solving their characteristic equations.
 
 \subsection{Eigenvalue problem}
 
-The eigenvalue problem\autocite{pdebook} for $\mathfrak{A}$ is formulated as:
+The eigenvalue problem for $\mathfrak{A}$ is formulated as:
 
 \begin{equation} \label{eq:eig_prob}
-        \mathfrak{A} \phi_i(\zeta) = \lambda_i \phi_i(\zeta)
+        \mathfrak{A} \bm{\phi_i}(\zeta) = \lambda_i \bm{\phi_i}(\zeta)
 \end{equation}
 
 % \begin{equation} \label{eq:eigval_calc_1}
@@ -124,7 +124,7 @@ where $\lambda_i \in \mathbb{C}$ is the $i^{\text{th}}$ eigenvalue. To obtain th
     \end{aligned}
 \end{equation}
 
-which is in the form of $ \tilde{\phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\phi}$, with the solution stated in Equation~(\ref{eq:eigval_calc_3}):
+which is in the form of $ \tilde{\bm{\phi}}_\zeta  = \tilde{\mathfrak{A}} \tilde{\bm{\phi}}$, with the solution stated in Equation~(\ref{eq:eigval_calc_3}):
 
 \begin{equation} \label{eq:eigval_calc_3}
     \begin{bmatrix}
@@ -138,7 +138,7 @@ which is in the form of $ \tilde{\phi}_\zeta  = \tilde{\mathfrak{A}} \tilde{\phi
     \end{bmatrix}_{\zeta=0}
 \end{equation}
 
-where the matrix $\Lambda_{(i,j)}$ is defined as $e^{\tilde{\mathfrak{A}}}$. By applying the boundary conditions to Equation~(\ref{eq:eigval_calc_3}), the algebraic system of equations in Equation~(\ref{eq:eigval_calc_4}) is obtained:
+where the $ 3 \times 3$ matrix $\Lambda_{(m,n)}$ is defined as $\Lambda \equiv \left. e^{\tilde{\mathfrak{A}} (\zeta - 0)} \right|_{\zeta = 1}$. By applying the boundary conditions to Equation~(\ref{eq:eigval_calc_3}), the algebraic system of equations in Equation~(\ref{eq:eigval_calc_4}) is obtained:
 
 \begin{equation} \label{eq:eigval_calc_4}
     \begin{bmatrix}
@@ -147,7 +147,7 @@ where the matrix $\Lambda_{(i,j)}$ is defined as $e^{\tilde{\mathfrak{A}}}$. By 
         (\Lambda_{1,1} - \Lambda_{3,1}) & (\Lambda_{1,2} - \Lambda_{3,2}) & (\Lambda_{1,3} - \Lambda_{3,3})
     \end{bmatrix} \begin{bmatrix}
         \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
-    \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \tilde{\phi}_{\zeta = 0} = 0
+    \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \left. \tilde{\bm{\phi}} \right|_{\zeta = 0} = 0
 \end{equation}
 
 where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{eq:eigval_calc_4}). Equation~(\ref{eq:eigval_calc_4}) suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane.
@@ -160,7 +160,7 @@ where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{
     \hline
     \textbf{Parameter}        & \textbf{Symbol} & \textbf{Value}     & \textbf{Unit}    \\ \hline
     Diffusivity               & $D$             & $2\times10^{-5}$   & ${m^2}/{s}$      \\ \hline
-    Velocity                  & $v$             & $1\times10^{-2}$   & ${m}/{s}$        \\ \hline
+    Velocity                  & $v$             & $0.01$   & ${m}/{s}$        \\ \hline
     Reaction Constant         & $k_r$           & $1.5$              & $s^{-1}$         \\ \hline
     Recycle Residence Time    & $\tau$          & $80$               & $s$              \\ \hline
     Recycle Ratio             & $R$             & $0.3$              & $-$              \\ \hline
@@ -171,10 +171,10 @@ Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of 
 
 \begin{equation} \label{eq:biorth}
     \begin{aligned}
-        &\langle \mathfrak{A} \phi_i, \psi_j \rangle = \langle \lambda_i \phi_i, \psi_j \rangle = \lambda_i \langle \phi_i, \psi_j \rangle \\
-        \text{L.H.S.} = &\langle \phi_i, \mathfrak{A}^* \psi_j \rangle = \langle \phi_i, \lambda_j^* \psi_j \rangle = \overline{\lambda_j^*} \langle \phi_i, \psi_j \rangle \\
-        &\lambda_i = \overline{\lambda_i^*} \Rightarrow \langle \phi_i, \psi_j \rangle = \delta_{ij}
+        &\langle \mathfrak{A} \bm{\phi_i}, \bm{\psi_j} \rangle = \langle \lambda_i \bm{\phi_i}, \bm{\psi_j} \rangle = \lambda_i \langle \bm{\phi_i}, \bm{\psi_j} \rangle \\
+        \text{L.H.S.} = &\langle \bm{\phi_i}, \mathfrak{A}^* \bm{\psi_j} \rangle = \langle \bm{\phi_i}, \lambda_j^* \bm{\psi_j} \rangle = \overline{\lambda_j^*} \langle \bm{\phi_i}, \bm{\psi_j} \rangle \\
+        &\lambda_i = \overline{\lambda_i^*} \Rightarrow \langle \bm{\phi_i}, \bm{\psi_j} \rangle = \delta_{ij}
     \end{aligned}
 \end{equation}
 
-The eigenfunctions $\{ \phi_i(\zeta), \psi_i(\zeta) \}$ (for $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively) may be obtained following the calculation of eigenvalues. The first 3 eigenfunctions are plotted in Figure~\ref{fig:eigfun}. 
+The eigenfunctions $\{ \bm{\phi_i}(\zeta), \bm{\psi_i}(\zeta) \}$ (for $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively) may be obtained following the calculation of eigenvalues. The first 3 eigenfunctions are plotted in Figure~\ref{fig:eigfun}. 
