@@ -11,3 +11,4 @@ functions/__pycache__/
 *.out
 *.run.xml
 *.synctex.gz
+Paper/Final/*.zip
