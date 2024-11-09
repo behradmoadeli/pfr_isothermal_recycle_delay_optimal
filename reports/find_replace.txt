@@ -1,0 +1,11 @@
+The first result of the bi-orthogonal theorem is that we can successfully assign one of the eigenfunctions $\Psi_{(m)}$ of the adjoint operator $A^*$ and its corresponding eigenvalue $\lambda^*_{(m)}$ to one and only one eigenfunction $\Phi_{(n)}$ of the original operator $A$ with its own eigenvalue $\lambda_{(n)}$. This is done as follows:
+
+$$ <A\Phi_{(n)}, \Psi_{(m)}> = <\Phi_{(n)}, A^* \Psi_{(m)}> $$
+
+$$ LHS = <\lambda_{(n)} \Phi_{(n)}, \Psi_{(m)}> = \lambda_{(n)} <\Phi_{(n)}, \Psi_{(m)}> $$
+
+$$ RHS = <\Phi_{(n)}, \lambda^*_{(m)} \Psi_{(m)}> = \overline{\lambda^*_{(m)}} <\Phi_{(n)}, \Psi_{(m)}> $$
+
+Where $\overline{z}$ indicates the complex conjugate of $z$. Now, for the case $n = m$, we can write:
+
+$$ n = m \Rightarrow <\Phi_{(n)}, \Psi_{(m)}> = <\Phi_{(n)}, \Psi_{(n)}> = 1 \Rightarrow \lambda_{(n)} $$
