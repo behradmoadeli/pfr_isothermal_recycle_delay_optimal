@@ -1,2 +1,0 @@
-# {'par': {'k': 0; 'D': 0.1; 'v': 5.0; 'tau': 1.0; 'R': 0.5; 'label': '(v_5)'}; 'guess_range': ([-275; 25; 75]; [0; 100; 20]); 'tols': (1e-09; 0.005; 3)}
-Sol_r,Sol_i,Guess,g(x),ier,msg,infodict,instances

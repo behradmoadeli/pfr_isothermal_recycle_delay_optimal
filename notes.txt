@@ -1,2 +1,0 @@
-There are big g(x) values with ier=1
-Check "/run_4/CSV/default_4.csv"

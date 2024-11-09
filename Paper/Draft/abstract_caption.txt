@@ -1,1 +1,0 @@
-The boundary-regulated distributed parameter system of an axial dispersion tubular reactor with delayed recycle is showcased, along with the optimal observer-based control strategy developed using a late-lumping method for its stabilization.
