@@ -1,4 +1,4 @@
-\documentclass[11pt,answers]{exam}
+\documentclass[10pt,answers]{exam}
 
 
 \usepackage{graphicx}
@@ -8,20 +8,20 @@
 \usepackage{setspace}
 \usepackage{epstopdf}
 \usepackage{empheq}
-\usepackage{easyReview}
+\setlength{\marginparwidth}{2cm}
+\usepackage{easyReview} % \alert, \highlight, \remove, \add, \replace, \comment
 \usepackage{subcaption}
-\usepackage[letterpaper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
-\usepackage[definethebibliography]{easybib}
+% \usepackage[letterpaper]{geometry}
+% \usepackage[definethebibliography]{easybib}
 \usepackage{float}
 \renewcommand{\solutiontitle}{\noindent\textbf{Authors Reply:}\par\noindent}
-
 
 \begin{document}
 \section*{Reply to Associate Editor and Reviewers}
 We are grateful for your and other reviewers' critical comments and suggestions. 
 \vspace{0.2in}
 \\
-The authors appreciate the reviewers' comments, and the appropriate corrections have been made to the manuscript. All changes in the text are emphasized in a different text color (red) in the highlighted manuscript file that was uploaded as a {\bf{"Supplementary Material for Review but Not for Publication"}}. The major changes to the manuscript are detailed below:\\
+The authors appreciate the reviewers' comments, and the appropriate corrections have been made to the manuscript. All changes in the text are emphasized in a different text color (red) in the highlighted manuscript file that was uploaded as a {\bf{``Supplementary Material for Review but Not for Publication''}}. The major changes to the manuscript are detailed below:\\
 \begin{itemize}
 \item{The abstract and introduction were rewritten to highlight the novelty of the contribution}
 \item{An extended explanation of the parameter screening and optimization method was added.}
@@ -33,362 +33,118 @@ Also, please, find our point-by-point responses in the next pages.\\
 Sincerely yours,\\
 Farzin Sadehlari, Guilherme Ozorio Cassol and Stevan Dubljevic
 \newpage
-\section*{Reviewer 1}
-"The main objective of the study is to investigate the extraction of Nickel ions from acidic aqueous solution using green emulsion liquid membrane system.  Also, optimize the operating conditions of the green emulsion liquid membrane system to achieve high extraction efficiency of Nickel" 
-\begin{questions}
-\question The last part of the abstract, the authors add the main ideas and contributions as well as the significant results;
- \begin{solutionorbox}[5.5cm]
- The abstract was revised and the requested information was included.
- \end{solutionorbox}
-\question What is the viscosity of corn oil and sunflower oil compared with kerosene since the viscosity affects both the stability and the extraction efficiency?
- \begin{solutionorbox}[5.5cm]
-Thank you for your valuable comment. The viscosity of the mentioned solvent was added in section 4.1 ("Selection of the green solvent").
- \end{solutionorbox}
-\question The most important factor in the emulsion liquid membrane is the stability of the membrane, and it was supposed to conduct a stability study using both diluent and compare it with the stability of the membrane when using kerosene as diluent.
- \begin{solutionorbox}[5.5cm]
-Thank you for your valuable feedback and suggestions regarding the stability analysis of the emulsion liquid membrane.
 
-The stability analysis for both green solvents and kerosene has indeed been performed. However, a detailed discussion, including Zeta potential measurements, visual observations of the interface between the internal phase and membrane phase over time, as well as emulsion swelling and breakage measurements, will be covered in a separate paper. The primary focus of this paper is on identifying the optimal solvent and evaluating the extraction efficiency of nickel using these solvents. Including the stability investigation and related topics here would make the paper overly lengthy and potentially distract from its core focus.
 
-We appreciate your understanding and hope this clarifies the scope of the current study.
-
-\end{solutionorbox}
-\question Since the emulsion liquid membrane is extraction followed by stripping. I suggest working on the extraction process accompanied by stripping
- \begin{solutionorbox}[5.5cm]
- Thank you for your suggestion regarding the investigation of stripping in this process.
-
-It is important to mention that after each experimental run, the emulsion phase was broken using the thermal demulsification method, and the concentration of nickel in the internal phase was measured using the ICP method. The stripping efficiency was calculated using the following formula:
-\begin{equation}
-    \text{Stripping  Efficiency}=\frac{C_{f,int}V_{f,int}}{C_{i,ext}V_{i,ext}-C_{f,ext}V_{f,ext}}\times 100
-\end{equation}
-Where $C$ and $V$ denote concentration and volume, respectively. The subscripts $i$, $f$, $ext$, and $int$ represent the initial value, final value, external phase, and internal phase, respectively.
-
-However, the stripping efficiency for the experimental runs has not been reported in this paper. It will be discussed in detail in a separate paper, alongside the stability analyses. The main focus of the current paper is to identify the optimal solvent among those tested and to evaluate the extraction efficiency of nickel using these solvents.
- \end{solutionorbox}
-\question For the purpose of reducing the use of kerosene the authors started by mixing kerosene with natural oils due to the high viscosity of these types of oils, which affect the extraction efficiency. Mixing in varying proportions helps in overcoming the problem of viscosity and reduces the use of kerosene. I suggest the following paper to improve the Introduction https://doi.org/10.1016/j.jics.2023.101081
- \begin{solutionorbox}[5.5cm]
-
-Thank you for your valuable suggestion and for recommending this reference, which was added to the Introduction section. It enhances the discussion on efforts to reduce the use of petroleum-based solvents and transition towards greener solvents in the formulation of ELM for the extraction and removal of water contaminants.
- 
- \end{solutionorbox}
-\question The authors used homogenizer for emulsion and stirrer for mixing.  Emulsification time was varied till 20 min. It is a high energy consuming at speed of 700 rpm followed by separation, the authors should present the energy analysis and compare with other methods.
- \begin{solutionorbox}[5.5cm]
-Thank you for your comment. The energy consumption for each experimental run was estimated by summing the energy consumption of the overhead mixer and homogenizer. Additionally, to calculate the costs associated with each run, the total energy consumption was multiplied by the local electricity cost. However, comparing energy consumption with other methods is impractical because it is highly dependent on the type and size of the equipment used, as well as the processing capacity. Moreover, most studies on extraction have been conducted at a lab scale using very small quantities, particularly under batch operation. This cannot provide reliable information for industries that typically operate at a larger scale and favor continuous processes.
-
- 
- \end{solutionorbox}
-\question The authors should check the aqueous phase after removal of Nickel! There is a possibility of partial solubility of extracted in aqueous phase which again contaminate the phase.
- \begin{solutionorbox}[5.5cm]
-
- Thank you for pointing this out. After the GELM was prepared, it was dispersed in the nickel-containing feed phase and stirred using an overhead mixer, allowing mass transfer to occur until equilibrium was reached. Once complete, the GELM and feed phase were separated due to their density differences using a separation funnel. To ensure that no GELM remained in the raffinate phase, the raffinate was passed through filter paper before measuring the nickel concentration. These steps were specifically designed to prevent any recontamination of the raffinate phase at any stage. 
- 
- \end{solutionorbox}
-\question What about the mass transfer coefficient when using the natural oil compared with kerosene;
- \begin{solutionorbox}[5.5cm]
-
-Thank you for your insightful comment. While the calculation of the mass transfer coefficient is beyond the scope of this paper, we have included a comparison of the extraction equilibria for both GELM prepared with corn oil and ELM prepared with kerosene in Section 4.4. This comparison emphasizes the differences in equilibrium constants between the two systems and validates the experimental findings as well as the accepted mechanism for nickel ion extraction in these systems.
- 
- \end{solutionorbox}
-\end{questions}
-\newpage
 
 \section*{Reviewer 2}
-English must be checked carefully, both in the main text and the Figures/Tables (for example, “forth” is used in Table 9 instead of “fourth”)
-The authors state that “Hence, by disregarding kerosene as a petroleum-based solvent, corn oil emerges as the optimal green solvent choice in the GELM process for nickel extraction.”  Considering that the work includes a DOE, I have an issue with the use of the word “optimal”.  In the Introduction, other potential green oils are mentioned, including coconut oil.  As such, I posit that the corn oil is the best green alternative out of corn oil and sunflower oil.  Unless, that is, the authors can provide evidence of having tested a multitude of oils.
-Further analysis of the data should be conducted.  The authors conducted a DOE, and determined optimum conditions for ELM generation / extraction.  Are the important parameters similar to work by other researchers into ELM based extractions?  Do the contour plots look similar?
-Do the authors have any thoughts on extraction of ions from a multi-component system?
-In general, I think this is a good starting point but could be expanded upon in more detail with a deeper discussion.  There is a lack of placement of the results themselves within other literature.
+
+We appreciate the reviewer's comments and suggestions. The comments of Reviewer 2, along with our responses to each comment, are included below:
+
+\begin{quote}
+    ``The problem presented in the article is well-posed and written. The purpose is to present a novel approach to address the problem of intrinsic delay when there is a recycle stream in a process. However, I recommend submitting it to a journal focused on Control. This opinion is based on the following concerns regarding the process of a chemical reactor with recycle:''
+\end{quote}
 
 
 \begin{questions}
-\question English must be checked carefully, both in the main text and the Figures/Tables (for example, “forth” is used in Table 9 instead of “fourth”)
- \begin{solutionorbox}[5.5cm]
-Thank you for your remark. The English has been revised throughout the manuscript, and the Figures/Tables were carefully reviewed and corrected. 
- \end{solutionorbox}
 
-\question The authors state that “Hence, by disregarding
-kerosene as a petroleum-based solvent, corn oil emerges as the optimal green solvent choice in the
-GELM process for nickel extraction.” Considering that the work includes a DOE, I have an issue
-with the use of the word “optimal”. In the Introduction, other potential green oils are mentioned,
-including coconut oil. As such, I posit that the corn oil is the best green alternative out of corn oil
-and sunflower oil. Unless, that is, the authors can provide evidence of having tested a multitude
-of oils. 
+    \question Why is relevant to consider Danckwerts boundary conditions for the problem of control? Have you compared your results with those obtained considering other boundary conditions?
 
- \begin{solutionorbox}[5.5cm]
- 
- Thank you for your feedback. We acknowledge the concern regarding the use of the term "optimal." The selection in this study was specifically between corn oil and sunflower oil, and other green solvents, such as coconut oil, were not investigated. The statement about corn oil being the "optimal" green solvent is based on the comparison between these two oils. This paper has not examined a broader range of green oils. The text has been revised to clarify that the comparison was limited to these two vegetable oils.
- 
- \end{solutionorbox}
-
-\question Further analysis of the data should be conducted.
-
- \begin{solutionorbox}[5.5cm]
-
-Thank you for highlighting this point. It should be noted that stripping measurements and stability analysis for the GELM prepared using both green solvents and ELM made with kerosene have indeed been performed. However, a detailed discussion including stripping efficiency, Zeta potential measurements, visual observations of the interface between the internal and membrane phases over time, and emulsion swelling and breakage measurements—will be covered in a separate paper. The primary focus of this paper is to identify the optimal solvent and evaluate the extraction efficiency of nickel using these solvents as the first stage of a broader feasibility study on the selective extraction of nickel in the presence of cobalt and cadmium using the GELM method. Including stripping measurements, stability investigations, and related topics here would make the paper overly lengthy and potentially distract from its core focus.
-
-We appreciate your understanding and hope this clarifies the scope of the current study.
-
- \end{solutionorbox}
-
-\question The authors conducted a DOE, and determined optimum conditions for ELM generation / extraction.  Are the important parameters similar to work by other researchers into ELM based extractions?  Do the contour plots look similar?
-
-\begin{solutionorbox}[5.5cm]
-
-We thank the reviewer for their question. Regarding the conditions affecting extraction efficiency in the ELM process, it should be noted that while many factors can influence the extraction in this process, only a few can be directly studied and manipulated. In the case of the ELM process, key parameters include carrier concentration, surfactant concentration, emulsification time and speed, metal ion concentration in the feed phase, stripping agent concentration in the internal phase, stirrer speed and time, external phase acidity, treatment ratio, and phase ratio. Additionally, when a mixture of two carriers, surfactants, or solvents is used in the formulation of ELM, the volume ratio of components also becomes a crucial factor. The mentioned parameters are highly accepted among the researchers and frequently seen in their publications in this area \cite{https://doi.org/10.1002/cjce.23418}\cite{KUMBASAR20122076}\cite{MA201788}\cite{SUJATHA2021108444}\cite{SULIMAN2023121261}\cite{ADMAWI2023101081}.
-
-Studying the effects of all these parameters requires significant time, energy, and resources. Therefore, the most practical approach is to screen the parameters and focus on those significantly impacting extraction efficiency. Statistical methods, such as the Plackett-Burman design, are commonly used to identify the most influential factors. This design allows for testing many factors with a minimal number of experiments and helps identify which parameters need further, more detailed investigation. In this method, each parameter is tested at two levels (e.g., high and low), and the response in each experiment is used to generate standardized normal plots and Pareto plots, highlighting the statistically significant parameters.
-
-Given these considerations, the selection of key parameters in the ELM process may differ depending on the chemicals used in the process, the specified range for each parameter (lower and upper levels), and the measured extraction efficiency (response) in each experiment. For example, in a study conducted by Ma et al.\cite{MA201788}, the extraction of copper using an ELM was investigated. Among ten parameters, including carrier concentration, surfactant concentration, emulsification time and speed, stripping agent concentration in the internal phase, stirrer speed and time, external phase acidity, treatment ratio, and phase ratio, only four parameters, namely, the carrier concentration, emulsification time, emulsification speed, and phase ratio—were identified as the most significant factors affecting the process. On the other hand, in a study by S. Sujatha et al.\cite{SUJATHA2021108444}, the effects of carrier concentration, surfactant concentration, metal ion concentration in the feed phase, stripping agent concentration in the internal phase, stirrer speed and time, external phase acidity, treatment ratio, and phase ratio on the extraction of nickel using a GELM were investigated. In this study, carrier concentration, surfactant concentration, external phase acidity, treatment ratio, and metal ion concentration in the feed phase were identified as the most significant parameters.
-
-Regarding the contour plots, it is important to note that they provide a visual tool for understanding how two factors jointly influence the response while keeping other factors constant. Specifically, they illustrate how a response variable (dependent variable) changes as a function of two independent variables (factors). Depending on the characteristics of the chemicals used, the range of operational parameters, and the experimental design, the interaction between parameters can affect extraction efficiency differently. This variation in interactions explains the differences observed in the contour plot schematics.
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
 
+    \question Concerning the recycle stream, have you studied the effect of the R, the recycle ratio, on your results? Please comment.
 
- \end{solutionorbox}
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
-\question Do the authors have any thoughts on extraction of ions from a multi-component system?
-\begin{solutionorbox}
+    
+    \question The authors used as the case study the problem of an axial dispersion tubular reactor incorporating diffusion, convection, and a first-order irreversible chemical reaction described by equations (1)-(2). While this is sufficient to present their approach, it is far from being extended to the more general problem, non-isothermal, and with more general kinetics such as biochemical or catalytic.
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
 
-Thank you for this insightful question. The primary focus of our research is to evaluate the technical feasibility of selectively extracting Ni(II) from a multi-metal system using a GELM. This approach stems from the fact that in mining tailings and industrial waste streams, nickel ions are rarely found in isolation and are typically accompanied by other metals such as cobalt (Co), copper (Cu), cadmium (Cd), aluminum (Al), and iron (Fe), among others. Therefore, it is essential to explore the application of GELM for the selective extraction and separation of nickel from a multi-component system.
+    \question I recommend submitting it to a journal focused on Control.
 
-Specifically, the study focuses on the selective extraction of nickel from synthetic aqueous solutions containing two distinct sets of metals: 1) Nickel, Copper, and Calcium, and 2) Cobalt and Nickel. As a preliminary step, this research investigated the feasibility of nickel extraction from a single-component aqueous solution using GELM. Since only a few green solvents have been explored for this process, two of the most common edible oils — corn oil and sunflower oil — were selected as promising candidates for evaluation. The experimental results confirmed that corn oil is effective for nickel extraction in this process, paving the way for further investigation towards the selective extraction of nickel from multi-metal systems.
-
-
-\end{solutionorbox}
-
-\question In general, I think this is a good starting point but could be expanded upon in more detail with a deeper discussion.  There is a lack of placement of the results themselves within other literature.
-
-\begin{solutionorbox}
-Thank you for your valuable feedback. The authors appreciate the suggestion to expand upon the discussion in more detail. To address this, a deeper analysis was included by placing the results within the context of relevant literature. 
-\end{solutionorbox}
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
 \end{questions}
 
+% Reviewing: 3
 \newpage
-
-
 \section*{Reviewer 3}
-Overall, the manuscript focuses on the extraction of nickel from aqueous solution using green emulsion liquid membrane (GELM). A few articles investigating the extraction of nickel using either emulsion liquid membrane or GELM which are
 
-1.      Sujatha, S., Rajamohan, N., Anbazhagan, S., Vanithasri, M., \& Rajasimman, M. (2021). Extraction of nickel using a green emulsion liquid membrane–Process intensification, parameter optimization and artificial neural network modeling. Chemical Engineering and Processing-Process Intensification, 165, 108444.
-2.      Othman, N., Jusoh, N., Sulaiman, R. N. R., \& Noah, N. F. M. (2023). Sustainable Green Synergistic Emulsion Liquid Membrane Formulation for Metal Removal from Aqueous Waste Solution. Green Chemistry for Sustainable Water Purification, 49-78.
-3.      Ma, H., Kökkılıç, O., Marion, C. M., Multani, R. S., \& Waters, K. E. (2018). The extraction of nickel by emulsion liquid membranes using Cyanex 301 as extractant. The Canadian Journal of Chemical Engineering, 96(7), 1585-1596.
-4.      Hachemaoui, A., \& Belhamel, K. (2017). Simultaneous extraction and separation of cobalt and nickel from chloride solution through emulsion liquid membrane using Cyanex 301 as extractant. International Journal of Mineral Processing, 161, 7-12.
+We appreciate the reviewer's comments and suggestions. The comments of Reviewer 3, along with our responses to each comment, are included below:
 
-Therefore, authors should highlight the contribution of the current manuscript since the problem statement is not well highlighted in the introduction section. In addition, since the extraction of nickel is 98.1\%, the authors should indicate the mechanism of extraction using green diluent. Thus, it will highlight the contribution of the current work. The introduction section is satisfactory, and it is suggested to reconstruct which lead to the concrete aim and objective of the current work. Wondering why the investigation include the kerosene if the aim of the current work focus on the green diluent.  More analysis is required in term of the images of emulsion before and after the extraction to show the stability of the green emulsion liquid membrane. The discussion is superficial and need to have concrete claims that supported by the analysis. A recycling of membrane phase section of the green emulsion liquid membrane needs further improvement. The sentence structure, terminology used, grammars and formatting need major revision.  Detail comments as follows.
+\begin{quote}
+    ``In this work, the authors address the optimal control of an axial tubular reactor with a recycle stream. They model the intrinsic time delay from the recycling process using a system of coupled parabolic and hyperbolic partial differential equations. The control input is applied at the inlet, and a continuous-time optimal linear quadratic regulator is designed to stabilize the system. Numerical simulations indicate effective full-state feedback regulator and observer-based regulator. This work presents an interesting methodology but there are some minor considerations that the authors need to address before this article can be published:''
+\end{quote}
 
 \begin{questions}
 
-\question Title can be improved. It is suggested to have “Plackett-Burmann Design” or/and “Central Composite Design” since the current study focus on the finding key parameters and optimization using green diluent.
+    \question \textbf{Major comment: } In section 4, the authors indicate that they discretized each state in space using 100 grid points. They must indicate if those points are equidistributed and how they came up with such discretization grid. Note that multiple works \cite{palma2023selection, assassa2016optimality, chen2014bilevel} have demonstrated that the selection and distribution of the discretization grid plays a crucial role in the computation of optimal control laws, i.e., a control law can be claimed to be optimal or not using the criterion of the Pontryagin's Minimum Principle (PMP). The reviewer recommends to assess the criterion of the Hamiltonian function (i.e., the PMP) to demonstrate that the discretization implemented is accurate and the solutions obtained for the control are optimal.
 
-\begin{solutionorbox}
-    The title has been revised based on the suggested terminology.
-\end{solutionorbox}
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
 
-Abstract
-\begin{itemize}
-    \item Check (G)ELM
-    \item Check either “carrier agent” or “carrier”.
-    \item The abstract is lack on the quantitative result such as:
-    \begin{itemize}
-     \item R2 of the central composite design
-     \item The optimum condition to achieve 98.1\% extraction of nickel ions
-     \item Recycling of the membrane phase
-     \end{itemize}
-\end{itemize}
+    \question The manuscript lacks conclusions or further discussion about the control trajectories' results, such as the quality of the control actions or improvements in process operation (e.g., avoidance of constraint violations, disturbance rejection, etc.). Although the authors included several figures illustrating the process dynamics and control trajectories, these are not discussed in sufficient depth, i.e., avoid leaving the reader to draw their own conclusions from the figures. Additionally, the reviewer recommends reducing the number of figures, which could allow more space for further discussion of the results.
 
-\begin{solutionorbox}
-    The abstract was revised, and the corrections have been made.
-\end{solutionorbox}
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
-Keywords
 
-\question include green emulsion liquid membrane Why only corn oil? How about sunflower oil?
+    \question In section 3.1.3, the authors present the values for parameters R and D but provide no further details about the model's sensitivity to these parameters. Please include a detailed explanation of how these values were selected and discuss any potential limitations if the parameters are chosen incorrectly.
 
-\begin{solutionorbox}
-    The keywords were revised, and the suggested words were added to this section.
-\end{solutionorbox}
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
-Introduction
 
-\question The manuscript is focussing on the extraction nickel using green emulsion liquid membrane by investigating the key parameters and optimum conditions to achieve high extraction efficiency. However, the introduction is quite lengthy and not focus. Authors should develop the introduction based on the problem associated with the existing emulsion liquid membrane followed by the review on the method that can enhance this technology as well as the extraction efficiency of nickel. Some of the paragraph can be combined. Authors are required to reconstruct the introduction so that the novelty of the current work can be seen. Authors should also include the literature review on the Plackett-Burman Design and Central Composite Design that have been widely used in the emulsion liquid membrane.
-\begin{solutionorbox}
-    Thank you for the valuable feedback. The introduction has been revised to better focus on the challenges associated with existing emulsion liquid membrane (ELM) technology and how this study addresses these issues. It now emphasizes the limitations of conventional ELM systems, particularly in nickel extraction, and the need for improvements. A concise review of methods to enhance ELM performance, with a focus on green solvents, has also been incorporated. Additionally, some paragraphs were combined to improve clarity and ensure that the novelty of this work is more clearly highlighted. 
-    
-    Regarding the suggestion to include a literature review on the Plackett-Burman Design and Central Composite Design, we believe this falls outside the scope of the current study. While these designs are commonly used in experimental studies, the focus of this work is on optimizing key parameters for nickel extraction using green ELM rather than the statistical design of experiments. Therefore, a detailed review of these methods has not been included, but a few more references and a detailed explanation in this regard were added in section 3.
-    
-    Thank you again for your insightful suggestions. We hope these revisions effectively address your concerns.
+    \question In section 4, the authors indicate that the process model was discretized in time and space, however, they mention that they obtained a system of ordinary differential equations (ODEs). Please clarify how this full discretization resulted in a system of ODEs.
 
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
-\end{solutionorbox}
-\question Page 2, Line 52. Authors are suggested to include the reference showing that nickel is most prevalent heavy metals in mining tailing.
-\begin{solutionorbox}
-    Related references were added.
-\end{solutionorbox}
 
-2.1 Reagents
+    \question The manuscript has some typos that the authors must correct, e.g., …setting for of distributed…, Then two full-state… In page 5, the acronym PIDEs is not previously defined. For section 4.3, the reviewer recommends to modify the expression “Last but not least” aiming not loose the formality of the manuscript.
 
-\question Specify the purity of the chemical listed.
-\begin{solutionorbox}
-    The purity of the chemical was mentioned.
-\end{solutionorbox}
-2.2 Procedure and apparatus
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 
-\question For this part, it is suggested that the authors tabulate the parameters for the experiments.
-\begin{solutionorbox}
-    Thank you for the suggestion. The parameters and their corresponding ranges have already been listed in Table 1, Section 3. As they are thoroughly detailed there, it was considered unnecessary to repeat them in this section.
-\end{solutionorbox}
 
-\question Page 5, Line 38 “Overhead Stirrer”. Small letter “o” and “s”
-\begin{solutionorbox}
-    The term "Overhead Stirrer" has been corrected to lowercase “overhead stirrer” in the revised manuscript.
-\end{solutionorbox}
+    \question The reviewer recommends to include a tables of nomenclature
 
-\question Page 5, Line 49, check the alignment
-
-\begin{solutionorbox}
-The alignment was corrected.
-\end{solutionorbox}
-
-\question Cite equation 1
-
-\begin{solutionorbox}
-The reference for this equation was added.
-\end{solutionorbox}
-
-
-\question Equation 1 Specify the unit of nickel concentration
-\begin{solutionorbox}
-Thank you for your observation. As the extraction efficiency is a unitless parameter calculated by dividing two concentrations, specifying the unit of nickel concentration is not necessary for this equation.
-\end{solutionorbox}
-
-\question Wondering how the concentration of nickel is measured using ICP-OES? Did the authors used calibration curve?
-
-\begin{solutionorbox}
-Thank you for your question. The concentration measurements of nickel were performed by the Natural Resources Analytical Laboratory, Faculty of Agricultural, Life and Environmental Sciences at the University of Alberta. According to the provided documentation, nickel concentration was measured using ICP-OES (Thermo iCAP6300 Duo). This instrument analyzes water samples and aqueous solutions by aspirating them into an argon plasma and atomizing the samples at temperatures of approximately 5500–8000 K. The emitted characteristic emission patterns unique to each element are detected by a spectrometer, allowing for simultaneous multi-element analysis.
-
-An internal standard solution containing yttrium (Y) was used to correct for matrix effects during analysis. The system is not compatible with samples containing hydrofluoric acid or organic solvents, and it operates within a range of total dissolved solids (TDS) concentrations less than 2000 mg/L. Although a calibration curve was not directly referenced, the internal standard and proper instrument calibration ensured accurate measurements.
-\end{solutionorbox}
-2.3 Mechanism of nickel extraction by GELM
-
-\question Page 5, line 56, check is the mechanism name is correct “counter-diffusive transportation”. Is it facilitated counter transport?
-\begin{solutionorbox}
-The mechanism name was revised.
-\end{solutionorbox}
-
-
-\question Figure 1. Enhance the figure by mentioning the chemical/compound/mixture/solution for each phase.
-\begin{solutionorbox}
-Thank you for your suggestion. The title has been revised; however, this figure represents the general steps of the GELM method. Therefore, adding the names and concentrations of the chemicals is not deemed necessary for the clarity of the figure.
-\end{solutionorbox}
-
-3 DESIGN OF EXPERIMENTS FOR SCREENING THE PARAMETERS
-
-\question The heading for this part is capitalized all letters. Authors should use a consistent formatting and clear presentation.
-\begin{solutionorbox}
-Thank you for your feedback. All headings of the main sections are capitalized following the formatting style specified by the journal's template (the authors have used the latex template provided by the journal), and this decision was made to comply with those guidelines rather than a choice by the authors.
-\end{solutionorbox}
-
-\question What is the basis of selecting the 8 operational parameters? Is there any reference?
-
-\begin{solutionorbox}
-
-Thank you for the esteemed reviewer's insightful questions. It is important to note that in experimental studies, an unlimited number of factors could be considered. However, actually carrying out all the experiments to assess the effects of all these parameters requires significant time, energy, and resources. Moreover, only a few of these parameters can be directly measured and manipulated, and their effects on the response can be quantitatively analyzed. Therefore, screening and narrowing down the parameters is crucial in experimental studies.
-
-In the case of the ELM process, the key parameters recognized by researchers include carrier concentration, surfactant concentration, emulsification time and speed, metal ion concentration in the feed phase, stripping agent concentration in the internal phase, stirrer speed and time, external phase acidity, treatment ratio, and phase ratio. Additionally, when a mixture of two carriers, surfactants, or solvents is used in the formulation of ELM, the volume ratio of components also becomes a critical factor. These parameters are commonly referenced in the literature by various researchers in this field\cite{https://doi.org/10.1002/cjce.23418}\cite{KUMBASAR20122076}\cite{MA201788}\cite{SUJATHA2021108444}\cite{SULIMAN2023121261}\cite{ADMAWI2023101081}.
-
-
-\end{solutionorbox}
-
-
-
-4.1     Selection of green solvent
-
-\question Change green solvent to green diluent. Use accurate term specifically for emulsion liquid membrane. Check through the manuscript. 
-
-\begin{solutionorbox}
-
-Thank you for your feedback. However, both 'solvent' and 'diluent' are often used interchangeably in the literature on emulsion liquid membranes (ELM)\cite{Raval2022-uo}\cite{kumar2019review}\cite{SUJATHA2021108444}, and there is no substantial reason to limit the terminology to one. Even N. Li \cite{li1971separation}, who is recognized as the inventor of the ELM, referred to "solvent" in his initial paper. Therefore, both terms are appropriate in this context.
-
-\end{solutionorbox}
-
-\question Provide the viscosity of each solvent.
-
-\begin{solutionorbox}[5.5cm]
-Thank you for your valuable comment. The viscosities of the mentioned diluents, corn oil, sunflower oil, and kerosene, were added in section 4.1 (Selection of the Green Diluent).
-\end{solutionorbox}
-
-4.2     Identification of Key Parameters
-
-\question Improve this section by discussion on the Pareto Chart of the Standardized Effects. 
-
-\begin{solutionorbox}
-Thank you for your valuable suggestion. The section was improved to include a discussion on the Pareto Chart of the Standardized Effects. 
-\end{solutionorbox}
-
-\question addition, authors should also discuss on the significant and not significant parameters. Provide justification support with cited literature.
-
-\begin{solutionorbox}
-Section 4.3.1 already addresses the discussion of both significant and non-significant parameters, where we provide a detailed analysis and justification for these findings. Additionally, more references were incorporated to support our discussion in the revised version.
-\end{solutionorbox}
-
-
-4.3     Optimization of the parameters
-
-\question More deliberation on the shape of surface contour and what the relationship between the parameters.
-
-\begin{solutionorbox}
-The explanation of the shape of the surface contour and the relationship between the parameters was revised.
-\end{solutionorbox}
-
-4.4     Extraction equilibria
-
-\question This section should be model validation and confirmation test. Change the heading to Validation and confirmation test.
-
-\begin{solutionorbox}
-Thank you for your suggestion regarding the heading. However, the authors prefer to retain "Extraction equilibria" as it more accurately describes the content of this section. This part focuses on validating experimental results with established models for the process rather than proposing a new model. We appreciate your understanding.
-\end{solutionorbox}
-
-
-\question For each equation provided (equation 5,6,7 and 8), include with the reference.
-\begin{solutionorbox}
-Thank you for your suggestion. Equation 5 represents a fundamental equilibrium constant equation, while Equations 6, 7, and 8 are derived from mathematical manipulation of Equation 5. As such, the foundational nature of Equation 5 makes it unnecessary to provide a separate reference for it. 
-\end{solutionorbox}
-
-\question Figure 6. unit of carrier concentration. Check the unit for all figures throughout the manuscript accordingly.
-\begin{solutionorbox}
-Thank you for your observation regarding Figure 6. The x-axis title was corrected to log[$H_2R_2$], which is dimensionless.
-\end{solutionorbox}
-
-
-4.5     Membrane recycling
-
-\question This section needs further improvement since there had not been reported on the emulsion observed after demulsification. Need to investigate under microscope.
-
-\begin{solutionorbox}
-Thank you for your valuable feedback. While visual observations of the emulsion were made after demulsification to assess stability and breakage, detailed microscopic analysis was not conducted in this study. In fact, the stability analysis for both green solvents and kerosene has indeed been performed. However, a detailed discussion, including Zeta potential measurements, visual observations of the interface between the internal phase and membrane phase over time, as well as emulsion swelling and breakage measurements, will be covered in a separate paper. The primary focus of this paper is on identifying the optimal solvent and evaluating the extraction efficiency of nickel using these solvents. Including the stability investigation and related topics here would make the paper overly lengthy and potentially distract from its core focus. Accordingly, We agree that such an investigation would provide deeper insights into the emulsion's structural characteristics post-demulsification. This suggestion will be considered for future work to enhance the understanding of the demulsification process further.    
-\end{solutionorbox}
-
-
-
-\question Table 9. Define “unstable” for the fifth recycling. How was it measured? The are two ways to measure the stability in terms of the breakage or the recycling membrane phase which having consistent extraction efficiency. In this case, at third recycling, the nickel extraction dropped from 89.8\% to 64.3\%. Is this unstable? Explain.
-
-\begin{solutionorbox}
-Thank you for the insightful comment. In Table 9, the term “unstable” for the fifth recycling refers to the significant deterioration of the emulsion’s physical integrity, or in other words, the separation of two phases immediately after turning off the homogenizer. This instability was observed through visual inspection (increased phase separation). 
-
-In the third recycling cycle, the extraction efficiency dropped from 89.8\% to 64.3\%, signaling the onset of emulsion instability. This instability was attributed to significant membrane phase breakage, as the surfactant gradually lost its properties due to repeated emulsification and demulsification processes. Consequently, the system's ability to maintain consistent performance degraded, affecting overall extraction efficiency.
- 
-\end{solutionorbox}
-
-
-
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
 \end{questions}
+
+% Comments to the Author
+% In this work, the authors address the optimal control of an axial tubular reactor with a recycle stream. They model the intrinsic time delay from the recycling process using a system of coupled parabolic and hyperbolic partial differential equations. The control input is applied at the inlet, and a continuous-time optimal linear quadratic regulator is designed to stabilize the system. Numerical simulations indicate effective full-state feedback regulator and observer-based regulator. This work presents an interesting methodology but there are some minor considerations that the authors need to address before this article can be published:
+
+% Major comment:
+% 1) In section 4, the authors indicate that they discretized each state in space using 100 grid points. They must indicate if those points are equidistributed and how they came up with such discretization grid. Note that multiple works [] have demonstrated that the selection and distribution of the discretization grid plays a crucial role in the computation of optimal control laws, i.e., a control law can be claimed to be optimal or not using the criterion of the Pontryagin’s Minimum Principle (PMP). The reviewer recommends to assess the criterion of the Hamiltonian function (i.e., the PMP) to demonstrate that the discretization implemented is accurate and the solutions obtained for the control are optimal.
+
+
+
+% Suggested Bibliography
+% [1] Chen, W., Shao, Z., & Biegler, L. T. (2014). A bilevel NLP sensitivity‐based decomposition for dynamic optimization with moving finite elements. AIChE Journal, 60(3), 966-979.
+% [2] Assassa, F., & Marquardt, W. (2016). Optimality-based grid adaptation for input-affine optimal control problems. Computers & chemical engineering, 92, 189-203.
+% [3] Palma‐Flores, O., & Ricardez‐Sandoval, L. A. (2023). Selection and refinement of finite elements for optimal design and control: A Hamiltonian function approach. AIChE Journal, 69(5), e18009.
 
 
 \newpage
 \bibliographystyle{vancouver}
-\bibliography{mysamallbibliography}
-
+\bibliography{references.bib}
 \end{document}
