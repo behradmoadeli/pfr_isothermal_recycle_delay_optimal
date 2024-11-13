@@ -5,12 +5,14 @@
 \usepackage{amsmath}
 \usepackage{color}
 \usepackage{amssymb}
-\usepackage{setspace}
-\usepackage{epstopdf}
-\usepackage{empheq}
-\setlength{\marginparwidth}{2cm}
-\usepackage{easyReview} % \alert, \highlight, \remove, \add, \replace, \comment
-\usepackage{subcaption}
+% \usepackage{setspace}
+% \usepackage{epstopdf}
+% \usepackage{empheq}
+\usepackage{csquotes} % \textcquote
+\usepackage{parskip}
+% \setlength{\marginparwidth}{2cm}
+% \usepackage{easyReview} % \alert, \highlight, \remove, \add, \replace, \comment
+% \usepackage{subcaption}
 % \usepackage[letterpaper]{geometry}
 % \usepackage[definethebibliography]{easybib}
 \usepackage{float}
@@ -18,27 +20,179 @@
 
 \begin{document}
 \section*{Reply to Associate Editor and Reviewers}
-We are grateful for your and other reviewers' critical comments and suggestions. 
-\vspace{0.2in}
-\\
-The authors appreciate the reviewers' comments, and the appropriate corrections have been made to the manuscript. All changes in the text are emphasized in a different text color (red) in the highlighted manuscript file that was uploaded as a {\bf{``Supplementary Material for Review but Not for Publication''}}. The major changes to the manuscript are detailed below:\\
-\begin{itemize}
-\item{The abstract and introduction were rewritten to highlight the novelty of the contribution}
-\item{An extended explanation of the parameter screening and optimization method was added.}
-%\item{Figure 3;}
-\end{itemize}
 
-Also, please, find our point-by-point responses in the next pages.\\
-\\ 
-Sincerely yours,\\
-Farzin Sadehlari, Guilherme Ozorio Cassol and Stevan Dubljevic
+We appreciate the reviewers' valuable comments and suggestions and have made every effort to address them comprehensively. Enclosed, we have provided responses to each reviewer's comments in the upcoming pages of this document. Additionally, you will find the updated version of the manuscript along with a supplementary document detailing the changes made in comparison to the original submission.
+
+Before jumping into details, there is one common concern among the reviewers regarding the model of the reactor. We realize the initial manuscript lacks a detailed discussion on this matter. 
+However, we would like to emphesize that the key contribution of this work is to address a spatially distributed chemical engineering setup considering the existance of the recycle stream without neglecting the intrinsic time delay it imposes on the system. 
+To be more specific, the main idea of our submission revolves around developing a general strategy for designing an optimal controller with no need for model reduction by capturing the state delay as an additional PDE coupled with the original system. 
+Although the control theory for spatially distributed systems with state-delays are not uncommon in other fields, this work is the first to address this problem in the context of chemical engineering. Therefore, we have intentilnaly kept the model simple yet realistic to demonstrate the proposed control strategy.
+
+Nevertheless, we have included a more detailed discussion on the model and its limitations in the revised manuscript to better match the scope of the journal and address the reviewers' concerns. The model assumes that temperature and pressure have negligible effect on the parameters of the system. The reaction kinetics can be seen in two ways: first, the state of the system being described by the reactant concentration, and second, the state being described by the product concentration.  
+
+\begin{enumerate}
+    \item  $x_1 = C_A$: In this case, the reaction is either a first-order reaction, or the reaction rate is a non-linear function of the state. In the latter case, the non-linear system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be negative as long as the state of the system is the reactant concentration. 
+    \item $x_1 = C_A$: In this case, the reaction rate is generally a nonlinear function of the product concentration. Same as previous, the system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be positive as long as the state of the system is the product concentration. In a rare case, such as auto-catalytic reactions where the reactant is available in excess, the reaction rate can be directly expressed as a linear function of the product concentration.
+    
+\end{enumerate}
+
+We understand that given the above assumptions, it is rare to have an unstable system in practice as most unstable reaction systems are as a result of the temperature dependence of the reaction rates, resulting in runaway reactions. However, the motivation behind the choice of positive reaction term in the model is to demonstrate the ability of the proposed controller to stabilize a system which is intrinsically unstable. 
+
+We hope that the revised manuscript meets the standards of the journal and is suitable for publication. 
+
+\vspace{1em}
+Sincerely yours,
+
+Behrad Moadeli, Guilherme Ozorio Cassol and Stevan Dubljevic
 \newpage
 
+\section*{Reviewer 1}
 
+The comments of Reviewer 1, along with our responses to each comment, are included below:
+
+\begin{quote}
+    \textquote{This work presents a boundary optimal control strategy for axial tubular reactors with first-order irreversible chemical reaction incorporating a delayed recycle stream. The mathematical description takes the form of a system of coupled parabolic and hyperbolic PDEs. An infinite-dimensional approach is applied to derive a linear quadratic regulator with and without observer. Numerical studies show that the proposed controller is able to stabilize the system. The manuscript is clear and well written and addresses a challenging control problem in chemical engineering. The following comments and suggestions may improve the presentation so that it is considered for publication.}
+\end{quote}
+
+\begin{questions}
+
+    \question Page 3 - \textquote{Many chemical, petrochemical, and biochemical unit operation processes are modelled as
+    distributed parameter systems (DPS).}
+
+    A few specific examples of these chemical processes would help to motivate the problem this paper addresses
+
+    \begin{solutionorbox}
+        Examples have been added to the introduction and the manuscript has been revised accordingly.
+    \end{solutionorbox}
+
+    \question Page 5 - \textquote{PIDEs}
+
+    - What does PIDEs stand for?
+
+    \begin{solutionorbox}
+        Thanks for pointing this out. The acronym should have been defined in the manuscript. It stands for Partial Integro-Differential Equations. The manuscript has been revised accordingly.
+    \end{solutionorbox}
+
+
+    \question Page 5 - \textquote{a configuration common in industrial processes}
+
+    - Examples of these processes would illustrate the need and motivation to address the associated
+    control problem
+
+    \begin{solutionorbox}
+        Examples have been added to the introduction and the manuscript has been revised accordingly.
+    \end{solutionorbox}
+
+
+    \question Page 6 - \textquote{The resulting PDE that describes the reactor model is given by:}
+
+    - I suggest to specify the assumptions leading to the reactor model, like isothermal operation,
+    constant properties, constant pressure, ...
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 7 - Eq (2)
+
+    - What is the physical meaning of the manipulated variable $u(t)$?
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 7 - \textquote{ $x_2(\zeta, t)$ is introduced as a new state variable to account for the concentration along the recycle stream}
+
+    - Why is $x_2$ a function of $\zeta$ ? How does $x_2$ change across the recycle? What kind of law does it follow? To me, it seems like $x_2$ only changes with respect to time
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 8 - Eq (5)
+    
+    - Please make a distinction between the symbol for domain and for diffusivity to avoid confusion
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 12 - Riesz-spectral operator $\mathfrak{A}$
+
+    - Although a rigorous proof is not necessary, it would be good if the authors explain why $\mathfrak{A}$ is a Riesz-spectral operator. I guess its eigenvalues and eigenfunctions satisfy the requirements, like having multiplicity one and forming a Riesz basis, respectively.
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 12 - $\mathfrak{R}$ being positive semi-definite operator
+
+    - Should $\mathfrak{R}$ be self-adjoint and coercive?
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 12 - The LQR problem
+
+    - Is Problem 12 well-posed, does J have a finite value for at least one u?
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 18 - unstable dynamics of the model
+
+    - Why is the zero-input response considered unstable? Is it a qualitatively assessment? What is the physical meaning of Figure 9?
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 18 - \textquote{The goal is to stabilize the system using an optimal control strategy}
+
+    - What are the values of matrices Q and R in the objective function?
+
+    - Are x deviation variables? What is the setpoint?
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 20 - \textquote{Both optimal feedback gains are able to successfully stabilize the system within finite time horizon.}
+
+    - It would be interesting to see how the delay time affects the stabilizing capabilities of the feedback regulator. What would happen a shorter and larger values of $\tau$
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+    \question Page 26 - \textquote{The proposed framework may be extended to more complex diffusion-convection reactor configurations, such as non-isothermal reactors}
+
+    - Can this framework be applied to reaction systems described with more complex and highly nonlinear reaction kinetics?
+
+    \begin{solutionorbox}
+        The title has been revised based on the suggested terminology.
+    \end{solutionorbox}
+
+
+\end{questions}
+
+\newpage
 
 \section*{Reviewer 2}
 
-We appreciate the reviewer's comments and suggestions. The comments of Reviewer 2, along with our responses to each comment, are included below:
+The comments of Reviewer 2, along with our responses to each comment, are included below:
 
 \begin{quote}
     ``The problem presented in the article is well-posed and written. The purpose is to present a novel approach to address the problem of intrinsic delay when there is a recycle stream in a process. However, I recommend submitting it to a journal focused on Control. This opinion is based on the following concerns regarding the process of a chemical reactor with recycle:''
@@ -80,7 +234,7 @@ We appreciate the reviewer's comments and suggestions. The comments of Reviewer 
 \newpage
 \section*{Reviewer 3}
 
-We appreciate the reviewer's comments and suggestions. The comments of Reviewer 3, along with our responses to each comment, are included below:
+The comments of Reviewer 3, along with our responses to each comment, are included below:
 
 \begin{quote}
     ``In this work, the authors address the optimal control of an axial tubular reactor with a recycle stream. They model the intrinsic time delay from the recycling process using a system of coupled parabolic and hyperbolic partial differential equations. The control input is applied at the inlet, and a continuous-time optimal linear quadratic regulator is designed to stabilize the system. Numerical simulations indicate effective full-state feedback regulator and observer-based regulator. This work presents an interesting methodology but there are some minor considerations that the authors need to address before this article can be published:''
@@ -129,19 +283,6 @@ We appreciate the reviewer's comments and suggestions. The comments of Reviewer 
         The title has been revised based on the suggested terminology.
     \end{solutionorbox}
 \end{questions}
-
-% Comments to the Author
-% In this work, the authors address the optimal control of an axial tubular reactor with a recycle stream. They model the intrinsic time delay from the recycling process using a system of coupled parabolic and hyperbolic partial differential equations. The control input is applied at the inlet, and a continuous-time optimal linear quadratic regulator is designed to stabilize the system. Numerical simulations indicate effective full-state feedback regulator and observer-based regulator. This work presents an interesting methodology but there are some minor considerations that the authors need to address before this article can be published:
-
-% Major comment:
-% 1) In section 4, the authors indicate that they discretized each state in space using 100 grid points. They must indicate if those points are equidistributed and how they came up with such discretization grid. Note that multiple works [] have demonstrated that the selection and distribution of the discretization grid plays a crucial role in the computation of optimal control laws, i.e., a control law can be claimed to be optimal or not using the criterion of the Pontryagin’s Minimum Principle (PMP). The reviewer recommends to assess the criterion of the Hamiltonian function (i.e., the PMP) to demonstrate that the discretization implemented is accurate and the solutions obtained for the control are optimal.
-
-
-
-% Suggested Bibliography
-% [1] Chen, W., Shao, Z., & Biegler, L. T. (2014). A bilevel NLP sensitivity‐based decomposition for dynamic optimization with moving finite elements. AIChE Journal, 60(3), 966-979.
-% [2] Assassa, F., & Marquardt, W. (2016). Optimality-based grid adaptation for input-affine optimal control problems. Computers & chemical engineering, 92, 189-203.
-% [3] Palma‐Flores, O., & Ricardez‐Sandoval, L. A. (2023). Selection and refinement of finite elements for optimal design and control: A Hamiltonian function approach. AIChE Journal, 69(5), e18009.
 
 
 \newpage
