@@ -1,4 +1,4 @@
-\documentclass[10pt,answers]{exam}
+\documentclass[12pt,answers]{exam}
 
 
 \usepackage{graphicx}
@@ -22,23 +22,6 @@
 \section*{Reply to Associate Editor and Reviewers}
 
 We appreciate the reviewers' valuable comments and suggestions and have made every effort to address them comprehensively. Enclosed, we have provided responses to each reviewer's comments in the upcoming pages of this document. Additionally, you will find the updated version of the manuscript along with a supplementary document detailing the changes made in comparison to the original submission.
-
-Before jumping into details, there is one common concern among the reviewers regarding the model of the reactor. We realize the initial manuscript lacks a detailed discussion on this matter. 
-However, we would like to emphesize that the key contribution of this work is to address a spatially distributed chemical engineering setup considering the existance of the recycle stream without neglecting the intrinsic time delay it imposes on the system. 
-To be more specific, the main idea of our submission revolves around developing a general strategy for designing an optimal controller with no need for model reduction by capturing the state delay as an additional PDE coupled with the original system. 
-Although the control theory for spatially distributed systems with state-delays are not uncommon in other fields, this work is the first to address this problem in the context of chemical engineering. Therefore, we have intentilnaly kept the model simple yet realistic to demonstrate the proposed control strategy.
-
-Nevertheless, we have included a more detailed discussion on the model and its limitations in the revised manuscript to better match the scope of the journal and address the reviewers' concerns. The model assumes that temperature and pressure have negligible effect on the parameters of the system. The reaction kinetics can be seen in two ways: first, the state of the system being described by the reactant concentration, and second, the state being described by the product concentration.  
-
-\begin{enumerate}
-    \item  $x_1 = C_A$: In this case, the reaction is either a first-order reaction, or the reaction rate is a non-linear function of the state. In the latter case, the non-linear system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be negative as long as the state of the system is the reactant concentration. 
-    \item $x_1 = C_A$: In this case, the reaction rate is generally a nonlinear function of the product concentration. Same as previous, the system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be positive as long as the state of the system is the product concentration. In a rare case, such as auto-catalytic reactions where the reactant is available in excess, the reaction rate can be directly expressed as a linear function of the product concentration.
-    
-\end{enumerate}
-
-We understand that given the above assumptions, it is rare to have an unstable system in practice as most unstable reaction systems are as a result of the temperature dependence of the reaction rates, resulting in runaway reactions. However, the motivation behind the choice of positive reaction term in the model is to demonstrate the ability of the proposed controller to stabilize a system which is intrinsically unstable. 
-
-We hope that the revised manuscript meets the standards of the journal and is suitable for publication. 
 
 \vspace{1em}
 Sincerely yours,
@@ -70,7 +53,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What does PIDEs stand for?
 
     \begin{solutionorbox}
-        Thanks for pointing this out. The acronym should have been defined in the manuscript. It stands for Partial Integro-Differential Equations. The manuscript has been revised accordingly.
+        Thanks for pointing this out. The acronym should have been defined in the manuscript. It stands for Partial Integro Differential Equations. The manuscript has been revised accordingly.
     \end{solutionorbox}
 
 
@@ -90,7 +73,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     constant properties, constant pressure, ...
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        We have assumed that the parameters of the system are constant and thus, the states of the system are not affected by changes in system's pressure or temperature. The manuscript has been updated to include more detailed explanation in this regard.
     \end{solutionorbox}
 
 
@@ -99,7 +82,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What is the physical meaning of the manipulated variable $u(t)$?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        It is of the same nature as the system's states, i.e. the manipulated variable $u(t)$ may be seen as either the product concentration or as its deviation from the steady-state concentration in the reactor feed stream. The manuscript has been updated to address this point.
     \end{solutionorbox}
 
 
@@ -108,16 +91,22 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Why is $x_2$ a function of $\zeta$ ? How does $x_2$ change across the recycle? What kind of law does it follow? To me, it seems like $x_2$ only changes with respect to time
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        We have assumed that along the recycle stream, the flow of the reactant belongs to the class of pure transport PDEs. This is the case when diffusion term and reaction term become negligible compared to the convective term, and the state variable $x_2$ is merely being transported along the recycle stream. Nevertheless, this still means that $x_2$ is a function of $\zeta$ and $t$. Concentration profile along the recycle stream has not been presented in the original submission as we believe it is not the focus of this work. However, for the reviewer's reference, it is included here in the response as shown in Fig.~\ref{fig:x2}.
     \end{solutionorbox}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{x2_vs_z.png}
+    \caption{Concentration profile along the recycle stream}
+    \label{fig:x2}
+\end{figure}
 
     \question Page 8 - Eq (5)
     
     - Please make a distinction between the symbol for domain and for diffusivity to avoid confusion
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Thanks for mentioning this. We have replaced the symbol for the domain with $\mathcal{D}$ to avoid confusion. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -126,7 +115,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Although a rigorous proof is not necessary, it would be good if the authors explain why $\mathfrak{A}$ is a Riesz-spectral operator. I guess its eigenvalues and eigenfunctions satisfy the requirements, like having multiplicity one and forming a Riesz basis, respectively.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        That, along woth the fact that the obtained set of eigenfunctions for $\mathfrak{A}$ and $\mathfrak{A}^*$ seem to form a bi-orthogonal basis that can successfully span the state space, is the reason behind this statement. It is worth mentioning that as the result of the nature of boundary conditions, this can not be analytically proven. However, once the spectrum for the system generator and its adjoint is obtained and the eigenfunctions are properly scaled, we observe that the aforementioned properties are satisfied. To be more specific, the inner products of $\phi_i$ and $\psi_j$ gives $\delta_{i,j}$, and every arbitrary function that satisfies the domain may be expressed as a linear combination of the given bi-orthogonal basis. In the manuscript, we have avoided going into the details to keep the flow of the paper.
     \end{solutionorbox}
 
 
@@ -135,7 +124,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Should $\mathfrak{R}$ be self-adjoint and coercive?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Yes. According to \cite{curtainbook} for the infinite-dimensional LQR problem on the infinite-time interval, operator $\mathfrak{R}$ should be self-adjoint and coercive, which is a better way to address the operator compared to self-adjoint and positive semi-definite. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -144,7 +133,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Is Problem 12 well-posed, does J have a finite value for at least one u?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Yes, the proposed infinite-time LQR problem is well-posed, i.e. for at least one input trajectory $u(t)$, the cost function $J$ has a finite value. The stabilizing input trajectory obtained in the manuscript is an example. % check with stevan
     \end{solutionorbox}
 
 
@@ -153,7 +142,21 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Why is the zero-input response considered unstable? Is it a qualitatively assessment? What is the physical meaning of Figure 9?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        The open-loop system being unstable is the result of the reaction term being positive, which opens up an opportunity for deeper analysis to explore underlying mechanisms and implications. We basically picked the positive reaction term to demonstrate the ability of the proposed controller to stabilize a mathematically unstable system. However, the physical significance of the system described by such a model may be further explored by focusing on the reaction kinetics and first principle modeling. 
+        
+        The reaction kinetics can be seen in two ways: first, the state of the system being described by the reactant concentration, and second, the state being described by the product concentration. 
+
+    \begin{enumerate}
+        \item  $x_1 = C_A$: In this case, the reaction is either a first-order reaction, or the reaction rate is a non-linear function of the state. In the latter case, the non-linear system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be negative as long as the state of the system is the reactant concentration. This is because the reactant is being conmsumed over time.
+        \item $x_1 = C_B$: In this case, the reaction rate is generally a nonlinear function of the product concentration. Same as previous, the system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be positive as long as the state of the system is the product concentration. Unlike the previous case, this is because the product is being generated over time. In a rare case, such as auto-catalytic reactions where the reactant is available in excess, the reaction rate can be directly expressed as a linear function of the product concentration as long as the excess reactant assumption holds.
+    \end{enumerate}
+    
+    Since the source of instability according to the above, is merely the accumulation of the products, it is rare to have an unstable system in practice. Because even if the rate law determines the rate of product accumulation increases with the product concentration, the system will eventually run out of reactants and the reaction will stop. In fact, most unstable reaction systems are due to the temperature dependence of the reaction rates, resulting in runaway reactions.
+    
+    Nevertheless, the key contribution of this work lies in introducing a control strategy based on a novel approach to address the problem of intrinsic delay imposed by the recycle stream. This strategy forms a foundation for future research and development for the general case of second order parabolic PDE systems, rather than focusing solely on a model with realistic physical significance. As mentioned earlier, the motivation behind the choice of positive reaction term in the model is to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, at least in the vicinity of its steady state where the linearization is valid. 
+    
+    We have adjusted the manuscript briefly to better explain what it means for the system to be unstable in this context. Future works will extend the same control and modeling strategy to address physically significant unstable reaction systems by including the assumption of temperature dependence for the reaction rates.
+
     \end{solutionorbox}
 
 
@@ -161,10 +164,17 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
 
     - What are the values of matrices Q and R in the objective function?
 
+    \begin{solutionorbox}
+        Thanks for pointing this out. The values for operators $\mathfrak{Q}$ and $\mathfrak{Q}$ in the objective function were not explicitly mentioned in the manuscript. These values are chosen as $\mathfrak{Q} = 0.05 \times \mathfrak{I}$ and $\mathfrak{R} = 50$, where $\mathfrak{I}$ is the identity operator of the same size as $\mathfrak{A}$. The manuscript has been updated accordingly.
+    \end{solutionorbox}
+
+
+    \question Page 18 - \textquote{The goal is to stabilize the system using an optimal control strategy}
+
     - Are x deviation variables? What is the setpoint?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        In addition to our reply to question 11, since the reactionterm is positive in the proposed PDE, the state of the system may be seen as either the product concentration or as its deviation from the steady-state concentration. The setpoint will be either zero or the steady-state concentration of the product, respectively. Again, the goal of this work is to establish an optimal controller strategy to stabilize a system described by the proposed model, rather than tracking a physically significant setpoint.
     \end{solutionorbox}
 
 
@@ -173,7 +183,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - It would be interesting to see how the delay time affects the stabilizing capabilities of the feedback regulator. What would happen a shorter and larger values of $\tau$
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        It is indeed interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, or recycle ratio, $R$) on the spectrum of the system as well as the controller performance. We have explored numerous scenarios in the numerical simulations and observed that increasing the recycle ratio, $R$, or the recycle delay, $\tau$, may lead to more challenging control problems. However, the proposed controller is able to stabilize the system for a wide range of system parameters with exactly the same strategy. Since exploring different system parameters appeared to add no direct significant value to the main contribution of the paper, we have decided to keep the focus on the proposed control strategy in the original manuscript. Nevertheless, if the reviewer finds it necessary, we can include a new plot profile in the revised manuscript where the closed-loop system state is plotted for one or two different values of $\tau$ and/or $R$.
     \end{solutionorbox}
 
 
@@ -182,7 +192,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Can this framework be applied to reaction systems described with more complex and highly nonlinear reaction kinetics?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Yes, it can. The general approach would be the same as the one presented in \cite{khatibi2021model}, where they assumed the reaction constants to be exponential functions of the temperature. The same approach can be applied to the proposed model in this work in future research.
     \end{solutionorbox}
 
 
@@ -204,28 +214,38 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question Why is relevant to consider Danckwerts boundary conditions for the problem of control? Have you compared your results with those obtained considering other boundary conditions?
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Apart from time-dependent boundary conditions, chemical engineering applications commonly use Dirichlet, Neumann, and Robin boundary conditions, with Robin being the most general. The Danckwerts boundary condition, as a type of Robin condition, maintains generality and captures physical significance without simplifying the problem.
+
+        This condition is particularly suited for systems with both diffusion and convection, like chemical reactors, as it reflects the boundary behavior where these transport phenomena interact. While other boundary conditions are possible, they may lack the physical relevance and generality offered by the Danckwerts condition. 
     \end{solutionorbox}
 
 
     \question Concerning the recycle stream, have you studied the effect of the R, the recycle ratio, on your results? Please comment.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        It is interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, or recycle ratio, $R$) on the spectrum of the system as well as the controller performance. We have explored numerous scenarios in the numerical simulations and observed that decreasing the recycle ratio, $R$, or the recycle delay, $\tau$, may lead to more straight forward control behavior, and vice versa. 
+        
+        However, the proposed controller is able to stabilize the system for a wide range of system parameters with exactly the same strategy. Since exploring different system parameters appeared to add no direct significant value to the main contribution of the paper, we have decided to keep the focus on the proposed control strategy in the original manuscript. Nevertheless, if the reviewer finds it necessary, we can include a new plot profile in the revised manuscript where the closed-loop system state is plotted for one or two different values of $\tau$ and/or $R$.
     \end{solutionorbox}
 
     
     \question The authors used as the case study the problem of an axial dispersion tubular reactor incorporating diffusion, convection, and a first-order irreversible chemical reaction described by equations (1)-(2). While this is sufficient to present their approach, it is far from being extended to the more general problem, non-isothermal, and with more general kinetics such as biochemical or catalytic.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Thank you for your insightful comment. While we acknowledge that temperature dependence can significantly impact the dynamics of chemical reactors, and we plan to address non-isothermal cases in future work based on the foundation laid by this study, we would like to highlight several key points regarding the current model and its general applicability.
+
+        The main focus of our work is to develop an infinite-dimensional control strategy with introducing state-delays in such distributed parameter systems for the first time, with no need for model reduction or spatial discretization. Nevertheless, the infinite dimensional system of the axial dispersion tubular reactor model defined by a second order parabolic PDE and Danckwerts boundary conditions, equipped with a recycle stream imposing state-delays, captures the essential structure of many advanced systems with similar dynamics; while the proposed control strategy is general and sets the stage for future extensions to more complex systems, such as temperature-dependent reaction rates.
+
+        Even in the cases where the reactor model is replaced with a more complex set of PDEs than the presented second-order parabolic PDE, the proposed strategy of incorporating delayed recycle stream to the system's model and the infinite-dimensional control strategy design can still be applied. Hence this work can be seen as a stepping stone towards addressing more complex systems in the field of chemical engineering, utilizing the key ideas presented in this study.
     \end{solutionorbox}
 
 
     \question I recommend submitting it to a journal focused on Control.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Thank you for your suggestion regarding submitting this work to a journal focused on control. However, we would like to emphasize that similar research \cite{li2024novel, azhin2021modelling} has been recently published in this journal, demonstrating contributions to control theory that align with those presented in our work. This validates the relevance of publishing control-focused studies within chemical engineering journals, which often encompass modeling and novel methodologies pertinent to the field.
+
+        Furthermore, while this work is centered around proposing a control strategy, its significance is rooted in the unique context of chemical engineering, where state delays are rarely considered. Although state delays have been extensively studied in other fields with different system models, applying such a strategy to chemical engineering systems—particularly those convection-diffusion-reaction DPSs described by second order PDEs—is novel and valuable. This ensures that the work contributes meaningfully to the control theory within the field of chemical engineering.
     \end{solutionorbox}
 
 \end{questions}
@@ -245,42 +265,48 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \question \textbf{Major comment: } In section 4, the authors indicate that they discretized each state in space using 100 grid points. They must indicate if those points are equidistributed and how they came up with such discretization grid. Note that multiple works \cite{palma2023selection, assassa2016optimality, chen2014bilevel} have demonstrated that the selection and distribution of the discretization grid plays a crucial role in the computation of optimal control laws, i.e., a control law can be claimed to be optimal or not using the criterion of the Pontryagin's Minimum Principle (PMP). The reviewer recommends to assess the criterion of the Hamiltonian function (i.e., the PMP) to demonstrate that the discretization implemented is accurate and the solutions obtained for the control are optimal.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Thanks a lot for the insightful and detailed comment. We have gone through the suggested literature and agree that the selection and distribution of the discretization grid are cruicial in converting an infinite-dimensional system to a finite-dimensional one. However, we would also like to point out that based on the late-lumping approach used in the proposed work, we do not discretize the system in space at all. In fact, the infinite-dimensional nature of the system is fully captured in the proposed control strategy, and the control law is designed directly in the infinite-dimensional space.
+
+        The 100 grid points mentioned in the manuscript are merely used to confirm how the optimal control input will be applied to the system. In other words, the feedback gain is designed based on the infinite-dimensional system, and the control input is obtained with no need for spatial discretization. It is only at this point that the obtained control input is applied to a FDM representation of the system to evaluate the system's response to the control input.
     \end{solutionorbox}
 
 
     \question The manuscript lacks conclusions or further discussion about the control trajectories' results, such as the quality of the control actions or improvements in process operation (e.g., avoidance of constraint violations, disturbance rejection, etc.). Although the authors included several figures illustrating the process dynamics and control trajectories, these are not discussed in sufficient depth, i.e., avoid leaving the reader to draw their own conclusions from the figures. Additionally, the reviewer recommends reducing the number of figures, which could allow more space for further discussion of the results.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        The reviewer's suggestion is well taken. We will include a more detailed discussion of the results in the revised manuscript. However, aspects like constraint violations and disturbance rejection usually falls out of the scope of the proposed control strategy when it comes to optimal regulatory problem. This work sets the mathematical foundation for future works to address these aspects under different control strategies (such as observer-based or Kalman-filter-based discrete-time MPC) along with more realistic assumptions in the model (such as adding the temperature dependence of the reaction rates).
     \end{solutionorbox}
 
 
     \question In section 3.1.3, the authors present the values for parameters R and D but provide no further details about the model's sensitivity to these parameters. Please include a detailed explanation of how these values were selected and discuss any potential limitations if the parameters are chosen incorrectly.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        It is indeed interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, recycle ratio, $R$, or the physical parameters within the reactor) on the spectrum of the system as well as the controller performance. We have explored numerous scenarios in the numerical simulations and observed that decreasing the recycle ratio, $R$, or the recycle delay, $\tau$, may lead to more straight forward control behavior, and vice versa. 
+        
+        However, the proposed controller is able to stabilize the system for a wide range of system parameters with exactly the same strategy. The only limitation we faced in this regard is the computation cost of the numerical simulation, especially when it comes to obtaining the solution to the eigenvalue problem, mostly due to calculation errors in getting the matrix exponentials.
+
+        Since exploring different system parameters appeared to add no direct significant value to the main contribution of the paper, we have decided to keep the focus on the proposed control strategy in the original manuscript. Nevertheless, if the reviewer finds it necessary, we can include a new plot profile in the revised manuscript where the closed-loop system state is plotted for one or two different values of $\tau$ and/or $R$.
     \end{solutionorbox}
 
 
     \question In section 4, the authors indicate that the process model was discretized in time and space, however, they mention that they obtained a system of ordinary differential equations (ODEs). Please clarify how this full discretization resulted in a system of ODEs.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Thank you for pointing this out. As mentioned previously, the discretization in Section 4 is merely used to evaluate the system's response to the control input. Yet, there is a mistake in the manuscript as there is no discretization in time at this point. The system of ODEs is obtained as a result of applying space discretization to the infinite-dimensional system, where at each node the state of the system is represented by an ODE in time. We will revise the manuscript to clarify this point.
     \end{solutionorbox}
 
 
     \question The manuscript has some typos that the authors must correct, e.g., …setting for of distributed…, Then two full-state… In page 5, the acronym PIDEs is not previously defined. For section 4.3, the reviewer recommends to modify the expression “Last but not least” aiming not loose the formality of the manuscript.
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        Thank you very much for the detailed feedback. All of the suggestions ahve been addressed in the revised manuscript.
     \end{solutionorbox}
 
 
     \question The reviewer recommends to include a tables of nomenclature
 
     \begin{solutionorbox}
-        The title has been revised based on the suggested terminology.
+        A table of nomenclature has been included in the revised manuscript.
     \end{solutionorbox}
 \end{questions}
 
