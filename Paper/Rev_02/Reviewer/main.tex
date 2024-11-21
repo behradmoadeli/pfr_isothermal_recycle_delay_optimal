@@ -18,15 +18,78 @@
 \usepackage{float}
 \renewcommand{\solutiontitle}{\noindent\textbf{Authors Reply:}\par\noindent}
 
+\usepackage{tikz}
+\tikzstyle{block} = [rectangle, minimum width=2cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{block_1} = [rectangle, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=blue!5]
+\tikzstyle{block_2} = [rectangle, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=red!5]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrow_2} = [very thick,->,>=stealth]
+\tikzstyle{arrow_3} = [thick,->,>=stealth,dashed]
+\tikzstyle{pfr} = [cylinder, draw, minimum height=4cm, minimum width=1cm, shape aspect=1, shape border rotate=180]
+\usetikzlibrary{shapes.geometric}
+
 \begin{document}
-\section*{Reply to Associate Editor and Reviewers}
 
-We appreciate the reviewers' valuable comments and suggestions and have made every effort to address them comprehensively. Enclosed, we have provided responses to each reviewer's comments in the upcoming pages of this document. Additionally, you will find the updated version of the manuscript along with a supplementary document detailing the changes made in comparison to the original submission.
+\section*{Common concerns}
 
-\vspace{1em}
-Sincerely yours,
+Before addressing each reviewer's comments individually, we would like to discuss two common concerns raised by multiple reviewers: the modeling approach and the parameter sensitivity analysis.
 
-Behrad Moadeli, Guilherme Ozorio Cassol and Stevan Dubljevic
+\subsection*{Modeling approach}
+
+We recognize that the initial submission provided a limited explanation of the original model. To address this, we have expanded our explanation both here and in the updated manuscript, resulting in a more general model while keeping its changes minimal. These revisions directly address the reviewers' concerns and remain consistent with the intent of the initial model.
+
+Nevertheless, our work aims to establish a foundation for future research in this area by developing a modeling and control strategy within a general framework. This framework is designed to encompass key features of real-world systems, rather than focusing on a model tailored to a specific system. 
+
+For the axial dispersion tubular reactor presented in Fig.~\ref{fig:reactor}, the molar balance equation may be written for the reactant concentration, $C_A$, as follows:
+
+\begin{figure}[!htbp]
+    \centering
+    \begin{tikzpicture}
+        \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
+        \node (pfr_inlet) [circle, left of=pfr, xshift=-1.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+    
+        \draw[dotted, thick] ([yshift=0.5cm]pfr_inlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 0$} ([yshift=-0.65cm]pfr_inlet.center);
+        \draw[dotted, thick] ([yshift=0.5cm]pfr_outlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 1$} ([yshift=-0.65cm]pfr_outlet.center);
+    
+        \node[below of=recycle_left, node distance=1.3cm, anchor=north west, xshift=-0.2cm] {$R \, c(1, t-\tau)$};
+        \node[above of=pfr_inlet, node distance=0.75cm,] {$c(0, t)$};
+        \node[above of=pfr_outlet, node distance=0.75cm,] {$c(1, t)$};
+        
+        \draw [arrow_2] (pfr_outlet) -- node[near end, above] {$y(t)$} ++(2,0);
+        \draw [arrow_2] (pfr_inlet) ++(-2,0) coordinate(start) -- node[near start, above] {$u(t)$} (pfr_inlet);
+        \draw [arrow_2] (recycle_right) -- ++(0,-1.25) -| (recycle_left);
+        
+    \end{tikzpicture}
+    \caption{Axial tubular reactor with recycle stream.}
+    \label{fig:reactor_scheme}
+\end{figure}
+
+\begin{equation}
+    \frac{\partial C_A}{\partial t} = D \frac{\partial^2 C_A}{\partial \zeta^2} - v \frac{\partial C_A}{\partial \zeta} - r(C_A)
+\end{equation}
+
+where $r(C_A)$ is the reaction rate by which the reactant is consumed. Considering this term can be non-linear, the model can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. This will result in the following equation:
+
+\begin{equation}
+    \frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial \zeta^2} - v \frac{\partial \epsilon}{\partial \zeta} - \left. \frac{\partial r(C_A)}{\partial C_A} \right|_{C_{A, ss}} \epsilon
+\end{equation}
+
+Here, $\epsilon \equiv C_A - C_{A, ss}$ is the deviation from the steady-state concentration, and $C_{A, ss}$ is the steady-state concentration of the reactant. The model given at this point, although linear, sets a general framework for model-based control strategies of a wide range of infinite-dimensional convection-diffusion-reaction systems in chemical engineering process and dynamics around their steady-state.
+
+The assumptions made in the model are that the parameters of the system are constant and thus, the states of the system are not affected by changes in system's pressure or temperature. The authors acknowledge that the model will be more realistic if the temperature dependence of the reaction rates is included. In fact, addressing temperature dependence is the focus of our ongoing research and represents a natural extension of this work. We anticipate presenting these advancements in future submissions to this journal. Nevertheless, as mentioned above, the primary goal here is to establish a general framework, leaving more specific and physically significant models for subsequent studies.
+
+In addition to the concerns related to the applicability of the model, the choice of positive reaction term is also explained in this section along with stability analysis. The stability analysis of the system in the vicinity of the steady state has been one of the first things of our interest. While no isothermal reactor can technically be exponentially unstable due to the finite amount of reactant available, the steady state of the system can be unstable in the vicinity of the steady state, meaning that a deviation from the steady state may draw the system to a different steady state, resulting in completely different model dynamics than the one used to design and control the system for optimal operation.
+
+Performing the eigenvalue analysis of the system, we have observed that a system may have unstable steady-state only when the reaction term coefficient $\frac{\partial r(C_A)}{\partial C_A}$ is positive. Though an uncommon scenario, this may happen in the case of autocatalytic reactions, enzyme-catalyzed reactions, reactions that incorporate inhibition mechanisms, etc. Although the proposed controller can also stabilize an already stable system in an optimal manner, a positive reaction term is selected to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, rather than focusing on a physically significant model. This has to be included within the general framework of the controller proposed in this work as it becomes more significant when the work is extended to more complex systems where instability becomes a common issue.
+
+
+\subsection*{Parameter sensitivity analysis}
+
+
+
 \newpage
 
 \section*{Reviewer 1}
