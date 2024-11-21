@@ -30,13 +30,15 @@
 
 \begin{document}
 
-\section*{Common concerns}
+\section{Common concerns}
 
 Before addressing each reviewer's comments individually, we would like to discuss two common concerns raised by multiple reviewers: the modeling approach and the parameter sensitivity analysis.
 
-\subsection*{Modeling approach}
+\subsection{Modeling approach}
 
-We recognize that the initial submission provided a limited explanation of the original model. To address this, we have expanded our explanation both here and in the updated manuscript, resulting in a more general model while keeping its changes minimal. These revisions directly address the reviewers' concerns and remain consistent with the intent of the initial model.
+The original submission focused on the broader goals of the study, offering a concise explanation of the proposed model. However, based on the reviewers’ feedback, we recognized the need to address potential misunderstandings caused by this brevity. To resolve this, we have clarified and justified the modeling approach within this letter, while also updating the manuscript to provide a more detailed and general explanation of the model. These revisions ensure that the manuscript presents a clearer and more comprehensive framework while preserving the original model’s intent and structure.
+
+% We recognize that the initial submission provided a limited explanation of the original model. To address this, we have expanded our explanation both here and in the updated manuscript, resulting in a more general model while keeping its changes minimal. These revisions directly address the reviewers' concerns and remain consistent with the intent of the initial model.
 
 Nevertheless, our work aims to establish a foundation for future research in this area by developing a modeling and control strategy within a general framework. This framework is designed to encompass key features of real-world systems, rather than focusing on a model tailored to a specific system. 
 
@@ -45,26 +47,26 @@ For the axial dispersion tubular reactor presented in Fig.~\ref{fig:reactor}, th
 \begin{figure}[!htbp]
     \centering
     \begin{tikzpicture}
-        \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
+        \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1.5cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
         \node (pfr_inlet) [circle, left of=pfr, xshift=-1.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
         \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
         \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
         \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
     
-        \draw[dotted, thick] ([yshift=0.5cm]pfr_inlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 0$} ([yshift=-0.65cm]pfr_inlet.center);
-        \draw[dotted, thick] ([yshift=0.5cm]pfr_outlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 1$} ([yshift=-0.65cm]pfr_outlet.center);
+        \draw[dotted, thick] ([yshift=0.75cm]pfr_inlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 0$} ([yshift=-0.75cm]pfr_inlet.center);
+        \draw[dotted, thick] ([yshift=0.75cm]pfr_outlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 1$} ([yshift=-0.75cm]pfr_outlet.center);
     
-        \node[below of=recycle_left, node distance=1.3cm, anchor=north west, xshift=-0.2cm] {$R \, c(1, t-\tau)$};
-        \node[above of=pfr_inlet, node distance=0.75cm,] {$c(0, t)$};
-        \node[above of=pfr_outlet, node distance=0.75cm,] {$c(1, t)$};
+        \node[below of=recycle_left, node distance=1.75cm, anchor=north west, xshift=-0.2cm] {$R \, C_A(1, t-\tau)$};
+        \node[above of=pfr_inlet, node distance=1.05cm,] {$C_A(0, t)$};
+        \node[above of=pfr_outlet, node distance=1.05cm,] {$C_A(1, t)$};
         
         \draw [arrow_2] (pfr_outlet) -- node[near end, above] {$y(t)$} ++(2,0);
         \draw [arrow_2] (pfr_inlet) ++(-2,0) coordinate(start) -- node[near start, above] {$u(t)$} (pfr_inlet);
-        \draw [arrow_2] (recycle_right) -- ++(0,-1.25) -| (recycle_left);
+        \draw [arrow_2] (recycle_right) -- ++(0,-1.75) -| (recycle_left);
         
     \end{tikzpicture}
     \caption{Axial tubular reactor with recycle stream.}
-    \label{fig:reactor_scheme}
+    \label{fig:reactor}
 \end{figure}
 
 \begin{equation}
@@ -74,7 +76,7 @@ For the axial dispersion tubular reactor presented in Fig.~\ref{fig:reactor}, th
 where $r(C_A)$ is the reaction rate by which the reactant is consumed. Considering this term can be non-linear, the model can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. This will result in the following equation:
 
 \begin{equation}
-    \frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial \zeta^2} - v \frac{\partial \epsilon}{\partial \zeta} - \left. \frac{\partial r(C_A)}{\partial C_A} \right|_{C_{A, ss}} \epsilon
+    \frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial \zeta^2} - v \frac{\partial \epsilon}{\partial \zeta} - \left( \left. \frac{\partial r(C_A)}{\partial C_A} \right|_{C_{A, ss}} \right) \epsilon
 \end{equation}
 
 Here, $\epsilon \equiv C_A - C_{A, ss}$ is the deviation from the steady-state concentration, and $C_{A, ss}$ is the steady-state concentration of the reactant. The model given at this point, although linear, sets a general framework for model-based control strategies of a wide range of infinite-dimensional convection-diffusion-reaction systems in chemical engineering process and dynamics around their steady-state.
@@ -83,12 +85,20 @@ The assumptions made in the model are that the parameters of the system are cons
 
 In addition to the concerns related to the applicability of the model, the choice of positive reaction term is also explained in this section along with stability analysis. The stability analysis of the system in the vicinity of the steady state has been one of the first things of our interest. While no isothermal reactor can technically be exponentially unstable due to the finite amount of reactant available, the steady state of the system can be unstable in the vicinity of the steady state, meaning that a deviation from the steady state may draw the system to a different steady state, resulting in completely different model dynamics than the one used to design and control the system for optimal operation.
 
-Performing the eigenvalue analysis of the system, we have observed that a system may have unstable steady-state only when the reaction term coefficient $\frac{\partial r(C_A)}{\partial C_A}$ is positive. Though an uncommon scenario, this may happen in the case of autocatalytic reactions, enzyme-catalyzed reactions, reactions that incorporate inhibition mechanisms, etc. Although the proposed controller can also stabilize an already stable system in an optimal manner, a positive reaction term is selected to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, rather than focusing on a physically significant model. This has to be included within the general framework of the controller proposed in this work as it becomes more significant when the work is extended to more complex systems where instability becomes a common issue.
+Performing the eigenvalue analysis of the system, we have observed that a system may have unstable steady-state only when the reaction term coefficient $-\frac{\partial r(C_A)}{\partial C_A}$ is positive around a given steady-state. Though an uncommon scenario, this may happen in the case of autocatalytic reactions, enzyme-catalyzed reactions, reactions that incorporate inhibition mechanisms, etc. Although the proposed controller can also stabilize an already stable system in an optimal manner, a positive reaction term is selected to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, rather than focusing on a physically significant model. This has to be included within the general framework of the controller proposed in this work as it becomes more significant when the work is extended to more complex systems where instability becomes a common issue.
 
+In summary, the revisions address the reviewers’ concerns by expanding the modeling section, clarifying assumptions, and adding relevant analysis to enhance the work’s depth and applicability. By doing so, we have strengthened the explanation of the proposed framework and its ability to handle intrinsic delays in distributed parameter systems. We believe these changes make the manuscript more robust and provide a solid foundation for advancing research in chemical engineering process control and dynamics.
+% In light of the above clarifications, the authors recognize that the initial submission provided a limited explanation of the original model. To address this, we have modified the modeling section of our work to expand it further in the updated manuscript. While these changes resulting in a more general model the changes are minimal as a result of linearization, omitting the need to update the rest of the manuscript as a result of this change. These revisions are aimed to directly address the reviewers' concerns and remain consistent with the intent of the initial model.
 
-\subsection*{Parameter sensitivity analysis}
+\subsection{Parameter sensitivity analysis}
 
+We acknowledge how all the reviewers are interested in at least one aspect of parameter sensitivity analysis, which was also of great interest to the authors during the initial simulations. At that stage, we tested numerous parameter sets and observed interesting results, such as how increasing or decreasing the Peclet number causes the spectrum to shift towards real or purely imaginary eigenvalues, or how increasing the recycle ratio mimics the behavior of a CSTR. However, we chose not to include these results in the original manuscript to maintain the focus of our work, which is to introduce a modeling technique for incorporating state delay into a distributed parameter system, followed by developing a control strategy based on the obtained infinite-dimensional model using a late-lumping approach.
 
+Our observations showed that while parameter variations produced interesting modeling results for the open-loop system, they did not impact the general strategy proposed in this work. By this, we mean that for any parameter set, the system’s spectrum can be determined by solving the eigenvalue problem in the same manner. Once the spectrum is obtained, the controller can be designed by solving the Operator Riccati Equation (ORE) in the same way, which stabilizes the system by selecting a sufficient number of eigenmodes and appropriately tuning the controller parameters in the objective function. While solving the characteristic equation or the ORE may become more computationally intensive for extreme parameter choices, it remains feasible, ensuring that the proposed strategy can be applied effectively across a wide range of parameter sets.
+
+The proposed set of parameters was chosen to demonstrate the applicability of our approach. Specifically, we selected a parameter set that not only incorporates all the key properties of the claimed system—diffusion, convection, reaction, recycle ratio, and recycle delay—but also results in an unstable system, as explained earlier in this letter. This deliberate choice highlights the controller's ability to stabilize a system that combines all these properties while exhibiting challenging dynamics, showcasing the practicality and effectiveness of the proposed strategy in addressing intrinsic delays and instability.
+
+Nevertheless, as an additional enhancement to our work, we have included an analysis of how the controller’s performance varies with different delay values, among other parameters. The authors admit that this addition strengthens the work by satisfying the natural curiosity of readers, as the delay is central to this study, while remaining within the scope of the research. It also provides deeper insights into the controller’s performance and demonstrates its adaptability in addressing state delay, contributing to the advancement of distributed parameter systems in chemical engineering process control and dynamics. The manuscript has been updated to reflect this addition in the results and discussions, as well as the conclusions sections.
 
 \newpage
 
