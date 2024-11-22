@@ -262,7 +262,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
 
 \newpage
 
-\section*{Reviewer 2}
+\section{Reviewer 2}
 
 The comments of Reviewer 2, along with our responses to each comment, are included below:
 
@@ -285,20 +285,16 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question Concerning the recycle stream, have you studied the effect of the R, the recycle ratio, on your results? Please comment.
 
     \begin{solutionorbox}
-        It is interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, or recycle ratio, $R$) on the spectrum of the system as well as the controller performance. We have explored numerous scenarios in the numerical simulations and observed that decreasing the recycle ratio, $R$, or the recycle delay, $\tau$, may lead to more straight forward control behavior, and vice versa. 
-        
-        However, the proposed controller is able to stabilize the system for a wide range of system parameters with exactly the same strategy. Since exploring different system parameters appeared to add no direct significant value to the main contribution of the paper, we have decided to keep the focus on the proposed control strategy in the original manuscript. Nevertheless, if the reviewer finds it necessary, we can include a new plot profile in the revised manuscript where the closed-loop system state is plotted for one or two different values of $\tau$ and/or $R$.
+        The effect of recycle ratio has been studied on the dynamics of the system and the performance of the controller during the initial simulations. We observed that as $R \rightarrow 1$, the open-loop system behaves more like a CSTR (i.e. concentration profiles start to become flat); yet it becomes more challenging for the controller to stabilize the system, probably as the controller action is more significantly diluted at the inlet of the reactor after being mixed with the recycle stream. Further details around parameters sensitivity analysis in general is given in Section~\ref{sec:parameter}. 
     \end{solutionorbox}
 
     
     \question The authors used as the case study the problem of an axial dispersion tubular reactor incorporating diffusion, convection, and a first-order irreversible chemical reaction described by equations (1)-(2). While this is sufficient to present their approach, it is far from being extended to the more general problem, non-isothermal, and with more general kinetics such as biochemical or catalytic.
 
     \begin{solutionorbox}
-        Thank you for your insightful comment. While we acknowledge that temperature dependence can significantly impact the dynamics of chemical reactors, and we plan to address non-isothermal cases in future work based on the foundation laid by this study, we would like to highlight several key points regarding the current model and its general applicability.
-
-        The main focus of our work is to develop an infinite-dimensional control strategy with introducing state-delays in such distributed parameter systems for the first time, with no need for model reduction or spatial discretization. Nevertheless, the infinite dimensional system of the axial dispersion tubular reactor model defined by a second order parabolic PDE and Danckwerts boundary conditions, equipped with a recycle stream imposing state-delays, captures the essential structure of many advanced systems with similar dynamics; while the proposed control strategy is general and sets the stage for future extensions to more complex systems, such as temperature-dependent reaction rates.
-
-        Even in the cases where the reactor model is replaced with a more complex set of PDEs than the presented second-order parabolic PDE, the proposed strategy of incorporating delayed recycle stream to the system's model and the infinite-dimensional control strategy design can still be applied. Hence this work can be seen as a stepping stone towards addressing more complex systems in the field of chemical engineering, utilizing the key ideas presented in this study.
+        Thank you for your insightful comment. We fully acknowledge that temperature dependence can significantly impact the dynamics of chemical reactors. In fact, as mentioned in Section~\ref{sec:model}, we are already working on addressing the non-isothermal case in our future submission to this journal, which is based on the foundation laid by this study. 
+        
+        However, regarding the current model and its general applicability, several key points are highlighted in details in Section~\ref{sec:model}. According to those details and reflecting the reviewer's concerns, changes has been made to the proposed model to include a more general case of non-linear reaction kinetics. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -343,18 +339,15 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \question In section 3.1.3, the authors present the values for parameters R and D but provide no further details about the model's sensitivity to these parameters. Please include a detailed explanation of how these values were selected and discuss any potential limitations if the parameters are chosen incorrectly.
 
     \begin{solutionorbox}
-        It is indeed interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, recycle ratio, $R$, or the physical parameters within the reactor) on the spectrum of the system as well as the controller performance. We have explored numerous scenarios in the numerical simulations and observed that decreasing the recycle ratio, $R$, or the recycle delay, $\tau$, may lead to more straight forward control behavior, and vice versa. 
-        
-        However, the proposed controller is able to stabilize the system for a wide range of system parameters with exactly the same strategy. The only limitation we faced in this regard is the computation cost of the numerical simulation, especially when it comes to obtaining the solution to the eigenvalue problem, mostly due to calculation errors in getting the matrix exponentials.
-
-        Since exploring different system parameters appeared to add no direct significant value to the main contribution of the paper, we have decided to keep the focus on the proposed control strategy in the original manuscript. Nevertheless, if the reviewer finds it necessary, we can include a new plot profile in the revised manuscript where the closed-loop system state is plotted for one or two different values of $\tau$ and/or $R$.
+        This concern ahs been addressed in details in Section~\ref{sec:parameter}. It is worth mentioning that when the parameters are chosen in an extreme way (e.g. very large Peclet numbers essentially suggest that the system is dominated by convection, hence the system can be better described by a first order hyperbolic PDE; or recycle ratios close to 1 result in the system to behave more like a CSTR), obtaining an accurate numerical solution for the characteristic equation or the ORE may become challenging. Nevertheless, 
+        during initial simulations, no significant limitation was observed for a wide range of parameter sets.
     \end{solutionorbox}
 
 
     \question In section 4, the authors indicate that the process model was discretized in time and space, however, they mention that they obtained a system of ordinary differential equations (ODEs). Please clarify how this full discretization resulted in a system of ODEs.
 
     \begin{solutionorbox}
-        Thank you for pointing this out. As mentioned previously, the discretization in Section 4 is merely used to evaluate the system's response to the control input. Yet, there is a mistake in the manuscript as there is no discretization in time at this point. The system of ODEs is obtained as a result of applying space discretization to the infinite-dimensional system, where at each node the state of the system is represented by an ODE in time. We will revise the manuscript to clarify this point.
+        Thank you for pointing this out. As mentioned previously, the discretization in Section 4 is merely used to evaluate the system's response to the control input. Yet, there is a mistake in the manuscript as there is no discretization in time at this point. The system of ODEs is obtained as a result of applying space discretization to the infinite-dimensional system, where at each node the state of the system is represented by an ODE in time. The manuscript has been updated to clarify this point.
     \end{solutionorbox}
 
 
