@@ -30,11 +30,11 @@
 
 \begin{document}
 
-\section{Common concerns}
+\section{Common concerns} \label{sec:reviewer_0}
 
 Before addressing each reviewer's comments individually, we would like to discuss two common concerns raised by multiple reviewers: the modeling approach and the parameter sensitivity analysis.
 
-\subsection{Modeling approach}
+\subsection{Modeling approach} \label{sec:model}
 
 The original submission focused on the broader goals of the study, offering a concise explanation of the proposed model. However, based on the reviewers’ feedback, we recognized the need to address potential misunderstandings caused by this brevity. To resolve this, we have clarified and justified the modeling approach within this letter, while also updating the manuscript to provide a more detailed and general explanation of the model. These revisions ensure that the manuscript presents a clearer and more comprehensive framework while preserving the original model’s intent and structure.
 
@@ -90,7 +90,7 @@ Performing the eigenvalue analysis of the system, we have observed that a system
 In summary, the revisions address the reviewers’ concerns by expanding the modeling section, clarifying assumptions, and adding relevant analysis to enhance the work’s depth and applicability. By doing so, we have strengthened the explanation of the proposed framework and its ability to handle intrinsic delays in distributed parameter systems. We believe these changes make the manuscript more robust and provide a solid foundation for advancing research in chemical engineering process control and dynamics.
 % In light of the above clarifications, the authors recognize that the initial submission provided a limited explanation of the original model. To address this, we have modified the modeling section of our work to expand it further in the updated manuscript. While these changes resulting in a more general model the changes are minimal as a result of linearization, omitting the need to update the rest of the manuscript as a result of this change. These revisions are aimed to directly address the reviewers' concerns and remain consistent with the intent of the initial model.
 
-\subsection{Parameter sensitivity analysis}
+\subsection{Parameter sensitivity analysis} \label{sec:parameter}
 
 We acknowledge how all the reviewers are interested in at least one aspect of parameter sensitivity analysis, which was also of great interest to the authors during the initial simulations. At that stage, we tested numerous parameter sets and observed interesting results, such as how increasing or decreasing the Peclet number causes the spectrum to shift towards real or purely imaginary eigenvalues, or how increasing the recycle ratio mimics the behavior of a CSTR. However, we chose not to include these results in the original manuscript to maintain the focus of our work, which is to introduce a modeling technique for incorporating state delay into a distributed parameter system, followed by developing a control strategy based on the obtained infinite-dimensional model using a late-lumping approach.
 
@@ -102,7 +102,7 @@ Nevertheless, as an additional enhancement to our work, we have included an anal
 
 \newpage
 
-\section*{Reviewer 1}
+\section{Reviewer 1}
 
 The comments of Reviewer 1, along with our responses to each comment, are included below:
 
@@ -146,7 +146,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     constant properties, constant pressure, ...
 
     \begin{solutionorbox}
-        We have assumed that the parameters of the system are constant and thus, the states of the system are not affected by changes in system's pressure or temperature. The manuscript has been updated to include more detailed explanation in this regard.
+        We have assumed that the parameters of the system are constant and thus, the states of the system are not affected by changes in system's pressure or temperature. Further details on this matter is given in Section~\ref{sec:model}. The manuscript has been updated to include more detailed explanation in this regard.
     \end{solutionorbox}
 
 
@@ -155,7 +155,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What is the physical meaning of the manipulated variable $u(t)$?
 
     \begin{solutionorbox}
-        It is of the same nature as the system's states, i.e. the manipulated variable $u(t)$ may be seen as either the product concentration or as its deviation from the steady-state concentration in the reactor feed stream. The manuscript has been updated to address this point.
+        As the result of the changes made in the model mentioned in Section~\ref{sec:model}, the manipulated variable $u(t)$ is of the same nature as the system's states, i.e. deviation of the reactant concentrations from its steady-state in the reactor feed stream. The manuscript has been updated to address this point.
     \end{solutionorbox}
 
 
@@ -215,20 +215,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Why is the zero-input response considered unstable? Is it a qualitatively assessment? What is the physical meaning of Figure 9?
 
     \begin{solutionorbox}
-        The open-loop system being unstable is the result of the reaction term being positive, which opens up an opportunity for deeper analysis to explore underlying mechanisms and implications. We basically picked the positive reaction term to demonstrate the ability of the proposed controller to stabilize a mathematically unstable system. However, the physical significance of the system described by such a model may be further explored by focusing on the reaction kinetics and first principle modeling. 
-        
-        The reaction kinetics can be seen in two ways: first, the state of the system being described by the reactant concentration, and second, the state being described by the product concentration. 
-
-    \begin{enumerate}
-        \item  $x_1 = C_A$: In this case, the reaction is either a first-order reaction, or the reaction rate is a non-linear function of the state. In the latter case, the non-linear system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be negative as long as the state of the system is the reactant concentration. This is because the reactant is being conmsumed over time.
-        \item $x_1 = C_B$: In this case, the reaction rate is generally a nonlinear function of the product concentration. Same as previous, the system can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. In the obtained model, the reaction constant parameter $k_r$ shall be positive as long as the state of the system is the product concentration. Unlike the previous case, this is because the product is being generated over time. In a rare case, such as auto-catalytic reactions where the reactant is available in excess, the reaction rate can be directly expressed as a linear function of the product concentration as long as the excess reactant assumption holds.
-    \end{enumerate}
-    
-    Since the source of instability according to the above, is merely the accumulation of the products, it is rare to have an unstable system in practice. Because even if the rate law determines the rate of product accumulation increases with the product concentration, the system will eventually run out of reactants and the reaction will stop. In fact, most unstable reaction systems are due to the temperature dependence of the reaction rates, resulting in runaway reactions.
-    
-    Nevertheless, the key contribution of this work lies in introducing a control strategy based on a novel approach to address the problem of intrinsic delay imposed by the recycle stream. This strategy forms a foundation for future research and development for the general case of second order parabolic PDE systems, rather than focusing solely on a model with realistic physical significance. As mentioned earlier, the motivation behind the choice of positive reaction term in the model is to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, at least in the vicinity of its steady state where the linearization is valid. 
-    
-    We have adjusted the manuscript briefly to better explain what it means for the system to be unstable in this context. Future works will extend the same control and modeling strategy to address physically significant unstable reaction systems by including the assumption of temperature dependence for the reaction rates.
+        The zero-input response is considered unstable due to the positive reaction term in the model. Figure 9 illustrates the unstable dynamics of the linearized model in the vicinity of the steady-state in the absence of control input; with the qualitative assessment that a deviation from the steady state may draw the system to a different steady state, resulting in completely different model dynamics than the one used to design and control the system for optimal operation. The manuscript has been updated to include more detailed explanation in this regard. Further details on this matter is given in Section~\ref{sec:model}.
 
     \end{solutionorbox}
 
@@ -247,7 +234,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Are x deviation variables? What is the setpoint?
 
     \begin{solutionorbox}
-        In addition to our reply to question 11, since the reactionterm is positive in the proposed PDE, the state of the system may be seen as either the product concentration or as its deviation from the steady-state concentration. The setpoint will be either zero or the steady-state concentration of the product, respectively. Again, the goal of this work is to establish an optimal controller strategy to stabilize a system described by the proposed model, rather than tracking a physically significant setpoint.
+        The state variable $x(\zeta,t)$ is the deviation of the reactant concentration from its steady-state in the reactor. The setpoint is therefore zero, as the goal is to stabilize the system around the steady-state. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -256,7 +243,9 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - It would be interesting to see how the delay time affects the stabilizing capabilities of the feedback regulator. What would happen a shorter and larger values of $\tau$
 
     \begin{solutionorbox}
-        It is indeed interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, or recycle ratio, $R$) on the spectrum of the system as well as the controller performance. We have explored numerous scenarios in the numerical simulations and observed that increasing the recycle ratio, $R$, or the recycle delay, $\tau$, may lead to more challenging control problems. However, the proposed controller is able to stabilize the system for a wide range of system parameters with exactly the same strategy. Since exploring different system parameters appeared to add no direct significant value to the main contribution of the paper, we have decided to keep the focus on the proposed control strategy in the original manuscript. Nevertheless, if the reviewer finds it necessary, we can include a new plot profile in the revised manuscript where the closed-loop system state is plotted for one or two different values of $\tau$ and/or $R$.
+        It is interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, or recycle ratio, $R$, or other physical parameters of the system, as suggested by different reviewers) on the system dynamics and the controller performance. However, as explained in Section~\ref{sec:parameter}, exploring different system parameters appeared to add no direct significant value to the main contribution of the paper. Nevertheless, we decided to pick one parameter that is central to the study, i.e. the recycle delay, and include a new plot profile in the revised manuscript. 
+        
+        % For the reviewer's reference, we observed that the bigger the recycle delay, the more it causes the tubular reactor to behave like a CSTR. The controller, however, is able to stabilize the system regardless of the recycle ratio.
     \end{solutionorbox}
 
 
@@ -265,7 +254,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Can this framework be applied to reaction systems described with more complex and highly nonlinear reaction kinetics?
 
     \begin{solutionorbox}
-        Yes, it can. The general approach would be the same as the one presented in \cite{khatibi2021model}, where they assumed the reaction constants to be exponential functions of the temperature. The same approach can be applied to the proposed model in this work in future research.
+        According to the changes made in the model mentioned in Section~\ref{sec:model}, a general non-linear reaction kinetics is now considered in the model. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
