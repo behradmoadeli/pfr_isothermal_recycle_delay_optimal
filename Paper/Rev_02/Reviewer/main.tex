@@ -87,7 +87,7 @@ In addition to the concerns related to the applicability of the model, the choic
 
 Performing the eigenvalue analysis of the system, we have observed that a system may have unstable steady-state only when the reaction term coefficient $-\frac{\partial r(C_A)}{\partial C_A}$ is positive around a given steady-state. Though an uncommon scenario, this may happen in the case of autocatalytic reactions, enzyme-catalyzed reactions, reactions that incorporate inhibition mechanisms, etc. Although the proposed controller can also stabilize an already stable system in an optimal manner, a positive reaction term is selected to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, rather than focusing on a physically significant model. This has to be included within the general framework of the controller proposed in this work as it becomes more significant when the work is extended to more complex systems where instability becomes a common issue.
 
-In summary, the revisions address the reviewers’ concerns by expanding the modeling section, clarifying assumptions, and adding relevant analysis to enhance the work’s depth and applicability. By doing so, we have strengthened the explanation of the proposed framework and its ability to handle intrinsic delays in distributed parameter systems. We believe these changes make the manuscript more robust and provide a solid foundation for advancing research in chemical engineering process control and dynamics.
+In summary, the revisions address the reviewers' concerns by expanding the modeling section, clarifying assumptions, and adding relevant analysis to enhance the work’s depth and applicability. By doing so, we have strengthened the explanation of the proposed framework and its ability to handle intrinsic delays in distributed parameter systems. We believe these changes make the manuscript more robust and provide a solid foundation for advancing research in chemical engineering process control and dynamics.
 % In light of the above clarifications, the authors recognize that the initial submission provided a limited explanation of the original model. To address this, we have modified the modeling section of our work to expand it further in the updated manuscript. While these changes resulting in a more general model the changes are minimal as a result of linearization, omitting the need to update the rest of the manuscript as a result of this change. These revisions are aimed to directly address the reviewers' concerns and remain consistent with the intent of the initial model.
 
 \subsection{Parameter sensitivity analysis} \label{sec:parameter}
@@ -126,7 +126,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What does PIDEs stand for?
 
     \begin{solutionorbox}
-        Thanks for pointing this out. The acronym should have been defined in the manuscript. It stands for Partial Integro Differential Equations. The manuscript has been revised accordingly.
+        We thank the reviewer for this suggestion. The acronym should have been defined in the manuscript. It stands for Partial Integro Differential Equations. The manuscript has been revised accordingly.
     \end{solutionorbox}
 
 
@@ -179,7 +179,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Please make a distinction between the symbol for domain and for diffusivity to avoid confusion
 
     \begin{solutionorbox}
-        Thanks for mentioning this. We have replaced the symbol for the domain with $\mathcal{D}$ to avoid confusion. The manuscript has been updated accordingly.
+        We appreciate the reviewer's suggestion. We have replaced the symbol for the domain with $\mathcal{D}$ to avoid confusion. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -188,7 +188,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Although a rigorous proof is not necessary, it would be good if the authors explain why $\mathfrak{A}$ is a Riesz-spectral operator. I guess its eigenvalues and eigenfunctions satisfy the requirements, like having multiplicity one and forming a Riesz basis, respectively.
 
     \begin{solutionorbox}
-        That, along woth the fact that the obtained set of eigenfunctions for $\mathfrak{A}$ and $\mathfrak{A}^*$ seem to form a bi-orthogonal basis that can successfully span the state space, is the reason behind this statement. It is worth mentioning that as the result of the nature of boundary conditions, this can not be analytically proven. However, once the spectrum for the system generator and its adjoint is obtained and the eigenfunctions are properly scaled, we observe that the aforementioned properties are satisfied. To be more specific, the inner products of $\phi_i$ and $\psi_j$ gives $\delta_{i,j}$, and every arbitrary function that satisfies the domain may be expressed as a linear combination of the given bi-orthogonal basis. In the manuscript, we have avoided going into the details to keep the flow of the paper.
+        That, along woth the fact that the obtained set of eigenfunctions for $\mathfrak{A}$ and $\mathfrak{A}^*$ seem to form a bi-orthogonal basis that can successfully span the state space, is the reason behind this statement. By obtaining the spectrum for the system generator and its adjoint, followed by properly scaling the eigenfunctions, we observe that the aforementioned properties are satisfied. To be more specific, the inner products of $\phi_i$ and $\psi_j$ gives $\delta_{i,j}$, and every arbitrary function that satisfies the domain may be expressed as a linear combination of the given bi-orthogonal basis.
     \end{solutionorbox}
 
 
@@ -197,7 +197,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Should $\mathfrak{R}$ be self-adjoint and coercive?
 
     \begin{solutionorbox}
-        Yes. According to \cite{curtainbook} for the infinite-dimensional LQR problem on the infinite-time interval, operator $\mathfrak{R}$ should be self-adjoint and coercive, which is a better way to address the operator compared to self-adjoint and positive semi-definite. The manuscript has been updated accordingly.
+        The authors appreciate the reviewer for mentioning this. According to \cite{curtainbook} for the infinite-dimensional LQR problem on the infinite-time interval, operator $\mathfrak{R}$ should be self-adjoint and coercive, which is a better way to address the operator compared to self-adjoint and positive semi-definite. Since the system has finite-dimensional (to be more specific, scalar in this case) real input, these two sets of conditions will be identical; yet to enhance the quality of the work, reveiwer's suggestion has been taken into consideration and the manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -206,7 +206,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Is Problem 12 well-posed, does J have a finite value for at least one u?
 
     \begin{solutionorbox}
-        Yes, the proposed infinite-time LQR problem is well-posed, i.e. for at least one input trajectory $u(t)$, the cost function $J$ has a finite value. The stabilizing input trajectory obtained in the manuscript is an example. % check with stevan
+        The proposed infinite-time LQR problem is well-posed, i.e. for at least one input trajectory $u(t)$, the cost function $J$ has a finite value. The stabilizing input trajectory obtained in the manuscript is an example as all the eigenvalues of the obtained closed-loop system $\mathfrak{A} - \mathfrak{B} K$ are in the open left half of the complex plane. 
     \end{solutionorbox}
 
 
@@ -225,7 +225,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What are the values of matrices Q and R in the objective function?
 
     \begin{solutionorbox}
-        Thanks for pointing this out. The values for operators $\mathfrak{Q}$ and $\mathfrak{Q}$ in the objective function were not explicitly mentioned in the manuscript. These values are chosen as $\mathfrak{Q} = 0.05 \times \mathfrak{I}$ and $\mathfrak{R} = 50$, where $\mathfrak{I}$ is the identity operator of the same size as $\mathfrak{A}$. The manuscript has been updated accordingly.
+        The authors thank the reviewer for their comment on this matter. The values for operators $\mathfrak{Q}$ and $\mathfrak{Q}$ in the objective function were not explicitly mentioned in the manuscript. These values are chosen as $\mathfrak{Q} = 0.05 \times \mathfrak{I}$ and $\mathfrak{R} = 50$, where $\mathfrak{I}$ is the identity operator of the same size as $\mathfrak{A}$. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -244,17 +244,15 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
 
     \begin{solutionorbox}
         It is interesting to see the effect of system parameters (e.g. recycle delay, $\tau$, or recycle ratio, $R$, or other physical parameters of the system, as suggested by different reviewers) on the system dynamics and the controller performance. However, as explained in Section~\ref{sec:parameter}, exploring different system parameters appeared to add no direct significant value to the main contribution of the paper. Nevertheless, we decided to pick one parameter that is central to the study, i.e. the recycle delay, and include a new plot profile in the revised manuscript. 
-        
-        % For the reviewer's reference, we observed that the bigger the recycle delay, the more it causes the tubular reactor to behave like a CSTR. The controller, however, is able to stabilize the system regardless of the recycle ratio.
     \end{solutionorbox}
 
 
-    \question Page 26 - \textquote{The proposed framework may be extended to more complex diffusion-convection reactor configurations, such as non-isothermal reactors}
+    \question Page 26 - \textquote{The proposed framework may be extended to more complex diffusion convection reactor configurations, such as non-isothermal reactors}
 
     - Can this framework be applied to reaction systems described with more complex and highly nonlinear reaction kinetics?
 
     \begin{solutionorbox}
-        According to the changes made in the model mentioned in Section~\ref{sec:model}, a general non-linear reaction kinetics is now considered in the model. The manuscript has been updated accordingly.
+        The authors thank the reviewer for their comment. According to the changes made in the model mentioned in Section~\ref{sec:model}, a general non-linear reaction kinetics is now considered in the model. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -276,9 +274,7 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question Why is relevant to consider Danckwerts boundary conditions for the problem of control? Have you compared your results with those obtained considering other boundary conditions?
 
     \begin{solutionorbox}
-        Apart from time-dependent boundary conditions, chemical engineering applications commonly use Dirichlet, Neumann, and Robin boundary conditions, with Robin being the most general. The Danckwerts boundary condition, as a type of Robin condition, maintains generality and captures physical significance without simplifying the problem.
-
-        This condition is particularly suited for systems with both diffusion and convection, like chemical reactors, as it reflects the boundary behavior where these transport phenomena interact. While other boundary conditions are possible, they may lack the physical relevance and generality offered by the Danckwerts condition. 
+        The authors appreciate the reviewer's concern regarding the choice of boundary conditions. In the field of chemical engineering process control and dynamics, the Danckwerts boundary condition has become an unseparatble part of the modeling procedure when it comes to tubular reactors. Belonging to the class of Robin boundary conditions, the choice of Danckwerts boundary condition maintains generality while capturing physical significance without simplifying the problem. Therefore, although considering other boundary conditions is a possiblity, they may lack the physical relevance and generality offered by the Danckwerts condition in this context.
     \end{solutionorbox}
 
 
@@ -292,7 +288,7 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question The authors used as the case study the problem of an axial dispersion tubular reactor incorporating diffusion, convection, and a first-order irreversible chemical reaction described by equations (1)-(2). While this is sufficient to present their approach, it is far from being extended to the more general problem, non-isothermal, and with more general kinetics such as biochemical or catalytic.
 
     \begin{solutionorbox}
-        Thank you for your insightful comment. We fully acknowledge that temperature dependence can significantly impact the dynamics of chemical reactors. In fact, as mentioned in Section~\ref{sec:model}, we are already working on addressing the non-isothermal case in our future submission to this journal, which is based on the foundation laid by this study. 
+        The authors appreciate the insightful comment. We fully acknowledge that temperature dependence can significantly impact the dynamics of chemical reactors. In fact, as mentioned in Section~\ref{sec:model}, we are already working on addressing the non-isothermal case in our future submission to this journal, which is based on the foundation laid by this study. 
         
         However, regarding the current model and its general applicability, several key points are highlighted in details in Section~\ref{sec:model}. According to those details and reflecting the reviewer's concerns, changes has been made to the proposed model to include a more general case of non-linear reaction kinetics. The manuscript has been updated accordingly.
     \end{solutionorbox}
@@ -301,9 +297,13 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question I recommend submitting it to a journal focused on Control.
 
     \begin{solutionorbox}
-        Thank you for your suggestion regarding submitting this work to a journal focused on control. However, we would like to emphasize that similar research \cite{li2024novel, azhin2021modelling} has been recently published in this journal, demonstrating contributions to control theory that align with those presented in our work. This validates the relevance of publishing control-focused studies within chemical engineering journals, which often encompass modeling and novel methodologies pertinent to the field.
+        We appreciate the suggestion to submit this work to a control-focused journal. However, we believe this study is best suited for a chemical engineering journal because it contributes meaningfully to process control and dynamics within the unique context of chemical engineering rather than the general domain of control theory.
 
-        Furthermore, while this work is centered around proposing a control strategy, its significance is rooted in the unique context of chemical engineering, where state delays are rarely considered. Although state delays have been extensively studied in other fields with different system models, applying such a strategy to chemical engineering systems—particularly those convection-diffusion-reaction DPSs described by second order PDEs—is novel and valuable. This ensures that the work contributes meaningfully to the control theory within the field of chemical engineering.
+        Chemical engineering inherently incorporates process and control dynamics, making the two disciplines inseparable. While this work is centered around proposing a control strategy, its significance is rooted in the unique context of chemical engineering process control and dynamics, where state delays are rarely considered. Although state delays have been extensively studied in other fields with different system models, applying such a strategy to chemical engineering systems—particularly those convection-diffusion-reaction DPSs described by second order PDEs—is novel and valuable. 
+        
+        Furthermore, we would like to emphasize that similar research \cite{li2024novel, azhin2021modelling} has been recently published in the Canadian Journal of Chemical Engineering, demonstrating contributions to control theory that align with those presented in our work. This validates the relevance of publishing control-focused studies within chemical engineering journals, which often encompass modeling and novel methodologies pertinent to the field.
+
+        On top of that, we are planning to extend this work in our upcoming submissions to this journal by addressing temperature dependence of the reaction rates, which will be built on the foundation laid by this study. This extension will further enhance the practical implications of our findings, emphasizing the broader impact of this study on chemical engineering practice. All of these aspects makes us confident that this work is well aligned with the scope and readership of Canadian Journal of Chemical Engineering.
     \end{solutionorbox}
 
 \end{questions}
@@ -322,8 +322,8 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
 
     \question \textbf{Major comment: } In section 4, the authors indicate that they discretized each state in space using 100 grid points. They must indicate if those points are equidistributed and how they came up with such discretization grid. Note that multiple works \cite{palma2023selection, assassa2016optimality, chen2014bilevel} have demonstrated that the selection and distribution of the discretization grid plays a crucial role in the computation of optimal control laws, i.e., a control law can be claimed to be optimal or not using the criterion of the Pontryagin's Minimum Principle (PMP). The reviewer recommends to assess the criterion of the Hamiltonian function (i.e., the PMP) to demonstrate that the discretization implemented is accurate and the solutions obtained for the control are optimal.
 
-    \begin{solutionorbox}
-        Thanks a lot for the insightful and detailed comment. We have gone through the suggested literature and agree that the selection and distribution of the discretization grid are cruicial in converting an infinite-dimensional system to a finite-dimensional one. However, we would also like to point out that based on the late-lumping approach used in the proposed work, we do not discretize the system in space at all. In fact, the infinite-dimensional nature of the system is fully captured in the proposed control strategy, and the control law is designed directly in the infinite-dimensional space.
+    \begin{solutionorbox} \label{comment:3_1}
+        The authors thank the reviewer for the insightful and detailed comment. We have gone through the suggested literature and agree that the selection and distribution of the discretization grid are cruicial in converting an infinite-dimensional system to a finite-dimensional one. However, we would also like to point out that based on the late-lumping approach used in the proposed work, we do not discretize the system in space at all. In fact, the infinite-dimensional nature of the system is fully captured in the proposed control strategy, and the control law is designed directly in the infinite-dimensional space.
 
         The 100 grid points mentioned in the manuscript are merely used to confirm how the optimal control input will be applied to the system. In other words, the feedback gain is designed based on the infinite-dimensional system, and the control input is obtained with no need for spatial discretization. It is only at this point that the obtained control input is applied to a FDM representation of the system to evaluate the system's response to the control input.
     \end{solutionorbox}
@@ -332,7 +332,7 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \question The manuscript lacks conclusions or further discussion about the control trajectories' results, such as the quality of the control actions or improvements in process operation (e.g., avoidance of constraint violations, disturbance rejection, etc.). Although the authors included several figures illustrating the process dynamics and control trajectories, these are not discussed in sufficient depth, i.e., avoid leaving the reader to draw their own conclusions from the figures. Additionally, the reviewer recommends reducing the number of figures, which could allow more space for further discussion of the results.
 
     \begin{solutionorbox}
-        The reviewer's suggestion is well taken. We will include a more detailed discussion of the results in the revised manuscript. However, aspects like constraint violations and disturbance rejection usually falls out of the scope of the proposed control strategy when it comes to optimal regulatory problem. This work sets the mathematical foundation for future works to address these aspects under different control strategies (such as observer-based or Kalman-filter-based discrete-time MPC) along with more realistic assumptions in the model (such as adding the temperature dependence of the reaction rates).
+        The reviewer's suggestion is well taken. We will include a more detailed discussion of the results in the revised manuscript, especially after the changes we made to the manuscript as discussed in Section~\ref{sec:parameter}. However, aspects like constraint violations and disturbance rejection usually fall out of the scope of the proposed control strategy when it comes to optimal regulatory problem. This work sets the mathematical foundation for future works to address these aspects under different control strategies (such as observer-based or Kalman-filter-based discrete-time MPC) along with more realistic assumptions in the model (such as adding the temperature dependence of the reaction rates), while the goal of current controller is to ensure stability within an optimal framework in a continuous-time setup.
     \end{solutionorbox}
 
 
@@ -347,14 +347,14 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \question In section 4, the authors indicate that the process model was discretized in time and space, however, they mention that they obtained a system of ordinary differential equations (ODEs). Please clarify how this full discretization resulted in a system of ODEs.
 
     \begin{solutionorbox}
-        Thank you for pointing this out. As mentioned previously, the discretization in Section 4 is merely used to evaluate the system's response to the control input. Yet, there is a mistake in the manuscript as there is no discretization in time at this point. The system of ODEs is obtained as a result of applying space discretization to the infinite-dimensional system, where at each node the state of the system is represented by an ODE in time. The manuscript has been updated to clarify this point.
+        The authors appreciate the reviewer for pointing out this issue. We acknowledge that that the manuscript appears to be ambiguous in this regard. The authors clarify that the ODEs are obtained as a result of applying space discretization to the infinite-dimensional system (as previously explained in comment~\ref{comment:3_1}). To solve the system of ODEs with respect to time, we used the numerical solver mentioned in the manuscript, meaning that time discretization is applied within the numerical solver itself. The manuscript has been updated to address this point.
     \end{solutionorbox}
 
 
     \question The manuscript has some typos that the authors must correct, e.g., …setting for of distributed…, Then two full-state… In page 5, the acronym PIDEs is not previously defined. For section 4.3, the reviewer recommends to modify the expression “Last but not least” aiming not loose the formality of the manuscript.
 
     \begin{solutionorbox}
-        Thank you very much for the detailed feedback. All of the suggestions ahve been addressed in the revised manuscript.
+        We thank the reviewer for their attention to details and apoligize for the issues. All of the suggestions ahve been addressed in the revised manuscript.
     \end{solutionorbox}
 
 
