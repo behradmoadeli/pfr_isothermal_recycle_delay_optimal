@@ -1,4 +1,4 @@
-\documentclass[12pt,answers]{exam}
+\documentclass[11pt,answers]{exam}
 
 
 \usepackage{graphicx}
@@ -157,7 +157,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What is the physical meaning of the manipulated variable $u(t)$?
 
     \begin{solutionorbox} \label{comment:1_5}
-        As the result of the changes made in the model mentioned in Section~\ref{sec:model}, the manipulated variable $u(t)$ is of the same nature as the system's states, i.e. deviation of the reactant concentrations from its steady-state in the reactor feed stream. The manuscript has been updated to address this point.
+        As the result of the changes made in the modelling section of the manuscript, the manipulated variable $u(t)$ is of the same nature as the system's states, i.e. deviation of the reactant concentrations from its steady-state in the reactor feed stream. The manuscript has been updated to address this point. These changes are further discussed in Comment~\ref{comment:1_11}.
     \end{solutionorbox}
 
 
@@ -375,8 +375,8 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
 
     \question \textbf{Major comment: } In section 4, the authors indicate that they discretized each state in space using 100 grid points. They must indicate if those points are equidistributed and how they came up with such discretization grid. Note that multiple works \cite{palma2023selection, assassa2016optimality, chen2014bilevel} have demonstrated that the selection and distribution of the discretization grid plays a crucial role in the computation of optimal control laws, i.e., a control law can be claimed to be optimal or not using the criterion of the Pontryagin's Minimum Principle (PMP). The reviewer recommends to assess the criterion of the Hamiltonian function (i.e., the PMP) to demonstrate that the discretization implemented is accurate and the solutions obtained for the control are optimal.
 
-    \begin{solutionorbox} \label{comment:} \label{comment:3_1}
-        The authors thank the reviewer for the insightful and detailed comment. We have gone through the suggested literature and agree that the selection and distribution of the discretization grid are cruicial in converting an infinite-dimensional system to a finite-dimensional one. However, we would also like to point out that based on the late-lumping approach used in the proposed work, we do not discretize the system in space at all. In fact, the infinite-dimensional nature of the system is fully captured in the proposed control strategy, and the control law is designed directly in the infinite-dimensional space.
+    \begin{solutionorbox} \label{comment:3_1}
+        The authors thank the reviewer for the insightful and detailed comment. We have gone through the suggested literature and agree that the selection and distribution of the discretization grid are crucial in converting an infinite-dimensional system to a finite-dimensional one. However, we would also like to point out that based on the late-lumping approach used in the proposed work, we do not discretize the system in space at all. In fact, the infinite-dimensional nature of the system is fully captured in the proposed control strategy, and the control law is designed directly in the infinite-dimensional space.
 
         The 100 grid points mentioned in the manuscript are merely used to confirm how the optimal control input will be applied to the system. In other words, the feedback gain is designed based on the infinite-dimensional system, and the control input is obtained with no need for spatial discretization. It is only at this point that the obtained control input is applied to a FDM representation of the system to evaluate the system's response to the control input.
     \end{solutionorbox}
@@ -384,36 +384,43 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
 
     \question The manuscript lacks conclusions or further discussion about the control trajectories' results, such as the quality of the control actions or improvements in process operation (e.g., avoidance of constraint violations, disturbance rejection, etc.). Although the authors included several figures illustrating the process dynamics and control trajectories, these are not discussed in sufficient depth, i.e., avoid leaving the reader to draw their own conclusions from the figures. Additionally, the reviewer recommends reducing the number of figures, which could allow more space for further discussion of the results.
 
-    \begin{solutionorbox} \label{comment:}
-        The reviewer's suggestion is well taken. We will include a more detailed discussion of the results in the revised manuscript, especially after the changes we made to the manuscript as discussed in Section~\ref{sec:parameter}. However, aspects like constraint violations and disturbance rejection usually fall out of the scope of the proposed control strategy when it comes to optimal regulatory problem. This work sets the mathematical foundation for future works to address these aspects under different control strategies (such as observer-based or Kalman-filter-based discrete-time MPC) along with more realistic assumptions in the model (such as adding the temperature dependence of the reaction rates), while the goal of current controller is to ensure stability within an optimal framework in a continuous-time setup.
+    \begin{solutionorbox} \label{comment:3_2}
+        The reviewer's suggestion is well taken, and further discussion of the results has been added to the revised manuscript. With the inclusion of parameter sensitivity analysis, there is now greater scope to discuss the controller’s performance in more detail.
+
+        Nevertheless, regarding the requested improvements offered by the proposed controller (e.g., disturbance rejection or constrained input/output), we emphasize that this work is rather foundational, focusing on stabilization as a prerequisite for higher-level control objectives such as the servo or regulatory problem. Stabilization ensures predictable system behavior, which is essential for implementing advanced control strategies.
+        
+        We are currently extending this work to address temperature dependence of the reaction rates, with plans for submission to the Canadian Journal of Chemical Engineering. Building on the modeling and control strategy introduced here, we also aim to address the regulatory problem (i.e., rejecting disturbances and maintaining the system at a desired setpoint). Furthermore, to incorporate constrained input/output, we can transition to discrete-time MPC in future work, showcasing how the foundations laid in this study can be expanded to address more complex modeling and control challenges.
     \end{solutionorbox}
 
 
     \question In section 3.1.3, the authors present the values for parameters R and D but provide no further details about the model's sensitivity to these parameters. Please include a detailed explanation of how these values were selected and discuss any potential limitations if the parameters are chosen incorrectly.
 
-    \begin{solutionorbox} \label{comment:}
-        This concern ahs been addressed in details in Section~\ref{sec:parameter}. It is worth mentioning that when the parameters are chosen in an extreme way (e.g. very large Peclet numbers essentially suggest that the system is dominated by convection, hence the system can be better described by a first order hyperbolic PDE; or recycle ratios close to 1 result in the system to behave more like a CSTR), obtaining an accurate numerical solution for the characteristic equation or the ORE may become challenging. Nevertheless, 
-        during initial simulations, no significant limitation was observed for a wide range of parameter sets.
+    \begin{solutionorbox} \label{comment:3_3}
+        The effects of the recycle ratio (\(R\)) and the diffusivity coefficient (\(D\)) on the system dynamics and controller performance were explored during initial simulations. For instance, as \(R \to 1\), the open-loop system exhibits behavior akin to a CSTR, with concentration profiles flattening. However, this increases the challenge of stabilizing the system, as the controller's action becomes diluted at the reactor inlet due to mixing with the recycle stream. Similarly, an increase in the diffusivity coefficient (or a decrease in the Peclet number) causes the eigenvalues of the system generator to shift closer to the real axis. This implies that greater diffusion within the reactor dampens oscillatory dynamics introduced by the delayed recycle stream.
+
+        While parameter sensitivity analysis is important and naturally raises curiosity, as seen from the diverse interests of the reviewers (e.g., Peclet number, delay time, recycle ratio), expanding the analysis to include all parameters would risk exceeding the intended scope of this work. To address reader's curiosity, we decided to focus on \( \tau \) among all parameters as it is central to the delay-based dynamics being studied and directly tied to the novel modeling and control strategy we propose. While the Peclet number and recycle ratio certainly influence system behavior, they do not directly affect the core contributions of this work, which is to offer a novel modeling and control framework for a certain class of distributed parameter systems in chemical engineering.
+    
+        Nonetheless, it is worth emphasizing that the proposed modeling and control strategy has been shown to effectively stabilize the system over a broad range of parameter sets, including variations in the Peclet number and recycle ratio. This adaptability ensures the practicality of the proposed framework across different system configurations.
     \end{solutionorbox}
 
 
     \question In section 4, the authors indicate that the process model was discretized in time and space, however, they mention that they obtained a system of ordinary differential equations (ODEs). Please clarify how this full discretization resulted in a system of ODEs.
 
-    \begin{solutionorbox} \label{comment:}
+    \begin{solutionorbox} \label{comment:3_4}
         The authors appreciate the reviewer for pointing out this issue. We acknowledge that that the manuscript appears to be ambiguous in this regard. The authors clarify that the ODEs are obtained as a result of applying space discretization to the infinite-dimensional system (as previously explained in comment~\ref{comment:3_1}). To solve the system of ODEs with respect to time, we used the numerical solver mentioned in the manuscript, meaning that time discretization is applied within the numerical solver itself. The manuscript has been updated to address this point.
     \end{solutionorbox}
 
 
     \question The manuscript has some typos that the authors must correct, e.g., …setting for of distributed…, Then two full-state… In page 5, the acronym PIDEs is not previously defined. For section 4.3, the reviewer recommends to modify the expression “Last but not least” aiming not loose the formality of the manuscript.
 
-    \begin{solutionorbox} \label{comment:}
-        We thank the reviewer for their attention to details and apoligize for the issues. All of the suggestions ahve been addressed in the revised manuscript.
+    \begin{solutionorbox} \label{comment:3_5}
+        We thank the reviewer for their attention to details and apologize for the issues. All of the suggestions have been addressed in the revised manuscript.
     \end{solutionorbox}
 
 
     \question The reviewer recommends to include a tables of nomenclature
 
-    \begin{solutionorbox} \label{comment:}
+    \begin{solutionorbox} \label{comment:3_6}
         A table of nomenclature has been included in the revised manuscript.
     \end{solutionorbox}
 \end{questions}
