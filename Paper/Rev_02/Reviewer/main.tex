@@ -28,81 +28,15 @@
 \tikzstyle{pfr} = [cylinder, draw, minimum height=4cm, minimum width=1cm, shape aspect=1, shape border rotate=180]
 \usetikzlibrary{shapes.geometric}
 
+% \renewcommand{\sectionmark}[1]{\rightmark{#1}}
+
+% \header{}{}{title: \rightmark}
+\footer{}{Page \thepage\ of \numpages}{}
+
 \begin{document}
 
-% \section*{Common concerns} \label{sec:reviewer_0}
-
-% Before addressing each reviewer's comments individually, we would like to discuss two common concerns raised by multiple reviewers: the modeling approach and the parameter sensitivity analysis.
-
-% \subsection{Modeling approach} \label{sec:model}
-
-% The original submission focused on the broader goals of the study, offering a concise explanation of the proposed model. However, based on the reviewers’ feedback, we recognized the need to address potential misunderstandings caused by this brevity. To resolve this, we have clarified and justified the modeling approach within this letter, while also updating the manuscript to provide a more detailed and general explanation of the model. These revisions ensure that the manuscript presents a clearer and more comprehensive framework while preserving the original model’s intent and structure.
-
-% % We recognize that the initial submission provided a limited explanation of the original model. To address this, we have expanded our explanation both here and in the updated manuscript, resulting in a more general model while keeping its changes minimal. These revisions directly address the reviewers' concerns and remain consistent with the intent of the initial model.
-
-% Nevertheless, our work aims to establish a foundation for future research in this area by developing a modeling and control strategy within a general framework. This framework is designed to encompass key features of real-world systems, rather than focusing on a model tailored to a specific system. 
-
-% For the axial dispersion tubular reactor presented in Fig.~\ref{fig:reactor}, the molar balance equation may be written for the reactant concentration, $C_A$, as follows:
-
-% \begin{figure}[!htbp]
-%     \centering
-%     \begin{tikzpicture}
-%         \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1.5cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
-%         \node (pfr_inlet) [circle, left of=pfr, xshift=-1.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
-%         \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
-%         \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
-%         \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
-    
-%         \draw[dotted, thick] ([yshift=0.75cm]pfr_inlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 0$} ([yshift=-0.75cm]pfr_inlet.center);
-%         \draw[dotted, thick] ([yshift=0.75cm]pfr_outlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 1$} ([yshift=-0.75cm]pfr_outlet.center);
-    
-%         \node[below of=recycle_left, node distance=1.75cm, anchor=north west, xshift=-0.2cm] {$R \, C_A(1, t-\tau)$};
-%         \node[above of=pfr_inlet, node distance=1.05cm,] {$C_A(0, t)$};
-%         \node[above of=pfr_outlet, node distance=1.05cm,] {$C_A(1, t)$};
-        
-%         \draw [arrow_2] (pfr_outlet) -- node[near end, above] {$y(t)$} ++(2,0);
-%         \draw [arrow_2] (pfr_inlet) ++(-2,0) coordinate(start) -- node[near start, above] {$u(t)$} (pfr_inlet);
-%         \draw [arrow_2] (recycle_right) -- ++(0,-1.75) -| (recycle_left);
-        
-%     \end{tikzpicture}
-%     \caption{Axial tubular reactor with recycle stream.}
-%     \label{fig:reactor}
-% \end{figure}
-
-% \begin{equation}
-%     \frac{\partial C_A}{\partial t} = D \frac{\partial^2 C_A}{\partial \zeta^2} - v \frac{\partial C_A}{\partial \zeta} - r(C_A)
-% \end{equation}
-
-% where $r(C_A)$ is the reaction rate by which the reactant is consumed. Considering this term can be non-linear, the model can be linearized around the steady-state followed by replacing the state of the system with deviation from the steady-state concentration. This will result in the following equation:
-
-% \begin{equation}
-%     \frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial \zeta^2} - v \frac{\partial \epsilon}{\partial \zeta} - \left( \left. \frac{\partial r(C_A)}{\partial C_A} \right|_{C_{A, ss}} \right) \epsilon
-% \end{equation}
-
-% Here, $\epsilon \equiv C_A - C_{A, ss}$ is the deviation from the steady-state concentration, and $C_{A, ss}$ is the steady-state concentration of the reactant. The model given at this point, although linear, sets a general framework for model-based control strategies of a wide range of infinite-dimensional convection-diffusion-reaction systems in chemical engineering process and dynamics around their steady-state.
-
-% The assumptions made in the model are that the parameters of the system are constant and thus, the states of the system are not affected by changes in system's pressure or temperature. The authors acknowledge that the model will be more realistic if the temperature dependence of the reaction rates is included. In fact, addressing temperature dependence is the focus of our ongoing research and represents a natural extension of this work. We anticipate presenting these advancements in future submissions to this journal. Nevertheless, as mentioned above, the primary goal here is to establish a general framework, leaving more specific and physically significant models for subsequent studies.
-
-% In addition to the concerns related to the applicability of the model, the choice of positive reaction term is also explained in this section along with stability analysis. The stability analysis of the system in the vicinity of the steady state has been one of the first things of our interest. While no isothermal reactor can technically be exponentially unstable due to the finite amount of reactant available, the steady state of the system can be unstable in the vicinity of the steady state, meaning that a deviation from the steady state may draw the system to a different steady state, resulting in completely different model dynamics than the one used to design and control the system for optimal operation.
-
-% Performing the eigenvalue analysis of the system, we have observed that a system may have unstable steady-state only when the reaction term coefficient $-\frac{\partial r(C_A)}{\partial C_A}$ is positive around a given steady-state. Though an uncommon scenario, this may happen in the case of autocatalytic reactions, enzyme-catalyzed reactions, reactions that incorporate inhibition mechanisms, etc. Although the proposed controller can also stabilize an already stable system in an optimal manner, a positive reaction term is selected to demonstrate the ability of the proposed controller to stabilize a system which is mathematically unstable, rather than focusing on a physically significant model. This has to be included within the general framework of the controller proposed in this work as it becomes more significant when the work is extended to more complex systems where instability becomes a common issue.
-
-% In summary, the revisions address the reviewers' concerns by expanding the modeling section, clarifying assumptions, and adding relevant analysis to enhance the work’s depth and applicability. By doing so, we have strengthened the explanation of the proposed framework and its ability to handle intrinsic delays in distributed parameter systems. We believe these changes make the manuscript more robust and provide a solid foundation for advancing research in chemical engineering process control and dynamics.
-% % In light of the above clarifications, the authors recognize that the initial submission provided a limited explanation of the original model. To address this, we have modified the modeling section of our work to expand it further in the updated manuscript. While these changes resulting in a more general model the changes are minimal as a result of linearization, omitting the need to update the rest of the manuscript as a result of this change. These revisions are aimed to directly address the reviewers' concerns and remain consistent with the intent of the initial model.
-
-% \subsection{Parameter sensitivity analysis} \label{sec:parameter}
-
-% We acknowledge how all the reviewers are interested in at least one aspect of parameter sensitivity analysis, which was also of great interest to the authors during the initial simulations. At that stage, we tested numerous parameter sets and observed interesting results, such as how increasing or decreasing the Peclet number causes the spectrum to shift towards real or purely imaginary eigenvalues, or how increasing the recycle ratio mimics the behavior of a CSTR. However, we chose not to include these results in the original manuscript to maintain the focus of our work, which is to introduce a modeling technique for incorporating state delay into a distributed parameter system, followed by developing a control strategy based on the obtained infinite-dimensional model using a late-lumping approach.
-
-% Our observations showed that while parameter variations produced interesting modeling results for the open-loop system, they did not impact the general strategy proposed in this work. By this, we mean that for any parameter set, the system’s spectrum can be determined by solving the eigenvalue problem in the same manner. Once the spectrum is obtained, the controller can be designed by solving the Operator Riccati Equation (ORE) in the same way, which stabilizes the system by selecting a sufficient number of eigenmodes and appropriately tuning the controller parameters in the objective function. While solving the characteristic equation or the ORE may become more computationally intensive for extreme parameter choices, it remains feasible, ensuring that the proposed strategy can be applied effectively across a wide range of parameter sets.
-
-% The proposed set of parameters was chosen to demonstrate the applicability of our approach. Specifically, we selected a parameter set that not only incorporates all the key properties of the claimed system—diffusion, convection, reaction, recycle ratio, and recycle delay—but also results in an unstable system, as explained earlier in this letter. This deliberate choice highlights the controller's ability to stabilize a system that combines all these properties while exhibiting challenging dynamics, showcasing the practicality and effectiveness of the proposed strategy in addressing intrinsic delays and instability.
-
-% Nevertheless, as an additional enhancement to our work, we have included an analysis of how the controller’s performance varies with different delay values, among other parameters. The authors admit that this addition strengthens the work by satisfying the natural curiosity of readers, as the delay is central to this study, while remaining within the scope of the research. It also provides deeper insights into the controller’s performance and demonstrates its adaptability in addressing state delay, contributing to the advancement of distributed parameter systems in chemical engineering process control and dynamics. The manuscript has been updated to reflect this addition in the results and discussions, as well as the conclusions sections.
-
-% \newpage
-
 \section*{Reviewer 1}
+% \thispagestyle{headandfoot}
 
 The comments of Reviewer 1, along with our responses to each comment, are included below:
 
@@ -126,7 +60,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What does PIDEs stand for?
 
     \begin{solutionorbox} \label{comment:1_2}
-        We thank the reviewer for this suggestion. The acronym should have been defined in the manuscript. It stands for Partial Integro Differential Equations. The manuscript has been revised accordingly.
+        We thank the reviewer for this suggestion. It stands for Partial Integro Differential Equations. The acronym has now been defined in the manuscript and the manuscript has been revised accordingly.
     \end{solutionorbox}
 
 
@@ -166,7 +100,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Why is $x_2$ a function of $\zeta$ ? How does $x_2$ change across the recycle? What kind of law does it follow? To me, it seems like $x_2$ only changes with respect to time
 
     \begin{solutionorbox} \label{comment:1_6}
-        We have assumed that along the recycle stream, the flow of the reactant belongs to the class of pure transport PDEs. This is the case when diffusion term and reaction term become negligible compared to the convective term, and the state variable $x_2$ is merely being transported along the recycle stream. Nevertheless, this still means that $x_2$ is a function of $\zeta$ and $t$. Concentration profile along the recycle stream has not been presented in the original submission as we believe it is not the focus of this work. However, for the reviewer's reference, it is included here in the response as shown in Fig.~\ref{fig:x2}.
+        We have assumed that along the recycle stream, the flow of the reactant belongs to the class of pure transport PDEs. This is the case when the diffusion term and the reaction term become negligible compared to the convective term, and the state variable $x_2$ is merely being transported along the recycle stream. Nevertheless, this still implies that $x_2$ is a function of $\zeta$ and $t$. Concentration profile along the recycle stream has not been presented in the original submission as we believe it is not the focus of this work. However, for the reviewer's reference, it is included here in the response as shown in Fig.~\ref{fig:x2}.
     \end{solutionorbox}
 
 \begin{figure}[H]
@@ -199,7 +133,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Should $\mathfrak{R}$ be self-adjoint and coercive?
 
     \begin{solutionorbox} \label{comment:1_9}
-        The authors appreciate the reviewer for mentioning this. According to \cite{curtainbook} for the infinite-dimensional LQR problem on the infinite-time interval, operator $\mathfrak{R}$ should be self-adjoint and coercive, which is a better way to address the operator compared to self-adjoint and positive semi-definite. Since the system has finite-dimensional (to be more specific, scalar in this case) real input, these two sets of conditions will be identical; yet to enhance the quality of the work, reveiwer's suggestion has been taken into consideration and the manuscript has been updated accordingly.
+        The authors appreciate the reviewer for mentioning this. According to \cite{curtainbook} for the infinite-dimensional LQR problem on the infinite-time interval, operator $\mathfrak{R}$ should be self-adjoint and coercive, which is a better way to address the operator compared to self-adjoint and positive semi-definite. Since the system has finite-dimensional (to be more specific, scalar in this case) real input, these two sets of conditions will be identical; yet to enhance the quality of the work, reviewer's suggestion has been taken into consideration and the manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -208,7 +142,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - Is Problem 12 well-posed, does J have a finite value for at least one u?
 
     \begin{solutionorbox} \label{comment:1_10}
-        The proposed infinite-time LQR problem is well-posed, i.e. for at least one input trajectory $u(t)$, the cost function $J$ has a finite value. The stabilizing input trajectory obtained in the manuscript is an example as all the eigenvalues of the obtained closed-loop system $\mathfrak{A} - \mathfrak{B} K$ are in the open left half of the complex plane. 
+        The proposed infinite-time LQR problem is well-posed, i.e. for at least one input trajectory $u(t)$, the infinite-time cost function $J$ has a finite value. The stabilizing input trajectory obtained in the manuscript is an example as all the eigenvalues of the obtained closed-loop system $\mathfrak{A} - \mathfrak{B} K$ are in the open left half of the complex plane. 
     \end{solutionorbox}
 
 
@@ -240,7 +174,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
         As a result, the zero-input response is considered unstable due to the positive reaction term in the model. Figure 9 illustrates the unstable dynamics of the linearized model in the vicinity of the steady-state in the absence of control input; with the qualitative assessment that a deviation from the steady state may draw the system to a different steady state, resulting in completely different model dynamics than the one used to design and control the system for optimal operation. The manuscript has been updated to include more detailed explanation in this regard.
     \end{solutionorbox}
 
-    \begin{figure}[!htbp]
+    \begin{figure}[H]
         \centering
         \begin{tikzpicture}
             \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1.5cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
@@ -270,7 +204,7 @@ The comments of Reviewer 1, along with our responses to each comment, are includ
     - What are the values of matrices Q and R in the objective function?
 
     \begin{solutionorbox} \label{comment:1_12}
-        The authors thank the reviewer for their comment on this matter. The values for operators $\mathfrak{Q}$ and $\mathfrak{Q}$ in the objective function were not explicitly mentioned in the manuscript. These values are chosen as $\mathfrak{Q} = 0.05 \times \mathfrak{I}$ and $\mathfrak{R} = 50$, where $\mathfrak{I}$ is the identity operator of the same size as $\mathfrak{A}$. The manuscript has been updated accordingly.
+        The authors thank the reviewer for their comment on this matter. The values for operators $\mathfrak{Q}$ and $\mathfrak{R}$ in the objective function were not explicitly mentioned in the manuscript. These values are chosen as $\mathfrak{Q} = 0.05 \times \mathfrak{I}$ and $\mathfrak{R} = 50$, where $\mathfrak{I}$ is the identity operator of the same size as $\mathfrak{A}$. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
@@ -323,7 +257,7 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question Why is relevant to consider Danckwerts boundary conditions for the problem of control? Have you compared your results with those obtained considering other boundary conditions?
 
     \begin{solutionorbox} \label{comment:2_1}
-        The authors appreciate the reviewer's concern regarding the choice of boundary conditions. In the field of chemical engineering process control and dynamics, the Danckwerts boundary condition has become an unseparatble part of the modeling procedure when it comes to tubular reactors. Belonging to the class of Robin boundary conditions, the choice of Danckwerts boundary condition maintains generality while capturing physical significance without simplifying the problem. Therefore, although considering other boundary conditions is a possiblity, they may lack the physical relevance and generality offered by the Danckwerts condition in this context.
+        The authors appreciate the reviewer's concern regarding the choice of boundary conditions. In the field of chemical engineering process control and dynamics, the Danckwerts boundary condition has become an inseparable part of the modeling procedure when it comes to tubular reactors. Belonging to the class of Robin boundary conditions, the choice of Danckwerts boundary condition maintains generality while capturing physical significance without simplifying the problem. Therefore, although considering other boundary conditions is a possibility, they may lack the physical relevance and generality offered by the Danckwerts condition in this context.
     \end{solutionorbox}
 
 
@@ -332,7 +266,7 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \begin{solutionorbox} \label{comment:2_2}
         The effect of the recycle ratio has been studied on the dynamics of the system and the performance of the controller during the initial simulations. We observed that as \( R \to 1 \), the open-loop system behaves more like a CSTR (i.e., concentration profiles start to become flat). However, it becomes more challenging for the controller to stabilize the system, likely because the controller action is significantly diluted at the reactor inlet after being mixed with the recycle stream.
 
-        Parameter sensitivity analysis naturally raises reader curiosity, as reflected in the diverse interests of all reviewers. For example, some reviewers focused on the Peclet number or delay time (\( \tau \)), while others, like the reviewer here, were interested in the recycle ratio (\( R \)). This diversity highlights how sensitivity analysis could quickly expand beyond the intended scope of this work. While we acknowledge the importance of \( R \) in influencing system behavior, we decided to pick \( \tau \) among all parameters because it is central to our work and directly tied to the delay-based dynamics being studied, and to address the natural curiosity of readers. Expanding the analysis to include other parameters, such as \( R \), would risk exceeding the intended scope. By narrowing our focus, we aimed to address the natural curiosity of readers while maintaining the study's clarity and precision. 
+        Parameter sensitivity analysis naturally raises reader curiosity, as reflected in the diverse interests of all reviewers. For example, some reviewers focused on the Peclet number or delay time (\( \tau \)), while others, like the reviewer here, were interested in the recycle ratio (\( R \)). This diversity highlights how sensitivity analysis could quickly expand beyond the intended scope of this work. While we were initially hesitant to include detailed sensitivity analysis to maintain the focus of the work, and although we acknowledge the importance of \( R \) in influencing system behavior, we decided to pick \( \tau \) among all parameters because it is central to our work and directly tied to the delay-based dynamics being studied, and to address the natural curiosity of readers. Expanding the analysis to include other parameters, such as \( R \), would risk exceeding the intended scope. By narrowing our focus, we aimed to address the natural curiosity of readers while maintaining the study's clarity and precision. 
         
         It is worth noting that, throughout this work, the proposed modeling and control strategy has been demonstrated to effectively stabilize a wide range of parameter sets, including variations in the recycle ratio. This ensures the adaptability of the proposed control strategy across diverse system configurations.
     \end{solutionorbox}
@@ -341,9 +275,15 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
     \question The authors used as the case study the problem of an axial dispersion tubular reactor incorporating diffusion, convection, and a first-order irreversible chemical reaction described by equations (1)-(2). While this is sufficient to present their approach, it is far from being extended to the more general problem, non-isothermal, and with more general kinetics such as biochemical or catalytic.
 
     \begin{solutionorbox} \label{comment:2_3}
-        The authors appreciate the insightful comment. We fully acknowledge that temperature dependence can significantly impact the dynamics of chemical reactors. In fact, as a natural extension to the current submission, the authors are already working on addressing the non-isothermal case in a separate submission to the Canadian Journal of Chemical Engineering, which builds on the foundation laid by this study.
+        The authors appreciate the insightful comment. In response, we have taken the following steps to clarify how our current framework, while based on simplified assumptions, is inherently flexible and can accommodate further complexities without requiring significant changes to its structure. 
 
-        Regarding the current model and its general applicability to more complex reaction kinetics, the authors have revised the proposed model to show how a generalized reaction term represented as \( r = r(C_A) \) can be captured with the proposed model. Here, \( C_A \) denotes the concentration of the reactant. This adjustment ensures the model can accommodate a broad range of reaction kinetics while maintaining its core focus; as the primary goal here is to establish a foundational framework that addresses intrinsic delays within the proposed DPS setup in the field of chemical engineering process control and dynamics, leaving more detailed and physically specific extensions for subsequent studies.        
+        \begin{enumerate}
+            \item \textbf{General Reaction Kinetics:} Regarding the general kinetics within the proposed model, we have revised the manuscript to demonstrate how a generalized reaction term \( r = r(C_A) \), where \( C_A \) is the reactant concentration, can be incorporated within the proposed framework. This change ensures that the model can accommodate a broad range of reaction kinetics while maintaining its core focus.
+            
+            \item \textbf{Non-Isothermal Case:} We agree that temperature dependence can significantly impact reactor dynamics. In fact, as a natural extension of this work, we are already working on addressing the non-isothermal case in a separate submission to the \textit{Canadian Journal of Chemical Engineering}. This future study builds on the foundation established here, demonstrating the potential flexibility of the proposed framework as the inclusion of thermal effects and their influence on system dynamics will fit seamlessly into the same model structure.
+        \end{enumerate}
+
+        We emphasize that the primary objective of this study is to establish a foundational framework addressing intrinsic delays in distributed parameter systems (DPS) for process control and dynamics. More detailed and physically specific extensions, such as those involving non-isothermal behavior or highly nonlinear kinetics, are intentionally reserved for subsequent studies to build upon this foundation.       
     \end{solutionorbox}
 
 
@@ -354,9 +294,9 @@ The comments of Reviewer 2, along with our responses to each comment, are includ
 
         Chemical engineering inherently incorporates process control and dynamics, making the two disciplines inseparable. While this work is centered around proposing a control strategy, its significance is rooted in the unique context of chemical engineering process control, where state delays are rarely addressed. Although state delays have been extensively studied in other fields with different system models, applying such a strategy to chemical engineering systems—particularly those convection-diffusion-reaction DPSs described by second order PDEs—is novel and valuable. 
         
-        Furthermore, we would like to emphasize that similar research \cite{li2024novel, azhin2021modelling} has been recently published in the Canadian Journal of Chemical Engineering, demonstrating contributions to control theory that align with those presented in our work. This validates the relevance of publishing control-focused studies within chemical engineering journals, which often encompass modeling and novel methodologies essential to the field.
+        Furthermore, we would like to emphasize that similar research \cite{li2024novel, azhin2021modelling} has been recently published in the \textit{Canadian Journal of Chemical Engineering}, demonstrating contributions to control theory that align with those presented in our work. This validates the relevance of publishing control-focused studies within chemical engineering journals, which often encompass modeling and novel methodologies essential to the field.
 
-        On top of that, we are planning to extend this work in our upcoming submissions to the Canadian Journal of Chemical Engineering by addressing temperature dependence of the reaction rates, which will be built on the foundation laid by this study. This extension will further enhance the practical implications of our findings, emphasizing the broader impact of this study on chemical engineering practice. All of these aspects makes us confident that this work is well aligned with the scope and readership of Canadian Journal of Chemical Engineering.
+        On top of that, we are planning to extend this work in our upcoming submissions to the \textit{Canadian Journal of Chemical Engineering} by addressing temperature dependence of the reaction rates, which will be built on the foundation laid by this study. This extension will further enhance the practical implications of our findings, emphasizing the broader impact of this study on chemical engineering practice. All of these aspects makes us confident that this work is well aligned with the scope and readership of this journal.
     \end{solutionorbox}
 
 \end{questions}
@@ -378,18 +318,18 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \begin{solutionorbox} \label{comment:3_1}
         The authors thank the reviewer for the insightful and detailed comment. We have gone through the suggested literature and agree that the selection and distribution of the discretization grid are crucial in converting an infinite-dimensional system to a finite-dimensional one. However, we would also like to point out that based on the late-lumping approach used in the proposed work, we do not discretize the system in space at all. In fact, the infinite-dimensional nature of the system is fully captured in the proposed control strategy, and the control law is designed directly in the infinite-dimensional space.
 
-        The 100 grid points mentioned in the manuscript are merely used to confirm how the optimal control input will be applied to the system. In other words, the feedback gain is designed based on the infinite-dimensional system, and the control input is obtained with no need for spatial discretization. It is only at this point that the obtained control input is applied to a FDM representation of the system to evaluate the system's response to the control input.
+        The 100 grid points mentioned in the manuscript are merely used to confirm how the optimal control input will be applied to the system. In other words, the feedback gain is designed based on the infinite-dimensional system, and the control input is obtained with no need for spatial discretization. It is only at this point that the obtained control input is applied to a FDM representation of the system to evaluate the system's response to the control input. Nevertheless, the 100 grid points are equidistributed, and the discretization grid is uniform. The manuscript has been updated accordingly.
     \end{solutionorbox}
 
 
     \question The manuscript lacks conclusions or further discussion about the control trajectories' results, such as the quality of the control actions or improvements in process operation (e.g., avoidance of constraint violations, disturbance rejection, etc.). Although the authors included several figures illustrating the process dynamics and control trajectories, these are not discussed in sufficient depth, i.e., avoid leaving the reader to draw their own conclusions from the figures. Additionally, the reviewer recommends reducing the number of figures, which could allow more space for further discussion of the results.
 
     \begin{solutionorbox} \label{comment:3_2}
-        The reviewer's suggestion is well taken, and further discussion of the results has been added to the revised manuscript. With the inclusion of parameter sensitivity analysis, there is now greater scope to discuss the controller’s performance in more detail.
+        The reviewer's suggestion is well taken, and further discussion of the results has been added to the revised manuscript. With the inclusion of parameter sensitivity analysis as discussed in Comment~\ref{comment:3_3}, there is now more room to discuss the controller’s performance in more detail.
 
         Nevertheless, regarding the requested improvements offered by the proposed controller (e.g., disturbance rejection or constrained input/output), we emphasize that this work is rather foundational, focusing on stabilization as a prerequisite for higher-level control objectives such as the servo or regulatory problem. Stabilization ensures predictable system behavior, which is essential for implementing advanced control strategies.
         
-        We are currently extending this work to address temperature dependence of the reaction rates, with plans for submission to the Canadian Journal of Chemical Engineering. Building on the modeling and control strategy introduced here, we also aim to address the regulatory problem (i.e., rejecting disturbances and maintaining the system at a desired setpoint). Furthermore, to incorporate constrained input/output, we can transition to discrete-time MPC in future work, showcasing how the foundations laid in this study can be expanded to address more complex modeling and control challenges.
+        We are currently extending this work to address temperature dependence of the reaction rates, with plans for submission to the \textit{Canadian Journal of Chemical Engineering}. Building on the modeling and control strategy introduced here, we also aim to address the regulatory problem (i.e., rejecting disturbances and maintaining the system at a desired setpoint). Furthermore, to incorporate constrained input/output, we can transition to discrete-time MPC in future work, showcasing how the foundations laid in this study can be expanded to address more complex modeling and control challenges.
     \end{solutionorbox}
 
 
@@ -407,14 +347,13 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \question In section 4, the authors indicate that the process model was discretized in time and space, however, they mention that they obtained a system of ordinary differential equations (ODEs). Please clarify how this full discretization resulted in a system of ODEs.
 
     \begin{solutionorbox} \label{comment:3_4}
-        The authors appreciate the reviewer for pointing out this issue. We acknowledge that that the manuscript appears to be ambiguous in this regard. The authors clarify that the ODEs are obtained as a result of applying space discretization to the infinite-dimensional system (as previously explained in comment~\ref{comment:3_1}). To solve the system of ODEs with respect to time, we used the numerical solver mentioned in the manuscript, meaning that time discretization is applied within the numerical solver itself. The manuscript has been updated to address this point.
+        The authors appreciate the reviewer for pointing out this issue. We acknowledge that the manuscript appears to be ambiguous in this regard. The authors clarify that the ODEs are obtained as a result of applying space discretization to the infinite-dimensional system (as previously explained in comment~\ref{comment:3_1}). To solve the system of ODEs with respect to time, we used the numerical solver mentioned in the manuscript, indicating that the numerical solver inherently applies time discretization. The manuscript has been updated to address this point.
     \end{solutionorbox}
-
 
     \question The manuscript has some typos that the authors must correct, e.g., …setting for of distributed…, Then two full-state… In page 5, the acronym PIDEs is not previously defined. For section 4.3, the reviewer recommends to modify the expression “Last but not least” aiming not loose the formality of the manuscript.
 
     \begin{solutionorbox} \label{comment:3_5}
-        We thank the reviewer for their attention to details and apologize for the issues. All of the suggestions have been addressed in the revised manuscript.
+        We appreciate the reviewer’s detailed observations and have addressed their suggestions.
     \end{solutionorbox}
 
 
