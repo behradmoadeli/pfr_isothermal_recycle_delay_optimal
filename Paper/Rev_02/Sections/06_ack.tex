@@ -7,27 +7,32 @@
 \toprule
 \textbf{Symbol} & \textbf{Description} \\
 \midrule
-$c$ & Concentration along the reactor (state variable) \\
-$k_r$ & Reaction rate constant \\
+$k_r$ & Linearized reaction coefficient \\
 $t$ & Temporal coordinate \\
 $v$ & Flow velocity along the reactor \\
 $D$ & Diffusion coefficient \\
 $R$ & Recycle ratio \\
 $\lambda_i$ & Eigenvalue associated with eigenfunction $\phi_i$ \\
+$\overline{\lambda_i}$ & Complex conjugate of $\lambda_i$; Eigenvalue associated with adjoint eigenfunction $\psi_i$ \\
 $\tau$ & Residence time of the recycle stream \\
 $\zeta$ & Spatial coordinate along the reactor (dimensionless, $0 \leq \zeta \leq 1$) \\
 
+$c(\zeta, t)$ & Concentration deviation from steady state along the reactor \\
 $u(t)$ & Control input applied at the reactor inlet \\
-$x(\zeta, t)$ & State vector describing the system (e.g., concentration and recycle states) \\
+$\bm{x}(\zeta, t)$ & State vector describing the system (e.g., concentration deviation and recycle states) \\
 $y(t)$ & System output measured at the reactor outlet \\
-$K(\zeta)$ & Full-state feedback gain (spatially varying) \\
-$L(\zeta)$ & Observer gain for the output feedback controller \\
-$\phi_i(\zeta)$ & Eigenfunction of operator $\mathfrak{A}$ \\
-$\psi_i(\zeta)$ & Eigenfunction of adjoint operator $\mathfrak{A}^*$ \\
+$C(\zeta, t)$ & Concentration of the reactant $A$ along the reactor \\
+$\bm{K}(\zeta)$ & Full-state feedback gain of the optimal controller \\
+$\bm{L}(\zeta)$ & Observer gain for the output feedback controller \\
+$\bm{\phi}(\zeta)$ & Eigenfunction of operator $\mathfrak{A}$ \\
+$\bm{\psi}(\zeta)$ & Eigenfunction of adjoint operator $\mathfrak{A}^*$ \\
 
 $\mathfrak{A}$ & State operator (system generator in state-space representation) \\
+$\mathfrak{A}^*$ & Adjoint state operator \\
 $\mathfrak{B}$ & Input operator (maps control input to state dynamics) \\
+$\mathfrak{B}^*$ & Adjoint input operator (maps state dynamics to control input) \\
 $\mathfrak{C}$ & Output operator (maps state dynamics to system output) \\
+$P$ & Truncated solution to the Matrix Riccati Equation (MRE) \\
 $\mathfrak{Q}$ & State penalty operator in the cost function \\
 $\mathfrak{R}$ & Control effort penalty operator in the cost function \\
 $\Pi$ & Solution to the Operator Riccati Equation (ORE) \\

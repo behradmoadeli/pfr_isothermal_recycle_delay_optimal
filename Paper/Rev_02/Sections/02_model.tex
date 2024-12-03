@@ -5,22 +5,22 @@
 \begin{figure}[!htbp]
     \centering
     \begin{tikzpicture}
-        \node (pfr) [cylinder, draw, minimum height=3cm, minimum width=1cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=gray!45, cylinder body fill=gray!15] {$\mathcal{A} \rightarrow \mathcal{B}$};
-        \node (pfr_inlet) [circle, left of=pfr, xshift=-0.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1.5cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
+        \node (pfr_inlet) [circle, left of=pfr, xshift=-1.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
         \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
         \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
         \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
     
-        \draw[dotted, thick] ([yshift=0.5cm]pfr_inlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 0$} ([yshift=-0.65cm]pfr_inlet.center);
-        \draw[dotted, thick] ([yshift=0.5cm]pfr_outlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 1$} ([yshift=-0.65cm]pfr_outlet.center);
+        \draw[dotted, thick] ([yshift=0.75cm]pfr_inlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 0$} ([yshift=-0.75cm]pfr_inlet.center);
+        \draw[dotted, thick] ([yshift=0.75cm]pfr_outlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 1$} ([yshift=-0.75cm]pfr_outlet.center);
     
-        \node[below of=recycle_left, node distance=1.3cm, anchor=north west, xshift=-0.2cm] {$R \, c(1, t-\tau)$};
-        \node[above of=pfr_inlet, node distance=0.75cm,] {$c(0, t)$};
-        \node[above of=pfr_outlet, node distance=0.75cm,] {$c(1, t)$};
+        \node[below of=recycle_left, node distance=1.75cm, anchor=north west, xshift=-0.2cm] {$R \, C_A(1, t-\tau)$};
+        \node[above of=pfr_inlet, node distance=1.05cm,] {$C_A(0, t)$};
+        \node[above of=pfr_outlet, node distance=1.05cm,] {$C_A(1, t)$};
         
         \draw [arrow_2] (pfr_outlet) -- node[near end, above] {$y(t)$} ++(2,0);
         \draw [arrow_2] (pfr_inlet) ++(-2,0) coordinate(start) -- node[near start, above] {$u(t)$} (pfr_inlet);
-        \draw [arrow_2] (recycle_right) -- ++(0,-1.25) -| (recycle_left);
+        \draw [arrow_2] (recycle_right) -- ++(0,-1.75) -| (recycle_left);
         
     \end{tikzpicture}
     \caption{Axial tubular reactor with recycle stream.}
@@ -28,13 +28,19 @@
 \end{figure}
 
 
-The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a first-order irreversible chemical reaction \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted substrate. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the reactor's dynamics can be described by a second-order parabolic PDE, a common class of equations used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation}. The resulting PDE that describes the reactor model is given by:
+The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a chemical reaction where reactant $A$ is converted into products \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted substrate. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the dynamics of the reactant concentration can be described by the PDE given in Equation~(\ref{eq:PDE_basic}), belonging to the class of second order parabolic PDEs commonly used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation} in chemical engineering.
 
-\begin{equation} \label{eq:PDE_original_model}
-    \dot{c}(\zeta, t) = D \partial_{\zeta \zeta} c(\zeta, t) - v \partial_\zeta c(\zeta, t) + k_r c(\zeta, t)
+\begin{equation} \label{eq:PDE_basic}
+    \dot{C_A}(\zeta, t) = D \partial_{\zeta \zeta} C_A(\zeta, t) - v \partial_\zeta C_A(\zeta, t) + r(C_A)
 \end{equation}
 
-subject to Dankwerts boundary conditions:
+Here, $C_A(\zeta, t)$ denotes the concentration of reactant $A$ along the reactor. The physical parameters $D$, $v$, $R$, and $\tau$ correspond to the diffusion coefficient, flow velocity along the reactor, recycle ratio, and residence time of the recycle stream, respectively. It is worth noting that the system properties are assumed to be constant against changes in temperature and pressure. The spatial and temporal coordinates of the system are represented by $\zeta$ and $t$, where $\zeta \in [0, 1]$ and $t \in [0, \infty)$. In addition, $r(C_A)$ is the reaction rate by which the reactant is consumed. Considering the reaction term in general can be non-linear, the model is further linearized around its steady-state, followed by replacing the reactant concentration $C_A$ with its deviations from the steady-state concentration $C_{A,ss}$. The result is given in Equation~(\ref{eq:PDE_original_model}).
+
+\begin{equation} \label{eq:PDE_original_model}
+    \dot{c}(\zeta, t) = D \partial_{\zeta \zeta} c(\zeta, t) - v \partial_\zeta c(\zeta, t) - k_r c(\zeta, t)
+\end{equation}
+
+where $c(\zeta, t) \equiv C_A(\zeta, t) - C_{A, ss}(\zeta)$ is the deviation from the steady-state concentration and the linearized reaction coefficient is defined as $k_r \equiv \left. \dfrac{\partial r(C_A)}{\partial C_A} \right|_{C_{A, ss}}$ in the vicinity of the steady-state. The system output is assumed to be the deviation of the reactant concentration from the steady-state measured at the reactor outlet, while the control input is set to be equal to the deviation of the reactant concentration from the steady-state, applied at the reactor inlet after being mixed with the delayed state resulting from the recycled portion of the flow occurring $\tau$ time units ago. Incorporating input, output, and state delay in addition to the assumption of Danckwerts boundary condition will result in Equation~(\ref{eq:BC}) that describe the boundary conditions of the system.
 
 \begin{align} \label{eq:BC}
     \begin{cases}
@@ -44,9 +50,7 @@ subject to Dankwerts boundary conditions:
     \end{cases}
 \end{align}
 
-Here, $c(\zeta, t)$ denotes the properly scaled notion of concentration along the reactor, representing the state of the system. The physical parameters $D$, $v$, $k_r$, $R$, and $\tau$ correspond to the diffusion coefficient, flow velocity along the reactor, reaction constant, recycle ratio, and residence time of the recycle stream, respectively. The spatial and temporal coordinates of the system are represented by $\zeta$ and $t$, where $\zeta \in [0, 1]$ and $t \in [0, \infty)$.
-
-Dankwerts boundary conditions are particularly suitable for modeling axial tubular reactors, as they account for deviations from perfect mixing and piston flow, assuming negligible transport lags in connecting lines \autocite{danckwerts1993continuous}. These conditions make the model more realistic for chemical reactors of this type. The input and the output of the system are also present in the boundary conditions. The system output is measured at the reactor outlet, while the input is applied at the inlet. Additionally, the delayed state resulting from the recycled portion of the flow, occurring $\tau$ time units ago, is incorporated into the inlet; all as shown in Equation~(\ref{eq:BC}).
+Accounting for deviations from perfect mixing and piston flow and assuming negligible transport lags in connecting lines \autocite{danckwerts1993continuous}, the Danckwerts boundary conditions have become an inseparable part of modeling axial tubular reactors in the field of chemical engineering process control and dynamics. While capturing physical significance, Danckwerts boundary conditions maintain generality without unnecessarily simplifying the model as they belong to the general class of Robin boundary conditions.
 
 
 \subsection{PDE representation of delay term}
@@ -164,7 +168,12 @@ where the $ 3 \times 3$ matrix $\Lambda_{(m,n)}$ is defined as $\Lambda \equiv \
     \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \left. \tilde{\bm{\phi}} \right|_{\zeta = 0} = 0
 \end{equation}
 
-where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{eq:eigval_calc_4}). Equation~(\ref{eq:eigval_calc_4}) suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane.
+where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{eq:eigval_calc_4}). Equation~(\ref{eq:eigval_calc_4}) suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane. 
+
+The parameters of the system are carefully chosen to highlight all its key characteristics simultaneously—namely, significant diffusion, convection, and reaction occurring within the reactor—while also ensuring that the delay term and recycle ratio have a pronounced effect on system dynamics. Additionally, the parameters are deliberately selected to introduce instability into the system, emphasizing the proposed control strategy's ability to stabilize an inherently unstable system. While no isothermal reactor can truly exhibit exponential instability due to the finite availability of reactants, such systems can still become unstable near the steady state. In this context, deviations from the steady state may cause the system to transition toward a different steady state, thereby altering the underlying dynamics and invalidating the original model used for system design and control optimization.
+
+It has been observed that for the linearized system to have an unstable steady state, the reaction coefficient, $k_r$, must be negative. Although rare, this scenario can arise in certain reaction mechanisms where the reaction rate decreases as the reactant concentration increases, such as autocatalytic reactions, enzyme-catalyzed reactions, or reactions involving inhibitory effects. This instability can be qualitatively understood as follows: a negative reaction coefficient causes a decline in the reaction rate as the reactant accumulates, leading to further reactant accumulation and thus, driving the system away from its steady state. Quantitative confirmation of this behavior can be achieved through eigenvalue analysis, where the presence of at least one eigenvalue with a positive real part indicates the system's instability.
+
 
 \begin{figure}[!htbp]
     \centering
@@ -183,7 +192,7 @@ where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{
     \textbf{Parameter}        & \textbf{Symbol} & \textbf{Value}     & \textbf{Unit}    \\ \hline
     Diffusivity               & $D$             & $2\times10^{-5}$   & ${m^2}/{s}$      \\ \hline
     Velocity                  & $v$             & $0.01$   & ${m}/{s}$        \\ \hline
-    Reaction Constant         & $k_r$           & $1.5$              & $s^{-1}$         \\ \hline
+    Reaction Constant         & $k_r$           & $-1.5$              & $s^{-1}$         \\ \hline
     Recycle Residence Time    & $\tau$          & $80$               & $s$              \\ \hline
     Recycle Ratio             & $R$             & $0.3$              & $-$              \\ \hline
     \end{tabular}
