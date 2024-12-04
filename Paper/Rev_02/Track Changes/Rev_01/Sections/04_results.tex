@@ -1,5 +1,4 @@
 \section{RESULTS AND DISCUSSION} \label{sec:results}
-
 \DIFdelbegin \DIFdel{The obtained controller strategies in the previous section }\DIFdelend \DIFaddbegin \DIFadd{In this section, the obtained control strategies }\DIFaddend are applied to a finite-difference method (FDM) representation of the system \DIFdelbegin \DIFdel{model to evaluate the system dynamics}\DIFdelend \DIFaddbegin \DIFadd{to evaluate its dynamic response}\DIFaddend . The system \DIFdelbegin \DIFdel{model }\DIFdelend is discretized in space \DIFdelbegin \DIFdel{and time, and the resulting }\DIFdelend \DIFaddbegin \DIFadd{using a uniform grid with 100 equidistributed points, resulting in a }\DIFaddend system of ordinary differential equations \DIFdelbegin \DIFdel{is solved using the }\texttt{\DIFdel{`solve\_ivp'}} %DIFAUXCMD
 \DIFdel{function in Python's }\texttt{\DIFdel{`SciPy'}} %DIFAUXCMD
 \DIFdel{library }%DIFDELCMD < \autocite{2020SciPy}%%%
@@ -12,39 +11,27 @@
 \DIFdel{. First, the unstable dynamics of the open-loop system is explored. Then two }\DIFdelend \DIFaddbegin \autocite{RK45_1, RK45_2}\DIFadd{. The implementation of this method is facilitated using the }\texttt{\DIFadd{solve\_ivp}} \DIFadd{function from Python's }\texttt{\DIFadd{SciPy}} \DIFadd{library }\autocite{2020SciPy}\DIFadd{, which provides a robust framework for handling time integration of ODEs.
 }
 
-\DIFadd{Employing the outlined approach to evaluate the dynamic response of the systems under consideration, a comparative analysis is conducted between two identical systems with }\DIFaddend full-state \DIFdelbegin \DIFdel{feedback systems are compared with respect to }\DIFdelend \DIFaddbegin \DIFadd{access, differing only in the }\DIFaddend number of eigenmodes \DIFdelbegin \DIFdel{used to obtain the optimal feedback gain. Finally}\DIFdelend \DIFaddbegin \DIFadd{employed to compute the optimal full-state feedback gains. Subsequently}\DIFaddend , the performance of the proposed observer-based controller is \DIFdelbegin \DIFdel{evaluated and the state reconstruction error dynamics are analyzed. }%DIFDELCMD < 
+\DIFadd{Employing the outlined approach to evaluate the dynamic response of the systems under consideration, a comparative analysis is conducted between two identical systems with }\DIFaddend full-state \DIFdelbegin \DIFdel{feedback systems are compared with respect to }\DIFdelend \DIFaddbegin \DIFadd{access, differing only in the }\DIFaddend number of eigenmodes \DIFdelbegin \DIFdel{used to obtain the optimal feedback gain. Finally}\DIFdelend \DIFaddbegin \DIFadd{employed to compute the optimal full-state feedback gains. Subsequently}\DIFaddend , the performance of the proposed observer-based controller is \DIFdelbegin \DIFdel{evaluated and the state reconstruction error dynamics are analyzed}\DIFdelend \DIFaddbegin \DIFadd{assessed, with particular attention given to the dynamics of state reconstruction errors. Finally, a sensitivity analysis is performed to examine the impact of key parameters on the model behavior and the effectiveness of the control strategy. Across all simulations presented, $\mathfrak{Q} = 0.05 \cdot \mathfrak{I}$ and $\mathfrak{R} = 50$ are used as the deviation penalty and control effort weight operators, respectively, where $\mathfrak{I}$ denotes the identity operator matching the size of $\mathfrak{A}$}\DIFaddend .
 
-%DIFDELCMD < %%%
-\subsection{\DIFdel{FDM representation of the open-loop system}}
+\DIFdelbegin \subsection{\DIFdel{FDM representation of the open-loop system}}
 %DIFAUXCMD
 \addtocounter{subsection}{-1}%DIFAUXCMD
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdel{Zero-input response of the system is explored using the mentioned FDM setup to show the unstable dynamics of }\DIFdelend \DIFaddbegin \DIFadd{assessed, with particular attention given to the dynamics of state reconstruction errors. Finally, a sensitivity analysis is performed to examine the impact of key parameters on the model behavior and }\DIFaddend the \DIFdelbegin \DIFdel{model. The state profile versus time and space $x_1(\zeta,t)$, is illustrated in Figure~\ref{fig:3D_x1_openloop}. The goal is to stabilize the system using an optimal }\DIFdelend \DIFaddbegin \DIFadd{effectiveness of the }\DIFaddend control strategy. \DIFdelbegin \DIFdel{The system is unstable as the result of the generation term in the model}\DIFdelend \DIFaddbegin \DIFadd{Across all simulations presented, $\mathfrak{Q} = 0.05 \cdot \mathfrak{I}$ and $\mathfrak{R} = 50$ are used as the deviation penalty and control effort weight operators, respectively, where $\mathfrak{I}$ denotes the identity operator matching the size of $\mathfrak{A}$}\DIFaddend .
+\DIFdel{Zero-input response of the system is explored using the mentioned FDM setup to show the unstable dynamics of the model. The state profile versus time and space $x_1(\zeta,t)$, is illustrated in Figure~\ref{fig:3D_x1_openloop}. The goal is to stabilize the system using an optimal control strategy. The system is unstable as the result of the generation term in the model. }\DIFdelend  
+
 
 \DIFdelbegin 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.8\textwidth,trim=0 0 100 0,clip]{Figures/3D_x1_openloop.png}
-    \caption{Zero-input response of the unstable open-loop system as described by Equations~(\ref{eq:PDE_original_model})~and~(\ref{eq:BC}).}
+    \caption{\DIFdel{Zero-input response of the unstable open-loop system as described by Equations~(\ref{eq:PDE_original_model})~and~(\ref{eq:BC}).}}
     \label{fig:3D_x1_openloop}
 \end{figure} 
 \DIFdelend
 
-%DIF >  \subsection{FDM representation of the open-loop system}
-\DIFaddbegin 
-
-%DIF >  Zero-input response of the system is explored using the mentioned FDM setup to show the unstable dynamics of the model. The state profile versus time and space $x_1(\zeta,t)$, is illustrated in Figure~\ref{fig:3D_x1_openloop}. The goal is to stabilize the system using an optimal control strategy. The system is unstable as the result of the generation term in the model.
-
-%DIF >  \begin{figure}[!htbp]
-%DIF >      \centering
-%DIF >      \includegraphics[width=0.8\textwidth,trim=0 0 100 0,clip]{Figures/3D_x1_openloop.png}
-%DIF >      \caption{Zero-input response of the unstable open-loop system as described by Equations~(\ref{eq:PDE_original_model})~and~(\ref{eq:BC}).}
-%DIF >      \label{fig:3D_x1_openloop}
-%DIF >  \end{figure}
-
-\DIFaddend \subsection{Full-state feedback regulator FDM representation}
+\subsection{Full-state feedback regulator FDM representation}
 
 
 \DIFdelbegin \DIFdel{Next, the }\DIFdelend \DIFaddbegin \DIFadd{Initially, the input response of the system provided by the }\DIFaddend full-state feedback \DIFdelbegin \DIFdel{regulator is evaluated using the same FDM representation}\DIFdelend \DIFaddbegin \DIFadd{is explored using the mentioned FDM setup}\DIFaddend . Two configurations are compared where the optimal feedback gain is obtained using different number of eigenmodes: one with $N=3$ and another with $N=7$, according to Figure~\ref{fig:k_modes}. The state profile versus time and space is illustrated for both cases in Figure~\ref{fig:full_state_feedback}. 
@@ -96,7 +83,7 @@ Omitting the need to have full access to system states, the observer-based regul
     \label{fig:2D_xt_L_k7}
 \end{figure}
 
-\DIFdelbegin \DIFdel{Last but not least}\DIFdelend \DIFaddbegin \DIFadd{In the last step}\DIFaddend , the state estimation error dynamics of the observer are plotted in Figures~\ref{fig:3D_e1_L_k7}~and~\ref{fig:2D_et_L_k7} to demonstrate the performance of the observer. The error dynamics are calculated as the squared difference between the true state and the estimated state at each grid point and time instance.
+\DIFdelbegin \DIFdel{Last but not least}\DIFdelend \DIFaddbegin \DIFadd{In the next step}\DIFaddend , the state estimation error dynamics of the observer are plotted in Figures~\ref{fig:3D_e1_L_k7}~and~\ref{fig:2D_et_L_k7} to demonstrate the performance of the observer. The error dynamics are calculated as the squared difference between the true state and the estimated state at each grid point and time instance.
 
 \begin{figure}[!htbp]
     \centering
@@ -115,7 +102,7 @@ Omitting the need to have full access to system states, the observer-based regul
 While the performance of the observer-based controller is slightly more sluggish compared to that of the full-state feedback regulator, it successfully stabilizes the system within a finite time horizon using only output measurements instead of full state information. In the absence of uncertainty in the system model, the observer gain can theoretically be designed so that the state estimation error converges to zero very fast compared to full-state feedback regulator dynamics. In practice, however, the observer gain is constrained by factors such as noise in the system output and plant-model mismatches. Despite these challenges, the proposed observer design mechanism achieves system stabilization with reasonable performance\DIFaddbegin \DIFadd{.
 }
 
-\DIFaddbegin \subsection{\DIFadd{Parameter sensitivity analysis}}
+\subsection{\DIFadd{Parameter sensitivity analysis}}
 
 \DIFadd{Followed by showcasing the ability of the proposed controller to stabilize an unstable system using merely output measurements, a brief parameter sensitivity analysis of the model dynamics and controller performance is conducted at the end of this section. The effects of varying the recycle ratio $R$ and mass transfer Peclet number (i.e. the ratio of convection to diffusion, $Pe = v/D$) were explored during initial simulations. In addition, as it is central to this work, the effect of varying time delay $\tau$ on the response of the system under the original controller design is investigated in more detail.
 }
@@ -136,4 +123,4 @@ While the performance of the observer-based controller is slightly more sluggish
 \DIFadd{It can be seen that as long as the actual time delay of a system is less than the assumed delay used in the controller design, the controller is still able to stabilize the system within a finite time horizon, although transient deviations from the desired behavior are observed. However, as the actual delay increases, the response of the system starts to deviate significantly from the desired behavior, especially after a certain threshold close to the actual recycle delay of the system. This shows the importance of including the time delay in the controller design to ensure the stability of the system within an optimal framework.
 }
 
-\DIFadd{Although further parameter sensitivity analysis is possible as it naturally raises readers' curiosity, expanding the analysis to include more detailed investigations would risk exceeding the scope of this work, which is to offer a novel modeling and control framework for a certain class of distributed parameter systems in chemical engineering. Nonetheless, the proposed modeling and control strategy is able to effectively stabilize the system over a broad range of parameter sets, including but not limited to variations in the imposed time delay, Peclet number, and recycle ratio, ensuring the practicality of the proposed framework across different system configurations. }\DIFaddend
+\DIFadd{Although further parameter sensitivity analysis is possible as it naturally raises readers' curiosity, expanding the analysis to include more detailed investigations would risk exceeding the scope of this work, which is to offer a novel modeling and control framework for a certain class of distributed parameter systems in chemical engineering. Nonetheless, the proposed modeling and control strategy is able to effectively stabilize the system over a broad range of parameter sets, including but not limited to variations in the imposed time delay, Peclet number, and recycle ratio, ensuring the practicality of the proposed framework across different system configurations}\DIFaddend .

@@ -35,6 +35,12 @@
 
 \begin{document}
 
+\section*{first page}
+ 
+First page intentionally left blank.
+ 
+\newpage
+
 \section*{Reviewer 1}
 % \thispagestyle{headandfoot}
 
@@ -325,7 +331,7 @@ The comments of Reviewer 3, along with our responses to each comment, are includ
     \question The manuscript lacks conclusions or further discussion about the control trajectories' results, such as the quality of the control actions or improvements in process operation (e.g., avoidance of constraint violations, disturbance rejection, etc.). Although the authors included several figures illustrating the process dynamics and control trajectories, these are not discussed in sufficient depth, i.e., avoid leaving the reader to draw their own conclusions from the figures. Additionally, the reviewer recommends reducing the number of figures, which could allow more space for further discussion of the results.
 
     \begin{solutionorbox} \label{comment:3_2}
-        The reviewer's suggestion is well taken, and further discussion of the results has been added to the revised manuscript. With the inclusion of parameter sensitivity analysis as discussed in Comment~\ref{comment:3_3}, there is now more room to discuss the controller’s performance in more detail.
+        The reviewer's suggestion is well taken, and further discussion of the results has been added to the revised manuscript. With the inclusion of parameter sensitivity analysis as discussed in Comment~\ref{comment:3_3}, there is now more room to discuss the controller's performance in more detail. In addition, Figure 9 (open-loop unstable system state response) has been removed accordingly, as the stability analysis has been discussed separately in detail in the revised manuscript. 
 
         Nevertheless, regarding the requested improvements offered by the proposed controller (e.g., disturbance rejection or constrained input/output), we emphasize that this work is rather foundational, focusing on stabilization as a prerequisite for higher-level control objectives such as the servo or regulatory problem. Stabilization ensures predictable system behavior, which is essential for implementing advanced control strategies.
         
