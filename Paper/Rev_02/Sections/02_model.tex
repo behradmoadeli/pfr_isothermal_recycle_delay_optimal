@@ -170,33 +170,12 @@ where the $ 3 \times 3$ matrix $\Lambda_{(m,n)}$ is defined as $\Lambda \equiv \
 
 where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{eq:eigval_calc_4}). Equation~(\ref{eq:eigval_calc_4}) suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane. 
 
-The parameters of the system are carefully chosen to highlight all its key characteristics simultaneously—namely, significant diffusion, convection, and reaction occurring within the reactor—while also ensuring that the delay term and recycle ratio have a pronounced effect on system dynamics. Additionally, the parameters are deliberately selected to introduce instability into the system, emphasizing the proposed control strategy's ability to stabilize an inherently unstable system. While no isothermal reactor can truly exhibit exponential instability due to the finite availability of reactants, such systems can still become unstable near the steady state. In this context, deviations from the steady state may cause the system to transition toward a different steady state, thereby altering the underlying dynamics and invalidating the original model used for system design and control optimization.
-
-It has been observed that for the linearized system to have an unstable steady state, the reaction coefficient, $k_r$, must be negative. Although rare, this scenario can arise in certain reaction mechanisms where the reaction rate decreases as the reactant concentration increases, such as autocatalytic reactions, enzyme-catalyzed reactions, or reactions involving inhibitory effects. This instability can be qualitatively understood as follows: a negative reaction coefficient causes a decline in the reaction rate as the reactant accumulates, leading to further reactant accumulation and thus, driving the system away from its steady state. Quantitative confirmation of this behavior can be achieved through eigenvalue analysis, where the presence of at least one eigenvalue with a positive real part indicates the system's instability.
-
-
 \begin{figure}[!htbp]
     \centering
     \includesvg[inkscapelatex=false, width=0.8\textwidth, keepaspectratio]{Figures/eig_val_dist_R_0.3.svg}
     \caption{Eigenvalues of operator $\mathfrak{A}$ obtained by solving Equation~(\ref{eq:eigval_calc_4}).}
     \label{fig:eigval_dist}
 \end{figure}
-
-
-\begin{table}[ht]
-    \centering
-    \caption{Physical Parameters for the System}
-    \label{tab:pars}
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    \textbf{Parameter}        & \textbf{Symbol} & \textbf{Value}     & \textbf{Unit}    \\ \hline
-    Diffusivity               & $D$             & $2\times10^{-5}$   & ${m^2}/{s}$      \\ \hline
-    Velocity                  & $v$             & $0.01$   & ${m}/{s}$        \\ \hline
-    Reaction Constant         & $k_r$           & $-1.5$              & $s^{-1}$         \\ \hline
-    Recycle Residence Time    & $\tau$          & $80$               & $s$              \\ \hline
-    Recycle Ratio             & $R$             & $0.3$              & $-$              \\ \hline
-    \end{tabular}
-\end{table}
 
 Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of $\mathfrak{A}$ match the ones of its adjoint, confirming that $\mathfrak{A}$ and $\mathfrak{A}^*$ form a bi-orthogonal basis according to Equation~(\ref{eq:biorth}):
 
@@ -216,3 +195,22 @@ The eigenfunctions $\{ \bm{\phi_i}(\zeta), \bm{\psi_i}(\zeta) \}$ (for $\mathfra
     \caption{First few eigenmodes of $\mathfrak{A}$ and $\mathfrak{A}^*$.}
     \label{fig:eigfun}
 \end{figure}
+
+\begin{table}[ht]
+    \centering
+    \caption{Physical Parameters for the System}
+    \label{tab:pars}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Parameter}        & \textbf{Symbol} & \textbf{Value}     & \textbf{Unit}    \\ \hline
+    Diffusivity               & $D$             & $2\times10^{-5}$   & ${m^2}/{s}$      \\ \hline
+    Velocity                  & $v$             & $0.01$   & ${m}/{s}$        \\ \hline
+    Reaction Constant         & $k_r$           & $-1.5$              & $s^{-1}$         \\ \hline
+    Recycle Residence Time    & $\tau$          & $80$               & $s$              \\ \hline
+    Recycle Ratio             & $R$             & $0.3$              & $-$              \\ \hline
+    \end{tabular}
+\end{table}
+
+The parameters of the system are carefully chosen to highlight all its key characteristics simultaneously—namely, significant diffusion, convection, and reaction occurring within the reactor—while also ensuring that the delay term and recycle ratio have a pronounced effect on system dynamics. Additionally, the parameters are deliberately selected to introduce instability into the system, emphasizing the proposed control strategy's ability to stabilize an inherently unstable system. While no isothermal reactor can truly exhibit exponential instability due to the finite availability of reactants, such systems can still become unstable near the steady state. In this context, deviations from the steady state may cause the system to transition toward a different steady state, thereby altering the underlying dynamics and invalidating the original model used for system design and control optimization.
+
+It has been observed that for the linearized system to have an unstable steady state, the reaction coefficient, $k_r$, must be negative. Although rare, this scenario can arise in certain reaction mechanisms where the reaction rate decreases as the reactant concentration increases, such as autocatalytic reactions, enzyme-catalyzed reactions, or reactions involving inhibitory effects. This instability can be qualitatively understood as follows: a negative reaction coefficient causes a decline in the reaction rate as the reactant accumulates, leading to further reactant accumulation and thus, driving the system away from its steady state. Quantitative confirmation of this behavior can be achieved through eigenvalue analysis, where the presence of at least one eigenvalue with a positive real part indicates the system's instability.
