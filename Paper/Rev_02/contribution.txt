@@ -1,4 +1,0 @@
-- Novel control strategy for axial dispersion tubular reactors with recycle, addressing time-delay through transport PDEs.
-- Development of an optimal LQR using a late-lumping approach, preserving infinite-dimensional system properties.
-- Introduction of a full-state feedback regulator and an observer-based regulator, enhancing state reconstruction from boundary measurements.
-- Comprehensive numerical validation demonstrating effective stabilization of the system across various feedback gain settings.

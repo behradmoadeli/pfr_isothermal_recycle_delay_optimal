@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+
+\bibitem{curtainbook}
+Curtain R, Zwart H.
+\newblock 3.2: `Riesz-spectral operators'.
+\newblock In: Introduction to infinite-dimensional systems theory: a state-space approach. vol.~71. Springer Nature; 2020. p. 79-108.
+
+\bibitem{li2024novel}
+Li H, Bai J, Zou H, Wu F.
+\newblock A novel PID type iterative learning controller optimized by two-dimensional infinite horizon linear quadratic iterative learning control for batch processes.
+\newblock The Canadian Journal of Chemical Engineering. 2024;102(1):333-49.
+
+\bibitem{azhin2021modelling}
+Azhin M, Popli K, Prasad V.
+\newblock Modelling and boundary optimal control design of hybrid column flotation.
+\newblock The Canadian Journal of Chemical Engineering. 2021;99:S369-88.
+
+\bibitem{palma2023selection}
+Palma-Flores O, Ricardez-Sandoval LA.
+\newblock Selection and refinement of finite elements for optimal design and control: A Hamiltonian function approach.
+\newblock AIChE Journal. 2023;69(5):e18009.
+
+\bibitem{assassa2016optimality}
+Assassa F, Marquardt W.
+\newblock Optimality-based grid adaptation for input-affine optimal control problems.
+\newblock Computers \& chemical engineering. 2016;92:189-203.
+
+\bibitem{chen2014bilevel}
+Chen W, Shao Z, Biegler LT.
+\newblock A bilevel NLP sensitivity-based decomposition for dynamic optimization with moving finite elements.
+\newblock AIChE Journal. 2014;60(3):966-79.
+
+\end{thebibliography}
