@@ -1,0 +1,292 @@
+\section{OPEN-LOOP SYSTEM} \label{sec:model}
+
+\subsection{System model}
+
+\begin{figure}[!htbp]
+    \centering
+    \DIFdelbeginFL %DIFDELCMD < \begin{tikzpicture}
+%DIFDELCMD <         \node (pfr) [cylinder, draw, minimum height=3cm, minimum width=1cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=gray!45, cylinder body fill=gray!15] {$\mathcal{A} \rightarrow \mathcal{B}$};
+%DIFDELCMD <         \node (pfr_inlet) [circle, left of=pfr, xshift=-0.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+%DIFDELCMD <         \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+%DIFDELCMD <         \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+%DIFDELCMD <         \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+%DIFDELCMD <     
+
+%DIFDELCMD <         \draw[dotted, thick] ([yshift=0.5cm]pfr_inlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 0$} ([yshift=-0.65cm]pfr_inlet.center);
+%DIFDELCMD <         \draw[dotted, thick] ([yshift=0.5cm]pfr_outlet.center) -- node[at end, below, yshift=0.1cm] {$\zeta = 1$} ([yshift=-0.65cm]pfr_outlet.center);
+%DIFDELCMD <     
+
+%DIFDELCMD <         \node[below of=recycle_left, node distance=1.3cm, anchor=north west, xshift=-0.2cm] {$R \, c(1, t-\tau)$};
+%DIFDELCMD <         \node[above of=pfr_inlet, node distance=0.75cm,] {$c(0, t)$};
+%DIFDELCMD <         \node[above of=pfr_outlet, node distance=0.75cm,] {$c(1, t)$};
+%DIFDELCMD <         
+
+%DIFDELCMD <         \draw [arrow_2] (pfr_outlet) -- node[near end, above] {$y(t)$} ++(2,0);
+%DIFDELCMD <         \draw [arrow_2] (pfr_inlet) ++(-2,0) coordinate(start) -- node[near start, above] {$u(t)$} (pfr_inlet);
+%DIFDELCMD <         \draw [arrow_2] (recycle_right) -- ++(0,-1.25) -| (recycle_left);
+%DIFDELCMD <         
+
+%DIFDELCMD <     \end{tikzpicture}
+%DIFDELCMD <     %%%
+\DIFdelendFL \DIFaddbeginFL \begin{tikzpicture}
+        \node (pfr) [cylinder, draw, minimum height=5cm, minimum width=1.5cm, shape aspect=1, shape border rotate=180, cylinder uses custom fill, cylinder end fill=green!30!gray, cylinder body fill=green!15] {$\mathcal{A} \rightarrow {Products}$};
+        \node (pfr_inlet) [circle, left of=pfr, xshift=-1.5cm, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (pfr_outlet) [circle, at={(pfr.east)}, shift={(-0.25cm,0)}, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (recycle_right) [circle, right of=pfr_outlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+        \node (recycle_left) [circle, left of=pfr_inlet, fill=black, draw, inner sep=0pt, minimum size=0.25cm, scale=0.5] {};
+
+        \draw[dotted, thick] ([yshift=0.75cm]pfr_inlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 0$} ([yshift=-0.75cm]pfr_inlet.center);
+        \draw[dotted, thick] ([yshift=0.75cm]pfr_outlet.center) -- node[at end, below, yshift=0cm] {$\zeta = 1$} ([yshift=-0.75cm]pfr_outlet.center);
+
+        \node[below of=recycle_left, node distance=1.75cm, anchor=north west, xshift=-0.2cm] {$R \, C_A(1, t-\tau)$};
+        \node[above of=pfr_inlet, node distance=1.05cm,] {$C_A(0, t)$};
+        \node[above of=pfr_outlet, node distance=1.05cm,] {$C_A(1, t)$};
+
+        \draw [arrow_2] (pfr_outlet) -- node[near end, above] {$y(t)$} ++(2,0);
+        \draw [arrow_2] (pfr_inlet) ++(-2,0) coordinate(start) -- node[near start, above] {$u(t)$} (pfr_inlet);
+        \draw [arrow_2] (recycle_right) -- ++(0,-1.75) -| (recycle_left);
+
+    \end{tikzpicture}
+    \DIFaddendFL \caption{Axial tubular reactor with recycle stream.}
+    \label{fig:reactor_scheme}
+\end{figure}
+
+
+The chemical process illustrated in Figure~\ref{fig:reactor_scheme} represents an axial dispersion tubular reactor, which incorporates diffusion, convection, and a \DIFdelbegin \DIFdel{first-order irreversible chemical reaction }\DIFdelend \DIFaddbegin \DIFadd{chemical reaction where reactant $A$ is converted into products }\DIFaddend \autocite{levenspiel1998chemical}. The reactor is equipped with a recycle mechanism, allowing a fraction of the product stream to re-enter the reactor to ensure the consumption of any unreacted substrate. By applying first-principle modeling through relevant mass balance relations on an infinitesimally small section of the reactor, the \DIFdelbegin \DIFdel{reactor's dynamics }\DIFdelend \DIFaddbegin \DIFadd{dynamics of the reactant concentration }\DIFaddend can be described by \DIFdelbegin \DIFdel{a second-order parabolic PDE , a common class of equations }\DIFdelend \DIFaddbegin \DIFadd{the PDE given in Equation~(\ref{eq:PDE_basic}), belonging to the class of second order parabolic PDEs commonly }\DIFaddend used to characterize diffusion-convection-reaction systems \autocite{jensen1982bifurcation} \DIFdelbegin \DIFdel{. The resulting PDE that describes the reactor model is given by:
+}\DIFdelend \DIFaddbegin \DIFadd{in chemical engineering.
+}\DIFaddend 
+
+\begin{equation} \DIFdelbegin %DIFDELCMD < \label{eq:PDE_original_model}
+%DIFDELCMD <     \dot{c}%%%
+\DIFdelend \DIFaddbegin \label{eq:PDE_basic}
+    \dot{C_A}\DIFaddend (\zeta, t) = D \partial_{\zeta \zeta} \DIFdelbegin \DIFdel{c}\DIFdelend \DIFaddbegin \DIFadd{C_A}\DIFaddend (\zeta, t) - v \partial_\zeta \DIFdelbegin \DIFdel{c}\DIFdelend \DIFaddbegin \DIFadd{C_A}\DIFaddend (\zeta, t) + \DIFdelbegin \DIFdel{k_r c}\DIFdelend \DIFaddbegin \DIFadd{r}\DIFaddend (\DIFdelbegin \DIFdel{\zeta, t}\DIFdelend \DIFaddbegin \DIFadd{C_A}\DIFaddend )
+\end{equation}
+
+\DIFdelbegin \DIFdel{subject to Dankwerts boundary conditions:
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\begin{align*} \DIFdel{%DIFDELCMD < \label{eq:BC}%%%
+    \begin{cases}
+        &D \partial_\zeta c(0, t) - v c(0, t) = -v \left[ R c(1, t-\tau) + (1-R) u(t) \right] \\
+        &\partial_\zeta c(1, t) = 0 \\
+        &y(t) = c(1, t)
+    \end{cases}
+}\end{align*}%DIFAUXCMD
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{Here, $c(\zeta, t)$ denotes the properly scaled notion of concentration }\DIFdelend \DIFaddbegin \DIFadd{Here, $C_A(\zeta, t)$ denotes the concentration of reactant $A$ }\DIFaddend along the reactor\DIFdelbegin \DIFdel{, representing the state of the system}\DIFdelend . The physical parameters $D$, $v$, \DIFdelbegin \DIFdel{$k_r$, }\DIFdelend $R$, and $\tau$ correspond to the diffusion coefficient, flow velocity along the reactor, \DIFdelbegin \DIFdel{reaction constant, }\DIFdelend recycle ratio, and residence time of the recycle stream, respectively. \DIFaddbegin \DIFadd{It is worth noting that the system properties are assumed to be constant against changes in temperature and pressure. }\DIFaddend The spatial and temporal coordinates of the system are represented by $\zeta$ and $t$, where $\zeta \in [0, 1]$ and $t \in [0, \infty)$. \DIFaddbegin \DIFadd{In addition, $r(C_A)$ is the reaction rate by which the reactant is consumed. Considering the reaction term in general can be non-linear, the model is further linearized around its steady-state, followed by replacing the reactant concentration $C_A$ with its deviations from the steady-state concentration $C_{A,ss}$. The result is given in Equation~(\ref{eq:PDE_original_model}).
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{Dankwerts boundary conditions are particularly suitable for modeling axial tubular reactors, as they account for deviations from perfect mixing and piston flow, assuming negligible transport lags in connecting lines }%DIFDELCMD < \autocite{danckwerts1993continuous}%%%
+\DIFdel{. These conditions make the model more realistic for chemical reactors of this type. The input and the output of the system are also present in the boundary conditions}\DIFdelend \DIFaddbegin \begin{equation} \DIFadd{\label{eq:PDE_original_model}
+    \dot{c}(\zeta, t) = D \partial_{\zeta \zeta} c(\zeta, t) - v \partial_\zeta c(\zeta, t) - k_r c(\zeta, t)
+}\end{equation}
+
+\DIFadd{where $c(\zeta, t) \equiv C_A(\zeta, t) - C_{A, ss}(\zeta)$ is the deviation from the steady-state concentration and the linearized reaction coefficient is defined as $k_r \equiv \left. \dfrac{\partial r(C_A)}{\partial C_A} \right|_{C_{A, ss}}$ in the vicinity of the steady-state}\DIFaddend . The system output is \DIFaddbegin \DIFadd{assumed to be the deviation of the reactant concentration from the steady-state }\DIFaddend measured at the reactor outlet, while the \DIFdelbegin \DIFdel{input is }\DIFdelend \DIFaddbegin \DIFadd{control input is set to be equal to the deviation of the reactant concentration from the steady-state, }\DIFaddend applied at the \DIFdelbegin \DIFdel{inlet. Additionally, }\DIFdelend \DIFaddbegin \DIFadd{reactor inlet after being mixed with }\DIFaddend the delayed state resulting from the recycled portion of the flow \DIFdelbegin \DIFdel{, }\DIFdelend occurring $\tau$ time units ago\DIFdelbegin \DIFdel{, is incorporated into the inlet; all as shown }\DIFdelend \DIFaddbegin \DIFadd{. Incorporating input, output, and state delay in addition to the assumption of Danckwerts boundary condition will result }\DIFaddend in Equation~(\ref{eq:BC}) \DIFaddbegin \DIFadd{that describe the boundary conditions of the system}\DIFaddend .
+
+\DIFaddbegin \begin{align} \DIFadd{\label{eq:BC}
+    \begin{cases}
+        &D \partial_\zeta c(0, t) - v c(0, t) = -v \left[ R c(1, t-\tau) + (1-R) u(t) \right] \\
+        &\partial_\zeta c(1, t) = 0 \\
+        &y(t) = c(1, t)
+    \end{cases}
+}\end{align}
+
+\DIFadd{Accounting for deviations from perfect mixing and piston flow and assuming negligible transport lags in connecting lines }\autocite{danckwerts1993continuous}\DIFadd{, the Danckwerts boundary conditions have become an inseparable part of modeling axial tubular reactors in the field of chemical engineering process control and dynamics. While capturing physical significance, Danckwerts boundary conditions maintain generality without unnecessarily simplifying the model as they belong to the general class of Robin boundary conditions.
+}
+
+
+\DIFaddend \subsection{PDE representation of delay term}
+
+One effective method for addressing delay in systems is to represent the delay using an alternative transport partial differential equation (PDE). This approach is particularly advantageous when the problem already involves similar forms of PDEs, as is the case in the current study. To specifically address the delay in the system under consideration, the state variable $c(\zeta, t)$ is expanded into a vector of functions $\bm{x}(\zeta, t) \equiv [x_1(\zeta, t), x_2(\zeta, t)]^T$, where $x_1(\zeta, t)$ represents the concentration within the reactor, and $x_2(\zeta, t)$ is introduced as a new state variable to account for the concentration along the recycle stream. The delay is thus modeled as a pure transport process, wherein the first state $x_1(\zeta, t)$ is transported from the reactor outlet to the inlet, experiencing a delay of $\tau$ time units while in the recycle stream. As a result, Equations~\ref{eq:PDE_original_model}~and~\ref{eq:BC} may be re-formulated as follows:
+
+\begin{align}
+    \partial_t 
+    \begin{bmatrix}
+        x_1(\zeta, t) \\ x_2(\zeta,t)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        D \partial_{\zeta \zeta} - v \partial_\zeta + k_r && 0 \\
+        0 && \frac{1}{\tau} \partial_\zeta
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1(\zeta, t) \\ x_2(\zeta,t)
+    \end{bmatrix}\\
+\begin{cases}
+    D \partial_\zeta x_1(0, t) - v x_1(0, t) = -v \left[ R x_2(0, t) + (1-R) u(t) \right] \\
+    \partial_\zeta x_1(1, t) = 0 \\
+    x_1(1,t) = x_2(1,t) \\
+    y(t) = x_1(1, t)
+\end{cases}
+\end{align}
+
+With all state variables now expressed explicitly at a specific time instance $t$—in contrast to the previous representation where states at $t$ were directly involved with states at $(t-\tau)$—the open-loop system can be described in the standard state-space form of an infinite-dimensional linear time-invariant (LTI) system as $\dot{\bm{x}} = \mathfrak{A} \bm{x}$. Here, $\mathfrak{A}$ is a linear operator $\mathcal{L}(X)$ acting on a Hilbert space $X: L^2[0,1] \times L^2[0,1]$ and $\bm{x}(\zeta,t)$, as defined previously, is the vector of functions describing the states of the system. The operator $\mathfrak{A}$ and its domain are defined in detail as shown in Equation~(\ref{eq:operator_A}):
+
+\begin{equation} \label{eq:operator_A}
+    \DIFdelbegin %DIFDELCMD < \begin{aligned}
+%DIFDELCMD <         \mathfrak{A} \equiv&
+%DIFDELCMD <         \begin{bmatrix}
+%DIFDELCMD <             D \partial_{\zeta \zeta} - v \partial_\zeta + k_r & 0 \\
+%DIFDELCMD <             0 & \frac{1}{\tau} \partial_\zeta
+%DIFDELCMD <         \end{bmatrix}\\
+%DIFDELCMD <         D(\mathfrak{A}) =& \Bigl\{ \bm{x} = [x_1, x_2]^T \in X:
+%DIFDELCMD <         \bm{x}(\zeta), \partial_\zeta \bm{x}(\zeta), \partial_{\zeta \zeta} \bm{x}(\zeta) \quad \mathrm{a.c.},\\
+%DIFDELCMD <         &D \partial_\zeta x_1(0) - v x_1(0) = -v \left[ R x_2(0) + (1-R) u \right],\\
+%DIFDELCMD <         &\partial_\zeta x_1(1) = 0,
+%DIFDELCMD <         x_1(1) = x_2(1) \Bigr\}
+%DIFDELCMD <     \end{aligned}%%%
+\DIFdelend \DIFaddbegin \begin{aligned}
+        \mathfrak{A} \equiv&
+        \begin{bmatrix}
+            D \partial_{\zeta \zeta} - v \partial_\zeta + k_r & 0 \\
+            0 & \frac{1}{\tau} \partial_\zeta
+        \end{bmatrix}\\
+        \mathcal{D}(\mathfrak{A}) =& \Bigl\{ \bm{x} = [x_1, x_2]^T \in X:
+        \bm{x}(\zeta), \partial_\zeta \bm{x}(\zeta), \partial_{\zeta \zeta} \bm{x}(\zeta) \quad \mathrm{a.c.},\\
+        &D \partial_\zeta x_1(0) - v x_1(0) = -v \left[ R x_2(0) + (1-R) u \right],\\
+        &\partial_\zeta x_1(1) = 0,
+        x_1(1) = x_2(1) \Bigr\}
+    \end{aligned}\DIFaddend 
+\end{equation}
+
+\subsection{Adjoint operator}
+
+The adjoint operator $\mathfrak{A}^*$ plays a critical role in analyzing the spectral properties of the system. It is obtained in Equation~(\ref{eq:adjoint_A}):
+
+\begin{equation} \label{eq:adjoint_A}
+    \DIFdelbegin %DIFDELCMD < \begin{aligned}
+%DIFDELCMD <         \langle \mathfrak{A} \bm{\phi}, \bm{\psi}\rangle  = \langle \bm{\phi}, {\mathfrak{A}}^{*} \bm{\psi}\rangle  &\Rightarrow \\
+%DIFDELCMD <         {\mathfrak{A}}^{*} =&
+%DIFDELCMD <         \begin{bmatrix}
+%DIFDELCMD <             D \partial_{\zeta \zeta} + v \partial_\zeta +k_r & 0\\
+%DIFDELCMD <             0 & -\frac{1}{\tau} \partial_\zeta
+%DIFDELCMD <         \end{bmatrix}\\
+%DIFDELCMD <         D(\mathfrak{A}^*) =& \Bigl\{ \bm{y} = [y_1, y_2]^T \in Y:
+%DIFDELCMD <         \bm{y}(\zeta), \partial_\zeta \bm{y}(\zeta), \partial_{\zeta \zeta} \bm{y}(\zeta) \quad \mathrm{a.c.},\\
+%DIFDELCMD <         &D \partial_\zeta y_1(1) + v y_1(1) = \frac{1}{\tau} y_2(1) \\
+%DIFDELCMD <         &R v y_1(0) = \frac{1}{\tau} y_2(0) \\
+%DIFDELCMD <         &\partial_\zeta y_1(0) = 0 \Bigr\}
+%DIFDELCMD <     \end{aligned}%%%
+\DIFdelend \DIFaddbegin \begin{aligned}
+        \langle \mathfrak{A} \bm{\phi}, \bm{\psi}\rangle  = \langle \bm{\phi}, {\mathfrak{A}}^{*} \bm{\psi}\rangle  &\Rightarrow \\
+        {\mathfrak{A}}^{*} =&
+        \begin{bmatrix}
+            D \partial_{\zeta \zeta} + v \partial_\zeta +k_r & 0\\
+            0 & -\frac{1}{\tau} \partial_\zeta
+        \end{bmatrix}\\
+        \mathcal{D}(\mathfrak{A}^*) =& \Bigl\{ \bm{y} = [y_1, y_2]^T \in Y:
+        \bm{y}(\zeta), \partial_\zeta \bm{y}(\zeta), \partial_{\zeta \zeta} \bm{y}(\zeta) \quad \mathrm{a.c.},\\
+        &D \partial_\zeta y_1(1) + v y_1(1) = \frac{1}{\tau} y_2(1) \\
+        &R v y_1(0) = \frac{1}{\tau} y_2(0) \\
+        &\partial_\zeta y_1(0) = 0 \Bigr\}
+    \end{aligned}\DIFaddend 
+\end{equation}
+
+where $\bm{\phi_i}(\zeta) = [\phi_{i,1}(\zeta), \phi_{i,2}(\zeta)]^T$ and $\bm{\psi_i}(\zeta) = [\psi_{i,1}(\zeta), \psi_{i,2}(\zeta)]^T$ are the eigenfunction of $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively. Given that $\mathfrak{A}$ is not self-adjoint (i.e., $\mathfrak{A} \neq \mathfrak{A}^*$), their combined eigenmodes may still form a bi-orthonormal basis, typical of a Riesz-spectral operator \autocite{curtainbook}. Therefore their spectral properties must be determined by solving their characteristic equations.
+
+\subsection{Eigenvalue problem}
+
+The eigenvalue problem for $\mathfrak{A}$ is formulated as:
+
+\begin{equation} \label{eq:eig_prob}
+        \mathfrak{A} \bm{\phi_i}(\zeta) = \lambda_i \bm{\phi_i}(\zeta)
+\end{equation}
+
+
+where $\lambda_i \in \mathbb{C}$ is the $i^{\text{th}}$ eigenvalue. To obtain the characteristic equation, the system of PDEs shall be reduced to the ODE system in Equation~(\ref{eq:eigval_calc_2}) $\forall i \geq 0$:
+
+\begin{equation} \label{eq:eigval_calc_2}
+    \begin{aligned}
+        \partial_\zeta \begin{bmatrix}
+            \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
+        \end{bmatrix} = \begin{bmatrix}
+            0 & 1 & 0 \\
+            \frac{\lambda-k_r}{D} & \frac{v}{D} & 0 \\
+            0 & 0 & \tau \lambda 
+        \end{bmatrix} \begin{bmatrix}
+            \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
+        \end{bmatrix}
+    \end{aligned}
+\end{equation}
+
+which is in the form of $ \tilde{\bm{\phi}}_\zeta  = \tilde{\mathfrak{A}} \tilde{\bm{\phi}}$, with the solution stated in Equation~(\ref{eq:eigval_calc_3}):
+
+\begin{equation} \label{eq:eigval_calc_3}
+    \begin{bmatrix}
+        \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
+    \end{bmatrix}_{\zeta=1} = \begin{bmatrix}
+        \Lambda_{1,1} & \Lambda_{1,2} & \Lambda_{1,3} \\
+        \Lambda_{2,1} & \Lambda_{2,2} & \Lambda_{2,3} \\
+        \Lambda_{3,1} & \Lambda_{3,2} & \Lambda_{3,3}
+    \end{bmatrix} \begin{bmatrix}
+        \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
+    \end{bmatrix}_{\zeta=0}
+\end{equation}
+
+where the $ 3 \times 3$ matrix $\Lambda_{(m,n)}$ is defined as $\Lambda \equiv \left. e^{\tilde{\mathfrak{A}} (\zeta - 0)} \right|_{\zeta = 1}$. By applying the boundary conditions to Equation~(\ref{eq:eigval_calc_3}), the algebraic system of equations in Equation~(\ref{eq:eigval_calc_4}) is obtained:
+
+\begin{equation} \label{eq:eigval_calc_4}
+    \begin{bmatrix}
+        -v & D & Rv \\
+        \Lambda_{2,1} & \Lambda_{2,2} & \Lambda_{2,3} \\
+        (\Lambda_{1,1} - \Lambda_{3,1}) & (\Lambda_{1,2} - \Lambda_{3,2}) & (\Lambda_{1,3} - \Lambda_{3,3})
+    \end{bmatrix} \begin{bmatrix}
+        \phi_1 \\ \partial_\zeta \phi_1 \\ \phi_2
+    \end{bmatrix}_{\zeta=0} = \tilde{\Lambda} \left. \tilde{\bm{\phi}} \right|_{\zeta = 0} = 0
+\end{equation}
+
+where $\tilde{\Lambda}$ is defined as the square matrix shown in Equation~(\ref{eq:eigval_calc_4}). Equation~(\ref{eq:eigval_calc_4}) suggests that the matrix $\tilde{\Lambda}$ must be rank-deficient for appropriate values of $\lambda_i$. Attempts to analytically solve the characteristic equation $det(\tilde{\Lambda}) = 0$ has failed; therefore, it is solved numerically using the parameters in Table~\ref{tab:pars}. The resulting eigenvalue distribution is depicted in Figure~\ref{fig:eigval_dist} in the complex plane. 
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[inkscapelatex=false, width=0.8\textwidth, keepaspectratio]{Figures/eig_val_dist_R_0.3.svg}
+    \caption{Eigenvalues of operator $\mathfrak{A}$ obtained by solving Equation~(\ref{eq:eigval_calc_4}).}
+    \label{fig:eigval_dist}
+\end{figure}
+
+Following the same procedure for $\mathfrak{A}^*$ shows that the eigenvalues of $\mathfrak{A}$ match the ones of its adjoint, confirming that $\mathfrak{A}$ and $\mathfrak{A}^*$ form a bi-orthogonal basis according to Equation~(\ref{eq:biorth}):
+
+\begin{equation} \label{eq:biorth}
+    \begin{aligned}
+        &\langle \mathfrak{A} \bm{\phi_i}, \bm{\psi_j} \rangle = \langle \lambda_i \bm{\phi_i}, \bm{\psi_j} \rangle = \lambda_i \langle \bm{\phi_i}, \bm{\psi_j} \rangle \\
+        \text{L.H.S.} = &\langle \bm{\phi_i}, \mathfrak{A}^* \bm{\psi_j} \rangle = \langle \bm{\phi_i}, \lambda_j^* \bm{\psi_j} \rangle = \overline{\lambda_j^*} \langle \bm{\phi_i}, \bm{\psi_j} \rangle \\
+        &\lambda_i = \overline{\lambda_i^*} \Rightarrow \langle \bm{\phi_i}, \bm{\psi_j} \rangle = \delta_{ij}
+    \end{aligned}
+\end{equation}
+
+The eigenfunctions $\{ \bm{\phi_i}(\zeta), \bm{\psi_i}(\zeta) \}$ (for $\mathfrak{A}$ and $\mathfrak{A}^*$, respectively) may be obtained following the calculation of eigenvalues. The first 3 eigenfunctions are plotted in Figure~\ref{fig:eigfun}. 
+
+\begin{figure}[H]
+    \centering
+    \includesvg[inkscapelatex=false, width=0.6\textwidth, keepaspectratio]{Figures/eigfuns.svg}
+    \caption{First few eigenmodes of $\mathfrak{A}$ and $\mathfrak{A}^*$.}
+    \label{fig:eigfun}
+\end{figure}
+
+\begin{table}[ht]
+    \centering
+    \caption{Physical Parameters for the System}
+    \label{tab:pars}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Parameter}        & \textbf{Symbol} & \textbf{Value}     & \textbf{Unit}    \\ \hline
+        Diffusivity               & $D$             & $2\times10^{-5}$   & ${m^2}/{s}$      \\ \hline
+        Velocity                  & $v$             & $0.01$   & ${m}/{s}$        \\ \hline
+        Reaction Constant         & $k_r$           & \DIFdelbeginFL \DIFdelFL{$1.5$              }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$-1.5$              }\DIFaddendFL & $s^{-1}$         \\ \hline
+        Recycle Residence Time    & $\tau$          & $80$               & $s$              \\ \hline
+        Recycle Ratio             & $R$             & $0.3$              & $-$              \\ \hline
+    \end{tabular}
+\end{table}
+
+\DIFaddbegin \DIFadd{The parameters of the system are carefully chosen to highlight all its key characteristics simultaneously—namely, significant diffusion, convection, and reaction occurring within the reactor—while also ensuring that the delay term and recycle ratio have a pronounced effect on system dynamics. Additionally, the parameters are deliberately selected to introduce instability into the system, emphasizing the proposed control strategy's ability to stabilize an inherently unstable system. While no isothermal reactor can truly exhibit exponential instability due to the finite availability of reactants, such systems can still become unstable near the steady state. In this context, deviations from the steady state may cause the system to transition toward a different steady state, thereby altering the underlying dynamics and invalidating the original model used for system design and control optimization.
+}
+
+\DIFadd{It has been observed that for the linearized system to have an unstable steady state, the reaction coefficient, $k_r$, must be negative. Although rare, this scenario can arise in certain reaction mechanisms where the reaction rate decreases as the reactant concentration increases, such as autocatalytic reactions, enzyme-catalyzed reactions, or reactions involving inhibitory effects. This instability can be qualitatively understood as follows: a negative reaction coefficient causes a decline in the reaction rate as the reactant accumulates, leading to further reactant accumulation and thus, driving the system away from its steady state. Quantitative confirmation of this behavior can be achieved through eigenvalue analysis, where the presence of at least one eigenvalue with a positive real part indicates the system's instability.
+}
+
+
+\DIFaddend 
