@@ -71,7 +71,7 @@ Omitting the need to have full access to system states, the observer-based regul
     \label{fig:2D_xt_L_k7}
 \end{figure}
 
-In the last step, the state estimation error dynamics of the observer are plotted in Figures~\ref{fig:3D_e1_L_k7}~and~\ref{fig:2D_et_L_k7} to demonstrate the performance of the observer. The error dynamics are calculated as the squared difference between the true state and the estimated state at each grid point and time instance.
+In the next step, the state estimation error dynamics of the observer are plotted in Figures~\ref{fig:3D_e1_L_k7}~and~\ref{fig:2D_et_L_k7} to demonstrate the performance of the observer. The error dynamics are calculated as the squared difference between the true state and the estimated state at each grid point and time instance.
 
 \begin{figure}[!htbp]
     \centering
@@ -91,11 +91,11 @@ While the performance of the observer-based controller is slightly more sluggish
 
 \subsection{Parameter sensitivity analysis}
 
-In the final section, a brief parameter sensitivity analysis of the model dynamics and controller performance is conducted. The effects of varying the recycle ratio $R$ and mass transfer Peclet number (i.e. the ratio of convection to diffusion, $Pe = v/D$) were explored during initial simulations. More importantly, as it is central to this work, the effect of varying time delay $\tau$ on the response of the system under the original controller design is investigated at the end of this section.
+Followed by showcasing the ability of the proposed controller to stabilize an unstable system using merely output measurements, a brief parameter sensitivity analysis of the model dynamics and controller performance is conducted at the end of this section. The effects of varying the recycle ratio $R$ and mass transfer Peclet number (i.e. the ratio of convection to diffusion, $Pe = v/D$) were explored during initial simulations. In addition, as it is central to this work, the effect of varying time delay $\tau$ on the response of the system under the original controller design is investigated in more detail.
 
 Regarding the effect of recycle ratio on system dynamics and controller performance, it was observed that as the recycle ratio approaches unity, the open-loop system exhibits behavior similar to that of a well-mixed reactor, with concentration profiles flattening. This also influences the controller performance as it becomes more challenging to affect the system dynamics with the control input as the controller's action becomes diluted at the reactor inlet due to mixing with the recycle stream. For changes in mass Peclet number and its effect on the system dynamics, it was observed that a decrease in the Peclet number causes the eigenvalues of the system generator to shift closer to the real axis of the complex plane. This implies that greater diffusion relative to convection dampens the oscillatory behavior of the system that is originally imposed as the result of the delayed recycle stream.
 
-Finally, the effect of varying time delay $\tau$ on the system dynamics is also investigated. Input responses of several systems with different time delays are compared in Figure~\ref{fig:tau_sensitivity}, where the input for all cases is calculated assuming $\tau = 80$ s, which results in the same output feedback gain as the one obtained in \textbf{Section~\ref{sec:observer}}.
+Finally, the effect of varying time delay $\tau$ on the system dynamics is also investigated, as it is a key parameter in the model and controller design within this work. Input responses of several systems with different time delays are compared in Figure~\ref{fig:tau_sensitivity}, where the input for all cases is calculated assuming $\tau = 80$ s, which results in the same output feedback gain as the one obtained in \textbf{Section~\ref{sec:observer}}.
 
 \begin{figure}[!htbp]
     \centering
@@ -104,6 +104,6 @@ Finally, the effect of varying time delay $\tau$ on the system dynamics is also 
     \label{fig:tau_sensitivity}
 \end{figure}
 
-It can be seen that as the actual time delay of a system is less than the assumed delay used in the controller design, the controller is still able to stabilize the system. However, as the actual delay increases, the response of the system starts to deviate from the desired behavior after a certain threshold which is around the actual recycle delay of the system. This shows the importance of including the time delay in the controller design to ensure the stability of the system within an optimal framework.
+It can be seen that as long as the actual time delay of a system is less than the assumed delay used in the controller design, the controller is still able to stabilize the system within a finite time horizon, although transient deviations from the desired behavior are observed. However, as the actual delay increases, the response of the system starts to deviate significantly from the desired behavior, especially after a certain threshold close to the actual recycle delay of the system. This shows the importance of including the time delay in the controller design to ensure the stability of the system within an optimal framework.
 
 Although further parameter sensitivity analysis is possible as it naturally raises readers' curiosity, expanding the analysis to include more detailed investigations would risk exceeding the scope of this work, which is to offer a novel modeling and control framework for a certain class of distributed parameter systems in chemical engineering. Nonetheless, the proposed modeling and control strategy is able to effectively stabilize the system over a broad range of parameter sets, including but not limited to variations in the imposed time delay, Peclet number, and recycle ratio, ensuring the practicality of the proposed framework across different system configurations.
