@@ -16,7 +16,7 @@ The LQR problem is solved by finding the unique positive semi-definite operator 
     \langle \mathfrak{A}^* \mathbf{\Pi} \bm{x}, \bm{y}\rangle + \langle \mathbf{\Pi} \mathfrak{A} \bm{x}, \bm{y} \rangle - \langle \mathbf{\Pi} \mathfrak{B} \mathfrak{R}^{-1} \mathfrak{B}^* \mathbf{\Pi} \bm{x}, \bm{y}\rangle + \langle \mathfrak{Q} \bm{x}, \bm{y}\rangle = 0
 \end{equation}
 
-Given that the solution to the ORE is unique for any set of functions in the domain of operator $\mathfrak{A}$, we can select $\bm{x} = \bm{\phi_m}$ and $\bm{y} = \bm{\phi_n}$, i.e. the eigenfunctions of $\mathfrak{A}$. Applying this choice, and noting that $\mathbf{\Pi}$ is self-adjoint, leads to the simplified Equation~\ref{eq:ORE_2}.
+Given that the solution to the ORE is unique for any set of functions in the domain of operator $\mathfrak{A}$, we can arbitrarily set $\bm{x} = \bm{\phi_m}$ and $\bm{y} = \bm{\phi_n}$, i.e. the eigenfunctions of $\mathfrak{A}$. Applying this choice, and noting that $\mathbf{\Pi}$ is self-adjoint, leads to the simplified Equation~\ref{eq:ORE_2}.
 
 \begin{equation} \label{eq:ORE_2}
     \langle \mathbf{\Pi} \bm{\phi_m}, \mathfrak{A} \bm{\phi_n} \rangle
@@ -43,7 +43,7 @@ Before further simplifying the ORE, it is essential to define the operators $\ma
     \end{bmatrix} \cdot u
 \end{equation}
 
-The adjoint operator $\mathfrak{B}^*$ is obtained by leveraging the properties of $\mathfrak{A}$ and $\mathfrak{A}^*$, i.e. their expressions as well as their domains (as shown in Equations~\ref{eq:operator_A}~and~\ref{eq:adjoint_A}), after applying integration by parts to the result of the inner products, as summarized in Equation~\ref{eq:B*}.
+where $\delta(\zeta)$ denotes the Dirac delta function. The adjoint operator $\mathfrak{B}^*$ is obtained by leveraging the properties of $\mathfrak{A}$ and $\mathfrak{A}^*$, i.e. their expressions as well as their domains (as shown in Equations~\ref{eq:operator_A}~and~\ref{eq:adjoint_A}), after applying integration by parts to the result of the inner products, as summarized in Equation~\ref{eq:B*}.
 
 \begin{equation} \label{eq:B*}
     \begin{aligned}
@@ -69,7 +69,7 @@ Using the expression for $\mathbf{\Pi}$ in Equation~\ref{eq:P}, along with the d
     + q_{m,n} = 0
 \end{equation}
 
-Due to the infinite-dimensional nature of $\tilde{P}$, a numerical solution is impractical. This challenge is addressed by selecting the first $N$ eigenmodes of the system as its dominant modes. This means truncating the infinite sums in the MRE and reducing the infinite-dimensional system to a finite set of nonlinear algebraic equations that can be solved to obtain an equivalent $N \times N$ matrix $P$, i.e. a truncated approximation of matrix $\tilde{P}$. The optimal full-state feedback gain is then calculated using Equation~\ref{eq:fullstate_gain}, ensuring closed-loop stability.
+Due to the infinite-dimensional nature of $\tilde{P}$, a numerical solution is impractical. This challenge is addressed by selecting the first $N$ eigenmodes of the system as its dominant modes. This translates to truncating the infinite sums in the MRE and reducing the infinite-dimensional system to a finite set of nonlinear algebraic equations that can be solved to obtain an equivalent $N \times N$ matrix $P$, i.e. a truncated approximation of matrix $\tilde{P}$. The optimal full-state feedback gain is then calculated using Equation~\ref{eq:fullstate_gain}, ensuring closed-loop stability.
 
 \begin{equation} \label{eq:fullstate_gain}
     \begin{aligned}
